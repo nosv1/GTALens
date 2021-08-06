@@ -1,6 +1,2 @@
-discord.py
-
-pip~=21.2.2
-setuptools~=57.4.0
 python-dotenv~=0.19.0
 requests~=2.26.0
