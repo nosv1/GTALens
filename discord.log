@@ -1,0 +1,24 @@
+2021-08-05 19:07:13.303:INFO:discord.client: logging in using static token
+2021-08-05 19:07:13.682:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-05 19:07:13.816:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-gf38",{"micros":82321,"calls":["discord-sessions-green-prd-2-32",{"micros":81182,"calls":["start_session",{"micros":68828,"calls":["api-prd-main-gnnt",{"micros":64003,"calls":["get_user",{"micros":2867},"add_authorized_ip",{"micros":5066},"get_guilds",{"micros":12630},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":3705,"calls":[]}]}]}] (Session ID: 91aef3395a77eec91f4ab976b0cfd516).
+2021-08-05 19:07:18.214:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-05 19:07:18.214:INFO:discord.client: Cleaning up tasks.
+2021-08-05 19:07:18.214:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-05 19:07:18.215:INFO:discord.client: All tasks finished cancelling.
+2021-08-05 19:07:18.215:INFO:discord.client: Closing the event loop.
+2021-08-05 19:07:24.803:INFO:discord.client: logging in using static token
+2021-08-05 19:07:25.165:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-05 19:07:25.369:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-8lpm",{"micros":151121,"calls":["discord-sessions-green-prd-2-119",{"micros":144342,"calls":["start_session",{"micros":96171,"calls":["api-prd-main-wsm4",{"micros":89925,"calls":["get_user",{"micros":5725},"add_authorized_ip",{"micros":6166},"get_guilds",{"micros":12110},"coros_wait",{"micros":0}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":10477,"calls":[]}]}]}] (Session ID: 7dabfa0889aacc2cb1deb3d6654d6bc8).
+2021-08-05 19:07:47.886:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-05 19:07:47.886:INFO:discord.client: Cleaning up tasks.
+2021-08-05 19:07:47.887:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-05 19:07:47.887:INFO:discord.client: All tasks finished cancelling.
+2021-08-05 19:07:47.888:INFO:discord.client: Closing the event loop.
+2021-08-05 19:08:04.292:INFO:discord.client: logging in using static token
+2021-08-05 19:08:04.685:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-05 19:08:04.811:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-njg6",{"micros":60645,"calls":["discord-sessions-green-prd-2-96",{"micros":59771,"calls":["start_session",{"micros":32923,"calls":["api-prd-main-s4nm",{"micros":29301,"calls":["get_user",{"micros":4572},"add_authorized_ip",{"micros":2056},"get_guilds",{"micros":4182},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":5905,"calls":[]}]}]}] (Session ID: 4ac35caac19f372e356f1de3a48d4608).
+2021-08-05 19:08:17.179:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-05 19:08:17.179:INFO:discord.client: Cleaning up tasks.
+2021-08-05 19:08:17.179:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-05 19:08:17.180:INFO:discord.client: All tasks finished cancelling.
+2021-08-05 19:08:17.180:INFO:discord.client: Closing the event loop.
