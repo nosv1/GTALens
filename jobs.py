@@ -3,33 +3,37 @@ import discord
 import json
 import requests
 
-ALIASES = ['track', 'job', 'race']
+import Support
+
+ALIASES = ["track", "job", "race"]
 
 
 class Job:
     def __init__(
-            self,  # TODO add more attributes
-            gtalens_id: str,
-            rockstar_id: str,
-            name: str,
-            description: str,
-            last_updated: datetime,
-            thumbnail: list,  # [part1, part2]
-            likes: int,
-            dislikes: int,
-            quits: int,
-            total_plays: int,
-            unique_plays: int,
-            rating: float,
-            user_name: str,
-            user_id: str,
+        self,  # TODO add more attributes
+        gtalens_id: str,
+        rockstar_id: str,
+        name: str,
+        description: str,
+        last_updated: datetime,
+        thumbnail: list,  # [part1, part2]
+        likes: int,
+        dislikes: int,
+        quits: int,
+        total_plays: int,
+        unique_plays: int,
+        rating: float,
+        user_name: str,
+        user_id: str,
     ):
         self.gtalens_id = gtalens_id
         self.rockstar_id = rockstar_id
         self.name = name
         self.description = description
-        self.thumbnail = f"https://prod.cloud.rockstargames.com/ugc/gta5mission/" \
-                         f"{thumbnail[0]}/{self.rockstar_id}/{thumbnail[1]}.jpg"
+        self.thumbnail = (
+            f"https://prod.cloud.rockstargames.com/ugc/gta5mission/"
+            f"{thumbnail[0]}/{self.rockstar_id}/{thumbnail[1]}.jpg"
+        )
         self.last_updated = last_updated
 
         self.likes = likes
@@ -46,22 +50,19 @@ class Job:
         # FIXME this assumes brand new message, and not editable embed
 
         embed = discord.Embed(
-            color=discord.Colour(int(0xf03c00)),
-            title=f"**{self.name}**",
+            color=discord.Colour(Support.GTALENS_ORANGE),
+            title=f"**__{self.name}__**",
             description=f"\n[GTALens](https://gtalens.com/job/{self.gtalens_id}) **|** "
-                        f"[R*SC](https://socialclub.rockstargames.com/job/gtav/{self.rockstar_id}) **|** "
-                        f"[Donate](https://ko-fi.com/gtalens)"
-
-                        f"\n\n[{self.user_name}](https://gtalens.com/profile/{self.user_id}): "
-                        f"{self.description}"
-
-                        f"\n\n:thumbsup: **{self.likes}** {round(self.rating, 1)}% "
-                        f":thumbsdown: **{self.dislikes}** +{self.quits}"
-                        f"\n:video_game: **{self.total_plays}** "
-                        f":bust_in_silhouette: **{self.unique_plays}**"
-
+            f"[R*SC](https://socialclub.rockstargames.com/job/gtav/{self.rockstar_id}) **|** "
+            f"[Donate](https://ko-fi.com/gtalens)"
+            f"\n\n[{self.user_name}](https://gtalens.com/profile/{self.user_id}): "
+            f"{self.description}"
+            f"\n\n:thumbsup: **{self.likes}** {round(self.rating, 1)}% "
+            f":thumbsdown: **{self.dislikes}** +{self.quits}"
+            f"\n:video_game: **{self.total_plays}** "
+            f":bust_in_silhouette: **{self.unique_plays}**"
             # hiding information at the end of the description, separate vars by comma
-                        f"[{chr(8203)}](gtalens_id={self.gtalens_id},)"
+            f"[{Support.ZERO_WIDTH}](gtalens_id={self.gtalens_id},)",
         )
 
         embed.set_thumbnail(url=self.thumbnail)
@@ -69,10 +70,11 @@ class Job:
 
         print(json.dumps(embed.to_dict(), indent=4))
 
-        await message.channel.send(embed=embed)
+        return await message.channel.send(embed=embed)
 
 
 # create a job from gtalens api endpoint
+
 
 def get_job(job_id: str) -> Job:
     # BGNZ Here Viggo Again!
@@ -84,24 +86,24 @@ def get_job(job_id: str) -> Job:
 
     response = requests.get(f"{full_info_url}{job_id}")
     response = json.loads(response.text)
-    payload = response['payload']
-    job_dict = payload['job']
+    payload = response["payload"]
+    job_dict = payload["job"]
 
     return Job(
-        gtalens_id=job_dict['jobId'],
-        rockstar_id=job_dict['jobCurrId'],
-        name=job_dict['name'],
-        description=job_dict['desc'],
-        last_updated=datetime.strptime(job_dict['upD'], "%Y-%m-%dT%H:%M:%S.%fZ"),
-        thumbnail=job_dict['img'].split("."),
-        likes=job_dict['stats']['lk'],
-        dislikes=job_dict['stats']['dlk'],
-        total_plays=job_dict['stats']['plT'],
-        unique_plays=job_dict['stats']['plU'],
-        quits=job_dict['stats']['qt'],
-        rating=job_dict['stats']['r'],
-        user_name=payload['suppl']['usersInfo'][0]['username'],
-        user_id=payload['suppl']['usersInfo'][0]['userId'],
+        gtalens_id=job_dict["jobId"],
+        rockstar_id=job_dict["jobCurrId"],
+        name=job_dict["name"],
+        description=job_dict["desc"],
+        last_updated=datetime.strptime(job_dict["upD"], "%Y-%m-%dT%H:%M:%S.%fZ"),
+        thumbnail=job_dict["img"].split("."),
+        likes=job_dict["stats"]["lk"],
+        dislikes=job_dict["stats"]["dlk"],
+        total_plays=job_dict["stats"]["plT"],
+        unique_plays=job_dict["stats"]["plU"],
+        quits=job_dict["stats"]["qt"],
+        rating=job_dict["stats"]["r"],
+        user_name=payload["suppl"]["usersInfo"][0]["username"],
+        user_id=payload["suppl"]["usersInfo"][0]["userId"],
     )
 
 
