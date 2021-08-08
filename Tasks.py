@@ -16,6 +16,11 @@ async def update_status(client):
         discord.Activity(
             type=discord.ActivityType.watching,
             name=".lens donate - support the developers"
+        ),
+
+        discord.Activity(
+            type=discord.ActivityType.watching,
+            name=".lens invite - add to your server"
         )
     ]
 
