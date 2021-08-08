@@ -42,7 +42,7 @@
             "default": 17
         },
         "lap_times": {
-            "default": "6:02.543"
+            "default": 362.543
         },
         "top_speeds_mph": {
             "default": 16.75
@@ -118,7 +118,7 @@
             "default": 4
         },
         "lap_times": {
-            "default": "1:34.694"
+            "default": 94.694
         },
         "top_speeds_mph": {
             "default": 71.5
@@ -181,7 +181,7 @@
             "default": 3
         },
         "lap_times": {
-            "default": "1:33.025"
+            "default": 93.025
         },
         "top_speeds_mph": {
             "default": 70.0
@@ -270,7 +270,7 @@
             "default": 14
         },
         "lap_times": {
-            "default": "4:07.805"
+            "default": 247.805
         },
         "top_speeds_mph": {
             "default": 41.5
@@ -341,7 +341,7 @@
             "default": 15
         },
         "lap_times": {
-            "default": "4:20.349"
+            "default": 260.349
         },
         "top_speeds_mph": {
             "default": 20.75
@@ -430,7 +430,7 @@
             "default": 12
         },
         "lap_times": {
-            "default": "2:57.336"
+            "default": 177.336
         },
         "top_speeds_mph": {
             "default": 36.75
@@ -506,7 +506,7 @@
             "default": 1
         },
         "lap_times": {
-            "default": "1:22.550"
+            "default": 82.55
         },
         "top_speeds_mph": {
             "default": 122.0
@@ -582,7 +582,7 @@
             "default": 13
         },
         "lap_times": {
-            "default": "4:02.232"
+            "default": 242.232
         },
         "top_speeds_mph": {
             "default": 26.25
@@ -671,7 +671,7 @@
             "default": 10
         },
         "lap_times": {
-            "default": "2:03.214"
+            "default": 123.214
         },
         "top_speeds_mph": {
             "default": 48.5
@@ -755,7 +755,7 @@
             "default": 8
         },
         "lap_times": {
-            "default": "1:42.134"
+            "default": 102.134
         },
         "top_speeds_mph": {
             "default": 67.0
@@ -818,7 +818,7 @@
             "default": 2
         },
         "lap_times": {
-            "default": "1:32.761"
+            "default": 92.761
         },
         "top_speeds_mph": {
             "default": 68.25
@@ -881,7 +881,7 @@
             "default": 6
         },
         "lap_times": {
-            "default": "1:39.933"
+            "default": 99.93299999999999
         },
         "top_speeds_mph": {
             "default": 65.75
@@ -970,7 +970,7 @@
             "default": 16
         },
         "lap_times": {
-            "default": "4:53.135"
+            "default": 293.135
         },
         "top_speeds_mph": {
             "default": 19.75
@@ -1054,7 +1054,7 @@
             "default": 11
         },
         "lap_times": {
-            "default": "2:04.557"
+            "default": 124.557
         },
         "top_speeds_mph": {
             "default": 51.0
@@ -1143,7 +1143,7 @@
             "default": 9
         },
         "lap_times": {
-            "default": "1:54.847"
+            "default": 114.84700000000001
         },
         "top_speeds_mph": {
             "default": 50.25
@@ -1204,7 +1204,7 @@
             "default": 7
         },
         "lap_times": {
-            "default": "1:40.966"
+            "default": 100.96600000000001
         },
         "top_speeds_mph": {
             "default": 63.25
@@ -1267,7 +1267,7 @@
             "default": 18
         },
         "lap_times": {
-            "default": "6:37.952"
+            "default": 397.952
         },
         "top_speeds_mph": {
             "default": 18.5
@@ -1349,7 +1349,7 @@
             "default": 5
         },
         "lap_times": {
-            "default": "1:35.004"
+            "default": 95.00399999999999
         },
         "top_speeds_mph": {
             "default": 71.5
@@ -1425,7 +1425,7 @@
             "default": 6
         },
         "lap_times": {
-            "default": "1:35.125"
+            "default": 95.125
         },
         "top_speeds_mph": {
             "default": 89.75
@@ -1502,7 +1502,7 @@
             "default": 14
         },
         "lap_times": {
-            "default": "1:44.070"
+            "default": 104.07
         },
         "top_speeds_mph": {
             "default": 83.5
@@ -1586,7 +1586,7 @@
             "default": 4
         },
         "lap_times": {
-            "default": "1:23.939"
+            "default": 83.939
         },
         "top_speeds_mph": {
             "default": 106.25
@@ -1640,7 +1640,7 @@
             "default": 15
         },
         "lap_times": {
-            "default": "1:45.980"
+            "default": 105.97999999999999
         },
         "top_speeds_mph": {
             "default": 73.25
@@ -1724,7 +1724,7 @@
             "default": 1
         },
         "lap_times": {
-            "default": "1:19.241"
+            "default": 79.241
         },
         "top_speeds_mph": {
             "default": 102.0
@@ -1806,7 +1806,7 @@
             "default": 17
         },
         "lap_times": {
-            "default": "1:51.313"
+            "default": 111.313
         },
         "top_speeds_mph": {
             "default": 70.25
@@ -1888,7 +1888,7 @@
             "default": 13
         },
         "lap_times": {
-            "default": "1:44.004"
+            "default": 104.00399999999999
         },
         "top_speeds_mph": {
             "default": 72.75
@@ -1942,7 +1942,7 @@
             "default": 11
         },
         "lap_times": {
-            "default": "1:39.803"
+            "default": 99.803
         },
         "top_speeds_mph": {
             "default": 76.25
@@ -2024,7 +2024,7 @@
             "default": 10
         },
         "lap_times": {
-            "default": "1:39.141"
+            "default": 99.14099999999999
         },
         "top_speeds_mph": {
             "default": 85.5
@@ -2108,7 +2108,7 @@
             "default": 8
         },
         "lap_times": {
-            "default": "1:36.149"
+            "default": 96.149
         },
         "top_speeds_mph": {
             "default": 82.5
@@ -2185,7 +2185,7 @@
             "default": 2
         },
         "lap_times": {
-            "default": "1:21.069"
+            "default": 81.069
         },
         "top_speeds_mph": {
             "default": 103.5
@@ -2267,7 +2267,7 @@
             "default": 3
         },
         "lap_times": {
-            "default": "1:21.148"
+            "default": 81.148
         },
         "top_speeds_mph": {
             "default": 98.5
@@ -2349,7 +2349,7 @@
             "default": 16
         },
         "lap_times": {
-            "default": "1:47.139"
+            "default": 107.13900000000001
         },
         "top_speeds_mph": {
             "default": 85.75
@@ -2426,7 +2426,7 @@
             "default": 7
         },
         "lap_times": {
-            "default": "1:35.269"
+            "default": 95.269
         },
         "top_speeds_mph": {
             "default": 95.75
@@ -2508,7 +2508,7 @@
             "default": 9
         },
         "lap_times": {
-            "default": "1:38.476"
+            "default": 98.476
         },
         "top_speeds_mph": {
             "default": 83.5
@@ -2569,7 +2569,7 @@
             "default": 18
         },
         "lap_times": {
-            "default": "1:56.317"
+            "default": 116.31700000000001
         },
         "top_speeds_mph": {
             "default": 56.75
@@ -2623,7 +2623,7 @@
             "default": 5
         },
         "lap_times": {
-            "default": "1:28.302"
+            "default": 88.30199999999999
         },
         "top_speeds_mph": {
             "default": 87.25
@@ -2700,7 +2700,7 @@
             "default": 12
         },
         "lap_times": {
-            "default": "1:42.089"
+            "default": 102.089
         },
         "top_speeds_mph": {
             "default": 74.75
@@ -2763,7 +2763,7 @@
             "default": 10
         },
         "lap_times": {
-            "default": "1:17.946"
+            "default": 77.946
         },
         "top_speeds_mph": {
             "default": 96.5
@@ -2839,7 +2839,7 @@
             "default": 7
         },
         "lap_times": {
-            "default": "1:16.777"
+            "default": 76.777
         },
         "top_speeds_mph": {
             "default": 104.5
@@ -2939,7 +2939,7 @@
             "default": 3
         },
         "lap_times": {
-            "default": "1:13.340"
+            "default": 73.34
         },
         "top_speeds_mph": {
             "default": 109.25
@@ -3015,7 +3015,7 @@
             "default": 13
         },
         "lap_times": {
-            "default": "1:24.186"
+            "default": 84.186
         },
         "top_speeds_mph": {
             "default": 86.0
@@ -3091,7 +3091,7 @@
             "default": 2
         },
         "lap_times": {
-            "default": "1:11.272"
+            "default": 71.272
         },
         "top_speeds_mph": {
             "default": 103.75
@@ -3182,7 +3182,7 @@
             "default": 1
         },
         "lap_times": {
-            "default": "1:06.968"
+            "default": 66.968
         },
         "top_speeds_mph": {
             "default": 112.5
@@ -3258,7 +3258,7 @@
             "default": 12
         },
         "lap_times": {
-            "default": "1:22.917"
+            "default": 82.917
         },
         "top_speeds_mph": {
             "default": 88.5
@@ -3342,7 +3342,7 @@
             "default": 8
         },
         "lap_times": {
-            "default": "1:17.145"
+            "default": 77.145
         },
         "top_speeds_mph": {
             "default": 104.25
@@ -3431,7 +3431,7 @@
             "default": 1
         },
         "lap_times": {
-            "default": "1:09.226"
+            "default": 69.226
         },
         "top_speeds_mph": {
             "default": 124.25
@@ -3485,7 +3485,7 @@
             "default": 11
         },
         "lap_times": {
-            "default": "1:18.647"
+            "default": 78.64699999999999
         },
         "top_speeds_mph": {
             "default": 95.25
@@ -3576,7 +3576,7 @@
             "default": 5
         },
         "lap_times": {
-            "default": "1:15.376"
+            "default": 75.376
         },
         "top_speeds_mph": {
             "default": 100.25
@@ -3665,7 +3665,7 @@
             "default": 9
         },
         "lap_times": {
-            "default": "1:17.344"
+            "default": 77.344
         },
         "top_speeds_mph": {
             "default": 103.25
@@ -3754,7 +3754,7 @@
             "default": 4
         },
         "lap_times": {
-            "default": "1:15.142"
+            "default": 75.142
         },
         "top_speeds_mph": {
             "default": 102.25
@@ -3843,7 +3843,7 @@
             "default": 6
         },
         "lap_times": {
-            "default": "1:16.344"
+            "default": 76.344
         },
         "top_speeds_mph": {
             "default": 102.25
@@ -3919,7 +3919,7 @@
             "default": 7
         },
         "lap_times": {
-            "default": "1:10.637"
+            "default": 70.637
         },
         "top_speeds_mph": {
             "default": 111.75
@@ -3994,7 +3994,7 @@
             "default": 4
         },
         "lap_times": {
-            "default": "1:08.369"
+            "default": 68.369
         },
         "top_speeds_mph": {
             "default": 117.25
@@ -4083,7 +4083,7 @@
             "default": 8
         },
         "lap_times": {
-            "default": "1:11.171"
+            "default": 71.17099999999999
         },
         "top_speeds_mph": {
             "default": 117.5
@@ -4172,7 +4172,7 @@
             "default": 3
         },
         "lap_times": {
-            "default": "1:08.063"
+            "default": 68.063
         },
         "top_speeds_mph": {
             "default": 113.75
@@ -4261,7 +4261,7 @@
             "default": 9
         },
         "lap_times": {
-            "default": "1:11.505"
+            "default": 71.505
         },
         "top_speeds_mph": {
             "default": 110.5
@@ -4350,7 +4350,7 @@
             "default": 5
         },
         "lap_times": {
-            "default": "1:08.635"
+            "default": 68.635
         },
         "top_speeds_mph": {
             "default": 113.5
@@ -4439,7 +4439,7 @@
             "default": 11
         },
         "lap_times": {
-            "default": "1:11.671"
+            "default": 71.67099999999999
         },
         "top_speeds_mph": {
             "default": 115.0
@@ -4528,7 +4528,7 @@
             "default": 12
         },
         "lap_times": {
-            "default": "1:13.197"
+            "default": 73.197
         },
         "top_speeds_mph": {
             "default": 114.0
@@ -4677,7 +4677,7 @@
             "default": 10
         },
         "lap_times": {
-            "default": "1:11.601"
+            "default": 71.601
         },
         "top_speeds_mph": {
             "default": 112.0
@@ -4766,7 +4766,7 @@
             "default": 6
         },
         "lap_times": {
-            "default": "1:10.070"
+            "default": 70.07
         },
         "top_speeds_mph": {
             "default": 117.25
@@ -4855,7 +4855,7 @@
             "default": 13
         },
         "lap_times": {
-            "default": "1:13.473"
+            "default": 73.473
         },
         "top_speeds_mph": {
             "default": 118.0
@@ -4989,7 +4989,7 @@
             "default": 14
         },
         "lap_times": {
-            "default": "1:13.573"
+            "default": 73.57300000000001
         },
         "top_speeds_mph": {
             "default": 118.0
@@ -5071,7 +5071,7 @@
             "default": 1
         },
         "lap_times": {
-            "default": "1:07.403"
+            "default": 67.403
         },
         "top_speeds_mph": {
             "default": 117.0
@@ -5160,7 +5160,7 @@
             "default": 2
         },
         "lap_times": {
-            "default": "1:07.409"
+            "default": 67.409
         },
         "top_speeds_mph": {
             "default": 117.0
@@ -5249,7 +5249,7 @@
             "default": 4
         },
         "lap_times": {
-            "default": "2:44.864"
+            "default": 164.864
         },
         "top_speeds_mph": {
             "default": 35.25
@@ -5338,7 +5338,7 @@
             "default": 5
         },
         "lap_times": {
-            "default": "2:55.173"
+            "default": 175.173
         },
         "top_speeds_mph": {
             "default": 33.5
@@ -5427,7 +5427,7 @@
             "default": 2
         },
         "lap_times": {
-            "default": "2:14.434"
+            "default": 134.434
         },
         "top_speeds_mph": {
             "default": 44.25
@@ -5511,7 +5511,7 @@
             "default": 1
         },
         "lap_times": {
-            "default": "2:08.393"
+            "default": 128.393
         },
         "top_speeds_mph": {
             "default": 47.0
@@ -5565,7 +5565,7 @@
             "default": 3
         },
         "lap_times": {
-            "default": "2:32.618"
+            "default": 152.618
         },
         "top_speeds_mph": {
             "default": 38.25
@@ -5654,7 +5654,7 @@
             "default": 13
         },
         "lap_times": {
-            "default": "1:25.546"
+            "default": 85.54599999999999
         },
         "top_speeds_mph": {
             "default": 97.75
@@ -5738,7 +5738,7 @@
             "default": 4
         },
         "lap_times": {
-            "default": "1:15.755"
+            "default": 75.755
         },
         "top_speeds_mph": {
             "default": 105.75
@@ -5822,7 +5822,7 @@
             "default": 10
         },
         "lap_times": {
-            "default": "1:21.984"
+            "default": 81.98400000000001
         },
         "top_speeds_mph": {
             "default": 96.0
@@ -5876,7 +5876,7 @@
             "default": 16
         },
         "lap_times": {
-            "default": "1:31.133"
+            "default": 91.133
         },
         "top_speeds_mph": {
             "default": 96.0
@@ -5965,7 +5965,7 @@
             "default": 12
         },
         "lap_times": {
-            "default": "1:24.217"
+            "default": 84.217
         },
         "top_speeds_mph": {
             "default": 95.25
@@ -6054,7 +6054,7 @@
             "default": 11
         },
         "lap_times": {
-            "default": "1:22.149"
+            "default": 82.149
         },
         "top_speeds_mph": {
             "default": 96.0
@@ -6138,7 +6138,7 @@
             "default": 1
         },
         "lap_times": {
-            "default": "1:11.368"
+            "default": 71.368
         },
         "top_speeds_mph": {
             "default": 100.5
@@ -6222,7 +6222,7 @@
             "default": 3
         },
         "lap_times": {
-            "default": "1:14.875"
+            "default": 74.875
         },
         "top_speeds_mph": {
             "default": 107.5
@@ -6276,7 +6276,7 @@
             "default": 2
         },
         "lap_times": {
-            "default": "1:12.724"
+            "default": 72.724
         },
         "top_speeds_mph": {
             "default": 109.25
@@ -6330,7 +6330,7 @@
             "default": 5
         },
         "lap_times": {
-            "default": "1:16.843"
+            "default": 76.843
         },
         "top_speeds_mph": {
             "default": 102.75
@@ -6384,7 +6384,7 @@
             "default": 14
         },
         "lap_times": {
-            "default": "1:26.404"
+            "default": 86.404
         },
         "top_speeds_mph": {
             "default": 89.5
@@ -6445,7 +6445,7 @@
             "default": 18
         },
         "lap_times": {
-            "default": "1:42.259"
+            "default": 102.259
         },
         "top_speeds_mph": {
             "default": 86.5
@@ -6529,7 +6529,7 @@
             "default": 8
         },
         "lap_times": {
-            "default": "1:20.777"
+            "default": 80.777
         },
         "top_speeds_mph": {
             "default": 100.5
@@ -6590,7 +6590,7 @@
             "default": 15
         },
         "lap_times": {
-            "default": "1:30.660"
+            "default": 90.66
         },
         "top_speeds_mph": {
             "default": 90.75
@@ -6674,7 +6674,7 @@
             "default": 19
         },
         "lap_times": {
-            "default": "2:00.822"
+            "default": 120.822
         },
         "top_speeds_mph": {
             "default": 65.25
@@ -6763,7 +6763,7 @@
             "default": 17
         },
         "lap_times": {
-            "default": "1:31.903"
+            "default": 91.90299999999999
         },
         "top_speeds_mph": {
             "default": 96.75
@@ -6845,7 +6845,7 @@
             "default": 7
         },
         "lap_times": {
-            "default": "1:18.047"
+            "default": 78.047
         },
         "top_speeds_mph": {
             "default": 101.75
@@ -6929,7 +6929,7 @@
             "default": 9
         },
         "lap_times": {
-            "default": "1:21.818"
+            "default": 81.818
         },
         "top_speeds_mph": {
             "default": 96.0
@@ -7013,7 +7013,7 @@
             "default": 6
         },
         "lap_times": {
-            "default": "1:17.076"
+            "default": 77.076
         },
         "top_speeds_mph": {
             "default": 102.75
@@ -7097,7 +7097,7 @@
             "default": 1
         },
         "lap_times": {
-            "default": "0:54.368"
+            "default": 54.368
         },
         "top_speeds_mph": {
             "default": 157.25
@@ -7179,7 +7179,7 @@
             "default": 17
         },
         "lap_times": {
-            "default": "1:07.902"
+            "default": 67.902
         },
         "top_speeds_mph": {
             "default": 115.25
@@ -7261,7 +7261,7 @@
             "default": 14
         },
         "lap_times": {
-            "default": "1:00.238"
+            "default": 60.238
         },
         "top_speeds_mph": {
             "default": 149.0
@@ -7337,7 +7337,7 @@
             "default": 11
         },
         "lap_times": {
-            "default": "0:57.523"
+            "default": 57.523
         },
         "top_speeds_mph": {
             "default": 145.0
@@ -7421,7 +7421,7 @@
             "default": 19
         },
         "lap_times": {
-            "default": "1:14.640"
+            "default": 74.64
         },
         "top_speeds_mph": {
             "default": 99.5
@@ -7484,7 +7484,7 @@
             "default": 9
         },
         "lap_times": {
-            "default": "0:55.902"
+            "default": 55.902
         },
         "top_speeds_mph": {
             "default": 141.5
@@ -7566,7 +7566,7 @@
             "default": 10
         },
         "lap_times": {
-            "default": "0:56.757"
+            "default": 56.757
         },
         "top_speeds_mph": {
             "default": 148.5
@@ -7637,7 +7637,7 @@
             "default": 5
         },
         "lap_times": {
-            "default": "0:55.234"
+            "default": 55.234
         },
         "top_speeds_mph": {
             "default": 154.25
@@ -7719,7 +7719,7 @@
             "default": 13
         },
         "lap_times": {
-            "default": "0:59.058"
+            "default": 59.058
         },
         "top_speeds_mph": {
             "default": 140.25
@@ -7808,7 +7808,7 @@
             "default": 12
         },
         "lap_times": {
-            "default": "0:58.325"
+            "default": 58.325
         },
         "top_speeds_mph": {
             "default": 144.0
@@ -7892,7 +7892,7 @@
             "default": 16
         },
         "lap_times": {
-            "default": "1:04.497"
+            "default": 64.497
         },
         "top_speeds_mph": {
             "default": 144.5
@@ -7974,7 +7974,7 @@
             "default": 8
         },
         "lap_times": {
-            "default": "0:55.535"
+            "default": 55.535
         },
         "top_speeds_mph": {
             "default": 153.75
@@ -8056,7 +8056,7 @@
             "default": 18
         },
         "lap_times": {
-            "default": "1:09.736"
+            "default": 69.736
         },
         "top_speeds_mph": {
             "default": 115.0
@@ -8133,7 +8133,7 @@
             "default": 4
         },
         "lap_times": {
-            "default": "0:54.997"
+            "default": 54.997
         },
         "top_speeds_mph": {
             "default": 168.75
@@ -8196,7 +8196,7 @@
             "default": 7
         },
         "lap_times": {
-            "default": "0:55.489"
+            "default": 55.489
         },
         "top_speeds_mph": {
             "default": 148.75
@@ -8278,7 +8278,7 @@
             "default": 3
         },
         "lap_times": {
-            "default": "0:54.953"
+            "default": 54.953
         },
         "top_speeds_mph": {
             "default": 156.5
@@ -8376,7 +8376,7 @@
             "default": 2
         },
         "lap_times": {
-            "default": "0:54.484"
+            "default": 54.484
         },
         "top_speeds_mph": {
             "default": 157.75
@@ -8465,7 +8465,7 @@
             "default": 15
         },
         "lap_times": {
-            "default": "1:01.796"
+            "default": 61.796
         },
         "top_speeds_mph": {
             "default": 145.0
@@ -8549,7 +8549,7 @@
             "default": 6
         },
         "lap_times": {
-            "default": "0:55.388"
+            "default": 55.388
         },
         "top_speeds_mph": {
             "default": 161.25
@@ -8631,7 +8631,7 @@
             "default": 9
         },
         "lap_times": {
-            "default": "3:20.743"
+            "default": 200.743
         },
         "top_speeds_mph": {
             "default": 30.25
@@ -8708,7 +8708,7 @@
             "default": 10
         },
         "lap_times": {
-            "default": "3:21.416"
+            "default": 201.416
         },
         "top_speeds_mph": {
             "default": 31.75
@@ -8785,7 +8785,7 @@
             "default": 11
         },
         "lap_times": {
-            "default": "8:45.741"
+            "default": 525.741
         },
         "top_speeds_mph": {
             "default": 11.0
@@ -8869,7 +8869,7 @@
             "default": 8
         },
         "lap_times": {
-            "default": "3:07.445"
+            "default": 187.445
         },
         "top_speeds_mph": {
             "default": 32.0
@@ -8958,7 +8958,7 @@
             "default": 2
         },
         "lap_times": {
-            "default": "1:39.473"
+            "default": 99.473
         },
         "top_speeds_mph": {
             "default": 76.25
@@ -9042,7 +9042,7 @@
             "default": 1
         },
         "lap_times": {
-            "default": "1:18.212"
+            "default": 78.212
         },
         "top_speeds_mph": {
             "default": 100.5
@@ -9124,7 +9124,7 @@
             "default": 3
         },
         "lap_times": {
-            "default": "1:46.097"
+            "default": 106.09700000000001
         },
         "top_speeds_mph": {
             "default": 84.5
@@ -9178,7 +9178,7 @@
             "default": 4
         },
         "lap_times": {
-            "default": "1:46.505"
+            "default": 106.505
         },
         "top_speeds_mph": {
             "default": 82.25
@@ -9232,7 +9232,7 @@
             "default": 5
         },
         "lap_times": {
-            "default": "1:46.833"
+            "default": 106.833
         },
         "top_speeds_mph": {
             "default": 77.5
@@ -9316,7 +9316,7 @@
             "default": 6
         },
         "lap_times": {
-            "default": "1:47.786"
+            "default": 107.786
         },
         "top_speeds_mph": {
             "default": 70.5
@@ -9370,7 +9370,7 @@
             "default": 7
         },
         "lap_times": {
-            "default": "1:48.951"
+            "default": 108.951
         },
         "top_speeds_mph": {
             "default": 73.0
@@ -9424,7 +9424,7 @@
             "default": 3
         },
         "lap_times": {
-            "default": "1:25.103"
+            "default": 85.10300000000001
         },
         "top_speeds_mph": {
             "default": 88.25
@@ -9506,7 +9506,7 @@
             "default": 5
         },
         "lap_times": {
-            "default": "1:30.325"
+            "default": 90.325
         },
         "top_speeds_mph": {
             "default": 63.0
@@ -9588,7 +9588,7 @@
             "default": 8
         },
         "lap_times": {
-            "default": "1:44.607"
+            "default": 104.607
         },
         "top_speeds_mph": {
             "default": 82.5
@@ -9651,7 +9651,7 @@
             "default": 6
         },
         "lap_times": {
-            "default": "1:39.068"
+            "default": 99.068
         },
         "top_speeds_mph": {
             "default": 82.5
@@ -9735,7 +9735,7 @@
             "default": 1
         },
         "lap_times": {
-            "default": "1:16.068"
+            "default": 76.068
         },
         "top_speeds_mph": {
             "default": 108.75
@@ -9817,7 +9817,7 @@
             "default": 11
         },
         "lap_times": {
-            "default": "1:54.204"
+            "default": 114.20400000000001
         },
         "top_speeds_mph": {
             "default": 70.25
@@ -9899,7 +9899,7 @@
             "default": 4
         },
         "lap_times": {
-            "default": "1:26.453"
+            "default": 86.453
         },
         "top_speeds_mph": {
             "default": 91.25
@@ -9988,7 +9988,7 @@
             "default": 10
         },
         "lap_times": {
-            "default": "1:52.648"
+            "default": 112.648
         },
         "top_speeds_mph": {
             "default": 58.25
@@ -10042,7 +10042,7 @@
             "default": 14
         },
         "lap_times": {
-            "default": "3:42.356"
+            "default": 222.356
         },
         "top_speeds_mph": {
             "default": 26.75
@@ -10110,7 +10110,7 @@
             "default": 13
         },
         "lap_times": {
-            "default": "2:26.212"
+            "default": 146.212
         },
         "top_speeds_mph": {
             "default": 40.5
@@ -10199,7 +10199,7 @@
             "default": 2
         },
         "lap_times": {
-            "default": "1:24.439"
+            "default": 84.439
         },
         "top_speeds_mph": {
             "default": 74.25
@@ -10253,7 +10253,7 @@
             "default": 7
         },
         "lap_times": {
-            "default": "1:42.318"
+            "default": 102.318
         },
         "top_speeds_mph": {
             "default": 126.0
@@ -10335,7 +10335,7 @@
             "default": 12
         },
         "lap_times": {
-            "default": "2:21.042"
+            "default": 141.042
         },
         "top_speeds_mph": {
             "default": 42.0
@@ -10417,7 +10417,7 @@
             "default": 9
         },
         "lap_times": {
-            "default": "1:52.358"
+            "default": 112.358
         },
         "top_speeds_mph": {
             "default": 62.0
@@ -10493,7 +10493,7 @@
             "default": 4
         },
         "lap_times": {
-            "default": "0:58.892"
+            "default": 58.892
         },
         "top_speeds_mph": {
             "default": 121.25
@@ -10582,7 +10582,7 @@
             "default": 34
         },
         "lap_times": {
-            "default": "1:07.168"
+            "default": 67.168
         },
         "top_speeds_mph": {
             "default": 107.5
@@ -10664,7 +10664,7 @@
             "default": 42
         },
         "lap_times": {
-            "default": "1:13.907"
+            "default": 73.907
         },
         "top_speeds_mph": {
             "default": 98.0
@@ -10753,7 +10753,7 @@
             "default": 3
         },
         "lap_times": {
-            "default": "0:58.625"
+            "default": 58.625
         },
         "top_speeds_mph": {
             "default": 135.0
@@ -10842,7 +10842,7 @@
             "default": 16
         },
         "lap_times": {
-            "default": "1:03.263"
+            "default": 63.263
         },
         "top_speeds_mph": {
             "default": 137.0
@@ -10933,7 +10933,7 @@
             "default": 8
         },
         "lap_times": {
-            "default": "1:00.960"
+            "default": 60.96
         },
         "top_speeds_mph": {
             "default": 124.25
@@ -11022,7 +11022,7 @@
             "default": 40
         },
         "lap_times": {
-            "default": "1:08.935"
+            "default": 68.935
         },
         "top_speeds_mph": {
             "default": 103.0
@@ -11104,7 +11104,7 @@
             "default": 12
         },
         "lap_times": {
-            "default": "1:02.595"
+            "default": 62.595
         },
         "top_speeds_mph": {
             "default": 124.75
@@ -11195,7 +11195,7 @@
             "default": 39
         },
         "lap_times": {
-            "default": "1:08.635"
+            "default": 68.635
         },
         "top_speeds_mph": {
             "default": 106.5
@@ -11285,7 +11285,7 @@
             "default": 36
         },
         "lap_times": {
-            "default": "1:07.834"
+            "default": 67.834
         },
         "top_speeds_mph": {
             "default": 107.0
@@ -11339,7 +11339,7 @@
             "default": 3
         },
         "lap_times": {
-            "default": "0:59.017"
+            "default": 59.017
         },
         "top_speeds_mph": {
             "default": 150.0
@@ -11393,7 +11393,7 @@
             "default": 6
         },
         "lap_times": {
-            "default": "1:00.326"
+            "default": 60.326
         },
         "top_speeds_mph": {
             "default": 117.0
@@ -11475,7 +11475,7 @@
             "default": 20
         },
         "lap_times": {
-            "default": "1:04.297"
+            "default": 64.297
         },
         "top_speeds_mph": {
             "default": 114.25
@@ -11557,7 +11557,7 @@
             "default": 14
         },
         "lap_times": {
-            "default": "1:02.896"
+            "default": 62.896
         },
         "top_speeds_mph": {
             "default": 115.25
@@ -11639,7 +11639,7 @@
             "default": 5
         },
         "lap_times": {
-            "default": "1:00.261"
+            "default": 60.261
         },
         "top_speeds_mph": {
             "default": 118.0
@@ -11728,7 +11728,7 @@
             "default": 41
         },
         "lap_times": {
-            "default": "1:09.137"
+            "default": 69.137
         },
         "top_speeds_mph": {
             "default": 107.25
@@ -11817,7 +11817,7 @@
             "default": 28
         },
         "lap_times": {
-            "default": "1:06.399"
+            "default": 66.399
         },
         "top_speeds_mph": {
             "default": 112.75
@@ -11899,7 +11899,7 @@
             "default": 47
         },
         "lap_times": {
-            "default": "1:30.125"
+            "default": 90.125
         },
         "top_speeds_mph": {
             "default": 103.25
@@ -11988,7 +11988,7 @@
             "default": 46
         },
         "lap_times": {
-            "default": "1:27.154"
+            "default": 87.154
         },
         "top_speeds_mph": {
             "default": 74.25
@@ -12070,7 +12070,7 @@
             "default": 45
         },
         "lap_times": {
-            "default": "1:25.318"
+            "default": 85.318
         },
         "top_speeds_mph": {
             "default": 76.75
@@ -12152,7 +12152,7 @@
             "default": 15
         },
         "lap_times": {
-            "default": "1:03.230"
+            "default": 63.23
         },
         "top_speeds_mph": {
             "default": 112.0
@@ -12234,7 +12234,7 @@
             "default": 10
         },
         "lap_times": {
-            "default": "1:02.396"
+            "default": 62.396
         },
         "top_speeds_mph": {
             "default": 112.5
@@ -12316,7 +12316,7 @@
             "default": 13
         },
         "lap_times": {
-            "default": "1:02.628"
+            "default": 62.628
         },
         "top_speeds_mph": {
             "default": 125.0
@@ -12415,7 +12415,7 @@
             "default": 7
         },
         "lap_times": {
-            "default": "1:00.760"
+            "default": 60.76
         },
         "top_speeds_mph": {
             "default": 134.0
@@ -12504,7 +12504,7 @@
             "default": 2
         },
         "lap_times": {
-            "default": "0:57.590"
+            "default": 57.59
         },
         "top_speeds_mph": {
             "default": 126.5
@@ -12586,7 +12586,7 @@
             "default": 33
         },
         "lap_times": {
-            "default": "1:07.167"
+            "default": 67.167
         },
         "top_speeds_mph": {
             "default": 104.75
@@ -12675,7 +12675,7 @@
             "default": 23
         },
         "lap_times": {
-            "default": "1:04.999"
+            "default": 64.999
         },
         "top_speeds_mph": {
             "default": 110.0
@@ -12764,7 +12764,7 @@
             "default": 19
         },
         "lap_times": {
-            "default": "1:03.729"
+            "default": 63.729
         },
         "top_speeds_mph": {
             "default": 109.25
@@ -12846,7 +12846,7 @@
             "default": 30
         },
         "lap_times": {
-            "default": "1:06.465"
+            "default": 66.465
         },
         "top_speeds_mph": {
             "default": 113.5
@@ -12928,7 +12928,7 @@
             "default": 32
         },
         "lap_times": {
-            "default": "1:06.968"
+            "default": 66.968
         },
         "top_speeds_mph": {
             "default": 139.75
@@ -13004,7 +13004,7 @@
             "default": 22
         },
         "lap_times": {
-            "default": "1:04.598"
+            "default": 64.598
         },
         "top_speeds_mph": {
             "default": 111.25
@@ -13093,7 +13093,7 @@
             "default": 18
         },
         "lap_times": {
-            "default": "1:03.496"
+            "default": 63.496
         },
         "top_speeds_mph": {
             "default": 114.25
@@ -13175,7 +13175,7 @@
             "default": 1
         },
         "lap_times": {
-            "default": "0:51.953"
+            "default": 51.953
         },
         "top_speeds_mph": {
             "default": 140.0
@@ -13257,7 +13257,7 @@
             "default": 2
         },
         "lap_times": {
-            "default": "0:53.387"
+            "default": 53.387
         },
         "top_speeds_mph": {
             "default": 127.75
@@ -13339,7 +13339,7 @@
             "default": 31
         },
         "lap_times": {
-            "default": "1:06.734"
+            "default": 66.734
         },
         "top_speeds_mph": {
             "default": 106.75
@@ -13428,7 +13428,7 @@
             "default": 27
         },
         "lap_times": {
-            "default": "1:06.367"
+            "default": 66.367
         },
         "top_speeds_mph": {
             "default": 106.0
@@ -13510,7 +13510,7 @@
             "default": 44
         },
         "lap_times": {
-            "default": "1:17.632"
+            "default": 77.632
         },
         "top_speeds_mph": {
             "default": 123.5
@@ -13592,7 +13592,7 @@
             "default": 11
         },
         "lap_times": {
-            "default": "1:02.461"
+            "default": 62.461
         },
         "top_speeds_mph": {
             "default": 127.0
@@ -13681,7 +13681,7 @@
             "default": 21
         },
         "lap_times": {
-            "default": "1:04.532"
+            "default": 64.532
         },
         "top_speeds_mph": {
             "default": 119.5
@@ -13770,7 +13770,7 @@
             "default": 17
         },
         "lap_times": {
-            "default": "1:03.329"
+            "default": 63.329
         },
         "top_speeds_mph": {
             "default": 112.0
@@ -13852,7 +13852,7 @@
             "default": 1
         },
         "lap_times": {
-            "default": "0:57.490"
+            "default": 57.49
         },
         "top_speeds_mph": {
             "default": 123.75
@@ -13934,7 +13934,7 @@
             "default": 29
         },
         "lap_times": {
-            "default": "1:06.400"
+            "default": 66.4
         },
         "top_speeds_mph": {
             "default": 106.25
@@ -14023,7 +14023,7 @@
             "default": 26
         },
         "lap_times": {
-            "default": "1:06.334"
+            "default": 66.334
         },
         "top_speeds_mph": {
             "default": 101.5
@@ -14099,7 +14099,7 @@
             "default": 35
         },
         "lap_times": {
-            "default": "1:07.267"
+            "default": 67.267
         },
         "top_speeds_mph": {
             "default": 118.25
@@ -14188,7 +14188,7 @@
             "default": 24
         },
         "lap_times": {
-            "default": "1:05.299"
+            "default": 65.299
         },
         "top_speeds_mph": {
             "default": 107.75
@@ -14277,7 +14277,7 @@
             "default": 25
         },
         "lap_times": {
-            "default": "1:05.466"
+            "default": 65.466
         },
         "top_speeds_mph": {
             "default": 121.25
@@ -14366,7 +14366,7 @@
             "default": 9
         },
         "lap_times": {
-            "default": "1:01.028"
+            "default": 61.028
         },
         "top_speeds_mph": {
             "default": 115.75
@@ -14448,7 +14448,7 @@
             "default": 43
         },
         "lap_times": {
-            "default": "1:17.444"
+            "default": 77.444
         },
         "top_speeds_mph": {
             "default": 101.5
@@ -14530,7 +14530,7 @@
             "default": 38
         },
         "lap_times": {
-            "default": "1:08.311"
+            "default": 68.311
         },
         "top_speeds_mph": {
             "default": 113.75
@@ -14612,7 +14612,7 @@
             "default": 37
         },
         "lap_times": {
-            "default": "1:08.201"
+            "default": 68.201
         },
         "top_speeds_mph": {
             "default": 113.75
@@ -14694,7 +14694,7 @@
             "default": 18
         },
         "lap_times": {
-            "default": "1:10.405"
+            "default": 70.405
         },
         "top_speeds_mph": {
             "default": 112.5
@@ -14770,7 +14770,7 @@
             "default": 9
         },
         "lap_times": {
-            "default": "1:09.269"
+            "default": 69.269
         },
         "top_speeds_mph": {
             "default": 109.75
@@ -14859,7 +14859,7 @@
             "default": 31
         },
         "lap_times": {
-            "default": "1:12.239"
+            "default": 72.239
         },
         "top_speeds_mph": {
             "default": 113.0
@@ -14948,7 +14948,7 @@
             "default": 30
         },
         "lap_times": {
-            "default": "1:12.221"
+            "default": 72.221
         },
         "top_speeds_mph": {
             "default": 113.0
@@ -15030,7 +15030,7 @@
             "default": 22
         },
         "lap_times": {
-            "default": "1:10.904"
+            "default": 70.904
         },
         "top_speeds_mph": {
             "default": 113.25
@@ -15119,7 +15119,7 @@
             "default": 49
         },
         "lap_times": {
-            "default": "1:19.946"
+            "default": 79.946
         },
         "top_speeds_mph": {
             "default": 94.25
@@ -15217,7 +15217,7 @@
             "default": 48
         },
         "lap_times": {
-            "default": "1:19.879"
+            "default": 79.879
         },
         "top_speeds_mph": {
             "default": 95.5
@@ -15299,7 +15299,7 @@
             "default": 4
         },
         "lap_times": {
-            "default": "1:06.868"
+            "default": 66.868
         },
         "top_speeds_mph": {
             "default": 117.5
@@ -15381,7 +15381,7 @@
             "default": 12
         },
         "lap_times": {
-            "default": "1:09.803"
+            "default": 69.803
         },
         "top_speeds_mph": {
             "default": 114.25
@@ -15489,7 +15489,7 @@
             "default": 20
         },
         "lap_times": {
-            "default": "1:10.738"
+            "default": 70.738
         },
         "top_speeds_mph": {
             "default": 108.5
@@ -15571,7 +15571,7 @@
             "default": 8
         },
         "lap_times": {
-            "default": "1:09.035"
+            "default": 69.035
         },
         "top_speeds_mph": {
             "default": 120.25
@@ -15669,7 +15669,7 @@
             "default": 2
         },
         "lap_times": {
-            "default": "1:06.389"
+            "default": 66.389
         },
         "top_speeds_mph": {
             "default": 131.0
@@ -15851,7 +15851,7 @@
             "default": 7
         },
         "lap_times": {
-            "default": "1:08.737"
+            "default": 68.737
         },
         "top_speeds_mph": {
             "default": 108.5
@@ -15933,7 +15933,7 @@
             "default": 5
         },
         "lap_times": {
-            "default": "1:07.401"
+            "default": 67.401
         },
         "top_speeds_mph": {
             "default": 108.25
@@ -16009,7 +16009,7 @@
             "default": 16
         },
         "lap_times": {
-            "default": "1:10.104"
+            "default": 70.104
         },
         "top_speeds_mph": {
             "default": 114.25
@@ -16098,7 +16098,7 @@
             "default": 11
         },
         "lap_times": {
-            "default": "1:09.636"
+            "default": 69.636
         },
         "top_speeds_mph": {
             "default": 112.5
@@ -16187,7 +16187,7 @@
             "default": 34
         },
         "lap_times": {
-            "default": "1:13.242"
+            "default": 73.242
         },
         "top_speeds_mph": {
             "default": 106.5
@@ -16269,7 +16269,7 @@
             "default": 42
         },
         "lap_times": {
-            "default": "1:16.476"
+            "default": 76.476
         },
         "top_speeds_mph": {
             "default": 110.75
@@ -16351,7 +16351,7 @@
             "default": 35
         },
         "lap_times": {
-            "default": "1:13.372"
+            "default": 73.372
         },
         "top_speeds_mph": {
             "default": 110.75
@@ -16433,7 +16433,7 @@
             "default": 41
         },
         "lap_times": {
-            "default": "1:16.275"
+            "default": 76.275
         },
         "top_speeds_mph": {
             "default": 97.5
@@ -16515,7 +16515,7 @@
             "default": 28
         },
         "lap_times": {
-            "default": "1:12.005"
+            "default": 72.005
         },
         "top_speeds_mph": {
             "default": 113.25
@@ -16604,7 +16604,7 @@
             "default": 32
         },
         "lap_times": {
-            "default": "1:12.574"
+            "default": 72.574
         },
         "top_speeds_mph": {
             "default": 109.75
@@ -16695,7 +16695,7 @@
             "default": 19
         },
         "lap_times": {
-            "default": "1:10.522"
+            "default": 70.522
         },
         "top_speeds_mph": {
             "default": 125.5
@@ -16771,7 +16771,7 @@
             "default": 14
         },
         "lap_times": {
-            "default": "1:09.904"
+            "default": 69.904
         },
         "top_speeds_mph": {
             "default": 125.25
@@ -16853,7 +16853,7 @@
             "default": 21
         },
         "lap_times": {
-            "default": "1:10.771"
+            "default": 70.771
         },
         "top_speeds_mph": {
             "default": 117.75
@@ -16935,7 +16935,7 @@
             "default": 46
         },
         "lap_times": {
-            "default": "1:19.079"
+            "default": 79.07900000000001
         },
         "top_speeds_mph": {
             "default": 109.5
@@ -17024,7 +17024,7 @@
             "default": 29
         },
         "lap_times": {
-            "default": "1:12.206"
+            "default": 72.206
         },
         "top_speeds_mph": {
             "default": 121.25
@@ -17106,7 +17106,7 @@
             "default": 6
         },
         "lap_times": {
-            "default": "1:08.336"
+            "default": 68.336
         },
         "top_speeds_mph": {
             "default": 115.5
@@ -17197,7 +17197,7 @@
             "default": 3
         },
         "lap_times": {
-            "default": "1:06.707"
+            "default": 66.707
         },
         "top_speeds_mph": {
             "default": 130.0
@@ -17251,7 +17251,7 @@
             "default": 1
         },
         "lap_times": {
-            "default": "1:05.189"
+            "default": 65.189
         },
         "top_speeds_mph": {
             "default": 132.75
@@ -17305,7 +17305,7 @@
             "default": 47
         },
         "lap_times": {
-            "default": "1:19.481"
+            "default": 79.481
         },
         "top_speeds_mph": {
             "default": 109.0
@@ -17378,7 +17378,7 @@
             "default": 37
         },
         "lap_times": {
-            "default": "1:14.406"
+            "default": 74.406
         },
         "top_speeds_mph": {
             "default": 114.25
@@ -17469,7 +17469,7 @@
             "default": 40
         },
         "lap_times": {
-            "default": "1:16.077"
+            "default": 76.077
         },
         "top_speeds_mph": {
             "default": 108.75
@@ -17538,7 +17538,7 @@
             "default": 51
         },
         "lap_times": {
-            "default": "1:21.647"
+            "default": 81.64699999999999
         },
         "top_speeds_mph": {
             "default": 102.0
@@ -17623,7 +17623,7 @@
             "default": 43
         },
         "lap_times": {
-            "default": "1:17.477"
+            "default": 77.477
         },
         "top_speeds_mph": {
             "default": 102.0
@@ -17708,7 +17708,7 @@
             "default": 38
         },
         "lap_times": {
-            "default": "1:14.841"
+            "default": 74.841
         },
         "top_speeds_mph": {
             "default": 104.5
@@ -17809,7 +17809,7 @@
             "default": 36
         },
         "lap_times": {
-            "default": "1:13.441"
+            "default": 73.441
         },
         "top_speeds_mph": {
             "default": 118.0
@@ -17891,7 +17891,7 @@
             "default": 26
         },
         "lap_times": {
-            "default": "1:11.172"
+            "default": 71.172
         },
         "top_speeds_mph": {
             "default": 113.0
@@ -17975,7 +17975,7 @@
             "default": 44
         },
         "lap_times": {
-            "default": "1:17.878"
+            "default": 77.878
         },
         "top_speeds_mph": {
             "default": 102.5
@@ -18064,7 +18064,7 @@
             "default": 2
         },
         "lap_times": {
-            "default": "1:06.766"
+            "default": 66.766
         },
         "top_speeds_mph": {
             "default": 126.5
@@ -18153,7 +18153,7 @@
             "default": 55
         },
         "lap_times": {
-            "default": "1:24.785"
+            "default": 84.785
         },
         "top_speeds_mph": {
             "default": 102.5
@@ -18242,7 +18242,7 @@
             "default": 54
         },
         "lap_times": {
-            "default": "1:24.084"
+            "default": 84.084
         },
         "top_speeds_mph": {
             "default": 105.25
@@ -18340,7 +18340,7 @@
             "default": 23
         },
         "lap_times": {
-            "default": "1:11.004"
+            "default": 71.004
         },
         "top_speeds_mph": {
             "default": 117.25
@@ -18429,7 +18429,7 @@
             "default": 15
         },
         "lap_times": {
-            "default": "1:09.936"
+            "default": 69.936
         },
         "top_speeds_mph": {
             "default": 118.75
@@ -18492,7 +18492,7 @@
             "default": 5
         },
         "lap_times": {
-            "default": "1:11.807"
+            "default": 71.807
         },
         "top_speeds_mph": {
             "default": 119.0
@@ -18574,7 +18574,7 @@
             "default": 17
         },
         "lap_times": {
-            "default": "1:10.136"
+            "default": 70.136
         },
         "top_speeds_mph": {
             "default": 110.75
@@ -18666,7 +18666,7 @@
             "default": 3
         },
         "lap_times": {
-            "default": "1:06.866"
+            "default": 66.866
         },
         "top_speeds_mph": {
             "default": 121.25
@@ -18770,7 +18770,7 @@
             "default": 56
         },
         "lap_times": {
-            "default": "1:25.451"
+            "default": 85.451
         },
         "top_speeds_mph": {
             "default": 108.0
@@ -18874,7 +18874,7 @@
             "default": 6
         },
         "lap_times": {
-            "default": "1:13.160"
+            "default": 73.16
         },
         "top_speeds_mph": {
             "default": 121.0
@@ -18928,7 +18928,7 @@
             "default": 24
         },
         "lap_times": {
-            "default": "1:11.005"
+            "default": 71.005
         },
         "top_speeds_mph": {
             "default": 117.5
@@ -19006,7 +19006,7 @@
             "default": 27
         },
         "lap_times": {
-            "default": "1:11.572"
+            "default": 71.572
         },
         "top_speeds_mph": {
             "default": 110.25
@@ -19095,7 +19095,7 @@
             "default": 25
         },
         "lap_times": {
-            "default": "1:11.170"
+            "default": 71.17
         },
         "top_speeds_mph": {
             "default": 105.5
@@ -19196,7 +19196,7 @@
             "default": 10
         },
         "lap_times": {
-            "default": "1:09.572"
+            "default": 69.572
         },
         "top_speeds_mph": {
             "default": 112.75
@@ -19278,7 +19278,7 @@
             "default": 13
         },
         "lap_times": {
-            "default": "1:09.871"
+            "default": 69.871
         },
         "top_speeds_mph": {
             "default": 112.25
@@ -19360,7 +19360,7 @@
             "default": 33
         },
         "lap_times": {
-            "default": "1:12.673"
+            "default": 72.673
         },
         "top_speeds_mph": {
             "default": 112.0
@@ -19449,7 +19449,7 @@
             "default": 45
         },
         "lap_times": {
-            "default": "1:18.912"
+            "default": 78.912
         },
         "top_speeds_mph": {
             "default": 97.5
@@ -19538,7 +19538,7 @@
             "default": 50
         },
         "lap_times": {
-            "default": "1:21.448"
+            "default": 81.44800000000001
         },
         "top_speeds_mph": {
             "default": 96.75
@@ -19620,7 +19620,7 @@
             "default": 39
         },
         "lap_times": {
-            "default": "1:15.441"
+            "default": 75.441
         },
         "top_speeds_mph": {
             "default": 104.0
@@ -19702,7 +19702,7 @@
             "default": 53
         },
         "lap_times": {
-            "default": "1:22.516"
+            "default": 82.51599999999999
         },
         "top_speeds_mph": {
             "default": 99.0
@@ -19791,7 +19791,7 @@
             "default": 52
         },
         "lap_times": {
-            "default": "1:22.181"
+            "default": 82.181
         },
         "top_speeds_mph": {
             "default": 100.75
@@ -19873,7 +19873,7 @@
             "default": 4
         },
         "lap_times": {
-            "default": "1:10.538"
+            "default": 70.538
         },
         "top_speeds_mph": {
             "default": 112.25
@@ -19955,7 +19955,7 @@
             "default": 1
         },
         "lap_times": {
-            "default": "1:06.735"
+            "default": 66.735
         },
         "top_speeds_mph": {
             "default": 117.0
@@ -20046,7 +20046,7 @@
             "default": 6
         },
         "lap_times": {
-            "default": "1:08.169"
+            "default": 68.169
         },
         "top_speeds_mph": {
             "default": 107.25
@@ -20135,7 +20135,7 @@
             "default": 7
         },
         "lap_times": {
-            "default": "1:08.269"
+            "default": 68.269
         },
         "top_speeds_mph": {
             "default": 98.75
@@ -20224,7 +20224,7 @@
             "default": 3
         },
         "lap_times": {
-            "default": "1:06.067"
+            "default": 66.06700000000001
         },
         "top_speeds_mph": {
             "default": 98.75
@@ -20306,7 +20306,7 @@
             "default": 32
         },
         "lap_times": {
-            "default": "1:23.185"
+            "default": 83.185
         },
         "top_speeds_mph": {
             "default": 83.75
@@ -20395,7 +20395,7 @@
             "default": 20
         },
         "lap_times": {
-            "default": "1:14.305"
+            "default": 74.305
         },
         "top_speeds_mph": {
             "default": 98.75
@@ -20484,7 +20484,7 @@
             "default": 11
         },
         "lap_times": {
-            "default": "1:10.205"
+            "default": 70.205
         },
         "top_speeds_mph": {
             "default": 117.75
@@ -20573,7 +20573,7 @@
             "default": 14
         },
         "lap_times": {
-            "default": "1:20.769"
+            "default": 80.769
         },
         "top_speeds_mph": {
             "default": 110.5
@@ -20627,7 +20627,7 @@
             "default": 4
         },
         "lap_times": {
-            "default": "1:07.457"
+            "default": 67.457
         },
         "top_speeds_mph": {
             "default": 123.5
@@ -20681,7 +20681,7 @@
             "default": 7
         },
         "lap_times": {
-            "default": "1:12.707"
+            "default": 72.707
         },
         "top_speeds_mph": {
             "default": 100.75
@@ -20770,7 +20770,7 @@
             "default": 13
         },
         "lap_times": {
-            "default": "1:10.538"
+            "default": 70.538
         },
         "top_speeds_mph": {
             "default": 103.25
@@ -20859,7 +20859,7 @@
             "default": 4
         },
         "lap_times": {
-            "default": "1:07.201"
+            "default": 67.201
         },
         "top_speeds_mph": {
             "default": 106.5
@@ -20950,7 +20950,7 @@
             "default": 21
         },
         "lap_times": {
-            "default": "1:16.011"
+            "default": 76.011
         },
         "top_speeds_mph": {
             "default": 103.25
@@ -21039,7 +21039,7 @@
             "default": 9
         },
         "lap_times": {
-            "default": "1:09.503"
+            "default": 69.503
         },
         "top_speeds_mph": {
             "default": 100.75
@@ -21128,7 +21128,7 @@
             "default": 10
         },
         "lap_times": {
-            "default": "1:13.907"
+            "default": 73.907
         },
         "top_speeds_mph": {
             "default": 99.75
@@ -21210,7 +21210,7 @@
             "default": 33
         },
         "lap_times": {
-            "default": "1:31.993"
+            "default": 91.993
         },
         "top_speeds_mph": {
             "default": 79.5
@@ -21294,7 +21294,7 @@
             "default": 10
         },
         "lap_times": {
-            "default": "1:09.805"
+            "default": 69.805
         },
         "top_speeds_mph": {
             "default": 106.5
@@ -21370,7 +21370,7 @@
             "default": 16
         },
         "lap_times": {
-            "default": "1:12.273"
+            "default": 72.273
         },
         "top_speeds_mph": {
             "default": 99.75
@@ -21452,7 +21452,7 @@
             "default": 14
         },
         "lap_times": {
-            "default": "1:10.705"
+            "default": 70.705
         },
         "top_speeds_mph": {
             "default": 103.5
@@ -21534,7 +21534,7 @@
             "default": 8
         },
         "lap_times": {
-            "default": "1:08.369"
+            "default": 68.369
         },
         "top_speeds_mph": {
             "default": 98.75
@@ -21623,7 +21623,7 @@
             "default": 18
         },
         "lap_times": {
-            "default": "1:13.642"
+            "default": 73.642
         },
         "top_speeds_mph": {
             "default": 106.5
@@ -21712,7 +21712,7 @@
             "default": 19
         },
         "lap_times": {
-            "default": "1:14.141"
+            "default": 74.141
         },
         "top_speeds_mph": {
             "default": 98.25
@@ -21794,7 +21794,7 @@
             "default": 13
         },
         "lap_times": {
-            "default": "1:19.641"
+            "default": 79.64099999999999
         },
         "top_speeds_mph": {
             "default": 91.5
@@ -21876,7 +21876,7 @@
             "default": 9
         },
         "lap_times": {
-            "default": "1:13.035"
+            "default": 73.035
         },
         "top_speeds_mph": {
             "default": 99.25
@@ -21953,7 +21953,7 @@
             "default": 28
         },
         "lap_times": {
-            "default": "1:19.247"
+            "default": 79.247
         },
         "top_speeds_mph": {
             "default": 90.75
@@ -22065,7 +22065,7 @@
             "default": 2
         },
         "lap_times": {
-            "default": "1:05.734"
+            "default": 65.734
         },
         "top_speeds_mph": {
             "default": 116.75
@@ -22147,7 +22147,7 @@
             "default": 26
         },
         "lap_times": {
-            "default": "1:17.812"
+            "default": 77.812
         },
         "top_speeds_mph": {
             "default": 80.25
@@ -22236,7 +22236,7 @@
             "default": 25
         },
         "lap_times": {
-            "default": "1:17.780"
+            "default": 77.78
         },
         "top_speeds_mph": {
             "default": 80.25
@@ -22472,7 +22472,7 @@
             "default": 8
         },
         "lap_times": {
-            "default": "1:13.002"
+            "default": 73.002
         },
         "top_speeds_mph": {
             "default": 94.25
@@ -22554,7 +22554,7 @@
             "default": 22
         },
         "lap_times": {
-            "default": "1:16.478"
+            "default": 76.47800000000001
         },
         "top_speeds_mph": {
             "default": 99.75
@@ -22608,7 +22608,7 @@
             "default": 5
         },
         "lap_times": {
-            "default": "1:07.636"
+            "default": 67.636
         },
         "top_speeds_mph": {
             "default": 104.75
@@ -22690,7 +22690,7 @@
             "default": 12
         },
         "lap_times": {
-            "default": "1:10.371"
+            "default": 70.371
         },
         "top_speeds_mph": {
             "default": 90.5
@@ -22772,7 +22772,7 @@
             "default": 2
         },
         "lap_times": {
-            "default": "1:05.733"
+            "default": 65.733
         },
         "top_speeds_mph": {
             "default": 113.0
@@ -22854,7 +22854,7 @@
             "default": 6
         },
         "lap_times": {
-            "default": "1:10.405"
+            "default": 70.405
         },
         "top_speeds_mph": {
             "default": 105.25
@@ -22908,7 +22908,7 @@
             "default": 31
         },
         "lap_times": {
-            "default": "1:21.383"
+            "default": 81.383
         },
         "top_speeds_mph": {
             "default": 96.0
@@ -22969,7 +22969,7 @@
             "default": 17
         },
         "lap_times": {
-            "default": "1:39.611"
+            "default": 99.61099999999999
         },
         "top_speeds_mph": {
             "default": 60.0
@@ -23029,7 +23029,7 @@
             "default": 24
         },
         "lap_times": {
-            "default": "1:17.613"
+            "default": 77.613
         },
         "top_speeds_mph": {
             "default": 100.0
@@ -23118,7 +23118,7 @@
             "default": 17
         },
         "lap_times": {
-            "default": "1:12.808"
+            "default": 72.80799999999999
         },
         "top_speeds_mph": {
             "default": 104.0
@@ -23200,7 +23200,7 @@
             "default": 23
         },
         "lap_times": {
-            "default": "1:17.545"
+            "default": 77.545
         },
         "top_speeds_mph": {
             "default": 100.0
@@ -23289,7 +23289,7 @@
             "default": 27
         },
         "lap_times": {
-            "default": "1:17.846"
+            "default": 77.846
         },
         "top_speeds_mph": {
             "default": 99.0
@@ -23378,7 +23378,7 @@
             "default": 29
         },
         "lap_times": {
-            "default": "1:19.280"
+            "default": 79.28
         },
         "top_speeds_mph": {
             "default": 99.0
@@ -23467,7 +23467,7 @@
             "default": 1
         },
         "lap_times": {
-            "default": "1:04.071"
+            "default": 64.071
         },
         "top_speeds_mph": {
             "default": 121.25
@@ -23521,7 +23521,7 @@
             "default": 16
         },
         "lap_times": {
-            "default": "1:24.942"
+            "default": 84.94200000000001
         },
         "top_speeds_mph": {
             "default": 86.5
@@ -23582,7 +23582,7 @@
             "default": 3
         },
         "lap_times": {
-            "default": "1:06.433"
+            "default": 66.43299999999999
         },
         "top_speeds_mph": {
             "default": 100.0
@@ -23664,7 +23664,7 @@
             "default": 15
         },
         "lap_times": {
-            "default": "1:20.912"
+            "default": 80.912
         },
         "top_speeds_mph": {
             "default": 93.0
@@ -23746,7 +23746,7 @@
             "default": 12
         },
         "lap_times": {
-            "default": "1:15.610"
+            "default": 75.61
         },
         "top_speeds_mph": {
             "default": 93.0
@@ -23828,7 +23828,7 @@
             "default": 11
         },
         "lap_times": {
-            "default": "1:15.036"
+            "default": 75.036
         },
         "top_speeds_mph": {
             "default": 101.5
@@ -23905,7 +23905,7 @@
             "default": 5
         },
         "lap_times": {
-            "default": "1:07.333"
+            "default": 67.333
         },
         "top_speeds_mph": {
             "default": 107.0
@@ -23996,7 +23996,7 @@
             "default": 1
         },
         "lap_times": {
-            "default": "1:04.466"
+            "default": 64.466
         },
         "top_speeds_mph": {
             "default": 122.3
@@ -24072,7 +24072,7 @@
             "default": 30
         },
         "lap_times": {
-            "default": "1:20.682"
+            "default": 80.682
         },
         "top_speeds_mph": {
             "default": 84.25
@@ -24148,7 +24148,7 @@
             "default": 34
         },
         "lap_times": {
-            "default": "1:32.460"
+            "default": 92.46000000000001
         },
         "top_speeds_mph": {
             "default": 72.0
@@ -24224,7 +24224,7 @@
             "default": 15
         },
         "lap_times": {
-            "default": "1:11.340"
+            "default": 71.34
         },
         "top_speeds_mph": {
             "default": 105.5
@@ -24300,7 +24300,7 @@
             "default": 18
         },
         "lap_times": {
-            "default": "1:40.628"
+            "default": 100.628
         },
         "top_speeds_mph": {
             "default": 62.0
@@ -24382,10 +24382,10 @@
             "Min DF": 3
         },
         "lap_times": {
-            "default": "0:55.823",
-            "Mid DF": "0:54.788",
-            "Max DF": "0:54.988",
-            "Min DF": "0:55.823"
+            "default": 55.823,
+            "Mid DF": 54.788,
+            "Max DF": 54.988,
+            "Min DF": 55.823
         },
         "top_speeds_mph": {
             "default": 122.75,
@@ -24470,10 +24470,10 @@
             "Max DF": 11
         },
         "lap_times": {
-            "default": "0:58.559",
-            "Mid DF": "0:56.790",
-            "Min DF": "0:58.226",
-            "Max DF": "0:58.559"
+            "default": 58.559,
+            "Mid DF": 56.79,
+            "Min DF": 58.226,
+            "Max DF": 58.559
         },
         "top_speeds_mph": {
             "default": 113.75,
@@ -24558,10 +24558,10 @@
             "Max DF": 10
         },
         "lap_times": {
-            "default": "0:58.258",
-            "Mid DF": "0:56.424",
-            "Min DF": "0:56.591",
-            "Max DF": "0:58.258"
+            "default": 58.258,
+            "Mid DF": 56.424,
+            "Min DF": 56.591,
+            "Max DF": 58.258
         },
         "top_speeds_mph": {
             "default": 112.75,
@@ -24646,10 +24646,10 @@
             "Min DF": 12
         },
         "lap_times": {
-            "default": "0:58.893",
-            "Mid DF": "0:56.791",
-            "Max DF": "0:58.126",
-            "Min DF": "0:58.893"
+            "default": 58.893,
+            "Mid DF": 56.791,
+            "Max DF": 58.126,
+            "Min DF": 58.893
         },
         "top_speeds_mph": {
             "default": 122.0,
@@ -24728,7 +24728,7 @@
             "default": 1
         },
         "lap_times": {
-            "default": "0:33.567"
+            "default": 33.567
         },
         "top_speeds_mph": {
             "default": 201.5
@@ -24810,7 +24810,7 @@
             "default": 11
         },
         "lap_times": {
-            "default": "0:39.421"
+            "default": 39.421
         },
         "top_speeds_mph": {
             "default": 178.5
@@ -24873,7 +24873,7 @@
             "default": 15
         },
         "lap_times": {
-            "default": "0:46.034"
+            "default": 46.034
         },
         "top_speeds_mph": {
             "default": 163.75
@@ -24955,7 +24955,7 @@
             "default": 9
         },
         "lap_times": {
-            "default": "0:38.334"
+            "default": 38.334
         },
         "top_speeds_mph": {
             "default": 189.25
@@ -25044,7 +25044,7 @@
             "default": 36
         },
         "lap_times": {
-            "default": "1:43.270"
+            "default": 103.27000000000001
         },
         "top_speeds_mph": {
             "default": 105.0
@@ -25098,7 +25098,7 @@
             "default": 37
         },
         "lap_times": {
-            "default": "1:43.342"
+            "default": 103.342
         },
         "top_speeds_mph": {
             "default": 105.0
@@ -25152,7 +25152,7 @@
             "default": 35
         },
         "lap_times": {
-            "default": "1:41.934"
+            "default": 101.934
         },
         "top_speeds_mph": {
             "default": 107.0
@@ -25206,7 +25206,7 @@
             "default": 31
         },
         "lap_times": {
-            "default": "1:02.023"
+            "default": 62.023
         },
         "top_speeds_mph": {
             "default": 139.25
@@ -25260,7 +25260,7 @@
             "default": 23
         },
         "lap_times": {
-            "default": "0:49.850"
+            "default": 49.85
         },
         "top_speeds_mph": {
             "default": 142.0
@@ -25349,7 +25349,7 @@
             "default": 28
         },
         "lap_times": {
-            "default": "0:55.335"
+            "default": 55.335
         },
         "top_speeds_mph": {
             "default": 134.25
@@ -25438,7 +25438,7 @@
             "default": 27
         },
         "lap_times": {
-            "default": "0:54.522"
+            "default": 54.522
         },
         "top_speeds_mph": {
             "default": 144.0
@@ -25527,7 +25527,7 @@
             "default": 2
         },
         "lap_times": {
-            "default": "0:33.868"
+            "default": 33.868
         },
         "top_speeds_mph": {
             "default": 203.75
@@ -25609,7 +25609,7 @@
             "default": 4
         },
         "lap_times": {
-            "default": "0:34.135"
+            "default": 34.135
         },
         "top_speeds_mph": {
             "default": 209.25
@@ -25691,7 +25691,7 @@
             "default": 32
         },
         "lap_times": {
-            "default": "1:04.056"
+            "default": 64.056
         },
         "top_speeds_mph": {
             "default": 142.0
@@ -25768,7 +25768,7 @@
             "default": 13
         },
         "lap_times": {
-            "default": "0:44.468"
+            "default": 44.468
         },
         "top_speeds_mph": {
             "default": 187.75
@@ -25850,7 +25850,7 @@
             "default": 18
         },
         "lap_times": {
-            "default": "0:48.314"
+            "default": 48.314
         },
         "top_speeds_mph": {
             "default": 159.0
@@ -25939,7 +25939,7 @@
             "default": 17
         },
         "lap_times": {
-            "default": "0:47.315"
+            "default": 47.315
         },
         "top_speeds_mph": {
             "default": 159.5
@@ -26028,7 +26028,7 @@
             "default": 19
         },
         "lap_times": {
-            "default": "0:48.649"
+            "default": 48.649
         },
         "top_speeds_mph": {
             "default": 140.25
@@ -26117,7 +26117,7 @@
             "default": 30
         },
         "lap_times": {
-            "default": "0:56.721"
+            "default": 56.721
         },
         "top_speeds_mph": {
             "default": 132.25
@@ -26206,7 +26206,7 @@
             "default": 22
         },
         "lap_times": {
-            "default": "0:49.616"
+            "default": 49.616
         },
         "top_speeds_mph": {
             "default": 161.25
@@ -26295,7 +26295,7 @@
             "default": 14
         },
         "lap_times": {
-            "default": "0:45.301"
+            "default": 45.301
         },
         "top_speeds_mph": {
             "default": 155.75
@@ -26377,7 +26377,7 @@
             "default": 16
         },
         "lap_times": {
-            "default": "0:47.045"
+            "default": 47.045
         },
         "top_speeds_mph": {
             "default": 165.0
@@ -26459,7 +26459,7 @@
             "default": 7
         },
         "lap_times": {
-            "default": "0:37.068"
+            "default": 37.068
         },
         "top_speeds_mph": {
             "default": 201.0
@@ -26541,7 +26541,7 @@
             "default": 8
         },
         "lap_times": {
-            "default": "0:37.645"
+            "default": 37.645
         },
         "top_speeds_mph": {
             "default": 195.0
@@ -26595,7 +26595,7 @@
             "default": 3
         },
         "lap_times": {
-            "default": "0:34.034"
+            "default": 34.034
         },
         "top_speeds_mph": {
             "default": 222.75
@@ -26677,7 +26677,7 @@
             "default": 34
         },
         "lap_times": {
-            "default": "1:40.403"
+            "default": 100.40299999999999
         },
         "top_speeds_mph": {
             "default": 84.5
@@ -26759,7 +26759,7 @@
             "default": 26
         },
         "lap_times": {
-            "default": "0:53.981"
+            "default": 53.981
         },
         "top_speeds_mph": {
             "default": 167.5
@@ -26835,7 +26835,7 @@
             "default": 5
         },
         "lap_times": {
-            "default": "0:35.201"
+            "default": 35.201
         },
         "top_speeds_mph": {
             "default": 219.5
@@ -26917,7 +26917,7 @@
             "default": 10
         },
         "lap_times": {
-            "default": "0:38.568"
+            "default": 38.568
         },
         "top_speeds_mph": {
             "default": 191.75
@@ -26999,7 +26999,7 @@
             "default": 21
         },
         "lap_times": {
-            "default": "0:49.417"
+            "default": 49.417
         },
         "top_speeds_mph": {
             "default": 159.0
@@ -27088,7 +27088,7 @@
             "default": 29
         },
         "lap_times": {
-            "default": "0:56.602"
+            "default": 56.602
         },
         "top_speeds_mph": {
             "default": 133.25
@@ -27177,7 +27177,7 @@
             "default": 20
         },
         "lap_times": {
-            "default": "0:49.302"
+            "default": 49.302
         },
         "top_speeds_mph": {
             "default": 150.0
@@ -27259,7 +27259,7 @@
             "default": 33
         },
         "lap_times": {
-            "default": "1:39.168"
+            "default": 99.168
         },
         "top_speeds_mph": {
             "default": 73.25
@@ -27341,7 +27341,7 @@
             "default": 6
         },
         "lap_times": {
-            "default": "0:36.367"
+            "default": 36.367
         },
         "top_speeds_mph": {
             "default": 207.75
@@ -27423,7 +27423,7 @@
             "default": 24
         },
         "lap_times": {
-            "default": "0:53.050"
+            "default": 53.05
         },
         "top_speeds_mph": {
             "default": 139.75
@@ -27512,7 +27512,7 @@
             "default": 12
         },
         "lap_times": {
-            "default": "0:40.307"
+            "default": 40.307
         },
         "top_speeds_mph": {
             "default": 163.75
@@ -27601,7 +27601,7 @@
             "default": 25
         },
         "lap_times": {
-            "default": "0:53.501"
+            "default": 53.501
         },
         "top_speeds_mph": {
             "default": 165.5
@@ -27683,7 +27683,7 @@
             "default": 19
         },
         "lap_times": {
-            "default": "1:15.811"
+            "default": 75.811
         },
         "top_speeds_mph": {
             "default": 104.75
@@ -27744,7 +27744,7 @@
             "default": 13
         },
         "lap_times": {
-            "default": "1:13.775"
+            "default": 73.775
         },
         "top_speeds_mph": {
             "default": 105.0
@@ -27833,7 +27833,7 @@
             "default": 21
         },
         "lap_times": {
-            "default": "1:16.410"
+            "default": 76.41
         },
         "top_speeds_mph": {
             "default": 110.0
@@ -27923,7 +27923,7 @@
             "default": 23
         },
         "lap_times": {
-            "default": "1:16.910"
+            "default": 76.91
         },
         "top_speeds_mph": {
             "default": 109.75
@@ -28005,7 +28005,7 @@
             "default": 14
         },
         "lap_times": {
-            "default": "1:13.807"
+            "default": 73.807
         },
         "top_speeds_mph": {
             "default": 112.5
@@ -28087,7 +28087,7 @@
             "default": 15
         },
         "lap_times": {
-            "default": "1:14.007"
+            "default": 74.007
         },
         "top_speeds_mph": {
             "default": 112.25
@@ -28169,7 +28169,7 @@
             "default": 27
         },
         "lap_times": {
-            "default": "1:26.587"
+            "default": 86.587
         },
         "top_speeds_mph": {
             "default": 90.5
@@ -28230,7 +28230,7 @@
             "default": 6
         },
         "lap_times": {
-            "default": "1:12.707"
+            "default": 72.707
         },
         "top_speeds_mph": {
             "default": 107.75
@@ -28319,7 +28319,7 @@
             "default": 22
         },
         "lap_times": {
-            "default": "1:16.842"
+            "default": 76.842
         },
         "top_speeds_mph": {
             "default": 107.0
@@ -28423,7 +28423,7 @@
             "default": 2
         },
         "lap_times": {
-            "default": "1:09.570"
+            "default": 69.57
         },
         "top_speeds_mph": {
             "default": 111.25
@@ -28499,7 +28499,7 @@
             "default": 26
         },
         "lap_times": {
-            "default": "1:25.120"
+            "default": 85.12
         },
         "top_speeds_mph": {
             "default": 90.0
@@ -28588,7 +28588,7 @@
             "default": 9
         },
         "lap_times": {
-            "default": "1:13.041"
+            "default": 73.041
         },
         "top_speeds_mph": {
             "default": 106.0
@@ -28677,7 +28677,7 @@
             "default": 18
         },
         "lap_times": {
-            "default": "1:15.210"
+            "default": 75.21000000000001
         },
         "top_speeds_mph": {
             "default": 104.75
@@ -28766,7 +28766,7 @@
             "default": 8
         },
         "lap_times": {
-            "default": "1:12.773"
+            "default": 72.773
         },
         "top_speeds_mph": {
             "default": 103.0
@@ -28864,7 +28864,7 @@
             "default": 7
         },
         "lap_times": {
-            "default": "1:12.764"
+            "default": 72.764
         },
         "top_speeds_mph": {
             "default": 103.0
@@ -28949,7 +28949,7 @@
             "default": 28
         },
         "lap_times": {
-            "default": "1:32.593"
+            "default": 92.593
         },
         "top_speeds_mph": {
             "default": 86.25
@@ -29038,7 +29038,7 @@
             "default": 25
         },
         "lap_times": {
-            "default": "1:24.952"
+            "default": 84.952
         },
         "top_speeds_mph": {
             "default": 89.5
@@ -29127,7 +29127,7 @@
             "default": 3
         },
         "lap_times": {
-            "default": "1:09.669"
+            "default": 69.669
         },
         "top_speeds_mph": {
             "default": 110.25
@@ -29216,7 +29216,7 @@
             "default": 4
         },
         "lap_times": {
-            "default": "1:09.871"
+            "default": 69.871
         },
         "top_speeds_mph": {
             "default": 109.25
@@ -29298,7 +29298,7 @@
             "default": 1
         },
         "lap_times": {
-            "default": "1:05.266"
+            "default": 65.266
         },
         "top_speeds_mph": {
             "default": 123.5
@@ -29380,7 +29380,7 @@
             "default": 24
         },
         "lap_times": {
-            "default": "1:22.182"
+            "default": 82.182
         },
         "top_speeds_mph": {
             "default": 93.5
@@ -29462,7 +29462,7 @@
             "default": 12
         },
         "lap_times": {
-            "default": "1:13.707"
+            "default": 73.707
         },
         "top_speeds_mph": {
             "default": 108.0
@@ -29551,7 +29551,7 @@
             "default": 17
         },
         "lap_times": {
-            "default": "1:15.109"
+            "default": 75.109
         },
         "top_speeds_mph": {
             "default": 104.75
@@ -29640,7 +29640,7 @@
             "default": 2
         },
         "lap_times": {
-            "default": "1:27.119"
+            "default": 87.119
         },
         "top_speeds_mph": {
             "default": 94.25
@@ -29729,7 +29729,7 @@
             "default": 20
         },
         "lap_times": {
-            "default": "1:15.910"
+            "default": 75.91
         },
         "top_speeds_mph": {
             "default": 111.75
@@ -29827,7 +29827,7 @@
             "default": 16
         },
         "lap_times": {
-            "default": "1:14.976"
+            "default": 74.976
         },
         "top_speeds_mph": {
             "default": 93.5
@@ -29916,7 +29916,7 @@
             "default": 5
         },
         "lap_times": {
-            "default": "1:11.305"
+            "default": 71.305
         },
         "top_speeds_mph": {
             "default": 104.75
@@ -30073,7 +30073,7 @@
             "default": 1
         },
         "lap_times": {
-            "default": "1:20.908"
+            "default": 80.908
         },
         "top_speeds_mph": {
             "default": 89.5
@@ -30155,7 +30155,7 @@
             "default": 10
         },
         "lap_times": {
-            "default": "1:13.574"
+            "default": 73.574
         },
         "top_speeds_mph": {
             "default": 103.25
@@ -30312,7 +30312,7 @@
             "default": 11
         },
         "lap_times": {
-            "default": "1:13.641"
+            "default": 73.641
         },
         "top_speeds_mph": {
             "default": 108.0
@@ -30401,7 +30401,7 @@
             "default": 4
         },
         "lap_times": {
-            "default": "1:29.838"
+            "default": 89.838
         },
         "top_speeds_mph": {
             "default": 83.5
@@ -30483,7 +30483,7 @@
             "default": 8
         },
         "lap_times": {
-            "default": "1:57.427"
+            "default": 117.42699999999999
         },
         "top_speeds_mph": {
             "default": 65.0
@@ -30572,7 +30572,7 @@
             "default": 9
         },
         "lap_times": {
-            "default": "1:58.652"
+            "default": 118.652
         },
         "top_speeds_mph": {
             "default": 71.75
@@ -30661,7 +30661,7 @@
             "default": 1
         },
         "lap_times": {
-            "default": "1:15.743"
+            "default": 75.743
         },
         "top_speeds_mph": {
             "default": 91.5
@@ -30752,7 +30752,7 @@
             "default": 10
         },
         "lap_times": {
-            "default": "2:08.471"
+            "default": 128.471
         },
         "top_speeds_mph": {
             "default": 59.75
@@ -30891,7 +30891,7 @@
             "default": 6
         },
         "lap_times": {
-            "default": "1:46.672"
+            "default": 106.672
         },
         "top_speeds_mph": {
             "default": 65.0
@@ -30980,7 +30980,7 @@
             "default": 3
         },
         "lap_times": {
-            "default": "1:17.011"
+            "default": 77.011
         },
         "top_speeds_mph": {
             "default": 102.0
@@ -31064,7 +31064,7 @@
             "default": 7
         },
         "lap_times": {
-            "default": "1:46.705"
+            "default": 106.705
         },
         "top_speeds_mph": {
             "default": 65.0
@@ -31148,7 +31148,7 @@
             "default": 5
         },
         "lap_times": {
-            "default": "1:45.233"
+            "default": 105.233
         },
         "top_speeds_mph": {
             "default": 82.5
@@ -31211,7 +31211,7 @@
             "default": 2
         },
         "lap_times": {
-            "default": "1:16.911"
+            "default": 76.911
         },
         "top_speeds_mph": {
             "default": 89.75
@@ -31293,7 +31293,7 @@
             "default": 17
         },
         "lap_times": {
-            "default": "1:03.531"
+            "default": 63.531
         },
         "top_speeds_mph": {
             "default": 117.5
@@ -31375,7 +31375,7 @@
             "default": 23
         },
         "lap_times": {
-            "default": "1:04.125"
+            "default": 64.125
         },
         "top_speeds_mph": {
             "default": 119.75
@@ -31473,7 +31473,7 @@
             "default": 24
         },
         "lap_times": {
-            "default": "1:04.157"
+            "default": 64.157
         },
         "top_speeds_mph": {
             "default": 119.75
@@ -31562,7 +31562,7 @@
             "default": 42
         },
         "lap_times": {
-            "default": "1:05.732"
+            "default": 65.732
         },
         "top_speeds_mph": {
             "default": 117.75
@@ -31670,7 +31670,7 @@
             "default": 44
         },
         "lap_times": {
-            "default": "1:06.066"
+            "default": 66.066
         },
         "top_speeds_mph": {
             "default": 117.75
@@ -31800,7 +31800,7 @@
             "default": 29
         },
         "lap_times": {
-            "default": "1:04.364"
+            "default": 64.364
         },
         "top_speeds_mph": {
             "default": 118.75
@@ -31901,7 +31901,7 @@
             "default": 73
         },
         "lap_times": {
-            "default": "1:15.408"
+            "default": 75.408
         },
         "top_speeds_mph": {
             "default": 103.0
@@ -31976,7 +31976,7 @@
             "default": 62
         },
         "lap_times": {
-            "default": "1:08.503"
+            "default": 68.503
         },
         "top_speeds_mph": {
             "default": 112.25
@@ -32065,7 +32065,7 @@
             "default": 55
         },
         "lap_times": {
-            "default": "1:08.001"
+            "default": 68.001
         },
         "top_speeds_mph": {
             "default": 112.25
@@ -32222,7 +32222,7 @@
             "default": 41
         },
         "lap_times": {
-            "default": "1:05.699"
+            "default": 65.699
         },
         "top_speeds_mph": {
             "default": 119.5
@@ -32311,7 +32311,7 @@
             "default": 37
         },
         "lap_times": {
-            "default": "1:05.130"
+            "default": 65.13
         },
         "top_speeds_mph": {
             "default": 119.5
@@ -32408,7 +32408,7 @@
             "default": 38
         },
         "lap_times": {
-            "default": "1:05.366"
+            "default": 65.366
         },
         "top_speeds_mph": {
             "default": 121.25
@@ -32566,7 +32566,7 @@
             "default": 54
         },
         "lap_times": {
-            "default": "1:07.455"
+            "default": 67.455
         },
         "top_speeds_mph": {
             "default": 120.0
@@ -32648,7 +32648,7 @@
             "default": 6
         },
         "lap_times": {
-            "default": "1:01.962"
+            "default": 61.962
         },
         "top_speeds_mph": {
             "default": 122.0
@@ -32730,7 +32730,7 @@
             "default": 46
         },
         "lap_times": {
-            "default": "1:06.333"
+            "default": 66.333
         },
         "top_speeds_mph": {
             "default": 119.25
@@ -32846,7 +32846,7 @@
             "default": 22
         },
         "lap_times": {
-            "default": "1:04.031"
+            "default": 64.031
         },
         "top_speeds_mph": {
             "default": 130.0
@@ -32982,7 +32982,7 @@
             "default": 58
         },
         "lap_times": {
-            "default": "1:08.334"
+            "default": 68.334
         },
         "top_speeds_mph": {
             "default": 114.25
@@ -33073,7 +33073,7 @@
             "default": 15
         },
         "lap_times": {
-            "default": "1:03.483"
+            "default": 63.483
         },
         "top_speeds_mph": {
             "default": 115.25
@@ -33155,7 +33155,7 @@
             "default": 10
         },
         "lap_times": {
-            "default": "1:02.529"
+            "default": 62.528999999999996
         },
         "top_speeds_mph": {
             "default": 118.5
@@ -33321,7 +33321,7 @@
             "default": 12
         },
         "lap_times": {
-            "default": "1:03.229"
+            "default": 63.229
         },
         "top_speeds_mph": {
             "default": 119.5
@@ -33438,7 +33438,7 @@
             "default": 21
         },
         "lap_times": {
-            "default": "1:03.865"
+            "default": 63.865
         },
         "top_speeds_mph": {
             "default": 116.25
@@ -33520,7 +33520,7 @@
             "default": 61
         },
         "lap_times": {
-            "default": "1:08.502"
+            "default": 68.502
         },
         "top_speeds_mph": {
             "default": 120.25
@@ -33609,7 +33609,7 @@
             "default": 63
         },
         "lap_times": {
-            "default": "1:08.652"
+            "default": 68.652
         },
         "top_speeds_mph": {
             "default": 117.75
@@ -33698,7 +33698,7 @@
             "default": 70
         },
         "lap_times": {
-            "default": "1:12.706"
+            "default": 72.706
         },
         "top_speeds_mph": {
             "default": 119.25
@@ -33855,7 +33855,7 @@
             "default": 47
         },
         "lap_times": {
-            "default": "1:06.767"
+            "default": 66.767
         },
         "top_speeds_mph": {
             "default": 114.25
@@ -33937,7 +33937,7 @@
             "default": 72
         },
         "lap_times": {
-            "default": "1:15.402"
+            "default": 75.402
         },
         "top_speeds_mph": {
             "default": 103.0
@@ -34079,7 +34079,7 @@
             "default": 50
         },
         "lap_times": {
-            "default": "1:07.034"
+            "default": 67.034
         },
         "top_speeds_mph": {
             "default": 121.75
@@ -34161,7 +34161,7 @@
             "default": 5
         },
         "lap_times": {
-            "default": "1:01.327"
+            "default": 61.327
         },
         "top_speeds_mph": {
             "default": 107.25
@@ -34237,7 +34237,7 @@
             "default": 7
         },
         "lap_times": {
-            "default": "1:02.029"
+            "default": 62.028999999999996
         },
         "top_speeds_mph": {
             "default": 114.25
@@ -34319,7 +34319,7 @@
             "default": 1
         },
         "lap_times": {
-            "default": "0:59.727"
+            "default": 59.727
         },
         "top_speeds_mph": {
             "default": 127.75
@@ -34394,7 +34394,7 @@
             "default": 3
         },
         "lap_times": {
-            "default": "1:00.928"
+            "default": 60.928
         },
         "top_speeds_mph": {
             "default": 135.25
@@ -34470,7 +34470,7 @@
             "default": 18
         },
         "lap_times": {
-            "default": "1:03.763"
+            "default": 63.763
         },
         "top_speeds_mph": {
             "default": 118.75
@@ -34578,7 +34578,7 @@
             "default": 14
         },
         "lap_times": {
-            "default": "1:03.363"
+            "default": 63.363
         },
         "top_speeds_mph": {
             "default": 119.25
@@ -34667,7 +34667,7 @@
             "default": 45
         },
         "lap_times": {
-            "default": "1:06.100"
+            "default": 66.1
         },
         "top_speeds_mph": {
             "default": 119.75
@@ -34817,7 +34817,7 @@
             "default": 9
         },
         "lap_times": {
-            "default": "1:02.363"
+            "default": 62.363
         },
         "top_speeds_mph": {
             "default": 126.5
@@ -34899,7 +34899,7 @@
             "default": 57
         },
         "lap_times": {
-            "default": "1:08.301"
+            "default": 68.301
         },
         "top_speeds_mph": {
             "default": 102.25
@@ -34981,7 +34981,7 @@
             "default": 27
         },
         "lap_times": {
-            "default": "1:04.265"
+            "default": 64.265
         },
         "top_speeds_mph": {
             "default": 123.0
@@ -35057,7 +35057,7 @@
             "default": 48
         },
         "lap_times": {
-            "default": "1:06.800"
+            "default": 66.8
         },
         "top_speeds_mph": {
             "default": 112.0
@@ -35146,7 +35146,7 @@
             "default": 65
         },
         "lap_times": {
-            "default": "1:09.036"
+            "default": 69.036
         },
         "top_speeds_mph": {
             "default": 109.75
@@ -35235,7 +35235,7 @@
             "default": 35
         },
         "lap_times": {
-            "default": "1:04.962"
+            "default": 64.962
         },
         "top_speeds_mph": {
             "default": 119.75
@@ -35317,7 +35317,7 @@
             "default": 51
         },
         "lap_times": {
-            "default": "1:07.133"
+            "default": 67.133
         },
         "top_speeds_mph": {
             "default": 121.5
@@ -35408,7 +35408,7 @@
             "default": 20
         },
         "lap_times": {
-            "default": "1:03.864"
+            "default": 63.864
         },
         "top_speeds_mph": {
             "default": 121.75
@@ -35509,7 +35509,7 @@
             "default": 19
         },
         "lap_times": {
-            "default": "1:03.810"
+            "default": 63.81
         },
         "top_speeds_mph": {
             "default": 121.75
@@ -35598,7 +35598,7 @@
             "default": 4
         },
         "lap_times": {
-            "default": "1:00.996"
+            "default": 60.996
         },
         "top_speeds_mph": {
             "default": 125.75
@@ -35680,7 +35680,7 @@
             "default": 13
         },
         "lap_times": {
-            "default": "1:03.298"
+            "default": 63.298
         },
         "top_speeds_mph": {
             "default": 114.0
@@ -35762,7 +35762,7 @@
             "default": 52
         },
         "lap_times": {
-            "default": "1:07.168"
+            "default": 67.168
         },
         "top_speeds_mph": {
             "default": 112.5
@@ -35872,7 +35872,7 @@
             "default": 8
         },
         "lap_times": {
-            "default": "1:02.229"
+            "default": 62.229
         },
         "top_speeds_mph": {
             "default": 123.25
@@ -35954,7 +35954,7 @@
             "default": 1
         },
         "lap_times": {
-            "default": "1:02.361"
+            "default": 62.361
         },
         "top_speeds_mph": {
             "default": 121.5
@@ -36031,7 +36031,7 @@
             "default": 2
         },
         "lap_times": {
-            "default": "1:00.828"
+            "default": 60.828
         },
         "top_speeds_mph": {
             "default": 136.0
@@ -36113,7 +36113,7 @@
             "default": 69
         },
         "lap_times": {
-            "default": "1:12.243"
+            "default": 72.243
         },
         "top_speeds_mph": {
             "default": 105.25
@@ -36202,7 +36202,7 @@
             "default": 31
         },
         "lap_times": {
-            "default": "1:04.465"
+            "default": 64.465
         },
         "top_speeds_mph": {
             "default": 112.75
@@ -36278,7 +36278,7 @@
             "default": 32
         },
         "lap_times": {
-            "default": "1:04.498"
+            "default": 64.498
         },
         "top_speeds_mph": {
             "default": 113.25
@@ -36360,7 +36360,7 @@
             "default": 59
         },
         "lap_times": {
-            "default": "1:08.419"
+            "default": 68.419
         },
         "top_speeds_mph": {
             "default": 119.5
@@ -36457,7 +36457,7 @@
             "default": 60
         },
         "lap_times": {
-            "default": "1:08.434"
+            "default": 68.434
         },
         "top_speeds_mph": {
             "default": 119.5
@@ -36511,7 +36511,7 @@
             "default": 68
         },
         "lap_times": {
-            "default": "1:11.371"
+            "default": 71.371
         },
         "top_speeds_mph": {
             "default": 103.25
@@ -36661,7 +36661,7 @@
             "default": 26
         },
         "lap_times": {
-            "default": "1:04.198"
+            "default": 64.19800000000001
         },
         "top_speeds_mph": {
             "default": 115.5
@@ -36811,7 +36811,7 @@
             "default": 56
         },
         "lap_times": {
-            "default": "1:08.103"
+            "default": 68.103
         },
         "top_speeds_mph": {
             "default": 116.25
@@ -36893,7 +36893,7 @@
             "default": 66
         },
         "lap_times": {
-            "default": "1:09.769"
+            "default": 69.769
         },
         "top_speeds_mph": {
             "default": 109.5
@@ -36975,7 +36975,7 @@
             "default": 36
         },
         "lap_times": {
-            "default": "1:05.121"
+            "default": 65.121
         },
         "top_speeds_mph": {
             "default": 124.25
@@ -37057,7 +37057,7 @@
             "default": 16
         },
         "lap_times": {
-            "default": "1:03.498"
+            "default": 63.498
         },
         "top_speeds_mph": {
             "default": 125.5
@@ -37139,7 +37139,7 @@
             "default": 67
         },
         "lap_times": {
-            "default": "1:11.105"
+            "default": 71.105
         },
         "top_speeds_mph": {
             "default": 117.0
@@ -37228,7 +37228,7 @@
             "default": 39
         },
         "lap_times": {
-            "default": "1:05.499"
+            "default": 65.499
         },
         "top_speeds_mph": {
             "default": 117.25
@@ -37310,7 +37310,7 @@
             "default": 34
         },
         "lap_times": {
-            "default": "1:04.764"
+            "default": 64.764
         },
         "top_speeds_mph": {
             "default": 123.5
@@ -37411,7 +37411,7 @@
             "default": 30
         },
         "lap_times": {
-            "default": "1:04.398"
+            "default": 64.398
         },
         "top_speeds_mph": {
             "default": 121.25
@@ -37496,7 +37496,7 @@
             "default": 28
         },
         "lap_times": {
-            "default": "1:04.332"
+            "default": 64.332
         },
         "top_speeds_mph": {
             "default": 121.25
@@ -37578,7 +37578,7 @@
             "default": 53
         },
         "lap_times": {
-            "default": "1:07.234"
+            "default": 67.234
         },
         "top_speeds_mph": {
             "default": 116.0
@@ -37667,7 +37667,7 @@
             "default": 71
         },
         "lap_times": {
-            "default": "1:12.941"
+            "default": 72.941
         },
         "top_speeds_mph": {
             "default": 111.25
@@ -37749,7 +37749,7 @@
             "default": 64
         },
         "lap_times": {
-            "default": "1:08.836"
+            "default": 68.836
         },
         "top_speeds_mph": {
             "default": 119.25
@@ -37825,7 +37825,7 @@
             "default": 43
         },
         "lap_times": {
-            "default": "1:05.834"
+            "default": 65.834
         },
         "top_speeds_mph": {
             "default": 115.75
@@ -37917,7 +37917,7 @@
             "default": 11
         },
         "lap_times": {
-            "default": "1:02.606"
+            "default": 62.606
         },
         "top_speeds_mph": {
             "default": 116.5
@@ -38053,7 +38053,7 @@
             "default": 33
         },
         "lap_times": {
-            "default": "1:04.531"
+            "default": 64.531
         },
         "top_speeds_mph": {
             "default": 121.0
@@ -38151,7 +38151,7 @@
             "default": 49
         },
         "lap_times": {
-            "default": "1:06.866"
+            "default": 66.866
         },
         "top_speeds_mph": {
             "default": 119.5
@@ -38261,7 +38261,7 @@
             "default": 25
         },
         "lap_times": {
-            "default": "1:04.165"
+            "default": 64.165
         },
         "top_speeds_mph": {
             "default": 126.25
@@ -38397,7 +38397,7 @@
             "default": 40
         },
         "lap_times": {
-            "default": "1:05.659"
+            "default": 65.659
         },
         "top_speeds_mph": {
             "default": 121.75
@@ -38498,7 +38498,7 @@
             "default": 4
         },
         "lap_times": {
-            "default": "1:17.902"
+            "default": 77.902
         },
         "top_speeds_mph": {
             "default": 78.75
@@ -38574,7 +38574,7 @@
             "default": 3
         },
         "lap_times": {
-            "default": "1:17.769"
+            "default": 77.769
         },
         "top_speeds_mph": {
             "default": 76.75
@@ -38718,7 +38718,7 @@
             "default": 2
         },
         "lap_times": {
-            "default": "1:03.253"
+            "default": 63.253
         },
         "top_speeds_mph": {
             "default": 140.5
@@ -38772,7 +38772,7 @@
             "default": 16
         },
         "lap_times": {
-            "default": "1:10.371"
+            "default": 70.371
         },
         "top_speeds_mph": {
             "default": 109.75
@@ -38854,7 +38854,7 @@
             "default": 2
         },
         "lap_times": {
-            "default": "1:05.234"
+            "default": 65.234
         },
         "top_speeds_mph": {
             "default": 117.75
@@ -38936,7 +38936,7 @@
             "default": 15
         },
         "lap_times": {
-            "default": "1:10.337"
+            "default": 70.337
         },
         "top_speeds_mph": {
             "default": 120.0
@@ -39018,7 +39018,7 @@
             "default": 19
         },
         "lap_times": {
-            "default": "1:12.006"
+            "default": 72.006
         },
         "top_speeds_mph": {
             "default": 108.75
@@ -39100,7 +39100,7 @@
             "default": 2
         },
         "lap_times": {
-            "default": "1:04.932"
+            "default": 64.932
         },
         "top_speeds_mph": {
             "default": 120.25
@@ -39182,7 +39182,7 @@
             "default": 18
         },
         "lap_times": {
-            "default": "1:11.470"
+            "default": 71.47
         },
         "top_speeds_mph": {
             "default": 118.0
@@ -39324,7 +39324,7 @@
             "default": 3
         },
         "lap_times": {
-            "default": "1:07.369"
+            "default": 67.369
         },
         "top_speeds_mph": {
             "default": 127.25
@@ -39406,7 +39406,7 @@
             "default": 34
         },
         "lap_times": {
-            "default": "1:23.351"
+            "default": 83.351
         },
         "top_speeds_mph": {
             "default": 93.5
@@ -39488,7 +39488,7 @@
             "default": 32
         },
         "lap_times": {
-            "default": "1:19.214"
+            "default": 79.214
         },
         "top_speeds_mph": {
             "default": 87.5
@@ -39570,7 +39570,7 @@
             "default": 28
         },
         "lap_times": {
-            "default": "1:16.909"
+            "default": 76.90899999999999
         },
         "top_speeds_mph": {
             "default": 106.5
@@ -39624,7 +39624,7 @@
             "default": 21
         },
         "lap_times": {
-            "default": "1:12.073"
+            "default": 72.07300000000001
         },
         "top_speeds_mph": {
             "default": 110.75
@@ -39706,7 +39706,7 @@
             "default": 6
         },
         "lap_times": {
-            "default": "1:06.267"
+            "default": 66.267
         },
         "top_speeds_mph": {
             "default": 118.0
@@ -39788,7 +39788,7 @@
             "default": 20
         },
         "lap_times": {
-            "default": "1:12.071"
+            "default": 72.071
         },
         "top_speeds_mph": {
             "default": 119.25
@@ -39877,7 +39877,7 @@
             "default": 5
         },
         "lap_times": {
-            "default": "1:12.092"
+            "default": 72.092
         },
         "top_speeds_mph": {
             "default": 119.25
@@ -39953,7 +39953,7 @@
             "default": 22
         },
         "lap_times": {
-            "default": "1:12.372"
+            "default": 72.372
         },
         "top_speeds_mph": {
             "default": 117.0
@@ -40055,7 +40055,7 @@
             "default": 33
         },
         "lap_times": {
-            "default": "1:23.183"
+            "default": 83.18299999999999
         },
         "top_speeds_mph": {
             "default": 98.25
@@ -40152,7 +40152,7 @@
             "default": 23
         },
         "lap_times": {
-            "default": "1:12.707"
+            "default": 72.707
         },
         "top_speeds_mph": {
             "default": 106.5
@@ -40234,7 +40234,7 @@
             "default": 17
         },
         "lap_times": {
-            "default": "1:11.172"
+            "default": 71.172
         },
         "top_speeds_mph": {
             "default": 122.0
@@ -40323,7 +40323,7 @@
             "default": 29
         },
         "lap_times": {
-            "default": "1:17.143"
+            "default": 77.143
         },
         "top_speeds_mph": {
             "default": 101.0
@@ -40405,7 +40405,7 @@
             "default": 36
         },
         "lap_times": {
-            "default": "1:24.751"
+            "default": 84.751
         },
         "top_speeds_mph": {
             "default": 98.25
@@ -40497,7 +40497,7 @@
             "default": 27
         },
         "lap_times": {
-            "default": "1:16.544"
+            "default": 76.544
         },
         "top_speeds_mph": {
             "default": 111.0
@@ -40576,7 +40576,7 @@
             "default": 14
         },
         "lap_times": {
-            "default": "1:09.737"
+            "default": 69.737
         },
         "top_speeds_mph": {
             "default": 121.25
@@ -40665,7 +40665,7 @@
             "default": 3
         },
         "lap_times": {
-            "default": "1:05.762"
+            "default": 65.762
         },
         "top_speeds_mph": {
             "default": 119.75
@@ -40747,7 +40747,7 @@
             "default": 12
         },
         "lap_times": {
-            "default": "1:08.636"
+            "default": 68.636
         },
         "top_speeds_mph": {
             "default": 116.5
@@ -40829,7 +40829,7 @@
             "default": 4
         },
         "lap_times": {
-            "default": "1:05.765"
+            "default": 65.765
         },
         "top_speeds_mph": {
             "default": 120.25
@@ -40905,7 +40905,7 @@
             "default": 30
         },
         "lap_times": {
-            "default": "1:17.344"
+            "default": 77.344
         },
         "top_speeds_mph": {
             "default": 98.5
@@ -40994,7 +40994,7 @@
             "default": 26
         },
         "lap_times": {
-            "default": "1:16.406"
+            "default": 76.406
         },
         "top_speeds_mph": {
             "default": 98.5
@@ -41103,7 +41103,7 @@
             "default": 11
         },
         "lap_times": {
-            "default": "1:07.801"
+            "default": 67.801
         },
         "top_speeds_mph": {
             "default": 117.0
@@ -41185,7 +41185,7 @@
             "default": 25
         },
         "lap_times": {
-            "default": "1:13.239"
+            "default": 73.239
         },
         "top_speeds_mph": {
             "default": 112.0
@@ -41301,7 +41301,7 @@
             "default": 24
         },
         "lap_times": {
-            "default": "1:12.972"
+            "default": 72.972
         },
         "top_speeds_mph": {
             "default": 112.0
@@ -41390,7 +41390,7 @@
             "default": 5
         },
         "lap_times": {
-            "default": "1:06.166"
+            "default": 66.166
         },
         "top_speeds_mph": {
             "default": 112.0
@@ -41499,7 +41499,7 @@
             "default": 4
         },
         "lap_times": {
-            "default": "1:08.036"
+            "default": 68.036
         },
         "top_speeds_mph": {
             "default": 112.75
@@ -41581,7 +41581,7 @@
             "default": 8
         },
         "lap_times": {
-            "default": "1:06.434"
+            "default": 66.434
         },
         "top_speeds_mph": {
             "default": 118.25
@@ -41663,7 +41663,7 @@
             "default": 1
         },
         "lap_times": {
-            "default": "0:57.601"
+            "default": 57.601
         },
         "top_speeds_mph": {
             "default": 135.25
@@ -41739,7 +41739,7 @@
             "default": 7
         },
         "lap_times": {
-            "default": "1:06.366"
+            "default": 66.366
         },
         "top_speeds_mph": {
             "default": 116.5
@@ -41821,7 +41821,7 @@
             "default": 37
         },
         "lap_times": {
-            "default": "1:26.353"
+            "default": 86.35300000000001
         },
         "top_speeds_mph": {
             "default": 98.25
@@ -41898,7 +41898,7 @@
             "default": 38
         },
         "lap_times": {
-            "default": "1:26.356"
+            "default": 86.356
         },
         "top_speeds_mph": {
             "default": 98.25
@@ -41952,7 +41952,7 @@
             "default": 35
         },
         "lap_times": {
-            "default": "1:24.417"
+            "default": 84.417
         },
         "top_speeds_mph": {
             "default": 98.25
@@ -42037,7 +42037,7 @@
             "default": 39
         },
         "lap_times": {
-            "default": "1:31.891"
+            "default": 91.89099999999999
         },
         "top_speeds_mph": {
             "default": 91.25
@@ -42091,7 +42091,7 @@
             "default": 31
         },
         "lap_times": {
-            "default": "1:18.277"
+            "default": 78.277
         },
         "top_speeds_mph": {
             "default": 98.75
@@ -42173,7 +42173,7 @@
             "default": 1
         },
         "lap_times": {
-            "default": "1:04.599"
+            "default": 64.599
         },
         "top_speeds_mph": {
             "default": 120.75
@@ -42255,7 +42255,7 @@
             "default": 9
         },
         "lap_times": {
-            "default": "1:06.801"
+            "default": 66.801
         },
         "top_speeds_mph": {
             "default": 124.25
@@ -42337,7 +42337,7 @@
             "default": 13
         },
         "lap_times": {
-            "default": "1:09.368"
+            "default": 69.368
         },
         "top_speeds_mph": {
             "default": 126.25
@@ -42446,7 +42446,7 @@
             "default": 10
         },
         "lap_times": {
-            "default": "1:07.768"
+            "default": 67.768
         },
         "top_speeds_mph": {
             "default": 113.75
@@ -42528,7 +42528,7 @@
             "default": 34
         },
         "lap_times": {
-            "default": "1:03.229"
+            "default": 63.229
         },
         "top_speeds_mph": {
             "default": 132.5
@@ -42630,7 +42630,7 @@
             "default": 42
         },
         "lap_times": {
-            "default": "1:04.964"
+            "default": 64.964
         },
         "top_speeds_mph": {
             "default": 124.75
@@ -42719,7 +42719,7 @@
             "default": 8
         },
         "lap_times": {
-            "default": "0:59.960"
+            "default": 59.96
         },
         "top_speeds_mph": {
             "default": 125.5
@@ -42801,7 +42801,7 @@
             "default": 41
         },
         "lap_times": {
-            "default": "1:04.565"
+            "default": 64.565
         },
         "top_speeds_mph": {
             "default": 131.0
@@ -42902,7 +42902,7 @@
             "default": 45
         },
         "lap_times": {
-            "default": "1:08.034"
+            "default": 68.034
         },
         "top_speeds_mph": {
             "default": 118.75
@@ -42991,7 +42991,7 @@
             "default": 35
         },
         "lap_times": {
-            "default": "1:03.530"
+            "default": 63.53
         },
         "top_speeds_mph": {
             "default": 120.25
@@ -43099,7 +43099,7 @@
             "default": 27
         },
         "lap_times": {
-            "default": "1:01.863"
+            "default": 61.863
         },
         "top_speeds_mph": {
             "default": 116.25
@@ -43181,7 +43181,7 @@
             "default": 10
         },
         "lap_times": {
-            "default": "1:00.261"
+            "default": 60.261
         },
         "top_speeds_mph": {
             "default": 131.75
@@ -43263,7 +43263,7 @@
             "default": 1
         },
         "lap_times": {
-            "default": "0:58.291"
+            "default": 58.291
         },
         "top_speeds_mph": {
             "default": 127.25
@@ -43345,7 +43345,7 @@
             "default": 29
         },
         "lap_times": {
-            "default": "1:02.323"
+            "default": 62.323
         },
         "top_speeds_mph": {
             "default": 121.5
@@ -43453,7 +43453,7 @@
             "default": 38
         },
         "lap_times": {
-            "default": "1:03.831"
+            "default": 63.831
         },
         "top_speeds_mph": {
             "default": 128.0
@@ -43535,7 +43535,7 @@
             "default": 17
         },
         "lap_times": {
-            "default": "1:01.195"
+            "default": 61.195
         },
         "top_speeds_mph": {
             "default": 120.75
@@ -43646,7 +43646,7 @@
             "default": 25
         },
         "lap_times": {
-            "default": "1:01.795"
+            "default": 61.795
         },
         "top_speeds_mph": {
             "default": 125.0
@@ -43748,7 +43748,7 @@
             "default": 20
         },
         "lap_times": {
-            "default": "1:01.294"
+            "default": 61.294
         },
         "top_speeds_mph": {
             "default": 122.0
@@ -43824,7 +43824,7 @@
             "default": 36
         },
         "lap_times": {
-            "default": "1:03.637"
+            "default": 63.637
         },
         "top_speeds_mph": {
             "default": 123.75
@@ -43906,7 +43906,7 @@
             "default": 33
         },
         "lap_times": {
-            "default": "1:02.929"
+            "default": 62.929
         },
         "top_speeds_mph": {
             "default": 117.75
@@ -44004,7 +44004,7 @@
             "default": 26
         },
         "lap_times": {
-            "default": "1:01.861"
+            "default": 61.861
         },
         "top_speeds_mph": {
             "default": 126.25
@@ -44086,7 +44086,7 @@
             "default": 32
         },
         "lap_times": {
-            "default": "1:02.797"
+            "default": 62.797
         },
         "top_speeds_mph": {
             "default": 127.0
@@ -44176,7 +44176,7 @@
             "default": 2
         },
         "lap_times": {
-            "default": "0:58.526"
+            "default": 58.526
         },
         "top_speeds_mph": {
             "default": 127.25
@@ -44258,7 +44258,7 @@
             "default": 24
         },
         "lap_times": {
-            "default": "1:01.495"
+            "default": 61.495
         },
         "top_speeds_mph": {
             "default": 126.5
@@ -44351,7 +44351,7 @@
             "default": 14
         },
         "lap_times": {
-            "default": "1:01.061"
+            "default": 61.061
         },
         "top_speeds_mph": {
             "default": 127.25
@@ -44429,7 +44429,7 @@
             "default": 22
         },
         "lap_times": {
-            "default": "1:01.394"
+            "default": 61.394
         },
         "top_speeds_mph": {
             "default": 122.0
@@ -44538,7 +44538,7 @@
             "default": 30
         },
         "lap_times": {
-            "default": "1:02.562"
+            "default": 62.562
         },
         "top_speeds_mph": {
             "default": 124.0
@@ -44620,7 +44620,7 @@
             "default": 6
         },
         "lap_times": {
-            "default": "0:59.727"
+            "default": 59.727
         },
         "top_speeds_mph": {
             "default": 123.5
@@ -44711,7 +44711,7 @@
             "default": 31
         },
         "lap_times": {
-            "default": "1:02.716"
+            "default": 62.716
         },
         "top_speeds_mph": {
             "default": 121.75
@@ -44813,7 +44813,7 @@
             "default": 3
         },
         "lap_times": {
-            "default": "0:59.526"
+            "default": 59.526
         },
         "top_speeds_mph": {
             "default": 124.5
@@ -44902,7 +44902,7 @@
             "default": 4
         },
         "lap_times": {
-            "default": "0:59.226"
+            "default": 59.226
         },
         "top_speeds_mph": {
             "default": 123.0
@@ -44984,7 +44984,7 @@
             "default": 37
         },
         "lap_times": {
-            "default": "1:03.664"
+            "default": 63.664
         },
         "top_speeds_mph": {
             "default": 120.75
@@ -45066,7 +45066,7 @@
             "default": 2
         },
         "lap_times": {
-            "default": "0:57.901"
+            "default": 57.901
         },
         "top_speeds_mph": {
             "default": 137.0
@@ -45148,7 +45148,7 @@
             "default": 40
         },
         "lap_times": {
-            "default": "1:04.364"
+            "default": 64.364
         },
         "top_speeds_mph": {
             "default": 117.25
@@ -45252,7 +45252,7 @@
             "default": 19
         },
         "lap_times": {
-            "default": "1:01.287"
+            "default": 61.287
         },
         "top_speeds_mph": {
             "default": 122.25
@@ -45361,7 +45361,7 @@
             "default": 43
         },
         "lap_times": {
-            "default": "1:05.794"
+            "default": 65.794
         },
         "top_speeds_mph": {
             "default": 126.25
@@ -45443,7 +45443,7 @@
             "default": 11
         },
         "lap_times": {
-            "default": "1:00.803"
+            "default": 60.803
         },
         "top_speeds_mph": {
             "default": 121.25
@@ -45525,7 +45525,7 @@
             "default": 18
         },
         "lap_times": {
-            "default": "1:01.229"
+            "default": 61.229
         },
         "top_speeds_mph": {
             "default": 125.5
@@ -45607,7 +45607,7 @@
             "default": 5
         },
         "lap_times": {
-            "default": "0:59.261"
+            "default": 59.261
         },
         "top_speeds_mph": {
             "default": 124.0
@@ -45689,7 +45689,7 @@
             "default": 9
         },
         "lap_times": {
-            "default": "1:00.027"
+            "default": 60.027
         },
         "top_speeds_mph": {
             "default": 125.75
@@ -45765,7 +45765,7 @@
             "default": 28
         },
         "lap_times": {
-            "default": "1:01.998"
+            "default": 61.998
         },
         "top_speeds_mph": {
             "default": 121.75
@@ -45873,7 +45873,7 @@
             "default": 21
         },
         "lap_times": {
-            "default": "1:01.363"
+            "default": 61.363
         },
         "top_speeds_mph": {
             "default": 127.0
@@ -45963,7 +45963,7 @@
             "default": 23
         },
         "lap_times": {
-            "default": "1:01.428"
+            "default": 61.428
         },
         "top_speeds_mph": {
             "default": 123.5
@@ -46067,7 +46067,7 @@
             "default": 39
         },
         "lap_times": {
-            "default": "1:03.964"
+            "default": 63.964
         },
         "top_speeds_mph": {
             "default": 120.25
@@ -46165,7 +46165,7 @@
             "default": 3
         },
         "lap_times": {
-            "default": "0:59.194"
+            "default": 59.194
         },
         "top_speeds_mph": {
             "default": 126.75
@@ -46247,7 +46247,7 @@
             "default": 1
         },
         "lap_times": {
-            "default": "0:56.425"
+            "default": 56.425
         },
         "top_speeds_mph": {
             "default": 147.0
@@ -46329,7 +46329,7 @@
             "default": 15
         },
         "lap_times": {
-            "default": "1:01.062"
+            "default": 61.062
         },
         "top_speeds_mph": {
             "default": 125.25
@@ -46411,7 +46411,7 @@
             "default": 44
         },
         "lap_times": {
-            "default": "1:05.798"
+            "default": 65.798
         },
         "top_speeds_mph": {
             "default": 106.0
@@ -46527,7 +46527,7 @@
             "default": 16
         },
         "lap_times": {
-            "default": "1:01.175"
+            "default": 61.175
         },
         "top_speeds_mph": {
             "default": 127.5
@@ -46629,7 +46629,7 @@
             "default": 7
         },
         "lap_times": {
-            "default": "0:59.927"
+            "default": 59.927
         },
         "top_speeds_mph": {
             "default": 122.5
@@ -46711,7 +46711,7 @@
             "default": 12
         },
         "lap_times": {
-            "default": "1:00.960"
+            "default": 60.96
         },
         "top_speeds_mph": {
             "default": 122.0
@@ -46819,7 +46819,7 @@
             "default": 13
         },
         "lap_times": {
-            "default": "1:01.028"
+            "default": 61.028
         },
         "top_speeds_mph": {
             "default": 124.25
@@ -46901,7 +46901,7 @@
             "default": 9
         },
         "lap_times": {
-            "default": "1:14.108"
+            "default": 74.108
         },
         "top_speeds_mph": {
             "default": 108.25
@@ -46990,7 +46990,7 @@
             "default": 29
         },
         "lap_times": {
-            "default": "1:20.314"
+            "default": 80.314
         },
         "top_speeds_mph": {
             "default": 100.0
@@ -47044,7 +47044,7 @@
             "default": 7
         },
         "lap_times": {
-            "default": "1:13.906"
+            "default": 73.906
         },
         "top_speeds_mph": {
             "default": 108.75
@@ -47126,7 +47126,7 @@
             "default": 8
         },
         "lap_times": {
-            "default": "1:14.048"
+            "default": 74.048
         },
         "top_speeds_mph": {
             "default": 108.25
@@ -47208,7 +47208,7 @@
             "default": 10
         },
         "lap_times": {
-            "default": "1:14.735"
+            "default": 74.735
         },
         "top_speeds_mph": {
             "default": 108.25
@@ -47290,7 +47290,7 @@
             "default": 11
         },
         "lap_times": {
-            "default": "1:14.847"
+            "default": 74.847
         },
         "top_speeds_mph": {
             "default": 107.75
@@ -47372,7 +47372,7 @@
             "default": 26
         },
         "lap_times": {
-            "default": "1:19.547"
+            "default": 79.547
         },
         "top_speeds_mph": {
             "default": 96.75
@@ -47461,7 +47461,7 @@
             "default": 27
         },
         "lap_times": {
-            "default": "1:19.908"
+            "default": 79.908
         },
         "top_speeds_mph": {
             "default": 98.0
@@ -47550,7 +47550,7 @@
             "default": 28
         },
         "lap_times": {
-            "default": "1:19.914"
+            "default": 79.914
         },
         "top_speeds_mph": {
             "default": 98.0
@@ -47604,7 +47604,7 @@
             "default": 4
         },
         "lap_times": {
-            "default": "1:09.536"
+            "default": 69.536
         },
         "top_speeds_mph": {
             "default": 109.0
@@ -47686,7 +47686,7 @@
             "default": 20
         },
         "lap_times": {
-            "default": "1:17.544"
+            "default": 77.544
         },
         "top_speeds_mph": {
             "default": 102.0
@@ -47778,7 +47778,7 @@
             "default": 24
         },
         "lap_times": {
-            "default": "1:18.978"
+            "default": 78.97800000000001
         },
         "top_speeds_mph": {
             "default": 102.0
@@ -47832,7 +47832,7 @@
             "default": 23
         },
         "lap_times": {
-            "default": "1:18.880"
+            "default": 78.88
         },
         "top_speeds_mph": {
             "default": 104.0
@@ -47886,7 +47886,7 @@
             "default": 15
         },
         "lap_times": {
-            "default": "1:16.277"
+            "default": 76.277
         },
         "top_speeds_mph": {
             "default": 101.5
@@ -47975,7 +47975,7 @@
             "default": 25
         },
         "lap_times": {
-            "default": "1:19.047"
+            "default": 79.047
         },
         "top_speeds_mph": {
             "default": 100.75
@@ -48064,7 +48064,7 @@
             "default": 22
         },
         "lap_times": {
-            "default": "1:18.345"
+            "default": 78.345
         },
         "top_speeds_mph": {
             "default": 104.75
@@ -48153,7 +48153,7 @@
             "default": 6
         },
         "lap_times": {
-            "default": "1:12.703"
+            "default": 72.703
         },
         "top_speeds_mph": {
             "default": 108.25
@@ -48242,7 +48242,7 @@
             "default": 21
         },
         "lap_times": {
-            "default": "1:17.878"
+            "default": 77.878
         },
         "top_speeds_mph": {
             "default": 99.25
@@ -48331,7 +48331,7 @@
             "default": 17
         },
         "lap_times": {
-            "default": "1:16.577"
+            "default": 76.577
         },
         "top_speeds_mph": {
             "default": 100.75
@@ -48407,7 +48407,7 @@
             "default": 30
         },
         "lap_times": {
-            "default": "1:20.482"
+            "default": 80.482
         },
         "top_speeds_mph": {
             "default": 95.0
@@ -48489,7 +48489,7 @@
             "default": 2
         },
         "lap_times": {
-            "default": "1:06.500"
+            "default": 66.5
         },
         "top_speeds_mph": {
             "default": 126.0
@@ -48571,7 +48571,7 @@
             "default": 32
         },
         "lap_times": {
-            "default": "1:23.451"
+            "default": 83.451
         },
         "top_speeds_mph": {
             "default": 98.25
@@ -48660,7 +48660,7 @@
             "default": 33
         },
         "lap_times": {
-            "default": "1:24.851"
+            "default": 84.851
         },
         "top_speeds_mph": {
             "default": 96.25
@@ -48742,7 +48742,7 @@
             "default": 12
         },
         "lap_times": {
-            "default": "1:14.906"
+            "default": 74.906
         },
         "top_speeds_mph": {
             "default": 104.5
@@ -48831,7 +48831,7 @@
             "default": 3
         },
         "lap_times": {
-            "default": "1:06.700"
+            "default": 66.7
         },
         "top_speeds_mph": {
             "default": 123.5
@@ -48907,7 +48907,7 @@
             "default": 14
         },
         "lap_times": {
-            "default": "1:15.909"
+            "default": 75.909
         },
         "top_speeds_mph": {
             "default": 107.5
@@ -48996,7 +48996,7 @@
             "default": 31
         },
         "lap_times": {
-            "default": "1:20.982"
+            "default": 80.982
         },
         "top_speeds_mph": {
             "default": 97.5
@@ -49085,7 +49085,7 @@
             "default": 19
         },
         "lap_times": {
-            "default": "1:17.079"
+            "default": 77.07900000000001
         },
         "top_speeds_mph": {
             "default": 100.0
@@ -49161,7 +49161,7 @@
             "default": 16
         },
         "lap_times": {
-            "default": "1:16.376"
+            "default": 76.376
         },
         "top_speeds_mph": {
             "default": 101.5
@@ -49250,7 +49250,7 @@
             "default": 18
         },
         "lap_times": {
-            "default": "1:16.678"
+            "default": 76.678
         },
         "top_speeds_mph": {
             "default": 101.75
@@ -49326,7 +49326,7 @@
             "default": 1
         },
         "lap_times": {
-            "default": "1:04.865"
+            "default": 64.865
         },
         "top_speeds_mph": {
             "default": 127.5
@@ -49408,7 +49408,7 @@
             "default": 13
         },
         "lap_times": {
-            "default": "1:15.775"
+            "default": 75.775
         },
         "top_speeds_mph": {
             "default": 106.0
@@ -49490,7 +49490,7 @@
             "default": 5
         },
         "lap_times": {
-            "default": "1:11.539"
+            "default": 71.539
         },
         "top_speeds_mph": {
             "default": 108.25
@@ -49572,7 +49572,7 @@
             "default": 17
         },
         "lap_times": {
-            "default": "3:25.541"
+            "default": 205.541
         },
         "top_speeds_mph": {
             "default": 29.25
@@ -49656,7 +49656,7 @@
             "default": 6
         },
         "lap_times": {
-            "default": "1:40.435"
+            "default": 100.435
         },
         "top_speeds_mph": {
             "default": 67.0
@@ -49738,7 +49738,7 @@
             "default": 14
         },
         "lap_times": {
-            "default": "2:07.979"
+            "default": 127.979
         },
         "top_speeds_mph": {
             "default": 48.25
@@ -49792,7 +49792,7 @@
             "default": 7
         },
         "lap_times": {
-            "default": "1:40.758"
+            "default": 100.75800000000001
         },
         "top_speeds_mph": {
             "default": 67.0
@@ -49846,7 +49846,7 @@
             "default": 13
         },
         "lap_times": {
-            "default": "1:58.584"
+            "default": 118.584
         },
         "top_speeds_mph": {
             "default": 56.0
@@ -49930,7 +49930,7 @@
             "default": 16
         },
         "lap_times": {
-            "default": "2:52.074"
+            "default": 172.074
         },
         "top_speeds_mph": {
             "default": 33.25
@@ -49991,7 +49991,7 @@
             "default": 15
         },
         "lap_times": {
-            "default": "2:49.516"
+            "default": 169.516
         },
         "top_speeds_mph": {
             "default": 35.5
@@ -50075,7 +50075,7 @@
             "default": 19
         },
         "lap_times": {
-            "default": "6:36.636"
+            "default": 396.636
         },
         "top_speeds_mph": {
             "default": 14.75
@@ -50159,7 +50159,7 @@
             "default": 3
         },
         "lap_times": {
-            "default": "1:32.602"
+            "default": 92.602
         },
         "top_speeds_mph": {
             "default": 88.5
@@ -50222,7 +50222,7 @@
             "default": 12
         },
         "lap_times": {
-            "default": "1:58.164"
+            "default": 118.164
         },
         "top_speeds_mph": {
             "default": 55.5
@@ -50306,7 +50306,7 @@
             "default": 1
         },
         "lap_times": {
-            "default": "1:19.113"
+            "default": 79.113
         },
         "top_speeds_mph": {
             "default": 100.0
@@ -50367,7 +50367,7 @@
             "default": 11
         },
         "lap_times": {
-            "default": "1:46.131"
+            "default": 106.131
         },
         "top_speeds_mph": {
             "default": 77.75
@@ -50451,7 +50451,7 @@
             "default": 2
         },
         "lap_times": {
-            "default": "1:30.326"
+            "default": 90.326
         },
         "top_speeds_mph": {
             "default": 98.75
@@ -50527,7 +50527,7 @@
             "default": 5
         },
         "lap_times": {
-            "default": "1:37.262"
+            "default": 97.262
         },
         "top_speeds_mph": {
             "default": 81.75
@@ -50581,7 +50581,7 @@
             "default": 4
         },
         "lap_times": {
-            "default": "1:32.792"
+            "default": 92.792
         },
         "top_speeds_mph": {
             "default": 85.75
@@ -50635,7 +50635,7 @@
             "default": 18
         },
         "lap_times": {
-            "default": "3:28.840"
+            "default": 208.84
         },
         "top_speeds_mph": {
             "default": 28.5
@@ -50712,7 +50712,7 @@
             "default": 9
         },
         "lap_times": {
-            "default": "1:42.092"
+            "default": 102.092
         },
         "top_speeds_mph": {
             "default": 77.0
@@ -50796,7 +50796,7 @@
             "default": 10
         },
         "lap_times": {
-            "default": "1:44.637"
+            "default": 104.637
         },
         "top_speeds_mph": {
             "default": 77.0
@@ -50850,7 +50850,7 @@
             "default": 8
         },
         "lap_times": {
-            "default": "1:41.100"
+            "default": 101.1
         },
         "top_speeds_mph": {
             "default": 77.0
@@ -50904,7 +50904,7 @@
             "default": 1
         },
         "lap_times": {
-            "default": "1:21.568"
+            "default": 81.568
         },
         "top_speeds_mph": {
             "default": 87.0
@@ -50986,7 +50986,7 @@
             "default": 4
         },
         "lap_times": {
-            "default": "1:19.913"
+            "default": 79.913
         },
         "top_speeds_mph": {
             "default": 98.5
@@ -51070,7 +51070,7 @@
             "default": 12
         },
         "lap_times": {
-            "default": "1:25.219"
+            "default": 85.219
         },
         "top_speeds_mph": {
             "default": 95.5
@@ -51159,7 +51159,7 @@
             "default": 19
         },
         "lap_times": {
-            "default": "1:47.676"
+            "default": 107.676
         },
         "top_speeds_mph": {
             "default": 71.25
@@ -51241,7 +51241,7 @@
             "default": 8
         },
         "lap_times": {
-            "default": "1:23.052"
+            "default": 83.05199999999999
         },
         "top_speeds_mph": {
             "default": 98.25
@@ -51324,7 +51324,7 @@
             "default": 2
         },
         "lap_times": {
-            "default": "1:27.882"
+            "default": 87.882
         },
         "top_speeds_mph": {
             "default": 90.75
@@ -51385,7 +51385,7 @@
             "default": 17
         },
         "lap_times": {
-            "default": "1:44.940"
+            "default": 104.94
         },
         "top_speeds_mph": {
             "default": 72.75
@@ -51469,7 +51469,7 @@
             "default": 14
         },
         "lap_times": {
-            "default": "1:26.888"
+            "default": 86.888
         },
         "top_speeds_mph": {
             "default": 94.75
@@ -51530,7 +51530,7 @@
             "default": 2
         },
         "lap_times": {
-            "default": "1:17.510"
+            "default": 77.51
         },
         "top_speeds_mph": {
             "default": 105.25
@@ -51612,7 +51612,7 @@
             "default": 3
         },
         "lap_times": {
-            "default": "1:27.896"
+            "default": 87.896
         },
         "top_speeds_mph": {
             "default": 90.75
@@ -51666,7 +51666,7 @@
             "default": 18
         },
         "lap_times": {
-            "default": "1:45.941"
+            "default": 105.941
         },
         "top_speeds_mph": {
             "default": 74.25
@@ -51755,7 +51755,7 @@
             "default": 11
         },
         "lap_times": {
-            "default": "1:23.716"
+            "default": 83.71600000000001
         },
         "top_speeds_mph": {
             "default": 94.75
@@ -51853,7 +51853,7 @@
             "default": 5
         },
         "lap_times": {
-            "default": "1:21.277"
+            "default": 81.277
         },
         "top_speeds_mph": {
             "default": 95.5
@@ -51938,7 +51938,7 @@
             "default": 10
         },
         "lap_times": {
-            "default": "1:23.451"
+            "default": 83.451
         },
         "top_speeds_mph": {
             "default": 99.25
@@ -52048,7 +52048,7 @@
             "default": 13
         },
         "lap_times": {
-            "default": "1:26.686"
+            "default": 86.686
         },
         "top_speeds_mph": {
             "default": 90.5
@@ -52132,7 +52132,7 @@
             "default": 9
         },
         "lap_times": {
-            "default": "1:23.383"
+            "default": 83.383
         },
         "top_speeds_mph": {
             "default": 99.25
@@ -52216,7 +52216,7 @@
             "default": 1
         },
         "lap_times": {
-            "default": "1:17.410"
+            "default": 77.41
         },
         "top_speeds_mph": {
             "default": 98.75
@@ -52298,7 +52298,7 @@
             "default": 15
         },
         "lap_times": {
-            "default": "1:26.904"
+            "default": 86.904
         },
         "top_speeds_mph": {
             "default": 94.75
@@ -52375,7 +52375,7 @@
             "default": 3
         },
         "lap_times": {
-            "default": "1:19.313"
+            "default": 79.313
         },
         "top_speeds_mph": {
             "default": 103.5
@@ -52460,7 +52460,7 @@
             "default": 21
         },
         "lap_times": {
-            "default": "1:49.522"
+            "default": 109.52199999999999
         },
         "top_speeds_mph": {
             "default": 67.25
@@ -52544,7 +52544,7 @@
             "default": 20
         },
         "lap_times": {
-            "default": "1:48.404"
+            "default": 108.404
         },
         "top_speeds_mph": {
             "default": 71.0
@@ -52628,7 +52628,7 @@
             "default": 7
         },
         "lap_times": {
-            "default": "1:23.007"
+            "default": 83.007
         },
         "top_speeds_mph": {
             "default": 96.5
@@ -52717,7 +52717,7 @@
             "default": 16
         },
         "lap_times": {
-            "default": "1:30.056"
+            "default": 90.056
         },
         "top_speeds_mph": {
             "default": 91.0
@@ -52808,7 +52808,7 @@
             "default": 6
         },
         "lap_times": {
-            "default": "1:21.482"
+            "default": 81.482
         },
         "top_speeds_mph": {
             "default": 95.5

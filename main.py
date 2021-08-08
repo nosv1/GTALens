@@ -68,12 +68,12 @@ async def on_message(message):
 
         elif args[1].lower() in vehicles.ALIASES:  # Car Lookup
             vehicle = vehicles.get_vehicle(" ".join(args[2:]))
-            msg = await vehicle.send_vehicle(message, client)
+            msg = await vehicles.send_vehicle(vehicle, message, client)
 
         elif args[1].lower() == "invite":  # send invite link
             embed = discord.Embed(
                 colour=discord.Colour(Support.GTALENS_ORANGE),
-                title="Invite GTALens to your server!",
+                title="**Invite GTALens to your server!**",
                 description=INVITE_LINK,
             )
 
@@ -101,6 +101,60 @@ async def on_raw_message_edit(payload):
 
         if "id" in payload:
             await on_message(await channel.fetch_message(payload["id"]))
+
+
+@client.event
+async def on_reaction_add(reaction, user):
+    message = reaction.message
+
+    if user.id != client.user.id:  # not GTALens reaction
+
+        if message.author.id == client.user.id:  # is GTALens message
+
+            logger.info(f"Reacted to GTALens: {reaction.emoji}")
+
+            if message.embeds:  # is an embed
+                embed = message.embeds[0]
+
+                if embed.description:  # has description
+
+                    if 'embed_meta' in embed.description:  # has info about the embed
+
+                        embed_meta = embed.description.split("embed_meta/")[1]
+                        embed_type = embed_meta.split("type=")[1].split("/")[0]
+
+                        if embed_type == "vehicle":  # is vehicle embed
+                            await vehicles.on_reaction_add(message, reaction, user, client, embed_meta)
+
+
+@client.event
+async def on_reaction_remove(reaction, user):
+    print('yes')
+    message = reaction.message
+
+    if user.id != client.user.id:  # not GTALens reaction
+
+        if message.author.id == client.user.id:  # is GTALens message
+
+            logger.info(f"Un-reacted to GTALens: {reaction.emoji}")
+
+            if message.embeds:  # is an embed
+                embed = message.embeds[0]
+
+                if embed.description:  # has description
+
+                    if 'embed_meta' in embed.description:  # has info about the embed
+
+                        embed_meta = embed.description.split("embed_meta/")[1]
+                        embed_type = embed_meta.split("type=")[1].split("/")[0]
+
+                        if embed_type == "vehicle":  # is vehicle embed
+                            await vehicles.on_reaction_remove(message, reaction, user, client, embed_meta)
+
+
+@client.event
+async def on_raw_reaction_remove(payload):
+    print('yes')
 
 
 @client.event
