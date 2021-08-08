@@ -3,10 +3,10 @@ import logging
 import os
 import re
 
-import jobs
+import Jobs
 import Support
-from tasks import update_status
-import vehicles
+from Tasks import update_status
+import Vehicles
 
 from dotenv import load_dotenv
 
@@ -62,13 +62,13 @@ async def on_message(message):
             for emoji in message.guild.emojis:
                 print(emoji.name)
 
-        elif args[1].lower() in jobs.ALIASES:  # Track Lookup
-            job = jobs.get_job(args[2])
+        elif args[1].lower() in Jobs.ALIASES:  # Track Lookup
+            job = Jobs.get_job(args[2])
             msg = await job.send_job_embed(message)
 
-        elif args[1].lower() in vehicles.ALIASES:  # Car Lookup
-            vehicle = vehicles.get_vehicle(" ".join(args[2:]))
-            msg = await vehicles.send_vehicle(vehicle, message, client)
+        elif args[1].lower() in Vehicles.ALIASES:  # Car Lookup
+            vehicle = Vehicles.get_vehicle(" ".join(args[2:]))
+            msg = await Vehicles.send_vehicle(vehicle, message, client)
 
         elif args[1].lower() == "invite":  # send invite link
             embed = discord.Embed(
@@ -124,7 +124,7 @@ async def on_reaction_add(reaction, user):
                         embed_type = embed_meta.split("type=")[1].split("/")[0]
 
                         if embed_type == "vehicle":  # is vehicle embed
-                            await vehicles.on_reaction_add(message, reaction, user, client, embed_meta)
+                            await Vehicles.on_reaction_add(message, reaction, user, client, embed_meta)
 
 
 @client.event
@@ -149,7 +149,7 @@ async def on_reaction_remove(reaction, user):
                         embed_type = embed_meta.split("type=")[1].split("/")[0]
 
                         if embed_type == "vehicle":  # is vehicle embed
-                            await vehicles.on_reaction_remove(message, reaction, user, client, embed_meta)
+                            await Vehicles.on_reaction_remove(message, reaction, user, client, embed_meta)
 
 
 @client.event
