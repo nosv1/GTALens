@@ -64,11 +64,11 @@ async def on_message(message):
 
         elif args[1].lower() in Jobs.ALIASES:  # Track Lookup
             job = Jobs.get_job(args[2])
-            msg = await job.send_job_embed(message)
+            await job.send_job_embed(message)
 
         elif args[1].lower() in Vehicles.ALIASES:  # Car Lookup
             vehicle = Vehicles.get_vehicle(" ".join(args[2:]))
-            msg = await Vehicles.send_vehicle(vehicle, message, client)
+            await Vehicles.send_vehicle(vehicle, message, client)
 
         elif args[1].lower() == "invite":  # send invite link
             embed = discord.Embed(
@@ -77,8 +77,11 @@ async def on_message(message):
                 description=INVITE_LINK,
             )
 
+            await message.channel.send(embed=embed)
+
         else:
             embed = discord.Embed(
+                color=discord.Colour(Support.GTALENS_ORANGE),
                 title="**Coming Soon**",
                 description="The GTALens discord bot will replace the MoBot functionality of searching for cars and "
                 "jobs, as well as, providing other useful GTA V related features. Currently, the [GTALens]("
@@ -102,6 +105,8 @@ async def on_raw_message_edit(payload):
         if "id" in payload:
             await on_message(await channel.fetch_message(payload["id"]))
 
+
+# TODO switch on on_raw_reactions, it's the only option
 
 @client.event
 async def on_reaction_add(reaction, user):
