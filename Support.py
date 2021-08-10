@@ -24,6 +24,29 @@ LETTERS_EMOJIS = {
     "s": "🇸", "t": "🇹", "u": "🇺", "v": "🇻", "w": "🇼", "x": "🇽", "y": "🇾", "z": "🇿"
 }
 
+# SCAPI
+SCAPI_HEADERS = {
+    "Host": "scapi.rockstargames.com",
+    # "Connection": "keep-alive",
+    # "sec-ch-ua": "Chromium";v="92", " Not A;Brand";v="99", "Google Chrome";v="92"
+    "DNT": "1",
+    # "sec-ch-ua-mobile": ?0
+    "Authorization": "None",
+    "X-AMC": "true",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36",
+    "X-Requested-With": "XMLHttpRequest",
+    "X-Lang": "en-US",
+    "X-Cache-Ver": "0",
+    "Accept": "*/*",
+    "Origin": "https://socialclub.rockstargames.com",
+    "Sec-Fetch-Site": "same-site",
+    "Sec-Fetch-Mode": "cors",
+    "Sec-Fetch-Dest": "empty",
+    "Referer": "https://socialclub.rockstargames.com/",
+    # "Accept-Encoding": gzip, deflate, br
+    # "Accept-Language": en-US,en;q=0.9
+}
+
 # RANDOM
 mph_to_kph = 1.61
 kph_to_mph = 0.62

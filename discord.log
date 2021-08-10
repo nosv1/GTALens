@@ -590,3 +590,8 @@
 2021-08-08 11:06:56.967:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
 2021-08-08 11:06:57.165:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-xhvr",{"micros":122731,"calls":["discord-sessions-green-prd-2-64",{"micros":120482,"calls":["start_session",{"micros":118307,"calls":["api-prd-main-50rq",{"micros":109650,"calls":["get_user",{"micros":10737},"add_authorized_ip",{"micros":9065},"get_guilds",{"micros":10611},"coros_wait",{"micros":2}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":1034,"calls":[]}]}]}] (Session ID: 94f18a44e966886dc1d248ecf39914a9).
 2021-08-08 11:06:58.966:INFO:discord: Message Content: .lens invite 
+2021-08-08 11:09:37.142:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-08 11:09:37.142:INFO:discord.client: Cleaning up tasks.
+2021-08-08 11:09:37.142:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-08 11:09:37.193:INFO:discord.client: All tasks finished cancelling.
+2021-08-08 11:09:37.193:INFO:discord.client: Closing the event loop.
