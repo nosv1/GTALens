@@ -1,5 +1,7 @@
+import aiohttp
 from datetime import datetime
 import gspread
+import json
 import re
 
 # COLORS
@@ -8,6 +10,7 @@ GTALENS_ORANGE = int(0xF03C00)
 
 # IDS
 GTALENS_GUILD_ID = 873054419636334633
+GTALENS_CLIENT_ID = 872899427457716234
 
 # CHARACTERS
 ZERO_WIDTH = chr(8203)  # or the thing in between the dashes -​-
@@ -50,6 +53,20 @@ SCAPI_HEADERS = {
 # RANDOM
 mph_to_kph = 1.61
 kph_to_mph = 0.62
+
+# GTALENS
+DONATE_LINK = "https://ko-fi.com/gtalens"
+GTALENS_LOGO = "https://gtalens.com/assets/images/logo-new.5336b3.png"
+INVITE_LINK = "https://discord.com/api/oauth2/authorize?client_id=872899427457716234&permissions=36507249728&scope=bot"
+"""
+    View Channels
+    Send Messages
+    Public Threads
+    Manage Messages
+    Embed Links
+    Add Reactions
+    Use Slash Commands
+"""
 
 
 # GSPREAD
@@ -110,4 +127,13 @@ def num_suffix(num: int) -> str:
     :return: ex. 2nd
     """
 
-    return f"{num}{'th' if 11 <= num <= 13 else {1:'st', 2:'nd', 3:'rd'}.get(num % 10, 'th')}"
+    return f"{num}{'th' if 11 <= num <= 13 else {1: 'st', 2: 'nd', 3: 'rd'}.get(num % 10, 'th')}"
+
+
+async def get_url(url: str, headers=None):
+    if headers is None:
+        headers = {}
+
+    async with aiohttp.ClientSession() as cs:
+        async with cs.get(url, headers=headers) as r:
+            return json.loads(await r.text())

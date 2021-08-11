@@ -3,3 +3,4 @@ requests~=2.26.0
 gspread~=4.0.0
 mysql~=0.0.3
 mysql-connector~=2.2.9
+aiohttp~=3.7.4.post0

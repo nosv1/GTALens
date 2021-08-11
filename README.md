@@ -11,3 +11,12 @@ pip install -r requirements.txt
 git clone https://github.com/Rapptz/discord.py  
 cd discord.py  
 python -m pip install -U .[voice]```  
+
+EDIT env/ difflib.get_close_matches 
+    for x in possibilities TO 
+    for i, x in enumerate(possibilities)
+    
+    AND
+    
+    result.append((s.ratio(), x)) TO
+    result.append((s.ratio(), i))

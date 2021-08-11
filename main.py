@@ -1,3 +1,5 @@
+import asyncio
+
 import discord
 import logging
 import os
@@ -12,18 +14,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Constants
-
-INVITE_LINK = "https://discord.com/api/oauth2/authorize?client_id=872899427457716234&permissions=36507241536&scope=bot"
-"""
-    View Channels
-    Send Messages
-    Public Threads
-    Embed Links
-    Add Reactions
-    Use Slash Commands
-"""
-
 # intents = discord.Intents.all()
 # client = discord.Client(intents=intents)
 client = discord.Client()
@@ -34,7 +24,7 @@ logger = logging.getLogger("discord")
 logger.setLevel(logging.INFO)
 
 formatter = logging.Formatter("%(asctime)s:%(levelname)s:%(name)s: %(message)s")
-formatter.default_msec_format = "%s.%03d"
+formatter.default_msec_format = "%s.%03d"  # the default uses %s,%03d pfft
 
 file_handler = logging.FileHandler(filename="discord.log", encoding="utf-8", mode="a+")
 file_handler.setFormatter(formatter)
@@ -49,50 +39,79 @@ logger.addHandler(console_handler)
 
 @client.event
 async def on_message(message):
+    await client.wait_until_ready()
+
     args, message_content = Support.get_args_from_content(message.content)
 
     if message.author == client.user:  # is GTALens
         return
 
     if args[0] == ".lens":  # command attempted
-
         logger.info(f"Message Content: {message_content}")
 
+        ''' COMMANDS  '''
+
         if args[1].lower() == "test":
-            for emoji in message.guild.emojis:
-                print(emoji.name)
+            await Jobs.add_sc_member_jobs(45653182)
 
-        elif args[1].lower() in Jobs.ALIASES:  # Track Lookup
-            job = Jobs.get_job(args[2])
-            await job.send_job_embed(message)
+            ''' TEST '''
 
-        elif args[1].lower() in Vehicles.ALIASES:  # Car Lookup
+        elif args[1].lower() in Jobs.ALIASES:
+
+            job_name = " ".join(args[2:-1])
+            possible_jobs = Jobs.get_possible_jobs(job_name)
+            await Jobs.send_possible_jobs(message, possible_jobs, job_name)
+
+            ''' TRACK LOOKUP '''
+
+        elif args[1].lower() in Vehicles.ALIASES:
+
             vehicle = Vehicles.get_vehicle(" ".join(args[2:]))
             await Vehicles.send_vehicle(vehicle, message, client)
 
+            ''' CAR LOOKUP '''
+
         elif args[1].lower() == "invite":  # send invite link
+
             embed = discord.Embed(
                 colour=discord.Colour(Support.GTALENS_ORANGE),
                 title="**Invite GTALens to your server!**",
-                description=INVITE_LINK,
+                description=Support.INVITE_LINK,
             )
 
             await message.channel.send(embed=embed)
+
+            ''' INVITE LINK '''
+
+        elif args[1].lower(0) == "donate":  # send donate link
+
+            embed = discord.Embed(
+                colour=discord.Colour(Support.GTALENS_ORANGE),
+                title="**Support the Developers!**",
+                description=f"[GTALens](https://gtalens.com) **|** [Donate]({Support.DONATE_LINK})"
+                            f"\n\nGTALens is a free resource, but it is not without its costs. "
+                            f"If you have a spare dollar, feel free to show your support <3."
+            )
+            await message.channel.send(embed=embed)
+
+            ''' DONATE LINK '''
 
         else:
             embed = discord.Embed(
                 color=discord.Colour(Support.GTALENS_ORANGE),
                 title="**Coming Soon**",
                 description="The GTALens discord bot will replace the MoBot functionality of searching for cars and "
-                "jobs, as well as, providing other useful GTA V related features. Currently, the [GTALens]("
-                "https://gtalens.com/) website needs some backend updates before this bot is available for "
-                "use.",
+                            "jobs, as well as, providing other useful GTA V related features. Currently, "
+                            "the [GTALens](https://gtalens.com/) website needs some backend updates "
+                            "before this bot is available for use.",
             )
             await message.channel.send(embed=embed)
 
 
 @client.event
 async def on_raw_message_edit(payload):
+    await client.wait_until_ready()
+
     payload: dict = payload.data
 
     if "channel_id" in payload:
@@ -106,17 +125,35 @@ async def on_raw_message_edit(payload):
             await on_message(await channel.fetch_message(payload["id"]))
 
 
-# TODO switch on on_raw_reactions, it's the only option
-
 @client.event
-async def on_reaction_add(reaction, user):
-    message = reaction.message
+async def on_raw_reaction_add(payload):
+    await client.wait_until_ready()
+
+    m = [m for m in client.cached_messages if m.id == payload.message_id]
+    message = m[0] if m else m
+
+    if not message:
+
+        # get channel
+        channel = client.get_channel(payload.channel_id)
+        if not channel:
+            channel = await client.fetch_channel(payload.channel_id)
+
+        # get message
+        message = await channel.fetch_message(payload.message_id)
+
+    # get user
+    user = client.get_user(payload.user_id)
+    if not user:
+        user = await client.fetch_user(payload.user_id)
+
+    emoji = payload.emoji.name
 
     if user.id != client.user.id:  # not GTALens reaction
 
         if message.author.id == client.user.id:  # is GTALens message
 
-            logger.info(f"Reacted to GTALens: {reaction.emoji}")
+            logger.info(f"Reacted to GTALens: {emoji}")
 
             if message.embeds:  # is an embed
                 embed = message.embeds[0]
@@ -129,37 +166,55 @@ async def on_reaction_add(reaction, user):
                         embed_type = embed_meta.split("type=")[1].split("/")[0]
 
                         if embed_type == "vehicle":  # is vehicle embed
-                            await Vehicles.on_reaction_add(message, reaction, user, client, embed_meta)
+                            await Vehicles.on_reaction_add(message, emoji, user, client, embed_meta)
 
-
-@client.event
-async def on_reaction_remove(reaction, user):
-    print('yes')
-    message = reaction.message
-
-    if user.id != client.user.id:  # not GTALens reaction
-
-        if message.author.id == client.user.id:  # is GTALens message
-
-            logger.info(f"Un-reacted to GTALens: {reaction.emoji}")
-
-            if message.embeds:  # is an embed
-                embed = message.embeds[0]
-
-                if embed.description:  # has description
-
-                    if 'embed_meta' in embed.description:  # has info about the embed
-
-                        embed_meta = embed.description.split("embed_meta/")[1]
-                        embed_type = embed_meta.split("type=")[1].split("/")[0]
-
-                        if embed_type == "vehicle":  # is vehicle embed
-                            await Vehicles.on_reaction_remove(message, reaction, user, client, embed_meta)
+                        if embed_type == "job":  # is job embed
+                            await Jobs.on_reaction_add(message, emoji, user, client, embed_meta)
 
 
 @client.event
 async def on_raw_reaction_remove(payload):
-    print('yes')
+    await client.wait_until_ready()
+
+    # check the cache before fetching the message
+    m = [m for m in client.cached_messages if m.id == payload.message_id]
+    message = m[0] if m else m
+
+    if not message:
+
+        # get channel
+        channel = client.get_channel(payload.channel_id)
+        if not channel:
+            channel = await client.fetch_channel(payload.channel_id)
+
+        # get message
+        message = await channel.fetch_message(payload.message_id)
+
+    # get user
+    user = client.get_user(payload.user_id)
+    if not user:
+        user = await client.fetch_user(payload.user_id)
+
+    emoji = payload.emoji.name
+
+    if user.id != client.user.id:  # not GTALens reaction
+
+        if message.author.id == client.user.id:  # is GTALens message
+
+            logger.info(f"Un-reacted to GTALens: {emoji}")
+
+            if message.embeds:  # is an embed
+                embed = message.embeds[0]
+
+                if embed.description:  # has description
+
+                    if 'embed_meta' in embed.description:  # has info about the embed
+
+                        embed_meta = embed.description.split("embed_meta/")[1]
+                        embed_type = embed_meta.split("type=")[1].split("/")[0]
+
+                        if embed_type == "vehicle":  # is vehicle embed
+                            await Vehicles.on_reaction_remove(message, emoji, user, client, embed_meta)
 
 
 @client.event
