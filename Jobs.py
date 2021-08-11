@@ -14,24 +14,73 @@ logger = logging.getLogger("discord")
 
 ALIASES = ["track", "job", "race"]
 
+WEATHER = [  # indices relate to what prod.cloud.rockstargames.com/ugs/mission provides
+    "current",
+    "☀️ bright",
+    "🌧️ raining",
+    "❄️ blizzard",
+    "🌫 smog",
+    "🎃 halloween",
+    "🔥 hell",
+    "☀ clear",
+    "☁️ clouds",
+    "☁️ overcast",
+    "⛈️ thunder",
+    "🌫️ foggy",
+]
+
+TIME_OF_DAY = [
+    'current',  # this is a guess
+    'morning',
+    'noon',
+    'night',
+]
+
+# FIXME there are more types than this... like P2P, but cba
+JOB_TYPE_CORRECTIONS = {
+    "StuntRace": "stunt race",
+    "OpenWheelRace": "open wheel race",
+    "PursuitRace": "pursuit race",
+    "StreetRace": "street race",
+    "ArenaWar": "arena war",
+    "TransformRace": "transform race",
+    "SpecialVehicleRace": "special vehicle race",
+    "TargetAssaultRace": "target assault race",
+    "AirRace": "air race",
+    "BikeRace": "bike race",
+    "LandRace": "land race",
+    "SeaRace": "sea race"
+}
+
 
 class Job:
     def __init__(
-        self,  # TODO add more attributes
-        gtalens_id: str = "",
-        rockstar_id: str = "",
-        name: str = "",
-        description: str = "",
-        last_updated: datetime = datetime.fromtimestamp(0),
-        thumbnail: list = [],  # [part1, part2]
-        likes: int = 0,
-        dislikes: int = 0,
-        quits: int = 0,
-        total_plays: int = 0,
-        unique_plays: int = 0,
-        rating: float = 0.0,
-        creator: Creators.Creator = Creators.Creator,
-        platform: str = "",
+            self,
+            gtalens_id: str = "",
+            rockstar_id: str = "",
+            name: str = "",
+            description: str = "",
+            added: datetime = datetime.fromtimestamp(0),
+            updated: datetime = datetime.fromtimestamp(0),
+            synced: datetime = datetime.fromtimestamp(0),
+
+
+            thumbnail: list = [],  # [part1, part2]
+            likes: int = 0,
+            dislikes: int = 0,
+            quits: int = 0,
+            total_plays: int = 0,
+            unique_plays: int = 0,
+            rating: float = 0.0,
+
+            creator: Creators.Creator = Creators.Creator,
+
+            platform: str = "",
+
+            job_type: str = "",
+            pedestrians: str = "",
+            time_of_day: str = "",
+            weather: str = "",
     ):
         self.gtalens_id = gtalens_id
         self.rockstar_id = rockstar_id
@@ -41,7 +90,9 @@ class Job:
             f"https://prod.cloud.rockstargames.com/ugc/gta5mission/"
             f"{thumbnail[0]}/{self.rockstar_id}/{thumbnail[1]}.jpg"
         ) if thumbnail else Support.GTALENS_LOGO
-        self.last_updated = last_updated
+        self.added = added
+        self.updated = updated
+        self.synced = synced
 
         self.likes = likes
         self.dislikes = dislikes
@@ -54,6 +105,10 @@ class Job:
 
         self.platform = platform
 
+        self.job_type = job_type
+        self.pedestrians = pedestrians
+        self.time_of_day = time_of_day
+        self.weather = weather
 
 async def on_reaction_add(
         msg: discord.Message,
@@ -88,7 +143,7 @@ def get_jobs():
         rockstar_id=j[0],
         name=j[1],
         platform=j[2],
-        last_updated=datetime.strptime(j[3], "%Y-%m-%dT%H:%M:%S"),
+        updated=datetime.strptime(j[3], "%Y-%m-%dT%H:%M:%S"),
         creator=Creators.Creator(_id=j[4]),
     ) for j in db.cursor.fetchall()]
 
@@ -112,7 +167,9 @@ async def get_job(job_id: str) -> Job:
         rockstar_id=job_dict["jobCurrId"],
         name=job_dict["name"],
         description=job_dict["desc"],
-        last_updated=datetime.strptime(job_dict["upD"], "%Y-%m-%dT%H:%M:%S.%fZ"),
+        added=datetime.strptime(job_dict["adD"], "%Y-%m-%dT%H:%M:%S.%fZ"),
+        updated=datetime.strptime(job_dict["upD"], "%Y-%m-%dT%H:%M:%S.%fZ"),
+        synced=datetime.strptime(job_dict["fD"], "%Y-%m-%dT%H:%M:%S.%fZ"),
         thumbnail=job_dict["img"].split("."),
         likes=job_dict["stats"]["lk"],
         dislikes=job_dict["stats"]["dlk"],
@@ -133,6 +190,8 @@ async def get_job(job_id: str) -> Job:
 
         r_json = await Support.get_url(url, headers=Support.SCAPI_HEADERS)
 
+        job.job_type = JOB_TYPE_CORRECTIONS[r_json['content']['type']]
+
         for id_version in range(100):  # id_version is the number of saves before publish
 
             for lang in [
@@ -148,6 +207,9 @@ async def get_job(job_id: str) -> Job:
                     r_json = await Support.get_url(url)
 
                     if r_json:
+                        job.pedestrians = 'off' if r_json['mission']['rule']['apeds'] else 'on'
+                        job.weather = WEATHER[r_json['mission']['rule']['weth']]
+                        job.time_of_day = TIME_OF_DAY[r_json['mission']['rule']['tod']]
                         break
 
                 if r_json:
@@ -169,8 +231,6 @@ async def add_sc_member_jobs(sc_member_id: str) -> None:
     sql = f"DELETE FROM jobs WHERE creator_id = '{sc_member_id}'"
     db.cursor.execute(sql)
     db.connection.commit()
-
-    headers = Support.SCAPI_HEADERS
 
     for platform in [
         "ps4",
@@ -200,7 +260,7 @@ async def add_sc_member_jobs(sc_member_id: str) -> None:
 
                         sql = f"""
                             INSERT IGNORE INTO jobs (
-                                _id, name, platform, last_updated, creator_id
+                                _id, name, platform, updated, creator_id
                             ) VALUES (
                                 '{job['id']}', 
                                 '{replace_chars(job['name'])}',
@@ -293,7 +353,7 @@ async def send_job(message: discord.Message, job: Job):
         description=f"\n[GTALens](https://gtalens.com/job/{job.gtalens_id}) **|** "
                     f"[R*SC](https://socialclub.rockstargames.com/job/gtav/{job.rockstar_id}) **|** "
                     f"[Donate](https://ko-fi.com/gtalens)"
-                    f"\n\n**Creator**: [{job.creator.name}](https://gtalens.com/profile/{job.creator.id})"
+                    f"\n\n**Creator:** [{job.creator.name}](https://gtalens.com/profile/{job.creator.id})"
                     f"\n*{job.description}*"
                     f"\n{Support.SPACE_CHAR}"
                     
@@ -306,24 +366,33 @@ async def send_job(message: discord.Message, job: Job):
               f"\n**Dislikes:** {job.dislikes} *+{job.quits}*"
               f"\n**Plays:** {job.total_plays}"
               f"\n**Unique:** {job.unique_plays}"
-              f"\n{Support.SPACE_CHAR}",
-        inline=False
+              f"\n{Support.SPACE_CHAR}"
     )
 
-    # TODO settings field
-
-    # embed.add_field(
-    #     name="**__Settings__**",
-    #     value=f"{job.type}"  # race type, land/stunt...
-    #           f"{job.time_of_day} - {job.weather}"
-    #           f"\n{Support.SPACE_CHAR}",
-    #     inline=False
-    # )
+    embed.add_field(
+        name="**__Settings__**",
+        value=f"**Type:** {job.job_type.title()}"  # job type, land/stunt...
+              # f"\n**Mode:** {}"
+              f"\n**Pedestrians:** {job.pedestrians.title()}"
+              f"\n**Time:** {job.time_of_day.title()}"
+              f"\n**Weather:** {job.weather.title()}"
+              # TODO .lens weather
+              # f"\n{' `.lens weather`' if job.weather == 'current' else ''}" # must be last line cause \n
+              f"\n{Support.SPACE_CHAR}"
+    )
 
     # TODO trending field?
+    embed.add_field(
+        name="**__Trending__**",
+        value="*Coming soon!*"
+    )
 
     embed.set_thumbnail(url=job.thumbnail)
-    embed.set_footer(text=f"Updated: {job.last_updated.strftime('%d %b %Y')}")
+    embed.set_footer(
+        text=f"Updated: {Support.smart_day_time_format('{S} %b %Y', job.updated)} | "
+             f"Added: {Support.smart_day_time_format('{S} %b %Y', job.added)} | "
+             f"Synced: {Support.smart_day_time_format('{S} %b %Y', job.synced)}"
+    )
 
     if message.author.id != Support.GTALENS_CLIENT_ID:
         return await message.channel.send(embed=embed)
