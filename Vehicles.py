@@ -507,7 +507,7 @@ async def send_vehicle(
         else:
             lap_time_str = "-"
 
-    top_speed_str = ""  # 123mph / 123kph
+    top_speed_str = ""  # 123mph
     if len(vehicle.top_speeds_mph) > 1:  # has variants
         top_speeds = list(vehicle.top_speeds_mph.values())[1:]
         avg_top_speed = sum(top_speeds) / len(top_speeds)
@@ -541,8 +541,7 @@ async def send_vehicle(
               f"\n**Top Speed:** {top_speed_str}"
               f"{flags_bouncy_str}"
               f"{flags_engine_str}"
-              f"\n{Support.SPACE_CHAR}",
-        inline=True,
+              f"\n{Support.SPACE_CHAR}"
     )
 
     # Performance Improvements
@@ -553,8 +552,7 @@ async def send_vehicle(
               f"\n**Suspension:** {vehicle.suspension.replace(Support.HEAVY_CHECKMARK, Support.BALLOT_CHECKMARK)}"
               f"\n**Boost:** {vehicle.boost.replace(Support.HEAVY_CHECKMARK, Support.BALLOT_CHECKMARK)}"
               f"\n**Drift Tyres:** {vehicle.drift_tyres.replace(Support.HEAVY_CHECKMARK, Support.BALLOT_CHECKMARK)}"
-              f"\n{Support.SPACE_CHAR}",
-        inline=True,
+              f"\n{Support.SPACE_CHAR}"
     )
 
     # Buying, Storing & Upgrading
@@ -564,8 +562,7 @@ async def send_vehicle(
               f"\n**Cost:** {vehicle.cost}"
               f"\n**Storage:** {vehicle.storage}"
               f"\n**Upgrade:** {vehicle.upgrade}"
-              f"\n{Support.SPACE_CHAR}",
-        inline=True,
+              f"\n{Support.SPACE_CHAR}"
     )
 
     image_name_conversion = {
