@@ -1731,3 +1731,187 @@ aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host discord.c
 2021-08-11 13:50:56.607:INFO:discord.client: Cleaning up after 3 tasks.
 2021-08-11 13:50:56.655:INFO:discord.client: All tasks finished cancelling.
 2021-08-11 13:50:56.655:INFO:discord.client: Closing the event loop.
+2021-08-11 13:55:42.423:INFO:discord.client: logging in using static token
+2021-08-11 13:55:42.818:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-11 13:55:42.946:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-b899",{"micros":54361,"calls":["discord-sessions-blue-prd-2-154",{"micros":53463,"calls":["start_session",{"micros":36728,"calls":["api-prd-main-nh76",{"micros":32812,"calls":["get_user",{"micros":2624},"add_authorized_ip",{"micros":1538},"get_guilds",{"micros":5897},"coros_wait",{"micros":2}]}]},"guilds_connect",{"micros":1,"calls":[]},"presence_connect",{"micros":1,"calls":[]}]}]}] (Session ID: 7d38acec8a1c08489249d517fea2431b).
+2021-08-11 13:55:44.944:INFO:discord: Message Content: .lens track stx 
+2021-08-11 13:55:45.985:INFO:discord: Jobs.get_job() https://scapi.rockstargames.com/ugc/mission/details?title=gtav&contentId=UgfC6sruOEOZyGXzTZ3iYA
+2021-08-11 13:55:46.336:INFO:discord: Jobs.get_job() https://prod.cloud.rockstargames.com/ugc/gta5mission/UgfC6sruOEOZyGXzTZ3iYA/0_0_en.json
+2021-08-11 13:56:18.100:INFO:discord: Message Content: .lens track vig 
+2021-08-11 13:56:30.640:INFO:discord: Reacted to GTALens: 🇪
+2021-08-11 13:56:31.295:INFO:discord: Jobs.get_job() https://scapi.rockstargames.com/ugc/mission/details?title=gtav&contentId=v-xgI2068U-s4fk3D4idWw
+2021-08-11 13:56:31.698:INFO:discord: Jobs.get_job() https://prod.cloud.rockstargames.com/ugc/gta5mission/v-xgI2068U-s4fk3D4idWw/0_0_en.json
+2021-08-11 13:56:50.810:INFO:discord: Un-reacted to GTALens: 🇪
+2021-08-11 13:56:52.562:INFO:discord: Reacted to GTALens: 🇪
+2021-08-11 13:56:53.286:INFO:discord: Jobs.get_job() https://scapi.rockstargames.com/ugc/mission/details?title=gtav&contentId=v-xgI2068U-s4fk3D4idWw
+2021-08-11 13:56:53.576:INFO:discord: Jobs.get_job() https://prod.cloud.rockstargames.com/ugc/gta5mission/v-xgI2068U-s4fk3D4idWw/0_0_en.json
+2021-08-11 13:57:11.231:INFO:discord: Message Content: .lens track hel 
+2021-08-11 14:32:59.444:INFO:discord.client: Got a request to RESUME the websocket.
+2021-08-11 14:32:59.699:INFO:discord.gateway: Shard ID None has sent the RESUME payload.
+2021-08-11 14:32:59.759:INFO:discord.gateway: Shard ID None has successfully RESUMED session 7d38acec8a1c08489249d517fea2431b under trace ["gateway-prd-main-wwlc",{"micros":845,"calls":["discord-sessions-blue-prd-2-154",{"micros":16}]}].
+2021-08-11 14:41:48.162:INFO:discord: Reacted to GTALens: 🇦
+2021-08-11 14:41:48.907:INFO:discord: Jobs.get_job() https://scapi.rockstargames.com/ugc/mission/details?title=gtav&contentId=mxrhwVlih06U4F8yu24ZRA
+2021-08-11 14:41:49.794:INFO:discord: Jobs.get_job() https://prod.cloud.rockstargames.com/ugc/gta5mission/mxrhwVlih06U4F8yu24ZRA/0_0_en.json
+2021-08-11 14:41:52.985:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-11 14:41:52.985:INFO:discord.client: Cleaning up tasks.
+2021-08-11 14:41:52.985:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-11 14:41:53.039:INFO:discord.client: All tasks finished cancelling.
+2021-08-11 14:41:53.040:INFO:discord.client: Closing the event loop.
+2021-08-11 15:29:45.154:INFO:discord.client: logging in using static token
+2021-08-11 15:29:45.626:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-11 15:29:45.837:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-mfw1",{"micros":148881,"calls":["discord-sessions-blue-prd-2-13",{"micros":147937,"calls":["start_session",{"micros":112699,"calls":["api-prd-main-bc8j",{"micros":107315,"calls":["get_user",{"micros":5057},"add_authorized_ip",{"micros":2634},"get_guilds",{"micros":18627},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":18895,"calls":[]}]}]}] (Session ID: 18b9bac483e71a9804687125cfd6b471).
+2021-08-11 15:29:51.108:INFO:discord: Message Content: .lens track styx 
+2021-08-11 15:29:52.163:INFO:discord: Jobs.get_job() https://scapi.rockstargames.com/ugc/mission/details?title=gtav&contentId=UgfC6sruOEOZyGXzTZ3iYA
+2021-08-11 15:29:52.457:INFO:discord: Jobs.get_job() https://prod.cloud.rockstargames.com/ugc/gta5mission/UgfC6sruOEOZyGXzTZ3iYA/0_0_en.json
+2021-08-11 15:29:59.039:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-11 15:29:59.039:INFO:discord.client: Cleaning up tasks.
+2021-08-11 15:29:59.040:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-11 15:29:59.091:INFO:discord.client: All tasks finished cancelling.
+2021-08-11 15:29:59.092:INFO:discord.client: Closing the event loop.
+2021-08-11 15:30:00.090:INFO:discord.client: logging in using static token
+2021-08-11 15:30:00.485:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-11 15:30:00.600:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-whn0",{"micros":56686,"calls":["discord-sessions-blue-prd-2-87",{"micros":55886,"calls":["start_session",{"micros":36033,"calls":["api-prd-main-1qwd",{"micros":32388,"calls":["get_user",{"micros":3488},"add_authorized_ip",{"micros":1587},"get_guilds",{"micros":4896},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":3876,"calls":[]}]}]}] (Session ID: d42fd1e25b04c2d6b8dc99e816c631e2).
+2021-08-11 15:30:02.817:INFO:discord: Message Content: .lens track styx 
+2021-08-11 15:30:03.809:INFO:discord: Jobs.get_job() https://scapi.rockstargames.com/ugc/mission/details?title=gtav&contentId=UgfC6sruOEOZyGXzTZ3iYA
+2021-08-11 15:30:04.117:INFO:discord: Jobs.get_job() https://prod.cloud.rockstargames.com/ugc/gta5mission/UgfC6sruOEOZyGXzTZ3iYA/0_0_en.json
+2021-08-11 15:30:29.875:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-11 15:30:29.875:INFO:discord.client: Cleaning up tasks.
+2021-08-11 15:30:29.875:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-11 15:30:29.929:INFO:discord.client: All tasks finished cancelling.
+2021-08-11 15:30:29.930:INFO:discord.client: Closing the event loop.
+2021-08-11 15:30:30.907:INFO:discord.client: logging in using static token
+2021-08-11 15:30:31.307:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-11 15:30:31.762:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-sdbx",{"micros":378699,"calls":["discord-sessions-blue-prd-2-106",{"micros":376327,"calls":["start_session",{"micros":342396,"calls":["api-prd-main-bsb8",{"micros":247539,"calls":["get_user",{"micros":32302},"add_authorized_ip",{"micros":44992},"get_guilds",{"micros":56234},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":1,"calls":[]}]}]}] (Session ID: e7417f46a9888f54648076a058f80c0b).
+2021-08-11 15:31:14.956:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-11 15:31:14.957:INFO:discord.client: Cleaning up tasks.
+2021-08-11 15:31:14.957:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-11 15:31:15.013:INFO:discord.client: All tasks finished cancelling.
+2021-08-11 15:31:15.013:INFO:discord.client: Closing the event loop.
+2021-08-11 15:31:16.027:INFO:discord.client: logging in using static token
+2021-08-11 15:31:16.476:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-11 15:31:16.651:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-jrrv",{"micros":100130,"calls":["discord-sessions-blue-prd-2-95",{"micros":99421,"calls":["start_session",{"micros":77606,"calls":["api-prd-main-br8n",{"micros":71956,"calls":["get_user",{"micros":5708},"add_authorized_ip",{"micros":5231},"get_guilds",{"micros":8242},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":5777,"calls":[]}]}]}] (Session ID: 1b8486b38fa37b463ae63f47040fb91c).
+2021-08-11 15:31:19.370:INFO:discord: Message Content: .lens track styx 
+2021-08-11 15:31:20.891:INFO:discord: Jobs.get_job() https://scapi.rockstargames.com/ugc/mission/details?title=gtav&contentId=UgfC6sruOEOZyGXzTZ3iYA
+2021-08-11 15:31:21.242:INFO:discord: Jobs.get_job() https://prod.cloud.rockstargames.com/ugc/gta5mission/UgfC6sruOEOZyGXzTZ3iYA/0_0_en.json
+2021-08-11 15:31:22.462:INFO:discord: Message Content: .lens track helena 
+2021-08-11 15:31:29.486:INFO:discord: Reacted to GTALens: 🇦
+2021-08-11 15:31:30.092:INFO:discord: Jobs.get_job() https://scapi.rockstargames.com/ugc/mission/details?title=gtav&contentId=mxrhwVlih06U4F8yu24ZRA
+2021-08-11 15:31:30.382:INFO:discord: Jobs.get_job() https://prod.cloud.rockstargames.com/ugc/gta5mission/mxrhwVlih06U4F8yu24ZRA/0_0_en.json
+2021-08-11 15:32:05.407:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-11 15:32:05.407:INFO:discord.client: Cleaning up tasks.
+2021-08-11 15:32:05.407:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-11 15:32:05.459:INFO:discord.client: All tasks finished cancelling.
+2021-08-11 15:32:05.459:INFO:discord.client: Closing the event loop.
+2021-08-11 15:32:06.514:INFO:discord.client: logging in using static token
+2021-08-11 15:32:06.936:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-11 15:32:07.073:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-zb3b",{"micros":78574,"calls":["discord-sessions-blue-prd-2-110",{"micros":75215,"calls":["start_session",{"micros":61816,"calls":["api-prd-main-h8zw",{"micros":57534,"calls":["get_user",{"micros":3842},"add_authorized_ip",{"micros":1497},"get_guilds",{"micros":5640},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":3,"calls":[]},"presence_connect",{"micros":6393,"calls":[]}]}]}] (Session ID: 7beeacb0bd18c7ece2a2f1a4a23736f3).
+2021-08-11 15:32:12.892:INFO:discord: Message Content: .lens track helena 
+2021-08-11 15:32:16.506:INFO:discord: Reacted to GTALens: 🇦
+2021-08-11 15:32:17.309:INFO:discord: Jobs.get_job() https://scapi.rockstargames.com/ugc/mission/details?title=gtav&contentId=mxrhwVlih06U4F8yu24ZRA
+2021-08-11 15:32:17.615:INFO:discord: Jobs.get_job() https://prod.cloud.rockstargames.com/ugc/gta5mission/mxrhwVlih06U4F8yu24ZRA/0_0_en.json
+2021-08-11 15:32:28.645:INFO:discord: Message Content: .lens track styx 
+2021-08-11 15:32:29.580:INFO:discord: Jobs.get_job() https://scapi.rockstargames.com/ugc/mission/details?title=gtav&contentId=UgfC6sruOEOZyGXzTZ3iYA
+2021-08-11 15:32:29.924:INFO:discord: Jobs.get_job() https://prod.cloud.rockstargames.com/ugc/gta5mission/UgfC6sruOEOZyGXzTZ3iYA/0_0_en.json
+2021-08-11 15:40:17.245:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-11 15:40:17.246:INFO:discord.client: Cleaning up tasks.
+2021-08-11 15:40:17.246:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-11 15:40:17.300:INFO:discord.client: All tasks finished cancelling.
+2021-08-11 15:40:17.300:INFO:discord.client: Closing the event loop.
+2021-08-11 15:40:18.394:INFO:discord.client: logging in using static token
+2021-08-11 15:40:18.814:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-11 15:40:18.936:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-5c70",{"micros":61782,"calls":["discord-sessions-blue-prd-2-50",{"micros":60471,"calls":["start_session",{"micros":51953,"calls":["api-prd-main-l0fj",{"micros":47144,"calls":["get_user",{"micros":3217},"add_authorized_ip",{"micros":2498},"get_guilds",{"micros":7476},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":1049,"calls":[]}]}]}] (Session ID: 858090ccc251c405ada702e3ca84cc03).
+2021-08-11 15:40:24.598:INFO:discord: Message Content: .lens track viggo 
+2021-08-11 15:40:26.994:INFO:discord: Reacted to GTALens: 🇧
+2021-08-11 15:40:27.739:INFO:discord: Jobs.get_job() https://scapi.rockstargames.com/ugc/mission/details?title=gtav&contentId=9Kfv7xjKl0azMT1j1yECtQ
+2021-08-11 15:40:28.078:INFO:discord: Jobs.get_job() https://prod.cloud.rockstargames.com/ugc/gta5mission/9Kfv7xjKl0azMT1j1yECtQ/0_0_en.json
+2021-08-11 15:41:39.032:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-11 15:41:39.032:INFO:discord.client: Cleaning up tasks.
+2021-08-11 15:41:39.033:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-11 15:41:39.079:INFO:discord.client: All tasks finished cancelling.
+2021-08-11 15:41:39.080:INFO:discord.client: Closing the event loop.
+2021-08-11 15:49:02.920:INFO:discord.client: logging in using static token
+2021-08-11 15:49:03.340:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-11 15:49:03.555:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-hw19",{"micros":154609,"calls":["discord-sessions-blue-prd-2-80",{"micros":152419,"calls":["start_session",{"micros":134343,"calls":["api-prd-main-3slx",{"micros":115535,"calls":["get_user",{"micros":19116},"add_authorized_ip",{"micros":10068},"get_guilds",{"micros":20675},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":12783,"calls":[]}]}]}] (Session ID: d35ebd4a884204c453a84b010e9657c7).
+2021-08-11 15:49:05.792:INFO:discord: Message Content: .lens track viggo 
+2021-08-11 15:49:07.997:INFO:discord: Reacted to GTALens: 🇧
+2021-08-11 15:49:08.687:INFO:discord: Jobs.get_job() https://scapi.rockstargames.com/ugc/mission/details?title=gtav&contentId=9Kfv7xjKl0azMT1j1yECtQ
+2021-08-11 15:49:09.031:INFO:discord: Jobs.get_job() https://prod.cloud.rockstargames.com/ugc/gta5mission/9Kfv7xjKl0azMT1j1yECtQ/0_0_en.json
+2021-08-11 15:49:56.343:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-11 15:49:56.343:INFO:discord.client: Cleaning up tasks.
+2021-08-11 15:49:56.343:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-11 15:49:56.395:INFO:discord.client: All tasks finished cancelling.
+2021-08-11 15:49:56.396:INFO:discord.client: Closing the event loop.
+2021-08-11 15:49:57.440:INFO:discord.client: logging in using static token
+2021-08-11 15:49:57.832:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-11 15:49:57.982:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-hf9c",{"micros":89101,"calls":["discord-sessions-blue-prd-2-82",{"micros":79047,"calls":["start_session",{"micros":50336,"calls":["api-prd-main-6qxz",{"micros":33061,"calls":["get_user",{"micros":4534},"add_authorized_ip",{"micros":1639},"get_guilds",{"micros":3818},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":1,"calls":[]}]}]}] (Session ID: a40916c2b4a1a781080ba31fa26eac10).
+2021-08-11 15:50:00.226:INFO:discord: Message Content: .lens track viggo 
+2021-08-11 15:50:01.935:INFO:discord: Reacted to GTALens: 🇧
+2021-08-11 15:50:03.033:INFO:discord: Jobs.get_job() https://scapi.rockstargames.com/ugc/mission/details?title=gtav&contentId=9Kfv7xjKl0azMT1j1yECtQ
+2021-08-11 15:50:03.369:INFO:discord: Jobs.get_job() https://prod.cloud.rockstargames.com/ugc/gta5mission/9Kfv7xjKl0azMT1j1yECtQ/0_0_en.json
+2021-08-11 15:55:24.834:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-11 15:55:24.834:INFO:discord.client: Cleaning up tasks.
+2021-08-11 15:55:24.835:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-11 15:55:24.891:INFO:discord.client: All tasks finished cancelling.
+2021-08-11 15:55:24.892:INFO:discord.client: Closing the event loop.
+2021-08-11 15:55:26.144:INFO:discord.client: logging in using static token
+2021-08-11 15:55:26.543:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-11 15:55:26.653:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-r8wr",{"micros":51301,"calls":["discord-sessions-blue-prd-2-60",{"micros":50268,"calls":["start_session",{"micros":31131,"calls":["api-prd-main-31ks",{"micros":28038,"calls":["get_user",{"micros":3167},"add_authorized_ip",{"micros":1275},"get_guilds",{"micros":4732},"coros_wait",{"micros":0}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":14476,"calls":[]}]}]}] (Session ID: 7ad657813920aec8b54b6306be0b5c45).
+2021-08-11 15:55:40.562:INFO:discord: Message Content: .lens track viggo 
+2021-08-11 15:55:42.464:INFO:discord: Reacted to GTALens: 🇧
+2021-08-11 15:55:43.354:INFO:discord: Jobs.get_job() https://scapi.rockstargames.com/ugc/mission/details?title=gtav&contentId=9Kfv7xjKl0azMT1j1yECtQ
+2021-08-11 15:55:43.756:INFO:discord: Jobs.get_job() https://prod.cloud.rockstargames.com/ugc/gta5mission/9Kfv7xjKl0azMT1j1yECtQ/0_0_en.json
+2021-08-11 16:03:52.012:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-11 16:03:52.012:INFO:discord.client: Cleaning up tasks.
+2021-08-11 16:03:52.013:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-11 16:03:52.070:INFO:discord.client: All tasks finished cancelling.
+2021-08-11 16:03:52.071:INFO:discord.client: Closing the event loop.
+2021-08-11 16:08:49.334:INFO:discord.client: logging in using static token
+2021-08-11 16:08:49.703:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-11 16:08:49.887:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-l42h",{"micros":56277,"calls":["discord-sessions-blue-prd-2-152",{"micros":55510,"calls":["start_session",{"micros":35886,"calls":["api-prd-main-bpk8",{"micros":32470,"calls":["get_user",{"micros":1918},"add_authorized_ip",{"micros":1713},"get_guilds",{"micros":4185},"coros_wait",{"micros":0}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":1,"calls":[]}]}]}] (Session ID: 96042c509eba4b7120337883e7054b40).
+2021-08-11 16:08:51.875:INFO:discord: Message Content: .lens test 
+2021-08-11 16:09:06.756:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-11 16:09:06.757:INFO:discord.client: Cleaning up tasks.
+2021-08-11 16:09:06.757:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-11 16:09:06.813:INFO:discord.client: All tasks finished cancelling.
+2021-08-11 16:09:06.813:INFO:discord.client: Closing the event loop.
+2021-08-11 16:09:07.788:INFO:discord.client: logging in using static token
+2021-08-11 16:09:08.220:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-11 16:09:08.351:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-gj35",{"micros":74082,"calls":["discord-sessions-blue-prd-2-83",{"micros":66833,"calls":["start_session",{"micros":33233,"calls":["api-prd-main-pcv4",{"micros":28478,"calls":["get_user",{"micros":2145},"add_authorized_ip",{"micros":1463},"get_guilds",{"micros":4966},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":19412,"calls":[]}]}]}] (Session ID: 00d31edac0a8925566e1a7c44d7bb617).
+2021-08-11 16:09:10.564:INFO:discord: Message Content: .lens test 
+2021-08-11 16:09:23.010:INFO:discord: Message Content: .lens viggo 
+2021-08-11 16:09:26.181:INFO:discord: Message Content: .lens track viggo 
+2021-08-11 16:10:03.864:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-11 16:10:03.864:INFO:discord.client: Cleaning up tasks.
+2021-08-11 16:10:03.864:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-11 16:10:03.918:INFO:discord.client: All tasks finished cancelling.
+2021-08-11 16:10:03.918:INFO:discord.client: Closing the event loop.
+2021-08-11 16:10:04.892:INFO:discord.client: logging in using static token
+2021-08-11 16:10:05.304:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-11 16:10:05.436:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-hxjl",{"micros":63109,"calls":["discord-sessions-blue-prd-2-70",{"micros":62171,"calls":["start_session",{"micros":26904,"calls":["api-prd-main-1mwx",{"micros":24077,"calls":["get_user",{"micros":3273},"add_authorized_ip",{"micros":1180},"get_guilds",{"micros":3098},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":14971,"calls":[]}]}]}] (Session ID: 24103fcfb0e393958e6caf38a555014a).
+2021-08-11 16:10:10.747:INFO:discord: Message Content: .lens track viggo 
+2021-08-11 16:10:12.978:INFO:discord: Reacted to GTALens: 🇧
+2021-08-11 16:10:13.709:INFO:discord: Jobs.get_job() https://scapi.rockstargames.com/ugc/mission/details?title=gtav&contentId=9Kfv7xjKl0azMT1j1yECtQ
+2021-08-11 16:10:14.020:INFO:discord: Jobs.get_job() https://prod.cloud.rockstargames.com/ugc/gta5mission/9Kfv7xjKl0azMT1j1yECtQ/0_0_en.json
+2021-08-11 16:17:57.851:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-11 16:17:57.851:INFO:discord.client: Cleaning up tasks.
+2021-08-11 16:17:57.852:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-11 16:17:57.902:INFO:discord.client: All tasks finished cancelling.
+2021-08-11 16:17:57.902:INFO:discord.client: Closing the event loop.
+2021-08-11 16:17:58.999:INFO:discord.client: logging in using static token
+2021-08-11 16:17:59.383:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-11 16:17:59.512:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-p6jp",{"micros":67490,"calls":["discord-sessions-blue-prd-2-63",{"micros":66712,"calls":["start_session",{"micros":47922,"calls":["api-prd-main-cx1t",{"micros":44424,"calls":["get_user",{"micros":8985},"add_authorized_ip",{"micros":1895},"get_guilds",{"micros":7487},"coros_wait",{"micros":0}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":1303,"calls":[]}]}]}] (Session ID: d0edd69dc54fe0637bc30ed9221b2df0).
+2021-08-11 16:18:01.726:INFO:discord: Message Content: .lens track viggo 
+2021-08-11 16:18:03.626:INFO:discord: Reacted to GTALens: 🇧
+2021-08-11 16:18:04.407:INFO:discord: Jobs.get_job() https://scapi.rockstargames.com/ugc/mission/details?title=gtav&contentId=9Kfv7xjKl0azMT1j1yECtQ
+2021-08-11 16:18:04.723:INFO:discord: Jobs.get_job() https://prod.cloud.rockstargames.com/ugc/gta5mission/9Kfv7xjKl0azMT1j1yECtQ/0_0_en.json
+2021-08-11 16:18:22.461:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-11 16:18:22.462:INFO:discord.client: Cleaning up tasks.
+2021-08-11 16:18:22.462:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-11 16:18:22.527:INFO:discord.client: All tasks finished cancelling.
+2021-08-11 16:18:22.527:INFO:discord.client: Closing the event loop.
+2021-08-11 16:18:23.622:INFO:discord.client: logging in using static token
+2021-08-11 16:18:24.031:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-11 16:18:24.151:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-whn0",{"micros":61345,"calls":["discord-sessions-blue-prd-2-114",{"micros":60581,"calls":["start_session",{"micros":29734,"calls":["api-prd-main-k4rs",{"micros":26457,"calls":["get_user",{"micros":2665},"add_authorized_ip",{"micros":1468},"get_guilds",{"micros":5293},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":20528,"calls":[]}]}]}] (Session ID: cf7f8397096d9a59d1543b7db5d7dc4f).
+2021-08-11 16:18:26.402:INFO:discord: Reacted to GTALens: 🇧
+2021-08-11 16:18:26.997:INFO:discord: Jobs.get_job() https://scapi.rockstargames.com/ugc/mission/details?title=gtav&contentId=9Kfv7xjKl0azMT1j1yECtQ
+2021-08-11 16:18:27.307:INFO:discord: Jobs.get_job() https://prod.cloud.rockstargames.com/ugc/gta5mission/9Kfv7xjKl0azMT1j1yECtQ/0_0_en.json
