@@ -14,6 +14,10 @@ logger = logging.getLogger("discord")
 
 ALIASES = ["track", "job", "race"]
 
+EMBED_TYPES = [
+    'job',
+]
+
 WEATHER = [  # indices relate to what prod.cloud.rockstargames.com/ugs/mission provides
     "current",
     "☀️ bright",
@@ -51,6 +55,7 @@ JOB_TYPE_CORRECTIONS = {
     "LandRace": "land race",
     "SeaRace": "sea race"
 }
+
 
 
 class Job:
@@ -110,6 +115,7 @@ class Job:
         self.time_of_day = time_of_day
         self.weather = weather
 
+
 async def on_reaction_add(
         msg: discord.Message,
         emoji: str,
@@ -118,11 +124,15 @@ async def on_reaction_add(
         embed_meta: str = ""
 ) -> None:
 
-    if emoji in embed_meta:
-        job_id = embed_meta.split(f"{emoji}=")[1].split('/')[0]
-        job = await get_job(job_id)
-        await msg.clear_reactions()
-        await send_job(msg, job)
+    embed_type = embed_meta.split('type=')[1].split('/')[0]
+
+    if embed_type == 'job_search':
+
+        if emoji in embed_meta:
+            job_id = embed_meta.split(f"{emoji}=")[1].split('/')[0]
+            job = await get_job(job_id)
+            await msg.clear_reactions()
+            await send_job(msg, job)
 
 
 async def on_reaction_remove(
@@ -289,14 +299,15 @@ def get_possible_jobs(job_name: str) -> list[Job]:
     jobs = get_jobs()
     possible_jobs = get_close_matches(
         job_name_lower, [j.name.lower() for j in jobs], n=5, cutoff=.3
-    )  # list of job names - max 5
+    )  # list of job names - max 5 so the reactions don't go wider than the embed or new line
     possible_jobs = [jobs[i] for i in possible_jobs]
 
     if len(possible_jobs) > 1:
 
         if (
                 possible_jobs[0].name.lower() == job_name_lower and
-                possible_jobs[1].name.lower() != job_name_lower
+                possible_jobs[1].name.lower() != job_name_lower and
+                job_name_lower not in possible_jobs[1].name.lower()
         ):  # only one exact match
             return [possible_jobs[0]]
 
@@ -315,7 +326,7 @@ async def send_possible_jobs(
     else:  # create embed for possible jobs list
         letters = list(Support.LETTERS_EMOJIS.keys())
         possible_jobs_str = ""
-        embed_meta = "embed_meta/type=job/"
+        embed_meta = "embed_meta/type=job_search/"
 
         for i, job in enumerate(possible_jobs):
             creator = Creators.get_creator(job.creator.id)
@@ -326,12 +337,20 @@ async def send_possible_jobs(
 
             embed_meta += f"{Support.LETTERS_EMOJIS[letters[i]]}={job.rockstar_id}/"
 
+        if not possible_jobs_str:
+            possible_jobs_str = "\n\nThere were no close matches for your search. " \
+                                "This may have happened because the job literally doesn't exist," \
+                                " or it's not in the bot's database. " \
+                                "The bot and the site use different databases," \
+                                " so you may have better luck on the website."
+
         embed = discord.Embed(
             color=discord.Color(Support.GTALENS_ORANGE),
-            title=f"Search: '{job_name}'",
-            description=f"[GTALens](https://gtalens.com/?page=1&search={job_name.replace(' ', '%20')}) **|** "
+            title=f"**Search: *{job_name}***",
+            description=f"[Search GTALens](https://gtalens.com/?page=1&search={job_name.replace(' ', '%20')}) **|** "
                         f"[Donate]({Support.DONATE_LINK})"
-                        f"\n{possible_jobs_str}"
+                        f"\n\n**Results:**"
+                        f"{possible_jobs_str}"
                         f"[{Support.ZERO_WIDTH}]({embed_meta})"
         )
 

@@ -16,10 +16,41 @@ logger = logging.getLogger("discord")
 
 ALIASES = ["car", "truck", "vehicle"]
 
+EMBED_TYPES = [
+    'vehicle',
+    'vehicle_search',
+]
+
 BROUGHY_SPREADSHEET = "https://docs.google.com/spreadsheets/d/1nQND3ikiLzS3Ij9kuV-rVkRtoYetb79c52JWyafb4m4"
 KEY_VEHICLE_INFO_SHEET_ID = 1689972026
 BASIC_HANDLING_DATA_SHEET_ID = 110431106
 OVERALL_LAP_TIME_SHEET_ID = 60309153
+
+VEHICLE_CLASS_CORRECTIONS = {
+    'Boats': 'boat',
+    'Commercial': 'commercial',
+    'Compacts': 'compacts',
+    'Coupes': 'coupe',
+    'Cycles': 'cycle',
+    'Emergency': 'emergency',
+    'Helicopters': 'helicopter',
+    'Industrial': 'industrial',
+    'Military': 'military',
+    'Motorcycles': 'motorcycle',
+    'Muscle': 'muscle',
+    'Off-Road': 'off_road',
+    'Open Wheel': 'open_wheel',
+    'Planes': 'plane',
+    'Sedans': 'sedan',
+    'Service': 'service',
+    'Sports': 'sport',
+    'Sports Classics': 'sport_classic',
+    'Supers': 'super',
+    'SUVs': 'suv',
+    'Utility': 'utility',
+    'Vans': 'van'
+}
+
 
 
 class Vehicle:
@@ -175,10 +206,22 @@ async def on_reaction_add(
         embed_meta: str = ""
 ) -> None:
 
-    if emoji == Support.WRENCH:
-        vehicle_name = embed_meta.split("name=")[1].split("/")[0].replace('%20', ' ')
-        vehicle = get_vehicle(vehicle_name)
-        msg = await toggle_handling(vehicle, msg, msg.embeds[0], embed_meta)
+    embed_type = embed_meta.split('type=')[1].split('/')[0]
+
+    if embed_type == 'vehicle':
+
+        if emoji == Support.WRENCH:
+            vehicle_name = embed_meta.split("name=")[1].split("/")[0].replace('%20', ' ')
+            vehicle = get_vehicles()[vehicle_name]
+            msg = await toggle_handling(vehicle, msg, msg.embeds[0], embed_meta)
+
+    elif embed_type == 'vehicle_search':
+
+        if emoji in embed_meta:
+            vehicle_name = embed_meta.split(f"{emoji}=")[1].split('/')[0].replace('%20', ' ')
+            vehicle = get_vehicles()[vehicle_name]
+            await msg.clear_reactions()
+            await send_vehicle(msg, client, vehicle)
 
 
 async def on_reaction_remove(
@@ -189,10 +232,15 @@ async def on_reaction_remove(
         embed_meta: str = ""
 ) -> None:
 
-    if emoji == Support.WRENCH:
-        vehicle_name = embed_meta.split("name=")[1].split("/")[0].replace('%20', ' ')
-        vehicle = get_vehicle(vehicle_name)
-        msg = await toggle_handling(vehicle, msg, msg.embeds[0], embed_meta)
+    embed_type = embed_meta.split('type=')[1].split('/')[0]
+
+    if embed_type == 'vehicle':
+
+        if emoji == Support.WRENCH:
+            vehicle_name = embed_meta.split("name=")[1].split("/")[0].replace('%20', ' ')
+            vehicle = get_vehicles()[vehicle_name]
+
+            msg = await toggle_handling(vehicle, msg, msg.embeds[0], embed_meta)
 
 
 async def toggle_handling(
@@ -231,11 +279,11 @@ async def toggle_handling(
         f"{embed_meta}"
     )  # replace old embed_meta with updated
 
-    msg = await msg.edit(embed=embed)
+    await msg.edit(embed=embed)
     return msg
 
 
-def get_vehicles() -> list[Vehicle]:
+def get_vehicles() -> dict[str, Vehicle]:
     vehicles = json.load(open("vehicles.json", "r"))
     for vehicle_name in vehicles:
         vehicles[vehicle_name] = Vehicle(**vehicles[vehicle_name])
@@ -243,24 +291,13 @@ def get_vehicles() -> list[Vehicle]:
     return vehicles
 
 
-def get_vehicle(name: str) -> Vehicle:
-
-    for i, pv in enumerate(poss_vehicles):  # fix vehicle names to be proper
-        for v in vehicle_names:
-            if pv == v.lower():
-                poss_vehicles[i] = vehicles[v]
-
-    # TODO ... the rest, currently have a list of vehicles that are close matches, returning first element for testing
-    return poss_vehicles[0]
-
-
-def get_vehicle_class(vehicle_class: str, vehicles: list[Vehicle]) -> list[Vehicle]:
+def get_vehicle_class(vehicle_class: str, vehicles: dict[str, Vehicle]) -> list[Vehicle]:
     vehicle_class = [vehicles[v] for v in vehicles if vehicles[v].vehicle_class == vehicle_class]
     vehicle_class.sort(key=lambda v: (v.lap_times['default'] if v.lap_times else sys.maxsize))
     return vehicle_class
 
 
-def update_vehicles():
+async def update_vehicles():
     """
     :return: None, Saves to vehicles.json
     """
@@ -398,17 +435,16 @@ def update_vehicles():
     page = 1
     while True:
         # https://gtalens.com/api/v1/vehicles?page=1&sorting=alphabet
-        response = requests.get(
-            "https://gtalens.com/api/v1/vehicles",
-            params={"page": page, "sorting": "alphabet"},
-        )
-        response_dict = json.loads(response.text)
+        url = f"https://gtalens.com/api/v1/vehicles?page={page}&sorting=alphabet"
+        logger.info(f"Vehicles.update_vehicles() {url}")
 
-        if response_dict["success"]:
+        r_json = await Support.get_url(url)
 
-            if response_dict["payload"]["vehicles"]:
+        if r_json["success"]:
 
-                for vehicle in response_dict["payload"]["vehicles"]:
+            if r_json["payload"]["vehicles"]:
+
+                for vehicle in r_json["payload"]["vehicles"]:
 
                     if "name" in vehicle["meta"]:
                         name = vehicle["meta"]["name"]
@@ -445,16 +481,78 @@ def update_vehicles():
     )
 
 
-def get_possible_vehicles(name: str) :
+def get_possible_vehicles(vehicle_name: str) -> list[Vehicle]:
+    vehicle_name_lower = vehicle_name.lower()
     vehicles = get_vehicles()
 
     vehicle_names = list(vehicles.keys())
-    poss_vehicles = get_close_matches(name.lower(), [v.lower() for v in vehicle_names])
-    poss_vehicles = [vehicles[vehicle_names[i]] for i in poss_vehicles]
+    possible_vehicles = get_close_matches(
+        vehicle_name_lower, [v.lower() for v in vehicle_names], n=5, cutoff=.3
+    )  # list of job names - max 5 so the reactions don't go wider than the embed or new line
+    possible_vehicles = [vehicles[vehicle_names[i]] for i in possible_vehicles]
+
+    if len(possible_vehicles) > 1:
+
+        if (
+                possible_vehicles[0].name.lower() == vehicle_name_lower and
+                possible_vehicles[1].name.lower() != vehicle_name_lower and
+                vehicle_name_lower not in possible_vehicles[1].name.lower()
+
+        ):  # only one exact match
+            return [possible_vehicles[0]]
+
+    return possible_vehicles
 
 
-async def send_vehicle(
-        vehicle: Vehicle, message: discord.Message, client: discord.Client
+async def send_possible_vehicles(
+        message: discord.Message, client: discord.Client, possible_vehicles: list[Vehicle], vehicle_name: str
+) -> discord.Message:
+
+    await message.channel.trigger_typing()
+
+    if len(possible_vehicles) == 1:  # straight to sending the job embed
+        msg = await send_vehicle(message, client, possible_vehicles[0])
+
+    else:  # create embed for possible jobs list
+        letters = list(Support.LETTERS_EMOJIS.keys())
+        possible_vehicles_str = ""
+        embed_meta = f"[{Support.ZERO_WIDTH}](embed_meta/type=vehicle_search/)"
+
+        for i, vehicle in enumerate(possible_vehicles):
+
+            possible_vehicles_str += f"\n{Support.LETTERS_EMOJIS[letters[i]]} " \
+                                     f"[{vehicle.name}](https://gtalens.com/vehicle/{vehicle.gtalens_id}) - " \
+                                     f"[{vehicle.vehicle_class}](https://gtalens.com/vehicles/?classes[0]=" \
+                                     f"{VEHICLE_CLASS_CORRECTIONS[vehicle.vehicle_class]})"
+
+            embed_meta += f"{Support.LETTERS_EMOJIS[letters[i]]}={vehicle.name.replace(' ', '%20')}/"
+
+        if not possible_vehicles_str:
+            possible_vehicles_str = "\n\nThere were no close matches for your search. " \
+                                    "It can only be suggested you use more letters in your query."
+
+        embed = discord.Embed(
+            color=discord.Color(Support.GTALENS_ORANGE),
+            title=f"**Search: *{vehicle_name}***",
+            description=f"[Search GTALens](https://gtalens.com/vehicles/?t={vehicle_name.replace(' ', '%20')}) **|** "
+                        f"[Donate]({Support.DONATE_LINK})"
+                        f"\n\n**Results:**"
+                        f"{possible_vehicles_str}"
+                        f"[{Support.ZERO_WIDTH}]({embed_meta})"
+        )
+
+        # TODO .lens tier
+        # TODO .lens class
+        # embed.set_footer(text=".lens tier _class_ _tier_ | .lens class _class_")
+
+        msg = await message.channel.send(embed=embed)
+        for i, j in enumerate(possible_vehicles):
+            await msg.add_reaction(Support.LETTERS_EMOJIS[letters[i]])
+
+    return msg
+
+
+async def send_vehicle(message: discord.Message, client: discord.Client, vehicle: Vehicle
 ) -> discord.Message:
 
     # preparing complex string(s)
@@ -470,12 +568,12 @@ async def send_vehicle(
         added_str.append(vehicle.dlc)
     added_str = " - ".join(added_str)  # handling og cars oppose to dlc cars
 
-    meta_str = f"[{Support.ZERO_WIDTH}](embed_meta/" \
-               f"type=vehicle/" \
-               f"name={vehicle.name.replace(' ', '%20')}/" \
-               f"handling=[]/" \
-               f"tiers=[]" \
-               f")"
+    embed_meta = f"[{Support.ZERO_WIDTH}](embed_meta/" \
+                 f"type=vehicle/" \
+                 f"name={vehicle.name.replace(' ', '%20')}/" \
+                 f"handling=[]/" \
+                 f"tiers=[]" \
+                 f")"
 
     embed = discord.Embed(
         colour=discord.Colour(Support.GTALENS_ORANGE),
@@ -484,7 +582,7 @@ async def send_vehicle(
                     f"[Wiki](https://gta.fandom.com/{vehicle.wiki_id}) **|** "
                     f"[Donate]({Support.DONATE_LINK})"
                     f"\n{added_str}"
-                    f"{meta_str}",
+                    f"{embed_meta}",
     )  # initial embed
 
     # preparing complex string(s)
@@ -520,13 +618,15 @@ async def send_vehicle(
             top_speed_str = "-"
 
     flags_bouncy_str = (
-        f"\n\n**{Support.FLAG_ON_POST} Bouncy:** {vehicle.flags_bouncy.replace(Support.HEAVY_CHECKMARK, Support.BALLOT_CHECKMARK)} "
+        f"\n\n**{Support.FLAG_ON_POST} Bouncy:** "
+        f"{vehicle.flags_bouncy.replace(Support.HEAVY_CHECKMARK, Support.BALLOT_CHECKMARK)} "
         if vehicle.flags_bouncy
         else ""
     )
 
     flags_engine_str = (
-        f"\n**{Support.FLAG_ON_POST} Engine:** {vehicle.flags_engine.replace(Support.HEAVY_CHECKMARK, Support.BALLOT_CHECKMARK)}"
+        f"\n**{Support.FLAG_ON_POST} Engine:** "
+        f"{vehicle.flags_engine.replace(Support.HEAVY_CHECKMARK, Support.BALLOT_CHECKMARK)}"
         if vehicle.flags_engine
         else ""
     )
@@ -588,7 +688,8 @@ async def send_vehicle(
         embed.set_footer(text=f"Note: {vehicle.other_notes}")
 
     if message.author.id == client.user.id:
-        msg = await message.edit(embed=embed)
+        await message.edit(embed=embed)
+        msg = message
     else:
         msg = await message.channel.send(embed=embed)
 

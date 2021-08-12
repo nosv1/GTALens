@@ -2,6 +2,7 @@ import aiohttp
 from datetime import datetime
 import gspread
 import json
+import math
 import re
 
 # COLORS
@@ -11,6 +12,9 @@ GTALENS_ORANGE = int(0xF03C00)
 # IDS
 GTALENS_GUILD_ID = 873054419636334633
 GTALENS_CLIENT_ID = 872899427457716234
+DEVS = [
+    405944496665133058,  # Mo#9991
+]
 
 # CHARACTERS
 ZERO_WIDTH = chr(8203)  # or the thing in between the dashes -​-
@@ -19,6 +23,7 @@ HEAVY_CHECKMARK = "✔"
 BALLOT_CHECKMARK = "☑️"
 WRENCH = "🔧"
 FLAG_ON_POST = "🚩"
+COUNTER_CLOCKWISE = "🔄"
 
 NUMBERS_EMOJIS = ["0️⃣", "1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣", "🔟"]
 LETTERS_EMOJIS = {
@@ -105,6 +110,12 @@ def smart_day_time_format(date_format: str, dt: datetime) -> str:
     return dt.strftime(date_format).replace("{S}", f"{num_suffix(dt.day)}")
 
 
+def hours_to_HHMM(hours: float) -> str:
+    hh = int(hours)
+    mm = int((hours - hh) * 60)
+    return f"{hh:02d}:{mm:02d}"
+
+
 # RANDOM
 
 def get_args_from_content(content: str = "") -> (list[str], str):
@@ -130,10 +141,10 @@ def num_suffix(num: int) -> str:
     return f"{num}{'th' if 11 <= num <= 13 else {1: 'st', 2: 'nd', 3: 'rd'}.get(num % 10, 'th')}"
 
 
-async def get_url(url: str, headers=None):
+async def get_url(url: str, headers=None, params=None):
     if headers is None:
         headers = {}
 
     async with aiohttp.ClientSession() as cs:
-        async with cs.get(url, headers=headers) as r:
+        async with cs.get(url, headers=headers, params=params) as r:
             return json.loads(await r.text())

@@ -1,14 +1,13 @@
-import asyncio
 
 import discord
 import logging
 import os
-import re
 
 import Jobs
 import Support
 from Tasks import update_status
 import Vehicles
+import Weather
 
 from dotenv import load_dotenv
 
@@ -56,6 +55,13 @@ async def on_message(message):
 
             ''' TEST '''
 
+        elif args[1].lower() == "updatevehicles" and message.author.id in Support.DEVS:
+            msg = await message.channel.send('updating...')
+            await Vehicles.update_vehicles()
+            await msg.delete()
+
+            ''' UPDATE VEHICLES MANUALLY - MUST BE DEV'''
+
         elif args[1].lower() in Jobs.ALIASES:
 
             job_name = " ".join(args[2:-1])
@@ -66,10 +72,15 @@ async def on_message(message):
 
         elif args[1].lower() in Vehicles.ALIASES:
 
-            vehicle = Vehicles.get_vehicle(" ".join(args[2:]))
-            await Vehicles.send_vehicle(vehicle, message, client)
+            vehicle_name = " ".join(args[2:-1])
+            possible_vehicles = Vehicles.get_possible_vehicles(vehicle_name)
+            await Vehicles.send_possible_vehicles(message, client, possible_vehicles, vehicle_name)
 
             ''' CAR LOOKUP '''
+
+        elif args[1].lower() in Weather.ALIASES:
+
+            await Weather.send_weather(message)
 
         elif args[1].lower() == "invite":  # send invite link
 
@@ -83,7 +94,7 @@ async def on_message(message):
 
             ''' INVITE LINK '''
 
-        elif args[1].lower(0) == "donate":  # send donate link
+        elif args[1].lower() == "donate":  # send donate link
 
             embed = discord.Embed(
                 colour=discord.Colour(Support.GTALENS_ORANGE),
@@ -132,7 +143,7 @@ async def on_raw_reaction_add(payload):
     m = [m for m in client.cached_messages if m.id == payload.message_id]
     message = m[0] if m else m
 
-    if not message:
+    if not message:  # message not in cache
 
         # get channel
         channel = client.get_channel(payload.channel_id)
@@ -165,11 +176,14 @@ async def on_raw_reaction_add(payload):
                         embed_meta = embed.description.split("embed_meta/")[1]
                         embed_type = embed_meta.split("type=")[1].split("/")[0]
 
-                        if embed_type == "vehicle":  # is vehicle embed
+                        if embed_type in Vehicles.EMBED_TYPES:  # is vehicle embed
                             await Vehicles.on_reaction_add(message, emoji, user, client, embed_meta)
 
-                        if embed_type == "job":  # is job embed
+                        elif embed_type in Jobs.EMBED_TYPES:  # is job embed
                             await Jobs.on_reaction_add(message, emoji, user, client, embed_meta)
+
+                        elif embed_type in Weather.EMBED_TYPES:
+                            await Weather.on_reaction_add(message, emoji, user, client, embed_meta)
 
 
 @client.event
@@ -180,7 +194,7 @@ async def on_raw_reaction_remove(payload):
     m = [m for m in client.cached_messages if m.id == payload.message_id]
     message = m[0] if m else m
 
-    if not message:
+    if not message:  # message not in cache
 
         # get channel
         channel = client.get_channel(payload.channel_id)
@@ -213,8 +227,11 @@ async def on_raw_reaction_remove(payload):
                         embed_meta = embed.description.split("embed_meta/")[1]
                         embed_type = embed_meta.split("type=")[1].split("/")[0]
 
-                        if embed_type == "vehicle":  # is vehicle embed
+                        if embed_type in Vehicles.EMBED_TYPES:  # is vehicle embed
                             await Vehicles.on_reaction_remove(message, emoji, user, client, embed_meta)
+
+                        elif embed_type in Weather.EMBED_TYPES:
+                            await Weather.on_reaction_remove(message, emoji, user, client, embed_meta)
 
 
 @client.event

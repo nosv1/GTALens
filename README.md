@@ -4,15 +4,18 @@ Only top 50 included given discord limitations of 50 emojis per server (bots get
 
 **Start Here**
 ```
-python -m venv env  
-.\env\Scripts\activate.bat  
+python -m venv venv  
+.\venv\Scripts\activate.bat  
 pip install -r requirements.txt
 
 git clone https://github.com/Rapptz/discord.py  
-cd discord.py  
-python -m pip install -U .[voice]```  
+python -m pip install -U discord.py/.[voice]
+rmdir /S discord.py
+```
 
-EDIT env/ difflib.get_close_matches 
+```
+EDIT difflib.get_close_matches
+ 
     for x in possibilities TO 
     for i, x in enumerate(possibilities)
     
@@ -20,3 +23,4 @@ EDIT env/ difflib.get_close_matches
     
     result.append((s.ratio(), x)) TO
     result.append((s.ratio(), i))
+```  
