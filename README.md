@@ -1,7 +1,6 @@
 **Manufacturer Logos**  
 Only top 50 included given discord limitations of 50 emojis per server (bots get to use server emotes anywhere, but I didn't feel like making > 1 server for this)
 
-
 **Start Here**
 ```
 python -m venv venv  
@@ -12,7 +11,7 @@ git clone https://github.com/Rapptz/discord.py
 python -m pip install -U discord.py/.[voice]
 rmdir /S discord.py
 ```
-
+ 
 ```
 EDIT difflib.get_close_matches
  
