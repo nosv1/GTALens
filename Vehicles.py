@@ -220,7 +220,10 @@ async def on_reaction_add(
         if emoji in embed_meta:
             vehicle_name = embed_meta.split(f"{emoji}=")[1].split('/')[0].replace('%20', ' ')
             vehicle = get_vehicles()[vehicle_name]
-            await msg.clear_reactions()
+            try:
+                await msg.clear_reactions()
+            except discord.Forbidden:
+                pass
             await send_vehicle(msg, client, vehicle)
 
 
@@ -436,7 +439,7 @@ async def update_vehicles():
     while True:
         # https://gtalens.com/api/v1/vehicles?page=1&sorting=alphabet
         url = f"https://gtalens.com/api/v1/vehicles?page={page}&sorting=alphabet"
-        logger.info(f"Vehicles.update_vehicles() {url}")
+        logger.debug(f"Vehicles.update_vehicles() {url}")
 
         r_json = await Support.get_url(url)
 
@@ -469,7 +472,7 @@ async def update_vehicles():
                 break
 
         else:
-            logger.info("update_vehicles failed getting GTALens information")
+            logger.info(f"update_vehicles failed getting GTALens information {url}")
             break
 
         page += 1
@@ -556,10 +559,10 @@ async def send_vehicle(message: discord.Message, client: discord.Client, vehicle
 ) -> discord.Message:
 
     # preparing complex string(s)
-    manufacturer_emoji = str(discord.utils.find(
+    manufacturer_emoji = discord.utils.find(
         lambda e: e.name == vehicle.manufacturer, client.get_guild(Support.GTALENS_GUILD_ID).emojis
-    ))  # find the emoji in the GTALens Server that matches the manufacturer
-    manufacturer_str = f"{manufacturer_emoji} {vehicle.manufacturer}"
+    )  # find the emoji in the GTALens Server that matches the manufacturer
+    manufacturer_str = f"{f'{manufacturer_emoji} ' if manufacturer_emoji else ''}{vehicle.manufacturer}"
 
     added_str = [
         f"Added {Support.smart_day_time_format('{S} %B %Y', datetime.fromtimestamp(vehicle.date_added))}"

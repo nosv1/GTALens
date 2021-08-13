@@ -1,8 +1,8 @@
-
 import asyncio
 from datetime import datetime
 from difflib import get_close_matches
 import discord
+import json
 import logging
 
 import Creators
@@ -16,6 +16,7 @@ ALIASES = ["track", "job", "race"]
 
 EMBED_TYPES = [
     'job',
+    'job_search'
 ]
 
 WEATHER = [  # indices relate to what prod.cloud.rockstargames.com/ugs/mission provides
@@ -56,6 +57,11 @@ JOB_TYPE_CORRECTIONS = {
     "SeaRace": "sea race"
 }
 
+PLATFORM_CORRECTIONS = {
+    'xboxone': 'XB',
+    'pc': 'PC',
+    'ps4': 'PS'
+}
 
 
 class Job:
@@ -69,8 +75,7 @@ class Job:
             updated: datetime = datetime.fromtimestamp(0),
             synced: datetime = datetime.fromtimestamp(0),
 
-
-            thumbnail: list = [],  # [part1, part2]
+            thumbnail: list[str] = None,  # [part1, part2]
             likes: int = 0,
             dislikes: int = 0,
             quits: int = 0,
@@ -81,6 +86,7 @@ class Job:
             creator: Creators.Creator = Creators.Creator,
 
             platform: str = "",
+            variants=None,  # list of gtalens ids
 
             job_type: str = "",
             pedestrians: str = "",
@@ -108,6 +114,7 @@ class Job:
 
         self.creator = creator
 
+        self.variants = variants
         self.platform = platform
 
         self.job_type = job_type
@@ -123,7 +130,6 @@ async def on_reaction_add(
         client: discord.Client,
         embed_meta: str = ""
 ) -> None:
-
     embed_type = embed_meta.split('type=')[1].split('/')[0]
 
     if embed_type == 'job_search':
@@ -131,8 +137,11 @@ async def on_reaction_add(
         if emoji in embed_meta:
             job_id = embed_meta.split(f"{emoji}=")[1].split('/')[0]
             job = await get_job(job_id)
-            await msg.clear_reactions()
-            await send_job(msg, job)
+            try:
+                await msg.clear_reactions()
+            except discord.Forbidden:
+                pass
+            await send_job(msg, client, job)
 
 
 async def on_reaction_remove(
@@ -145,9 +154,155 @@ async def on_reaction_remove(
     pass
 
 
-def get_jobs():
+async def add_crew(crew_id: str) -> None:
+    # http://scapi.rockstargames.com/crew/ranksWithMembership?crewId=31534161 &onlineService=sc&searchTerm=&memberCountToRetrieve=1000
+    url = f"http://scapi.rockstargames.com/crew/ranksWithMembership?crewId={crew_id}" \
+          "&onlineService=sc&searchTerm=&memberCountToRetrieve=1000"
+    logger.debug(f"Jobs.add_crew() {url}")
+
+    r_json: json = await Support.get_url(url, headers=Support.SCAPI_HEADERS)
+
+    db: Database.DB = connect_database()
+
+    db.cursor.execute(f"""
+        INSERT INTO crews (
+            _id, synced
+        ) VALUES (
+            '{crew_id}', '{datetime.utcnow().timestamp()}'
+        ) ON DUPLICATE KEY UPDATE
+            synced='{datetime.utcnow().timestamp()}'
+        ;""")
+
+    db.connection.commit()
+    db.connection.close()
+
+    await add_sc_members(r_json)
+
+
+async def add_sc_members(crew_json: json) -> None:
+    db: Database.DB = connect_database()
+
+    if 'crewRanks' in crew_json:
+
+        for rank in crew_json['crewRanks']:
+
+            for member in rank['rankMembers']:
+                db.cursor.execute(f"""
+                    INSERT INTO members (
+                        _id, name
+                    ) VALUES (
+                        '{member['rockstarId']}', '{member['nickname']}'
+                    ) ON DUPLICATE KEY UPDATE
+                        name='{member['nickname']}' 
+                    ;""")
+
+                primary_crew = member['primaryClan']
+                db.cursor.execute(f"""
+                    INSERT INTO crews (
+                        _id, name
+                    ) VALUES (
+                        '{primary_crew['id']}', '{replace_chars(primary_crew['name'])}' 
+                    ) ON DUPLICATE KEY UPDATE
+                        name='{replace_chars(primary_crew['name'])}'
+                    ;""")
+
+    db.connection.commit()
+    db.connection.close()
+
+
+async def add_sc_member_jobs(sc_member_id: str) -> list[dict]:
+    db = connect_database()
+
+    db.cursor.execute(f"DELETE FROM jobs WHERE creator_id = '{sc_member_id}';")
+
+    db.connection.commit()
+
+    crews = []
+
+    for platform in [
+        "ps4",
+        "xboxone",
+        "pc",
+    ]:
+
+        page_index = 0
+
+        while True:
+
+            url = f"http://scapi.rockstargames.com/search/mission?" \
+                  f"dateRange=any&sort=date&platform={platform}&title=gtav&missiontype=race&" \
+                  f"creatorRockstarId={sc_member_id}&pageIndex={page_index}&pageSize=30"
+            logger.debug(f"Jobs.add_sc_member_jobs() {url}")
+
+            r_json = await Support.get_url(url, headers=Support.SCAPI_HEADERS)
+
+            if r_json['status']:  # get was successful
+
+                if r_json['content']['items']:  # jobs to add
+
+                    for job in r_json['content']['items']:
+                        db.cursor.execute(f"""
+                            INSERT IGNORE INTO jobs (
+                                _id, name, platform, updated, creator_id, synced
+                            ) VALUES (
+                                '{job['id']}', 
+                                '{replace_chars(job['name'])}',
+                                '{platform}', 
+                                '{job['createdDate'].split('.')[0]}',
+                                '{sc_member_id}',
+                                '{datetime.utcnow().timestamp()}'
+                            );""")
+
+                    db.cursor.execute(f"""
+                        UPDATE members SET 
+                            synced='{datetime.utcnow().timestamp()}',
+                            name='{r_json['content']['users'][sc_member_id]['nickname']}'
+                         WHERE _id = '{sc_member_id}'
+                     ;""")
+
+                    crews = r_json['content']['crews']
+                    for crew_id in crews:
+                        crew = crews[crew_id]
+                        db.cursor.execute(f"""
+                            INSERT INTO crews (
+                                _id, name
+                            ) VALUES (
+                                '{crew['id']}', '{replace_chars(crew['name'])}' 
+                            ) ON DUPLICATE KEY UPDATE
+                                name='{replace_chars(crew['name'])}'
+                            ;""")
+
+                    db.connection.commit()
+
+                    page_index += 1
+
+                else:
+                    break
+
+            else:
+                logger.warning(r_json)
+
+                sleep = 0
+                if 'error' in r_json:
+                    if '3.000.2' in r_json['error']['code']:
+                        sleep = 90
+
+                    elif '3.000.1' in r_json['error']['code']:
+                        sleep = 30
+
+                logger.info(f"Jobs.add_sc_member_jobs() was not successful, {url} sleeping for {sleep} seconds...")
+                await asyncio.sleep(sleep)
+
+        await asyncio.sleep(2)
+
+    db.connection.close()
+
+    return crews
+
+
+def get_jobs(_id='%%'):
     db = Database.connect_database()
-    db.cursor.execute("SELECT * FROM jobs")
+    db.cursor.execute(f"SELECT * FROM jobs WHERE _id LIKE '%{_id}%'")
     db.connection.close()
     return [Job(
         rockstar_id=j[0],
@@ -167,131 +322,96 @@ async def get_job(job_id: str) -> Job:
     basic_info_url = "https://gtalens.com/api/v1/jobs/basicinfo/"  # + job_id
 
     url = f"{full_info_url}{job_id}"
-    print(url)
     r_json = await Support.get_url(url)
-    payload = r_json["payload"]
-    job_dict = payload["job"]
 
-    job = Job(
-        gtalens_id=job_dict["jobId"],
-        rockstar_id=job_dict["jobCurrId"],
-        name=job_dict["name"],
-        description=job_dict["desc"],
-        added=datetime.strptime(job_dict["adD"], "%Y-%m-%dT%H:%M:%S.%fZ"),
-        updated=datetime.strptime(job_dict["upD"], "%Y-%m-%dT%H:%M:%S.%fZ"),
-        synced=datetime.strptime(job_dict["fD"], "%Y-%m-%dT%H:%M:%S.%fZ"),
-        thumbnail=job_dict["img"].split("."),
-        likes=job_dict["stats"]["lk"],
-        dislikes=job_dict["stats"]["dlk"],
-        total_plays=job_dict["stats"]["plT"],
-        unique_plays=job_dict["stats"]["plU"],
-        quits=job_dict["stats"]["qt"],
-        rating=job_dict["stats"]["r"],
-        creator=Creators.Creator(
-            _id=payload["suppl"]["usersInfo"][0]["userId"],
-            name=payload["suppl"]["usersInfo"][0]["username"]
+    if 'payload' in r_json:
+        payload = r_json["payload"]
+        job_dict = payload["job"]
+
+        job: Job = Job(
+            gtalens_id=job_dict["jobId"],
+            rockstar_id=job_dict["jobCurrId"],
+            name=job_dict["name"],
+            description=job_dict["desc"],
+            added=datetime.strptime(job_dict["adD"], "%Y-%m-%dT%H:%M:%S.%fZ"),
+            updated=datetime.strptime(job_dict["upD"], "%Y-%m-%dT%H:%M:%S.%fZ"),
+            synced=datetime.strptime(job_dict["fD"], "%Y-%m-%dT%H:%M:%S.%fZ"),
+            thumbnail=job_dict["img"].split("."),
+            likes=job_dict["stats"]["lk"],
+            dislikes=job_dict["stats"]["dlk"],
+            total_plays=job_dict["stats"]["plT"],
+            unique_plays=job_dict["stats"]["plU"],
+            quits=job_dict["stats"]["qt"],
+            rating=job_dict["stats"]["r"],
+            platform=job_dict['plt'],
+            creator=Creators.Creator(
+                _id=payload["suppl"]["usersInfo"][0]["userId"],
+                name=payload["suppl"]["usersInfo"][0]["username"]
+            )
         )
-    )
+
+        if 'vrt' in payload['job']:
+
+            job.variants = payload['job']['vrt']  # get the gtalens id
+            if job.gtalens_id in job.variants:
+                del job.variants[job.variants.index(job.gtalens_id)]
+
+            for i, p in enumerate(payload['job']['vrtP']):  # add the platform
+                job.variants[i] = [job.variants[i], p]
+
+    else:
+        job: Job = get_jobs(_id=job_id)[0]
+        job.gtalens_id = '?'
 
     while True:
 
         url = f"https://scapi.rockstargames.com/ugc/mission/details?title=gtav&contentId={job_id}"
-        logger.info(f"Jobs.get_job() {url}")
+        logger.debug(f"Jobs.get_job() {url}")
 
         r_json = await Support.get_url(url, headers=Support.SCAPI_HEADERS)
 
         job.job_type = JOB_TYPE_CORRECTIONS[r_json['content']['type']]
 
-        for id_version in range(100):  # id_version is the number of saves before publish
+        found_mission = False
+
+        id_version: int = 0
+        for id_version in range(10):  # id_version is the number of saves before publish
 
             for lang in [
-                "en", "es", "ru", "de", "fr", "tr", "it", "zh", "hi", "ar", "ja"
+                "en", "fr", "de", "pt", "es", "es-mx", "it", "ru", "ja", "pl", "zh", "zh-cn", "ko"
             ]:
 
                 while True:
 
                     url = f"https://prod.cloud.rockstargames.com/ugc/gta5mission" \
                           f"/{job_id}/0_{id_version}_{lang}.json"
-                    logger.info(f"Jobs.get_job() {url}")
+                    logger.debug(f"Jobs.get_job() {url}")
 
                     r_json = await Support.get_url(url)
 
                     if r_json:
-                        job.pedestrians = 'off' if r_json['mission']['rule']['apeds'] else 'on'
-                        job.weather = WEATHER[r_json['mission']['rule']['weth']]
-                        job.time_of_day = TIME_OF_DAY[r_json['mission']['rule']['tod']]
-                        break
 
-                if r_json:
+                        if 'mission' in r_json:
+                            job.pedestrians = 'off' if r_json['mission']['rule']['apeds'] else 'on'
+                            job.weather = WEATHER[r_json['mission']['rule']['weth']]
+                            job.time_of_day = TIME_OF_DAY[r_json['mission']['rule']['tod']]
+
+                            found_mission = True
+                            break
+
+                        elif 'JSONDecodeError' in r_json['error']['code']:
+                            break
+
+                if found_mission:
                     break
 
-            if r_json:
+            if found_mission:
                 break
 
-        if r_json:
+        if found_mission or id_version == 9:
             break
 
     return job
-
-
-async def add_sc_member_jobs(sc_member_id: str) -> None:
-
-    db = connect_database()
-
-    sql = f"DELETE FROM jobs WHERE creator_id = '{sc_member_id}'"
-    db.cursor.execute(sql)
-    db.connection.commit()
-
-    for platform in [
-        "ps4",
-        "xboxone",
-        "pc",
-    ]:
-        print()
-        print(platform)
-
-        page_index = 0
-
-        while True:
-
-            url = f"http://scapi.rockstargames.com/search/mission?" \
-                  f"dateRange=any&sort=date&platform={platform}&title=gtav&missiontype=race&" \
-                  f"creatorRockstarId={sc_member_id}&pageIndex={page_index}&pageSize=30"
-            print(url)
-
-            r_json = await Support.get_url(url, headers=Support.SCAPI_HEADERS)
-
-            if r_json['status']:  # get was successful
-
-                if r_json['content']['items']:  # jobs to add
-                    print(len(r_json['content']['items']))
-
-                    for job in r_json['content']['items']:
-
-                        sql = f"""
-                            INSERT IGNORE INTO jobs (
-                                _id, name, platform, updated, creator_id
-                            ) VALUES (
-                                '{job['id']}', 
-                                '{replace_chars(job['name'])}',
-                                '{platform}', 
-                                '{job['createdDate'].split('.')[0]}',
-                                '{sc_member_id}'
-                            );"""
-                        db.cursor.execute(sql)
-
-                    db.connection.commit()
-
-                    page_index += 1
-
-                else:
-                    break
-
-            else:
-                print(r_json)
-                await asyncio.sleep(15)
-
-    db.connection.close()
 
 
 def get_possible_jobs(job_name: str) -> list[Job]:
@@ -315,13 +435,12 @@ def get_possible_jobs(job_name: str) -> list[Job]:
 
 
 async def send_possible_jobs(
-        message: discord.Message, possible_jobs: list[Job], job_name: str
+        message: discord.Message, client: discord.Client, possible_jobs: list[Job], job_name: str
 ) -> discord.Message:
-
     await message.channel.trigger_typing()
 
     if len(possible_jobs) == 1:  # straight to sending the job embed
-        msg = await send_job(message, await get_job(possible_jobs[0].rockstar_id))
+        msg = await send_job(message, client, await get_job(possible_jobs[0].rockstar_id))
 
     else:  # create embed for possible jobs list
         letters = list(Support.LETTERS_EMOJIS.keys())
@@ -331,7 +450,12 @@ async def send_possible_jobs(
         for i, job in enumerate(possible_jobs):
             creator = Creators.get_creator(job.creator.id)
 
+            platform_emoji = str(discord.utils.find(
+                lambda e: e.name == PLATFORM_CORRECTIONS[job.platform].lower(), client.get_guild(
+                    Support.GTALENS_GUILD_ID).emojis))
+
             possible_jobs_str += f"\n{Support.LETTERS_EMOJIS[letters[i]]} " \
+                                 f"{platform_emoji} " \
                                  f"[{job.name}](https://gtalens.com/job/{job.rockstar_id}) - " \
                                  f"[{creator.name}](https://gtalens.com/profile/{job.creator.id})"
 
@@ -364,58 +488,94 @@ async def send_possible_jobs(
     return msg
 
 
-async def send_job(message: discord.Message, job: Job):
+async def send_job(message: discord.Message, client: discord.Client, job: Job):
+    variants_str = ""
+    if job.variants:
+        variants_str = f"**Variants ({len(job.variants)}):** "
+        variants_str += ', '.join(
+            [f"[{PLATFORM_CORRECTIONS[v[1]]}](https://gtalens.com/job/{v[0]})" for v in job.variants]
+        )
+        variants_str += "\n"
 
-    embed = discord.Embed(
-        color=discord.Colour(Support.GTALENS_ORANGE),
-        title=f"**{job.name}**",
-        description=f"\n[GTALens](https://gtalens.com/job/{job.gtalens_id}) **|** "
-                    f"[R*SC](https://socialclub.rockstargames.com/job/gtav/{job.rockstar_id}) **|** "
-                    f"[Donate](https://ko-fi.com/gtalens)"
-                    f"\n\n**Creator:** [{job.creator.name}](https://gtalens.com/profile/{job.creator.id})"
-                    f"\n*{job.description}*"
-                    f"\n{Support.SPACE_CHAR}"
-                    
-                    f"[{Support.ZERO_WIDTH}](embed_meta/gtalens_id={job.gtalens_id}/)",
-    )
+    job_not_found = job.gtalens_id == '?'
 
-    embed.add_field(
-        name=f"**__Ratings ({round(job.rating, 1)}%)__**",
-        value=f"**Likes:** {job.likes}"
-              f"\n**Dislikes:** {job.dislikes} *+{job.quits}*"
-              f"\n**Plays:** {job.total_plays}"
-              f"\n**Unique:** {job.unique_plays}"
-              f"\n{Support.SPACE_CHAR}"
-    )
+    if not job_not_found:
 
-    embed.add_field(
-        name="**__Settings__**",
-        value=f"**Type:** {job.job_type.title()}"  # job type, land/stunt...
-              # f"\n**Mode:** {}"
-              f"\n**Pedestrians:** {job.pedestrians.title()}"
-              f"\n**Time:** {job.time_of_day.title()}"
-              f"\n**Weather:** {job.weather.title()}"
-              # TODO .lens weather
-              # f"\n{' `.lens weather`' if job.weather == 'current' else ''}" # must be last line cause \n
-              f"\n{Support.SPACE_CHAR}"
-    )
+        platform_emoji = str(discord.utils.find(
+            lambda e: e.name == PLATFORM_CORRECTIONS[job.platform].lower(), client.get_guild(
+                Support.GTALENS_GUILD_ID).emojis))
 
-    # TODO trending field?
-    embed.add_field(
-        name="**__Trending__**",
-        value="*Coming soon!*"
-    )
+        embed = discord.Embed(
+            color=discord.Colour(Support.GTALENS_ORANGE),
+            title=f"**{platform_emoji} {job.name}**",
+            description=f"\n[GTALens](https://gtalens.com/job/{job.gtalens_id}) **|** "
+                        f"[R*SC](https://socialclub.rockstargames.com/job/gtav/{job.rockstar_id}) **|** "
+                        f"[Donate](https://ko-fi.com/gtalens)\n\n"
+                        f"{variants_str}"
+                        f"**Creator:** [{job.creator.name}](https://gtalens.com/profile/{job.creator.id})"
+                        f"\n*{job.description.strip()}*"
+                        f"\n{Support.SPACE_CHAR}"
+    
+                        f"[{Support.ZERO_WIDTH}](embed_meta/type=job/gtalens_id={job.gtalens_id}/)",
+        )
 
-    embed.set_thumbnail(url=job.thumbnail)
-    embed.set_footer(
-        text=f"Updated: {Support.smart_day_time_format('{S} %b %Y', job.updated)} | "
-             f"Added: {Support.smart_day_time_format('{S} %b %Y', job.added)} | "
-             f"Synced: {Support.smart_day_time_format('{S} %b %Y', job.synced)}"
-    )
+        embed.add_field(
+            name=f"**__Ratings ({round(job.rating, 1)}%)__**",
+            value=f"**Likes:** {job.likes}"
+                  f"\n**Dislikes:** {job.dislikes} *+{job.quits}*"
+                  f"\n**Plays:** {job.total_plays}"
+                  f"\n**Unique:** {job.unique_plays}"
+                  f"\n{Support.SPACE_CHAR}"
+        )
 
+        embed.add_field(
+            name="**__Settings__**",
+            value=f"**Type:** {job.job_type.title()}"  # job type, land/stunt...
+            # f"\n**Mode:** {}"
+                  f"\n**Pedestrians:** {job.pedestrians.title()}"
+                  f"\n**Time:** {job.time_of_day.title()}"
+                  f"\n**Weather:** {job.weather.title()}"
+                  f"\n{'`.lens weather`' if job.weather == 'current' else ''}"  # must be last line cause \n
+                  f"\n{Support.SPACE_CHAR}"
+        )
+
+        # TODO trending field?
+        embed.add_field(
+            name="**__Trending__**",
+            value="*Coming soon!*"
+        )
+
+        embed.set_thumbnail(url=job.thumbnail)
+        embed.set_footer(
+            text=f"Updated: {Support.smart_day_time_format('{S} %b %Y', job.updated)} | "
+                 f"Added: {Support.smart_day_time_format('{S} %b %Y', job.added)} | "
+                 f"Synced: {Support.smart_day_time_format('{S} %b %Y', job.synced)}"
+        )
+
+    else:  # job was not found on gtalens
+        not_found_str = "The job requested was not found on the GTALens site. The GTALens bot, and the site use " \
+                        "different databases. It is possible for the bot to have jobs synced that the site does not " \
+                        "and vice versa. You can request this job be imported on the site by going to the link above. "
+        embed = discord.Embed(
+            color=discord.Colour(Support.GTALENS_ORANGE),
+            title=f"**{job.name}**",
+            description=f"\n[GTALens Import](https://gtalens.com/job/{job.rockstar_id}) **|** "
+                        f"[R*SC](https://socialclub.rockstargames.com/job/gtav/{job.rockstar_id}) **|** "
+                        f"[Donate](https://ko-fi.com/gtalens)\n\n"
+                        f"{not_found_str}"
+        )
+
+    msg = message
     if message.author.id != Support.GTALENS_CLIENT_ID:
-        return await message.channel.send(embed=embed)
+        msg = await msg.channel.send(embed=embed)
 
     else:
-        return await message.edit(embed=embed)
+        await msg.edit(embed=embed)
 
+    crews = await add_sc_member_jobs(job.creator.id)
+    for crew_id in crews:
+        await add_crew(crew_id)
+
+    logger.info(f'Added {job.creator.id}\'s jobs and crews')
+
+    return msg

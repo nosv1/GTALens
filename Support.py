@@ -1,8 +1,8 @@
 import aiohttp
+import asyncio
 from datetime import datetime
 import gspread
 import json
-import math
 import re
 
 # COLORS
@@ -62,13 +62,14 @@ kph_to_mph = 0.62
 # GTALENS
 DONATE_LINK = "https://ko-fi.com/gtalens"
 GTALENS_LOGO = "https://gtalens.com/assets/images/logo-new.5336b3.png"
-INVITE_LINK = "https://discord.com/api/oauth2/authorize?client_id=872899427457716234&permissions=36507249728&scope=bot"
+INVITE_LINK = "https://discord.com/api/oauth2/authorize?client_id=872899427457716234&permissions=36507511808&scope=bot"
 """
     View Channels
     Send Messages
     Public Threads
     Manage Messages
     Embed Links
+    Use External Emojis
     Add Reactions
     Use Slash Commands
 """
@@ -141,10 +142,20 @@ def num_suffix(num: int) -> str:
     return f"{num}{'th' if 11 <= num <= 13 else {1: 'st', 2: 'nd', 3: 'rd'}.get(num % 10, 'th')}"
 
 
-async def get_url(url: str, headers=None, params=None):
+async def get_url(url: str, headers=None, params=None) -> json:
     if headers is None:
         headers = {}
 
     async with aiohttp.ClientSession() as cs:
-        async with cs.get(url, headers=headers, params=params) as r:
-            return json.loads(await r.text())
+        try:
+            async with cs.get(url, headers=headers, params=params, timeout=5) as r:
+                return json.loads(await r.text())
+
+        except asyncio.exceptions.TimeoutError:
+            return {'status': False, 'error': {'code': 'TimeoutError'}}
+
+        except json.decoder.JSONDecodeError:
+            return {'status': False, 'error': {'code': 'JSONDecodeError'}}
+
+
+

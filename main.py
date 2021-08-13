@@ -5,7 +5,7 @@ import os
 
 import Jobs
 import Support
-from Tasks import update_status
+import Tasks
 import Vehicles
 import Weather
 
@@ -50,8 +50,12 @@ async def on_message(message):
 
         ''' COMMANDS  '''
 
-        if args[1].lower() == "test":
-            await Jobs.add_sc_member_jobs(45653182)
+        if args[1].lower() == "test" and message.author.id in Support.DEVS:
+            # from pathlib import Path
+            # for p in Path('./'):
+            #
+            # [p for p in Path('.').iterdir() if p.is_dir()]
+            await message.guild.create_custom_emoji()
 
             ''' TEST '''
 
@@ -62,11 +66,18 @@ async def on_message(message):
 
             ''' UPDATE VEHICLES MANUALLY - MUST BE DEV'''
 
+        elif args[1].lower() == "updatejobs" and message.author.id in Support.DEVS:
+            msg = await message.channel.send('updating...')
+            await Jobs.update()
+            await msg.delete()
+
+            ''' UPDATE VEHICLES MANUALLY - MUST BE DEV'''
+
         elif args[1].lower() in Jobs.ALIASES:
 
             job_name = " ".join(args[2:-1])
             possible_jobs = Jobs.get_possible_jobs(job_name)
-            await Jobs.send_possible_jobs(message, possible_jobs, job_name)
+            await Jobs.send_possible_jobs(message, client, possible_jobs, job_name)
 
             ''' TRACK LOOKUP '''
 
@@ -107,16 +118,19 @@ async def on_message(message):
 
             ''' DONATE LINK '''
 
-        else:
-            embed = discord.Embed(
-                color=discord.Colour(Support.GTALENS_ORANGE),
-                title="**Coming Soon**",
-                description="The GTALens discord bot will replace the MoBot functionality of searching for cars and "
-                            "jobs, as well as, providing other useful GTA V related features. Currently, "
-                            "the [GTALens](https://gtalens.com/) website needs some backend updates "
-                            "before this bot is available for use.",
-            )
-            await message.channel.send(embed=embed)
+        # TODO .lens about
+        # TODO .lens help
+
+        # else:
+        #     embed = discord.Embed(
+        #         color=discord.Colour(Support.GTALENS_ORANGE),
+        #         title="**Coming Soon**",
+        #         description="The GTALens discord bot will replace the MoBot functionality of searching for cars and "
+        #                     "jobs, as well as, providing other useful GTA V related features. Currently, "
+        #                     "the [GTALens](https://gtalens.com/) website needs some backend updates "
+        #                     "before this bot is available for use.",
+        #     )
+        #     await message.channel.send(embed=embed)
 
 
 @client.event
@@ -174,6 +188,8 @@ async def on_raw_reaction_add(payload):
                     if 'embed_meta' in embed.description:  # has info about the embed
 
                         embed_meta = embed.description.split("embed_meta/")[1]
+                        logger.info(f"embed_meta: {embed_meta}")
+
                         embed_type = embed_meta.split("type=")[1].split("/")[0]
 
                         if embed_type in Vehicles.EMBED_TYPES:  # is vehicle embed
@@ -182,7 +198,7 @@ async def on_raw_reaction_add(payload):
                         elif embed_type in Jobs.EMBED_TYPES:  # is job embed
                             await Jobs.on_reaction_add(message, emoji, user, client, embed_meta)
 
-                        elif embed_type in Weather.EMBED_TYPES:
+                        elif embed_type in Weather.EMBED_TYPES:  # is weather embed
                             await Weather.on_reaction_add(message, emoji, user, client, embed_meta)
 
 
@@ -227,6 +243,8 @@ async def on_raw_reaction_remove(payload):
                         embed_meta = embed.description.split("embed_meta/")[1]
                         embed_type = embed_meta.split("type=")[1].split("/")[0]
 
+                        logger.info(f"embed_meta: {embed_meta}")
+
                         if embed_type in Vehicles.EMBED_TYPES:  # is vehicle embed
                             await Vehicles.on_reaction_remove(message, emoji, user, client, embed_meta)
 
@@ -242,7 +260,7 @@ async def on_ready():
 async def startup():
     await client.wait_until_ready()
 
-    await update_status.start(client)
+    await Tasks.loop.start(client)
 
 
 def main():
