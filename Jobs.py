@@ -287,7 +287,7 @@ async def add_sc_member_jobs(sc_member_id: str) -> list[dict]:
             else:
                 logger.warning(r_json)
 
-                sleep = 0
+                sleep = 3
                 if 'error' in r_json:
                     if '3.000.2' in r_json['error']['code']:
                         sleep = 90

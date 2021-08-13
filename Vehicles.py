@@ -13,7 +13,8 @@ import Support
 
 logger = logging.getLogger("discord")
 
-ALIASES = ["car", "truck", "vehicle"]
+SEARCH_ALIASES = ["car", "truck", "vehicle"]
+TIER_ALIASES = ["tier"]
 
 EMBED_TYPES = [
     'vehicle',
@@ -55,7 +56,7 @@ class Vehicle:
     def __init__(
             self,
             name: str = None,
-            vehicle_class: str = None,
+            vehicle_class: str = None,  # .Title()
 
             # Key Attributes
             drivetrain: str = None,
@@ -259,9 +260,16 @@ async def on_reaction_remove(
 async def toggle_tier(
         msg: discord.Message, embed: discord.Embed, embed_meta: str, vehicle: Vehicle, tier: str
 ) -> discord.Message:
-    old_tier_indices = [int(i) for i in embed_meta.split('tier_indices=')[1].split("/")[0].split(',') if i != '']
     old_tiers_displayed = embed_meta.split('tiers_displayed=')[1].split("/")[0]
     tiers_displayed = [t for t in embed_meta.split('tiers_displayed=')[1].split("/")[0].split(',') if t]
+
+    old_tier_indices = [
+        int(i) for i in embed_meta.split('tier_indices=')[1].split("/")[0].split(',') if i != ''
+    ]
+    old_handling_indices = [
+        int(i) for i in embed_meta.split('handling_indices=')[1].split("/")[0].split(',') if i != ''
+    ]
+    old_indices = old_tier_indices + old_handling_indices
 
     if tier not in old_tiers_displayed:  # display tier
         tiers_displayed.append(tier)
@@ -288,7 +296,7 @@ async def toggle_tier(
 
     default_fields: list[discord.types.embed.EmbedField] = []
     for i, field in enumerate(embed['fields']):
-        if i not in old_tier_indices:
+        if i not in old_indices:
             default_fields.append(field)
 
     embed['fields'] = default_fields + tier_fields
@@ -306,6 +314,11 @@ async def toggle_tier(
         f"tiers_displayed={','.join(tiers_displayed)}"
     )
 
+    embed_meta = embed_meta.replace(
+        f"handling_indices={','.join(str(i) for i in old_handling_indices)}",
+        f"handling_indices="
+    )
+
     embed.description = embed.description.replace(
         embed.description.split('embed_meta/')[1],
         embed_meta
@@ -319,38 +332,92 @@ async def toggle_tier(
 async def toggle_handling(
         msg: discord.Message, embed: discord.Embed, embed_meta: str, vehicle: Vehicle
 ) -> discord.Message:
-    if embed_meta.split("handling_indices=")[1].split("/")[0] == "":  # display handling
-        embed = embed.to_dict()
-        old_fields_len = len(embed['fields'])
-        embed = discord.Embed.from_dict(embed)
+    old_tier_indices = [
+        int(i) for i in embed_meta.split('tier_indices=')[1].split("/")[0].split(',') if i != ''
+    ]
+    old_handling_indices = [
+        int(i) for i in embed_meta.split('handling_indices=')[1].split("/")[0].split(',') if i != ''
+    ]
+    old_indices = old_tier_indices + old_handling_indices
 
-        handling_fields: list[str] = []  # storing the indices where the handling fields are used
+    embed = embed.to_dict()
 
-        # TODO toggle_handling
-        embed.add_field(name="test", value="yup, worked")
-        handling_fields.append(str(old_fields_len + len(handling_fields)))
+    default_fields: list[discord.types.embed.EmbedField] = []
+    for i, field in enumerate(embed['fields']):
+        if i not in old_indices:
+            default_fields.append(field)
 
-        embed_meta = embed_meta.replace("handling_indices=", f"handling_indices={','.join(handling_fields)}")
+    embed['fields'] = default_fields
 
-    else:  # hide handling
+    if not old_handling_indices:  # make handling fields
+        handling_fields = [
+            {
+                'name': f"**__Speed__**",
+                'value': f"**Engine (Stock)**: {vehicle.engine_stock}"
+                         f"\n**Lvl 4 Upgrade**: {vehicle.level_4_upgrade}"
+                         f"\n**Drag**: {vehicle.drag}"
+                         f"\n**Max Speed**: {vehicle.max_speed}"
+                         f"\n{Support.SPACE_CHAR}",
+                'inline': True
+            },
+            {
+                'name': f"**__Acceleration__**",
+                'value': f"**Power To Front**: {vehicle.power_to_front}%"
+                         f"\n**Gears**: {vehicle.gears}"
+                         f"\n**Upshift Rate**: {vehicle.upshift_rate}"
+                         f"\n**Downshift Rate**: {vehicle.downshift_rate}"
+                         f"\n{Support.SPACE_CHAR}",
+                'inline': True
+            },
+            {
+                'name': f"**__Braking__**",
+                'value': f"**Brake Force**: {vehicle.brake_force}"
+                         f"\n**Brake Bias**: {vehicle.brake_bias}"
+                         f"\n{Support.SPACE_CHAR}",
+                'inline': True
+            },
+            {
+                'name': f"**__Traction__**",
+                'value': f"**Cornering Grip:** {vehicle.cornering_grip}"
+                         f"\n**Straight Line Grip:** {vehicle.straight_line_grip}"
+                         f"\n**Off-Road Grip Loss:** {vehicle.off_road_grip_loss}"
+                         f"\n{Support.SPACE_CHAR}",
+                'inline': True
+            },
+            {
+                'name': "**__Collisions__**",
+                'value': f"**Weight**: {vehicle.weight_kg}kg"
+                         f"\n{Support.SPACE_CHAR}",
+                'inline': True
+            },
+        ]
 
-        # get the indices for the handling fields, currently as strings
-        handling_field_indices = embed_meta.split("handling_indices=")[1].split("/")[0].split(',')
+    else:
+        handling_fields = []
 
-        embed = embed.to_dict()
-        for field_index in handling_field_indices:
-            del embed['fields'][int(field_index)]
+    embed['fields'] = default_fields + handling_fields
 
-        embed = discord.Embed.from_dict(embed)
+    embed = discord.Embed.from_dict(embed)
 
-        embed_meta = embed_meta.replace(
-            f"handling_indices={str([int(i) for i in handling_field_indices]).replace(' ', '')}", f"handling_indices="
-        )
+    embed_meta = embed_meta.replace(
+        f"handling_indices={','.join(str(i) for i in old_handling_indices)}",
+        f"handling_indices={','.join(str(i + len(default_fields)) for i in range(len(handling_fields)))}"
+    )
+
+    embed_meta = embed_meta.replace(
+        f"tier_indices={','.join(str(i) for i in old_tier_indices)}",
+        f"tier_indices="
+    )
+
+    # embed_meta = embed_meta.replace(
+    #     f"tiers_displayed={embed_meta.split('tiers_displayed=')[1].split('/')[0]}",
+    #     f"tiers_displayed="
+    # )  # leaving this out, lets it remember what tiers were displayed if handling is toggled
 
     embed.description = embed.description.replace(
-        embed.description.split("embed_meta/")[1],
-        f"{embed_meta}"
-    )  # replace old embed_meta with updated
+        embed.description.split('embed_meta/')[1],
+        embed_meta
+    )
 
     await msg.edit(embed=embed)
     return msg
@@ -371,13 +438,14 @@ def get_vehicle_class(vehicle_class: str, vehicles: dict[str, Vehicle]) -> list[
 
 
 def get_tier(
-        tier: str, vehicle: Vehicle = None, vehicle_class: list[Vehicle] = None, vehicles: dict[str, Vehicle] = None
+        tier: str, vehicle: Vehicle = None, vehicles_class: list[Vehicle] = None, vehicles: dict[str, Vehicle] = None
 ) -> (list[Vehicle], str):
     """
 
+    :param vehicles_class:
     :param tier: uppercase tier
     :param vehicle: deltas based on vehicle if provided, else top of tier
-    :param vehicle_class: required if no vehicle
+    :param vehicles_class: required if no vehicle
     :param vehicles:
     :return:
     """
@@ -385,14 +453,22 @@ def get_tier(
     if not vehicles:
         vehicles = get_vehicles()
 
-    if not vehicle_class:
-        vehicle_class = get_vehicle_class(vehicle.vehicle_class, vehicles)
+    if not vehicles_class:
+        vehicles_class = get_vehicle_class(vehicle.vehicle_class, vehicles)
 
-    vehicles_tier: list[Vehicle] = [v for v in vehicle_class if v.race_tier == tier]
+    vehicles_tier: list[Vehicle] = [v for v in vehicles_class if v.race_tier == tier]
     vehicles_tier.sort(key=lambda v: v.lap_times['default'] if 'default' in v.lap_times else sys.maxsize)
 
+    if not vehicles_tier:  # likely invalid tier given, possible with .lens tier
+        return [], ''
+
     str_vehicles_tier_lines: list[str] = []
-    base_time = vehicle.lap_times['default'] if 'default' in vehicle.lap_times else vehicles_tier[0].lap_times['default']
+    if vehicle and 'default' in vehicle.lap_times:
+        base_time = vehicle.lap_times['default']
+
+    else:
+        base_time = vehicles_tier[0].lap_times['default']
+
     for tier_vehicle in vehicles_tier:
 
         line = ""
@@ -400,13 +476,37 @@ def get_tier(
             line += f"`{tier_vehicle.lap_times['default'] - base_time:+.3f}` {tier_vehicle.name}"
 
         else:
-            line += f"`-{0:.3d}` {tier_vehicle.name}"
+            line += f"`-{0:.3f}` {tier_vehicle.name}"
 
-        str_vehicles_tier_lines.append(line if tier_vehicle.name != vehicle.name else f"**{line}**")
+        str_vehicles_tier_lines.append(line if vehicle and tier_vehicle.name != vehicle.name else f"**{line}**")
 
     str_vehicles_tier_lines.append(Support.SPACE_CHAR)
 
     return vehicles_tier, '\n'.join(str_vehicles_tier_lines)
+
+
+async def send_tier(
+        message: discord.Message,
+        tier: str,
+        vehicles_tier: list[Vehicle],
+        vehicles_tier_str: str,
+        vehicles_class: list[Vehicle]
+) -> discord.Message:
+
+    embed = discord.Embed(
+        colour=discord.Colour(Support.GTALENS_ORANGE),
+        title=f"__**{tier} Tier ({vehicles_class[0].vehicle_class})**__",
+    )
+
+    if vehicles_tier:  # vehicles actually in the tier
+        embed.description = vehicles_tier_str[:-1]  # removing space_char
+
+    else:
+        a_an = "an" if tier in ['A', 'E', 'F', 'H', 'I', 'L', 'M', 'N', 'O', 'R', 'S'] else 'a'
+        embed.description = f"The {vehicles_class[0].vehicle_class} class does not have {a_an} {tier} Tier."
+
+    msg = await message.channel.send(embed=embed)
+    return msg
 
 
 async def update_vehicles():

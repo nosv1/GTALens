@@ -9325,3 +9325,575 @@ aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host discord.c
 2021-08-12 23:32:19.402:INFO:discord: Message Content: .lens track bgmz 
 2021-08-12 23:32:24.465:INFO:discord: Message Content: .lens track bgnz 
 2021-08-12 23:32:57.695:INFO:discord: Members Updated: [('124577348',), ('79419420',), ('87670285',), ('168042165',), ('78548231',)]
+2021-08-12 23:34:35.082:INFO:discord: Members Updated: [('177793648',), ('94743411',), ('13097354',), ('61734290',), ('82347228',)]
+2021-08-12 23:34:47.443:INFO:discord: Message Content: .lens car penumbrea 
+2021-08-12 23:34:55.906:INFO:discord: Message Content: .lens car penumbrea rr 
+2021-08-12 23:35:01.413:INFO:discord: Reacted to GTALens: 🇩
+2021-08-12 23:35:01.414:INFO:discord: embed_meta: type=vehicle_search/)🇦=Penumbra/🇧=Penumbra%20FF/🇨=Penetrator/🇩=Jester%20RR/🇪=Imperator/)
+2021-08-12 23:35:05.360:INFO:discord: Reacted to GTALens: 🇦
+2021-08-12 23:35:05.360:INFO:discord: embed_meta: type=vehicle/name=Jester%20RR/handling_indices=/tier_indices=/tiers_displayed=/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫,🇬,🇭,🇮,🇯/)
+2021-08-12 23:35:18.866:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-12 23:35:18.866:INFO:discord.client: Cleaning up tasks.
+2021-08-12 23:35:18.866:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-12 23:35:18.921:INFO:discord.client: All tasks finished cancelling.
+2021-08-12 23:35:18.921:INFO:discord.client: Closing the event loop.
+2021-08-12 23:35:20.051:INFO:discord.client: logging in using static token
+2021-08-12 23:35:20.537:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-12 23:35:20.657:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-g6qb",{"micros":64744,"calls":["discord-sessions-blue-prd-2-158",{"micros":57394,"calls":["start_session",{"micros":33147,"calls":["api-prd-main-c6pj",{"micros":29384,"calls":["get_user",{"micros":2929},"add_authorized_ip",{"micros":2557},"get_guilds",{"micros":4860},"coros_wait",{"micros":2}]}]},"guilds_connect",{"micros":1,"calls":[]},"presence_connect",{"micros":16751,"calls":[]}]}]}] (Session ID: 658995c36e107ccb58f08ca0a7b2aa73).
+2021-08-12 23:35:22.842:INFO:discord: Un-reacted to GTALens: 🇦
+2021-08-12 23:35:22.842:INFO:discord: embed_meta: type=vehicle/name=Jester%20RR/handling_indices=/tier_indices=/tiers_displayed=/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫,🇬,🇭,🇮,🇯/)
+2021-08-12 23:35:29.061:INFO:discord: Reacted to GTALens: 🇦
+2021-08-12 23:35:29.061:INFO:discord: embed_meta: type=vehicle/name=Jester%20RR/handling_indices=/tier_indices=3/tiers_displayed=A/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫,🇬,🇭,🇮,🇯/)
+2021-08-12 23:35:30.526:INFO:discord: Reacted to GTALens: 🇧
+2021-08-12 23:35:30.526:INFO:discord: embed_meta: type=vehicle/name=Jester%20RR/handling_indices=/tier_indices=/tiers_displayed=/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫,🇬,🇭,🇮,🇯/)
+2021-08-12 23:35:31.372:INFO:discord: Un-reacted to GTALens: 🇦
+2021-08-12 23:35:31.373:INFO:discord: embed_meta: type=vehicle/name=Jester%20RR/handling_indices=/tier_indices=3/tiers_displayed=B/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫,🇬,🇭,🇮,🇯/)
+2021-08-12 23:35:34.485:INFO:discord: Reacted to GTALens: 🇨
+2021-08-12 23:35:34.485:INFO:discord: embed_meta: type=vehicle/name=Jester%20RR/handling_indices=/tier_indices=3,4/tiers_displayed=A,B/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫,🇬,🇭,🇮,🇯/)
+2021-08-12 23:35:41.028:INFO:discord: Un-reacted to GTALens: 🇧
+2021-08-12 23:35:41.028:INFO:discord: embed_meta: type=vehicle/name=Jester%20RR/handling_indices=/tier_indices=3,4,5/tiers_displayed=A,B,C/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫,🇬,🇭,🇮,🇯/)
+2021-08-12 23:35:41.673:INFO:discord: Reacted to GTALens: 🇦
+2021-08-12 23:35:41.673:INFO:discord: embed_meta: type=vehicle/name=Jester%20RR/handling_indices=/tier_indices=3,4/tiers_displayed=A,C/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫,🇬,🇭,🇮,🇯/)
+2021-08-12 23:35:57.863:INFO:discord: Reacted to GTALens: 🇩
+2021-08-12 23:35:57.864:INFO:discord: embed_meta: type=vehicle/name=Jester%20RR/handling_indices=/tier_indices=3/tiers_displayed=C/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫,🇬,🇭,🇮,🇯/)
+2021-08-12 23:36:01.953:INFO:discord: Reacted to GTALens: 🇪
+2021-08-12 23:36:01.953:INFO:discord: embed_meta: type=vehicle/name=Jester%20RR/handling_indices=/tier_indices=3,4/tiers_displayed=C,D/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫,🇬,🇭,🇮,🇯/)
+2021-08-12 23:36:04.825:INFO:discord: Un-reacted to GTALens: 🇩
+2021-08-12 23:36:04.825:INFO:discord: embed_meta: type=vehicle/name=Jester%20RR/handling_indices=/tier_indices=3,4,5/tiers_displayed=C,D,E/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫,🇬,🇭,🇮,🇯/)
+2021-08-12 23:36:05.205:INFO:discord: Un-reacted to GTALens: 🇨
+2021-08-12 23:36:05.205:INFO:discord: embed_meta: type=vehicle/name=Jester%20RR/handling_indices=/tier_indices=3,4/tiers_displayed=C,E/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫,🇬,🇭,🇮,🇯/)
+2021-08-12 23:36:06.094:INFO:discord: Un-reacted to GTALens: 🇦
+2021-08-12 23:36:06.094:INFO:discord: embed_meta: type=vehicle/name=Jester%20RR/handling_indices=/tier_indices=3/tiers_displayed=E/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫,🇬,🇭,🇮,🇯/)
+2021-08-12 23:36:13.171:INFO:discord: Reacted to GTALens: 🇦
+2021-08-12 23:36:13.171:INFO:discord: embed_meta: type=vehicle/name=Jester%20RR/handling_indices=/tier_indices=3,4/tiers_displayed=A,E/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫,🇬,🇭,🇮,🇯/)
+2021-08-12 23:37:30.364:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-12 23:37:30.364:INFO:discord.client: Cleaning up tasks.
+2021-08-12 23:37:30.365:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-12 23:37:30.423:INFO:discord.client: All tasks finished cancelling.
+2021-08-12 23:37:30.423:INFO:discord.client: Closing the event loop.
+2021-08-12 23:38:12.233:INFO:discord.client: logging in using static token
+2021-08-12 23:38:12.621:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-12 23:38:12.754:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-z6j9",{"micros":81648,"calls":["discord-sessions-blue-prd-2-47",{"micros":80923,"calls":["start_session",{"micros":27631,"calls":["api-prd-main-qff6",{"micros":24525,"calls":["get_user",{"micros":2088},"add_authorized_ip",{"micros":1291},"get_guilds",{"micros":3872},"coros_wait",{"micros":0}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":41315,"calls":[]}]}]}] (Session ID: 359fc0f6803c4d09c015f46a6240cbdf).
+2021-08-12 23:39:35.232:INFO:discord: Un-reacted to GTALens: 🇦
+2021-08-12 23:39:35.232:INFO:discord: embed_meta: type=vehicle/name=Jester%20RR/handling_indices=/tier_indices=3/tiers_displayed=E/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫,🇬,🇭,🇮,🇯/)
+2021-08-12 23:39:36.992:INFO:discord: Reacted to GTALens: 🇦
+2021-08-12 23:39:36.993:INFO:discord: embed_meta: type=vehicle/name=Jester%20RR/handling_indices=/tier_indices=3,4/tiers_displayed=A,E/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫,🇬,🇭,🇮,🇯/)
+2021-08-12 23:39:52.814:INFO:discord: Un-reacted to GTALens: 🇪
+2021-08-12 23:39:52.814:INFO:discord: embed_meta: type=vehicle/name=Jester%20RR/handling_indices=/tier_indices=3/tiers_displayed=E/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫,🇬,🇭,🇮,🇯/)
+2021-08-12 23:39:54.714:INFO:discord: Reacted to GTALens: 🇧
+2021-08-12 23:39:54.714:INFO:discord: embed_meta: type=vehicle/name=Jester%20RR/handling_indices=/tier_indices=/tiers_displayed=/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫,🇬,🇭,🇮,🇯/)
+2021-08-12 23:39:55.845:INFO:discord: Reacted to GTALens: 🇨
+2021-08-12 23:39:55.845:INFO:discord: embed_meta: type=vehicle/name=Jester%20RR/handling_indices=/tier_indices=3/tiers_displayed=B/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫,🇬,🇭,🇮,🇯/)
+2021-08-12 23:39:58.075:INFO:discord: Reacted to GTALens: 🇩
+2021-08-12 23:39:58.076:INFO:discord: embed_meta: type=vehicle/name=Jester%20RR/handling_indices=/tier_indices=3,4/tiers_displayed=B,C/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫,🇬,🇭,🇮,🇯/)
+2021-08-12 23:39:58.238:INFO:discord: Un-reacted to GTALens: 🇦
+2021-08-12 23:39:58.239:INFO:discord: embed_meta: type=vehicle/name=Jester%20RR/handling_indices=/tier_indices=3,4/tiers_displayed=B,C/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫,🇬,🇭,🇮,🇯/)
+2021-08-12 23:40:03.203:INFO:discord: Un-reacted to GTALens: 🇨
+2021-08-12 23:40:03.203:INFO:discord: embed_meta: type=vehicle/name=Jester%20RR/handling_indices=/tier_indices=3,4,5/tiers_displayed=A,B,C/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫,🇬,🇭,🇮,🇯/)
+2021-08-12 23:40:23.497:INFO:discord: Members Updated: [('45136523',), ('137322080',), ('64287597',), ('57966477',), ('24209299',)]
+2021-08-12 23:42:00.927:INFO:discord: Members Updated: [('45006495',), ('132826534',), ('61734290',), ('39457422',), ('44098810',)]
+2021-08-12 23:43:37.802:INFO:discord: Members Updated: [('51477988',), ('87472356',), ('56445580',), ('42592072',), ('27417992',)]
+2021-08-12 23:45:14.603:INFO:discord: Members Updated: [('136873578',), ('17376793',), ('173507828',), ('10048063',), ('37150676',)]
+2021-08-12 23:46:49.641:INFO:discord: Members Updated: [('107803407',), ('15094911',), ('70121843',), ('17376793',), ('89935974',)]
+2021-08-12 23:47:58.908:WARNING:discord: {'status': False, 'error': {'code': 'TimeoutError'}}
+2021-08-12 23:47:58.908:INFO:discord: Jobs.add_sc_member_jobs() was not successful, http://scapi.rockstargames.com/search/mission?dateRange=any&sort=date&platform=xboxone&title=gtav&missiontype=race&creatorRockstarId=123631187&pageIndex=0&pageSize=30 sleeping for 0 seconds...
+2021-08-12 23:48:11.917:WARNING:discord: {'status': False, 'error': {'code': 'TimeoutError'}}
+2021-08-12 23:48:11.917:INFO:discord: Jobs.add_sc_member_jobs() was not successful, http://scapi.rockstargames.com/search/mission?dateRange=any&sort=date&platform=xboxone&title=gtav&missiontype=race&creatorRockstarId=27417992&pageIndex=0&pageSize=30 sleeping for 0 seconds...
+2021-08-12 23:48:31.910:WARNING:discord: {'status': False, 'error': {'code': 'TimeoutError'}}
+2021-08-12 23:48:31.910:INFO:discord: Jobs.add_sc_member_jobs() was not successful, http://scapi.rockstargames.com/search/mission?dateRange=any&sort=date&platform=xboxone&title=gtav&missiontype=race&creatorRockstarId=82209829&pageIndex=0&pageSize=30 sleeping for 0 seconds...
+2021-08-12 23:48:39.917:WARNING:discord: {'status': False, 'error': {'code': 'TimeoutError'}}
+2021-08-12 23:48:39.917:INFO:discord: Jobs.add_sc_member_jobs() was not successful, http://scapi.rockstargames.com/search/mission?dateRange=any&sort=date&platform=pc&title=gtav&missiontype=race&creatorRockstarId=82209829&pageIndex=1&pageSize=30 sleeping for 0 seconds...
+2021-08-12 23:48:49.977:INFO:discord: Members Updated: [('123631187',), ('27417992',), ('131209479',), ('82209829',), ('100444898',)]
+2021-08-12 23:50:22.910:WARNING:discord: {'status': False, 'error': {'code': 'TimeoutError'}}
+2021-08-12 23:50:22.911:INFO:discord: Jobs.add_sc_member_jobs() was not successful, http://scapi.rockstargames.com/search/mission?dateRange=any&sort=date&platform=pc&title=gtav&missiontype=race&creatorRockstarId=26341640&pageIndex=0&pageSize=30 sleeping for 0 seconds...
+2021-08-12 23:50:27.906:WARNING:discord: {'status': False, 'error': {'code': 'TimeoutError'}}
+2021-08-12 23:50:27.906:INFO:discord: Jobs.add_sc_member_jobs() was not successful, http://scapi.rockstargames.com/search/mission?dateRange=any&sort=date&platform=pc&title=gtav&missiontype=race&creatorRockstarId=26341640&pageIndex=0&pageSize=30 sleeping for 0 seconds...
+2021-08-12 23:50:40.920:WARNING:discord: {'status': False, 'error': {'code': 'TimeoutError'}}
+2021-08-12 23:50:40.921:INFO:discord: Jobs.add_sc_member_jobs() was not successful, http://scapi.rockstargames.com/search/mission?dateRange=any&sort=date&platform=pc&title=gtav&missiontype=race&creatorRockstarId=42975&pageIndex=0&pageSize=30 sleeping for 0 seconds...
+2021-08-12 23:50:43.269:INFO:discord: Members Updated: [('57008807',), ('124677199',), ('61734290',), ('26341640',), ('42975',)]
+2021-08-12 23:52:08.920:WARNING:discord: {'status': False, 'error': {'code': 'TimeoutError'}}
+2021-08-12 23:52:08.921:INFO:discord: Jobs.add_sc_member_jobs() was not successful, http://scapi.rockstargames.com/search/mission?dateRange=any&sort=date&platform=pc&title=gtav&missiontype=race&creatorRockstarId=51683131&pageIndex=0&pageSize=30 sleeping for 0 seconds...
+2021-08-12 23:52:31.920:WARNING:discord: {'status': False, 'error': {'code': 'TimeoutError'}}
+2021-08-12 23:52:31.920:INFO:discord: Jobs.add_sc_member_jobs() was not successful, http://scapi.rockstargames.com/search/mission?dateRange=any&sort=date&platform=pc&title=gtav&missiontype=race&creatorRockstarId=44576690&pageIndex=0&pageSize=30 sleeping for 0 seconds...
+2021-08-12 23:52:34.251:INFO:discord: Members Updated: [('11308156',), ('64784571',), ('51683131',), ('107627845',), ('44576690',)]
+2021-08-12 23:54:12.171:INFO:discord: Members Updated: [('43263781',), ('45136523',), ('103372287',), ('94630823',), ('42710493',)]
+2021-08-12 23:55:17.920:WARNING:discord: {'status': False, 'error': {'code': 'TimeoutError'}}
+2021-08-12 23:55:17.920:INFO:discord: Jobs.add_sc_member_jobs() was not successful, http://scapi.rockstargames.com/search/mission?dateRange=any&sort=date&platform=ps4&title=gtav&missiontype=race&creatorRockstarId=65052529&pageIndex=0&pageSize=30 sleeping for 0 seconds...
+2021-08-12 23:55:46.914:WARNING:discord: {'status': False, 'error': {'code': 'TimeoutError'}}
+2021-08-12 23:55:46.914:INFO:discord: Jobs.add_sc_member_jobs() was not successful, http://scapi.rockstargames.com/search/mission?dateRange=any&sort=date&platform=ps4&title=gtav&missiontype=race&creatorRockstarId=103372287&pageIndex=0&pageSize=30 sleeping for 0 seconds...
+2021-08-12 23:56:00.848:INFO:discord: Members Updated: [('65052529',), ('88146672',), ('25513692',), ('103372287',), ('119757528',)]
+2021-08-12 23:57:06.913:WARNING:discord: {'status': False, 'error': {'code': 'TimeoutError'}}
+2021-08-12 23:57:06.915:INFO:discord: Jobs.add_sc_member_jobs() was not successful, http://scapi.rockstargames.com/search/mission?dateRange=any&sort=date&platform=ps4&title=gtav&missiontype=race&creatorRockstarId=118822525&pageIndex=0&pageSize=30 sleeping for 0 seconds...
+2021-08-12 23:57:29.907:WARNING:discord: {'status': False, 'error': {'code': 'TimeoutError'}}
+2021-08-12 23:57:29.908:INFO:discord: Jobs.add_sc_member_jobs() was not successful, http://scapi.rockstargames.com/search/mission?dateRange=any&sort=date&platform=xboxone&title=gtav&missiontype=race&creatorRockstarId=48332304&pageIndex=1&pageSize=30 sleeping for 0 seconds...
+2021-08-12 23:57:37.909:WARNING:discord: {'status': False, 'error': {'code': 'TimeoutError'}}
+2021-08-12 23:57:37.910:INFO:discord: Jobs.add_sc_member_jobs() was not successful, http://scapi.rockstargames.com/search/mission?dateRange=any&sort=date&platform=pc&title=gtav&missiontype=race&creatorRockstarId=48332304&pageIndex=0&pageSize=30 sleeping for 0 seconds...
+2021-08-12 23:57:54.904:INFO:discord: Members Updated: [('118822525',), ('108496662',), ('48332304',), ('87472356',), ('91102804',)]
+2021-08-12 23:59:00.915:WARNING:discord: {'status': False, 'error': {'code': 'TimeoutError'}}
+2021-08-12 23:59:00.916:INFO:discord: Jobs.add_sc_member_jobs() was not successful, http://scapi.rockstargames.com/search/mission?dateRange=any&sort=date&platform=ps4&title=gtav&missiontype=race&creatorRockstarId=17858684&pageIndex=0&pageSize=30 sleeping for 0 seconds...
+2021-08-12 23:59:20.914:WARNING:discord: {'status': False, 'error': {'code': 'TimeoutError'}}
+2021-08-12 23:59:20.915:INFO:discord: Jobs.add_sc_member_jobs() was not successful, http://scapi.rockstargames.com/search/mission?dateRange=any&sort=date&platform=ps4&title=gtav&missiontype=race&creatorRockstarId=69748932&pageIndex=0&pageSize=30 sleeping for 0 seconds...
+2021-08-12 23:59:35.908:WARNING:discord: {'status': False, 'error': {'code': 'TimeoutError'}}
+2021-08-12 23:59:35.908:INFO:discord: Jobs.add_sc_member_jobs() was not successful, http://scapi.rockstargames.com/search/mission?dateRange=any&sort=date&platform=ps4&title=gtav&missiontype=race&creatorRockstarId=144893472&pageIndex=3&pageSize=30 sleeping for 0 seconds...
+2021-08-12 23:59:40.909:WARNING:discord: {'status': False, 'error': {'code': 'TimeoutError'}}
+2021-08-12 23:59:40.909:INFO:discord: Jobs.add_sc_member_jobs() was not successful, http://scapi.rockstargames.com/search/mission?dateRange=any&sort=date&platform=ps4&title=gtav&missiontype=race&creatorRockstarId=144893472&pageIndex=3&pageSize=30 sleeping for 0 seconds...
+2021-08-12 23:59:55.718:INFO:discord: Members Updated: [('17858684',), ('89116809',), ('69748932',), ('144893472',), ('53946513',)]
+2021-08-13 00:01:01.908:WARNING:discord: {'status': False, 'error': {'code': 'TimeoutError'}}
+2021-08-13 00:01:01.909:INFO:discord: Jobs.add_sc_member_jobs() was not successful, http://scapi.rockstargames.com/search/mission?dateRange=any&sort=date&platform=ps4&title=gtav&missiontype=race&creatorRockstarId=143555832&pageIndex=1&pageSize=30 sleeping for 0 seconds...
+2021-08-13 00:01:12.912:WARNING:discord: {'status': False, 'error': {'code': 'TimeoutError'}}
+2021-08-13 00:01:12.912:INFO:discord: Jobs.add_sc_member_jobs() was not successful, http://scapi.rockstargames.com/search/mission?dateRange=any&sort=date&platform=pc&title=gtav&missiontype=race&creatorRockstarId=143555832&pageIndex=0&pageSize=30 sleeping for 0 seconds...
+2021-08-13 00:01:20.905:WARNING:discord: {'status': False, 'error': {'code': 'TimeoutError'}}
+2021-08-13 00:01:20.905:INFO:discord: Jobs.add_sc_member_jobs() was not successful, http://scapi.rockstargames.com/search/mission?dateRange=any&sort=date&platform=ps4&title=gtav&missiontype=race&creatorRockstarId=115515520&pageIndex=0&pageSize=30 sleeping for 0 seconds...
+2021-08-13 00:01:30.914:WARNING:discord: {'status': False, 'error': {'code': 'TimeoutError'}}
+2021-08-13 00:01:30.914:INFO:discord: Jobs.add_sc_member_jobs() was not successful, http://scapi.rockstargames.com/search/mission?dateRange=any&sort=date&platform=pc&title=gtav&missiontype=race&creatorRockstarId=115515520&pageIndex=0&pageSize=30 sleeping for 0 seconds...
+2021-08-13 00:01:55.672:INFO:discord: Members Updated: [('143555832',), ('115515520',), ('126527799',), ('94630823',), ('105523387',)]
+2021-08-13 00:03:00.907:WARNING:discord: {'status': False, 'error': {'code': 'TimeoutError'}}
+2021-08-13 00:03:00.907:INFO:discord: Jobs.add_sc_member_jobs() was not successful, http://scapi.rockstargames.com/search/mission?dateRange=any&sort=date&platform=ps4&title=gtav&missiontype=race&creatorRockstarId=125210078&pageIndex=0&pageSize=30 sleeping for 0 seconds...
+2021-08-13 00:03:15.913:WARNING:discord: {'status': False, 'error': {'code': 'TimeoutError'}}
+2021-08-13 00:03:15.913:INFO:discord: Jobs.add_sc_member_jobs() was not successful, http://scapi.rockstargames.com/search/mission?dateRange=any&sort=date&platform=xboxone&title=gtav&missiontype=race&creatorRockstarId=30819010&pageIndex=1&pageSize=30 sleeping for 0 seconds...
+2021-08-13 00:03:26.915:WARNING:discord: {'status': False, 'error': {'code': 'TimeoutError'}}
+2021-08-13 00:03:26.915:INFO:discord: Jobs.add_sc_member_jobs() was not successful, http://scapi.rockstargames.com/search/mission?dateRange=any&sort=date&platform=ps4&title=gtav&missiontype=race&creatorRockstarId=97116953&pageIndex=1&pageSize=30 sleeping for 0 seconds...
+2021-08-13 00:03:31.908:WARNING:discord: {'status': False, 'error': {'code': 'TimeoutError'}}
+2021-08-13 00:03:31.908:INFO:discord: Jobs.add_sc_member_jobs() was not successful, http://scapi.rockstargames.com/search/mission?dateRange=any&sort=date&platform=ps4&title=gtav&missiontype=race&creatorRockstarId=97116953&pageIndex=1&pageSize=30 sleeping for 0 seconds...
+2021-08-13 00:03:49.905:WARNING:discord: {'status': False, 'error': {'code': 'TimeoutError'}}
+2021-08-13 00:03:49.905:INFO:discord: Jobs.add_sc_member_jobs() was not successful, http://scapi.rockstargames.com/search/mission?dateRange=any&sort=date&platform=pc&title=gtav&missiontype=race&creatorRockstarId=39216127&pageIndex=0&pageSize=30 sleeping for 0 seconds...
+2021-08-13 00:03:55.915:WARNING:discord: {'status': False, 'error': {'code': 'TimeoutError'}}
+2021-08-13 00:03:55.915:INFO:discord: Jobs.add_sc_member_jobs() was not successful, http://scapi.rockstargames.com/search/mission?dateRange=any&sort=date&platform=pc&title=gtav&missiontype=race&creatorRockstarId=39216127&pageIndex=1&pageSize=30 sleeping for 0 seconds...
+2021-08-13 00:04:03.911:WARNING:discord: {'status': False, 'error': {'code': 'TimeoutError'}}
+2021-08-13 00:04:03.911:INFO:discord: Jobs.add_sc_member_jobs() was not successful, http://scapi.rockstargames.com/search/mission?dateRange=any&sort=date&platform=ps4&title=gtav&missiontype=race&creatorRockstarId=157471300&pageIndex=0&pageSize=30 sleeping for 0 seconds...
+2021-08-13 00:04:13.914:WARNING:discord: {'status': False, 'error': {'code': 'TimeoutError'}}
+2021-08-13 00:04:13.914:INFO:discord: Jobs.add_sc_member_jobs() was not successful, http://scapi.rockstargames.com/search/mission?dateRange=any&sort=date&platform=pc&title=gtav&missiontype=race&creatorRockstarId=157471300&pageIndex=0&pageSize=30 sleeping for 0 seconds...
+2021-08-13 00:04:16.257:INFO:discord: Members Updated: [('125210078',), ('30819010',), ('97116953',), ('39216127',), ('157471300',)]
+2021-08-13 00:05:21.908:WARNING:discord: {'status': False, 'error': {'code': 'TimeoutError'}}
+2021-08-13 00:05:21.908:INFO:discord: Jobs.add_sc_member_jobs() was not successful, http://scapi.rockstargames.com/search/mission?dateRange=any&sort=date&platform=ps4&title=gtav&missiontype=race&creatorRockstarId=98094663&pageIndex=0&pageSize=30 sleeping for 0 seconds...
+2021-08-13 00:05:44.916:WARNING:discord: {'status': False, 'error': {'code': 'TimeoutError'}}
+2021-08-13 00:05:44.916:INFO:discord: Jobs.add_sc_member_jobs() was not successful, http://scapi.rockstargames.com/search/mission?dateRange=any&sort=date&platform=xboxone&title=gtav&missiontype=race&creatorRockstarId=132238969&pageIndex=0&pageSize=30 sleeping for 0 seconds...
+2021-08-13 00:06:06.911:WARNING:discord: {'status': False, 'error': {'code': 'TimeoutError'}}
+2021-08-13 00:06:06.911:INFO:discord: Jobs.add_sc_member_jobs() was not successful, http://scapi.rockstargames.com/search/mission?dateRange=any&sort=date&platform=pc&title=gtav&missiontype=race&creatorRockstarId=71427048&pageIndex=0&pageSize=30 sleeping for 0 seconds...
+2021-08-13 00:06:09.240:INFO:discord: Members Updated: [('98094663',), ('59837451',), ('132238969',), ('124677199',), ('71427048',)]
+2021-08-13 07:00:17.929:INFO:discord.client: logging in using static token
+2021-08-13 07:00:18.329:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-13 07:00:18.512:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-djhr",{"micros":128096,"calls":["discord-sessions-blue-prd-2-152",{"micros":127086,"calls":["start_session",{"micros":74812,"calls":["api-prd-main-c10v",{"micros":70089,"calls":["get_user",{"micros":2933},"add_authorized_ip",{"micros":2375},"get_guilds",{"micros":42805},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":1,"calls":[]},"presence_connect",{"micros":21334,"calls":[]}]}]}] (Session ID: 1c6b3c7fffa744b911e3f1e07337ee97).
+2021-08-13 07:01:54.299:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-13 07:01:54.299:INFO:discord.client: Cleaning up tasks.
+2021-08-13 07:01:54.300:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-13 07:01:54.354:INFO:discord.client: All tasks finished cancelling.
+2021-08-13 07:01:54.354:INFO:discord.client: Closing the event loop.
+2021-08-13 07:01:55.345:INFO:discord.client: logging in using static token
+2021-08-13 07:01:55.905:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-13 07:01:56.010:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-qhtg",{"micros":49331,"calls":["discord-sessions-blue-prd-2-64",{"micros":48451,"calls":["start_session",{"micros":41866,"calls":["api-prd-main-h4rs",{"micros":37435,"calls":["get_user",{"micros":2807},"add_authorized_ip",{"micros":3083},"get_guilds",{"micros":4560},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":3506,"calls":[]}]}]}] (Session ID: 30a938d076094fdb19ef148a8e1a0003).
+2021-08-13 07:04:05.472:INFO:discord: Members Updated: [('151578245',), ('92560425',), ('57966477',), ('42975',), ('121828720',)]
+2021-08-13 07:05:45.448:INFO:discord: Members Updated: [('45506632',), ('561845',), ('126252886',), ('46924728',), ('49078251',)]
+2021-08-13 07:07:24.250:INFO:discord: Members Updated: [('71427048',), ('137322080',), ('59103084',), ('60992733',), ('47793625',)]
+2021-08-13 07:09:03.937:INFO:discord: Members Updated: [('43087462',), ('127411928',), ('173064212',), ('55836162',), ('51683131',)]
+2021-08-13 07:10:40.560:INFO:discord: Members Updated: [('107704358',), ('100642906',), ('96975702',), ('24532683',), ('38772720',)]
+2021-08-13 07:12:22.625:INFO:discord: Members Updated: [('48332304',), ('26632299',), ('118641345',), ('130979026',), ('124677199',)]
+2021-08-13 07:14:01.919:INFO:discord: Members Updated: [('39247696',), ('52950296',), ('5612916',), ('40688403',), ('74733491',)]
+2021-08-13 07:15:39.396:INFO:discord: Members Updated: [('177793648',), ('107917900',), ('125084620',), ('94630823',), ('123354943',)]
+2021-08-13 07:17:16.613:INFO:discord: Members Updated: [('27752184',), ('122857785',), ('10619235',), ('9448749',), ('38837320',)]
+2021-08-13 07:18:53.358:INFO:discord: Members Updated: [('64827432',), ('139192855',), ('69748932',), ('186123690',), ('75669720',)]
+2021-08-13 07:20:29.610:INFO:discord: Members Updated: [('89538382',), ('41728651',), ('37150676',), ('55318774',), ('125025726',)]
+2021-08-13 07:22:06.182:INFO:discord: Members Updated: [('118822525',), ('45136523',), ('58749903',), ('69874247',), ('59103084',)]
+2021-08-13 07:23:43.469:INFO:discord: Members Updated: [('135796104',), ('59103084',), ('126252886',), ('26195797',), ('169086173',)]
+2021-08-13 07:25:19.378:INFO:discord: Members Updated: [('126390664',), ('11394648',), ('123982184',), ('121319089',), ('173507828',)]
+2021-08-13 07:26:56.856:INFO:discord: Members Updated: [('102691357',), ('117243687',), ('13857486',), ('87821695',), ('96039149',)]
+2021-08-13 07:28:36.620:INFO:discord: Members Updated: [('59523416',), ('42888086',), ('59355447',), ('54900115',), ('123746609',)]
+2021-08-13 07:29:22.792:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-13 07:29:22.793:INFO:discord.client: Cleaning up tasks.
+2021-08-13 07:29:22.793:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-13 07:29:22.842:INFO:discord.client: All tasks finished cancelling.
+2021-08-13 07:29:22.842:INFO:discord.client: Closing the event loop.
+2021-08-13 07:29:23.869:INFO:discord.client: logging in using static token
+2021-08-13 07:29:24.259:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-13 07:29:24.378:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-h3kg",{"micros":61496,"calls":["discord-sessions-blue-prd-2-149",{"micros":60507,"calls":["start_session",{"micros":38418,"calls":["api-prd-main-xf8v",{"micros":31611,"calls":["get_user",{"micros":3597},"add_authorized_ip",{"micros":1541},"get_guilds",{"micros":7497},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":1,"calls":[]},"presence_connect",{"micros":6552,"calls":[]}]}]}] (Session ID: 0881c9664548f20702ba4a8e78b2a805).
+2021-08-13 07:29:30.346:INFO:discord: Message Content: .lens tier musles b 
+2021-08-13 07:30:16.976:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-13 07:30:16.977:INFO:discord.client: Cleaning up tasks.
+2021-08-13 07:30:16.977:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-13 07:30:17.025:INFO:discord.client: All tasks finished cancelling.
+2021-08-13 07:30:17.025:INFO:discord.client: Closing the event loop.
+2021-08-13 07:30:18.053:INFO:discord.client: logging in using static token
+2021-08-13 07:30:18.434:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-13 07:30:18.590:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-8g65",{"micros":95353,"calls":["discord-sessions-blue-prd-2-2",{"micros":94371,"calls":["start_session",{"micros":57418,"calls":["api-prd-main-4f9j",{"micros":46391,"calls":["get_user",{"micros":3807},"add_authorized_ip",{"micros":5541},"get_guilds",{"micros":13648},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":13891,"calls":[]}]}]}] (Session ID: 13280e7193de76f03d09bdec6fae563b).
+2021-08-13 07:30:20.784:INFO:discord: Message Content: .lens tier musles b 
+2021-08-13 07:30:42.037:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-13 07:30:42.037:INFO:discord.client: Cleaning up tasks.
+2021-08-13 07:30:42.037:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-13 07:30:42.087:INFO:discord.client: All tasks finished cancelling.
+2021-08-13 07:30:42.088:INFO:discord.client: Closing the event loop.
+2021-08-13 07:30:43.061:INFO:discord.client: logging in using static token
+2021-08-13 07:30:43.447:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-13 07:30:43.602:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-fpl0",{"micros":84097,"calls":["discord-sessions-blue-prd-2-18",{"micros":83369,"calls":["start_session",{"micros":63896,"calls":["api-prd-main-vprx",{"micros":61394,"calls":["get_user",{"micros":4672},"add_authorized_ip",{"micros":2390},"get_guilds",{"micros":8068},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":1,"calls":[]},"presence_connect",{"micros":101,"calls":[]}]}]}] (Session ID: a9bd4aaa939769da67ed900090e46c03).
+2021-08-13 07:30:45.803:INFO:discord: Message Content: .lens tier musles b 
+2021-08-13 07:32:32.152:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-13 07:32:32.152:INFO:discord.client: Cleaning up tasks.
+2021-08-13 07:32:32.152:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-13 07:32:32.203:INFO:discord.client: All tasks finished cancelling.
+2021-08-13 07:32:32.203:INFO:discord.client: Closing the event loop.
+2021-08-13 07:32:33.291:INFO:discord.client: logging in using static token
+2021-08-13 07:32:33.687:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-13 07:32:33.870:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-n8wf",{"micros":130336,"calls":["discord-sessions-blue-prd-2-81",{"micros":129383,"calls":["start_session",{"micros":123052,"calls":["api-prd-main-0njl",{"micros":116287,"calls":["get_user",{"micros":8259},"add_authorized_ip",{"micros":1419},"get_guilds",{"micros":77510},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":5557,"calls":[]}]}]}] (Session ID: 146b60cbd88ab1feb1a75d66e610fa62).
+2021-08-13 07:32:36.074:INFO:discord: Message Content: .lens tier musles b 
+2021-08-13 07:33:16.926:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-13 07:33:16.926:INFO:discord.client: Cleaning up tasks.
+2021-08-13 07:33:16.926:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-13 07:33:16.977:INFO:discord.client: All tasks finished cancelling.
+2021-08-13 07:33:16.977:INFO:discord.client: Closing the event loop.
+2021-08-13 07:33:18.023:INFO:discord.client: logging in using static token
+2021-08-13 07:33:18.436:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-13 07:33:18.569:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-p361",{"micros":81739,"calls":["discord-sessions-blue-prd-2-33",{"micros":80989,"calls":["start_session",{"micros":63023,"calls":["api-prd-main-c00x",{"micros":59504,"calls":["get_user",{"micros":4567},"add_authorized_ip",{"micros":4008},"get_guilds",{"micros":5801},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":1,"calls":[]}]}]}] (Session ID: a8263009340f602d82946c361629d440).
+2021-08-13 07:33:20.863:INFO:discord: Message Content: .lens tier musles b 
+2021-08-13 07:34:03.488:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-13 07:34:03.488:INFO:discord.client: Cleaning up tasks.
+2021-08-13 07:34:03.489:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-13 07:34:03.541:INFO:discord.client: All tasks finished cancelling.
+2021-08-13 07:34:03.541:INFO:discord.client: Closing the event loop.
+2021-08-13 07:34:04.589:INFO:discord.client: logging in using static token
+2021-08-13 07:34:04.967:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-13 07:34:05.110:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-0v55",{"micros":88212,"calls":["discord-sessions-blue-prd-2-154",{"micros":87115,"calls":["start_session",{"micros":75522,"calls":["api-prd-main-2b5n",{"micros":70393,"calls":["get_user",{"micros":5042},"add_authorized_ip",{"micros":6756},"get_guilds",{"micros":6628},"coros_wait",{"micros":0}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":4,"calls":[]}]}]}] (Session ID: da77aff6f6ebab17279cfee460f273a6).
+2021-08-13 07:34:07.322:INFO:discord: Message Content: .lens tier musles b 
+2021-08-13 07:35:21.552:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-13 07:35:21.552:INFO:discord.client: Cleaning up tasks.
+2021-08-13 07:35:21.552:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-13 07:35:21.617:INFO:discord.client: All tasks finished cancelling.
+2021-08-13 07:35:21.617:INFO:discord.client: Closing the event loop.
+2021-08-13 07:35:22.651:INFO:discord.client: logging in using static token
+2021-08-13 07:35:23.077:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-13 07:35:23.217:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-sdbx",{"micros":83005,"calls":["discord-sessions-blue-prd-2-13",{"micros":81924,"calls":["start_session",{"micros":55070,"calls":["api-prd-main-rqbm",{"micros":51160,"calls":["get_user",{"micros":3544},"add_authorized_ip",{"micros":9184},"get_guilds",{"micros":10794},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":16697,"calls":[]}]}]}] (Session ID: 83a0a8c10441e04997a7fb9c75c1d597).
+2021-08-13 07:35:25.482:INFO:discord: Message Content: .lens tier musles b 
+2021-08-13 07:36:13.574:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-13 07:36:13.574:INFO:discord.client: Cleaning up tasks.
+2021-08-13 07:36:13.574:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-13 07:36:13.625:INFO:discord.client: All tasks finished cancelling.
+2021-08-13 07:36:13.625:INFO:discord.client: Closing the event loop.
+2021-08-13 07:36:14.585:INFO:discord.client: logging in using static token
+2021-08-13 07:36:14.981:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-13 07:36:15.172:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-8wp4",{"micros":132168,"calls":["discord-sessions-blue-prd-2-117",{"micros":131321,"calls":["start_session",{"micros":93388,"calls":["api-prd-main-0pb1",{"micros":90174,"calls":["get_user",{"micros":12197},"add_authorized_ip",{"micros":9067},"get_guilds",{"micros":17103},"coros_wait",{"micros":2}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":1,"calls":[]}]}]}] (Session ID: 16c4ebcaece9ba534a62609fb3b3a6dd).
+2021-08-13 07:36:17.352:INFO:discord: Message Content: .lens tier musles b 
+2021-08-13 07:36:29.553:INFO:discord: Reacted to GTALens: 🇸
+2021-08-13 07:36:29.553:INFO:discord: embed_meta: type=vehicle/name=Jester%20RR/handling_indices=/tier_indices=3,4/tiers_displayed=A,B/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫,🇬,🇭,🇮,🇯/)
+2021-08-13 07:36:32.059:INFO:discord: Un-reacted to GTALens: 🇸
+2021-08-13 07:36:32.059:INFO:discord: embed_meta: type=vehicle/name=Jester%20RR/handling_indices=/tier_indices=3,4,5/tiers_displayed=S,A,B/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫,🇬,🇭,🇮,🇯/)
+2021-08-13 07:36:49.348:INFO:discord: Message Content: .lens tier musles z 
+2021-08-13 07:37:48.136:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-13 07:37:48.137:INFO:discord.client: Cleaning up tasks.
+2021-08-13 07:37:48.137:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-13 07:37:48.194:INFO:discord.client: All tasks finished cancelling.
+2021-08-13 07:37:48.195:INFO:discord.client: Closing the event loop.
+2021-08-13 07:37:49.183:INFO:discord.client: logging in using static token
+2021-08-13 07:37:49.611:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-13 07:37:49.806:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-lpz7",{"micros":140982,"calls":["discord-sessions-blue-prd-2-115",{"micros":139944,"calls":["start_session",{"micros":103773,"calls":["api-prd-main-rrgt",{"micros":94068,"calls":["get_user",{"micros":9211},"add_authorized_ip",{"micros":10570},"get_guilds",{"micros":14698},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":22893,"calls":[]}]}]}] (Session ID: 398ed2e29fd95c1949ebb62369c9910d).
+2021-08-13 07:37:51.963:INFO:discord: Message Content: .lens tier musles z 
+2021-08-13 07:39:39.445:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-13 07:39:39.446:INFO:discord.client: Cleaning up tasks.
+2021-08-13 07:39:39.446:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-13 07:39:39.496:INFO:discord.client: All tasks finished cancelling.
+2021-08-13 07:39:39.496:INFO:discord.client: Closing the event loop.
+2021-08-13 07:39:40.485:INFO:discord.client: logging in using static token
+2021-08-13 07:39:40.898:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-13 07:39:41.134:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-thgp",{"micros":183686,"calls":["discord-sessions-blue-prd-2-55",{"micros":182740,"calls":["start_session",{"micros":131231,"calls":["api-prd-main-nw4r",{"micros":97034,"calls":["get_user",{"micros":8693},"add_authorized_ip",{"micros":7206},"get_guilds",{"micros":11895},"coros_wait",{"micros":0}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":29187,"calls":[]}]}]}] (Session ID: 16eba631be0cf0a373d8243260e29d22).
+2021-08-13 07:39:45.757:INFO:discord: Message Content: .lens tier sups s 
+2021-08-13 07:39:58.729:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-13 07:39:58.729:INFO:discord.client: Cleaning up tasks.
+2021-08-13 07:39:58.729:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-13 07:39:58.783:INFO:discord.client: All tasks finished cancelling.
+2021-08-13 07:39:58.783:INFO:discord.client: Closing the event loop.
+2021-08-13 07:39:59.767:INFO:discord.client: logging in using static token
+2021-08-13 07:40:00.234:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-13 07:40:00.383:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-gljs",{"micros":76795,"calls":["discord-sessions-blue-prd-2-70",{"micros":75949,"calls":["start_session",{"micros":41608,"calls":["api-prd-main-2mnq",{"micros":35252,"calls":["get_user",{"micros":5547},"add_authorized_ip",{"micros":2444},"get_guilds",{"micros":3475},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":1,"calls":[]},"presence_connect",{"micros":33517,"calls":[]}]}]}] (Session ID: ddcdeb815aa464abf44d414198fb28b1).
+2021-08-13 07:40:11.527:INFO:discord: Message Content: .lens tier spots c 
+2021-08-13 07:41:27.437:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-13 07:41:27.437:INFO:discord.client: Cleaning up tasks.
+2021-08-13 07:41:27.437:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-13 07:41:27.490:INFO:discord.client: All tasks finished cancelling.
+2021-08-13 07:41:27.491:INFO:discord.client: Closing the event loop.
+2021-08-13 07:41:28.462:INFO:discord.client: logging in using static token
+2021-08-13 07:41:28.901:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-13 07:41:29.033:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-x2hg",{"micros":77454,"calls":["discord-sessions-blue-prd-2-101",{"micros":76719,"calls":["start_session",{"micros":52548,"calls":["api-prd-main-w84t",{"micros":49793,"calls":["get_user",{"micros":2381},"add_authorized_ip",{"micros":1218},"get_guilds",{"micros":24255},"coros_wait",{"micros":0}]}]},"guilds_connect",{"micros":1,"calls":[]},"presence_connect",{"micros":19674,"calls":[]}]}]}] (Session ID: 9c6d5caea047a94032b24e1c03f7dc17).
+2021-08-13 07:41:34.164:INFO:discord: Message Content: .lens tier sedans f 
+2021-08-13 07:41:54.221:INFO:discord: Message Content: .lens tier test f 
+2021-08-13 07:43:36.210:INFO:discord: Members Updated: [('123982184',), ('107803407',), ('64264522',), ('39247696',), ('9537326',)]
+2021-08-13 07:45:16.481:INFO:discord: Members Updated: [('25513692',), ('64287597',), ('89435888',), ('27752184',), ('118034435',)]
+2021-08-13 07:46:54.195:INFO:discord: Members Updated: [('94573291',), ('43263781',), ('125040832',), ('52950296',), ('189412929',)]
+2021-08-13 07:48:30.653:INFO:discord: Members Updated: [('137322080',), ('58749903',), ('48820274',), ('78738251',), ('143201571',)]
+2021-08-13 07:48:50.524:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-13 07:48:50.524:INFO:discord.client: Cleaning up tasks.
+2021-08-13 07:48:50.525:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-13 07:48:50.582:INFO:discord.client: All tasks finished cancelling.
+2021-08-13 07:48:50.582:INFO:discord.client: Closing the event loop.
+2021-08-13 07:48:51.637:INFO:discord.client: logging in using static token
+2021-08-13 07:48:52.031:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-13 07:48:52.140:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-xh2x",{"micros":57862,"calls":["discord-sessions-blue-prd-2-135",{"micros":56319,"calls":["start_session",{"micros":25682,"calls":["api-prd-main-dkhn",{"micros":22595,"calls":["get_user",{"micros":1903},"add_authorized_ip",{"micros":1445},"get_guilds",{"micros":3938},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":1864,"calls":[]}]}]}] (Session ID: a0d2870c51c61be4046a142866e70d04).
+2021-08-13 07:48:54.331:INFO:discord: Message Content: .lens tier test f 
+2021-08-13 07:49:07.825:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-13 07:49:07.825:INFO:discord.client: Cleaning up tasks.
+2021-08-13 07:49:07.826:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-13 07:49:07.877:INFO:discord.client: All tasks finished cancelling.
+2021-08-13 07:49:07.878:INFO:discord.client: Closing the event loop.
+2021-08-13 07:49:08.799:INFO:discord.client: logging in using static token
+2021-08-13 07:49:09.190:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-13 07:49:09.361:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-h86g",{"micros":110967,"calls":["discord-sessions-blue-prd-2-95",{"micros":108952,"calls":["start_session",{"micros":55138,"calls":["api-prd-main-mds9",{"micros":49986,"calls":["get_user",{"micros":5289},"add_authorized_ip",{"micros":4418},"get_guilds",{"micros":11250},"coros_wait",{"micros":0}]}]},"guilds_connect",{"micros":1,"calls":[]},"presence_connect",{"micros":1,"calls":[]}]}]}] (Session ID: 74d2919a539c739438876d2e36e05f14).
+2021-08-13 07:49:11.549:INFO:discord: Message Content: .lens tier test f 
+2021-08-13 07:49:21.992:INFO:discord: Message Content: .lens tier cmpct f 
+2021-08-13 07:51:18.116:INFO:discord: Members Updated: [('164342278',), ('106043010',), ('68288543',), ('46924728',), ('68818976',)]
+2021-08-13 07:52:13.530:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-13 07:52:13.530:INFO:discord.client: Cleaning up tasks.
+2021-08-13 07:52:13.530:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-13 07:52:13.586:INFO:discord.client: All tasks finished cancelling.
+2021-08-13 07:52:13.586:INFO:discord.client: Closing the event loop.
+2021-08-13 07:52:14.574:INFO:discord.client: logging in using static token
+2021-08-13 07:52:14.977:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-13 07:52:15.081:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-56hk",{"micros":52582,"calls":["discord-sessions-blue-prd-2-115",{"micros":51598,"calls":["start_session",{"micros":44785,"calls":["api-prd-main-4bw7",{"micros":41518,"calls":["get_user",{"micros":2804},"add_authorized_ip",{"micros":1704},"get_guilds",{"micros":4041},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":5984,"calls":[]}]}]}] (Session ID: d9c4569d849afc99ec23f3c5f43d91e3).
+2021-08-13 07:52:17.864:INFO:discord: Message Content: .lens tier cmpct f 
+2021-08-13 07:52:29.671:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-13 07:52:29.671:INFO:discord.client: Cleaning up tasks.
+2021-08-13 07:52:29.672:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-13 07:52:29.722:INFO:discord.client: All tasks finished cancelling.
+2021-08-13 07:52:29.722:INFO:discord.client: Closing the event loop.
+2021-08-13 07:52:30.697:INFO:discord.client: logging in using static token
+2021-08-13 07:52:31.189:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-13 07:52:31.351:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-bbhc",{"micros":83014,"calls":["discord-sessions-blue-prd-2-138",{"micros":82145,"calls":["start_session",{"micros":58137,"calls":["api-prd-main-q834",{"micros":55085,"calls":["get_user",{"micros":10605},"add_authorized_ip",{"micros":1427},"get_guilds",{"micros":9568},"coros_wait",{"micros":2}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":3420,"calls":[]}]}]}] (Session ID: d2cb55e0e535df01c9cbb2ea795b6e76).
+2021-08-13 07:52:33.579:INFO:discord: Message Content: .lens tier cmpct f 
+2021-08-13 07:54:44.361:INFO:discord: Members Updated: [('78072802',), ('41044456',), ('38565733',), ('99832560',), ('168042165',)]
+2021-08-13 07:55:17.116:INFO:discord: Message Content: .lens tier sups c 
+2021-08-13 07:55:30.888:INFO:discord: Message Content: .lens tier spawts b 
+2021-08-13 07:55:38.089:INFO:discord: Message Content: .lens tier sports b 
+2021-08-13 07:55:45.765:INFO:discord: Message Content: .lens tier sports c 
+2021-08-13 07:56:20.442:INFO:discord: Members Updated: [('150949112',), ('39003407',), ('55318515',), ('47556240',), ('154259252',)]
+2021-08-13 07:57:57.285:INFO:discord: Members Updated: [('91102804',), ('52190213',), ('39185696',), ('47399868',), ('15375561',)]
+2021-08-13 07:59:33.854:INFO:discord: Members Updated: [('31281104',), ('112829356',), ('130454754',), ('108511014',), ('150399453',)]
+2021-08-13 08:01:08.992:INFO:discord: Members Updated: [('35873157',), ('184979518',), ('135223096',), ('145425097',), ('106433322',)]
+2021-08-13 08:02:52.450:INFO:discord: Members Updated: [('107913314',), ('135738141',), ('60992733',), ('130979026',), ('59523416',)]
+2021-08-13 08:04:28.393:INFO:discord: Members Updated: [('40442329',), ('41728651',), ('42330658',), ('11238597',), ('152674654',)]
+2021-08-13 08:06:05.050:INFO:discord: Members Updated: [('59578105',), ('136873578',), ('91187318',), ('44395026',), ('57897987',)]
+2021-08-13 08:07:45.362:INFO:discord: Members Updated: [('28409812',), ('38565733',), ('74733491',), ('64896452',), ('101739129',)]
+2021-08-13 08:09:21.249:INFO:discord: Members Updated: [('15094911',), ('17858684',), ('174785872',), ('105035092',), ('146192911',)]
+2021-08-13 08:10:58.401:INFO:discord: Members Updated: [('90612893',), ('106043010',), ('102245658',), ('60329365',), ('124677199',)]
+2021-08-13 08:12:39.988:INFO:discord: Members Updated: [('56831470',), ('174785872',), ('47556240',), ('122857785',), ('90612893',)]
+2021-08-13 08:14:15.417:INFO:discord: Members Updated: [('59578105',), ('118796135',), ('126390664',), ('43697758',), ('10851101',)]
+2021-08-13 08:15:55.188:INFO:discord: Members Updated: [('157082074',), ('55277895',), ('144893472',), ('64264522',), ('60329365',)]
+2021-08-13 08:17:34.260:INFO:discord: Members Updated: [('10619235',), ('42975',), ('84852756',), ('56445580',), ('82580489',)]
+2021-08-13 08:19:12.989:INFO:discord: Members Updated: [('96975702',), ('26341640',), ('44201951',), ('94270284',), ('13197499',)]
+2021-08-13 08:20:51.448:INFO:discord: Members Updated: [('47294678',), ('144893472',), ('172210844',), ('284117',), ('40442329',)]
+2021-08-13 08:20:57.850:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-13 08:20:57.850:INFO:discord.client: Cleaning up tasks.
+2021-08-13 08:20:57.850:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-13 08:20:57.912:INFO:discord.client: All tasks finished cancelling.
+2021-08-13 08:20:57.912:INFO:discord.client: Closing the event loop.
+2021-08-13 08:20:58.897:INFO:discord.client: logging in using static token
+2021-08-13 08:20:59.355:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-13 08:20:59.486:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-7k1z",{"micros":74810,"calls":["discord-sessions-blue-prd-2-26",{"micros":73489,"calls":["start_session",{"micros":56289,"calls":["api-prd-main-fqhn",{"micros":52594,"calls":["get_user",{"micros":4228},"add_authorized_ip",{"micros":2475},"get_guilds",{"micros":12161},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":1,"calls":[]},"presence_connect",{"micros":16383,"calls":[]}]}]}] (Session ID: facf6d8ef1efc41b31f515e408450e35).
+2021-08-13 08:21:04.611:INFO:discord: Message Content: .lens car t20 
+2021-08-13 08:21:08.264:INFO:discord: Reacted to GTALens: 🔧
+2021-08-13 08:21:08.264:INFO:discord: embed_meta: type=vehicle/name=T20/handling_indices=/tier_indices=/tiers_displayed=/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:22:22.466:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-13 08:22:22.466:INFO:discord.client: Cleaning up tasks.
+2021-08-13 08:22:22.466:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-13 08:22:22.519:INFO:discord.client: All tasks finished cancelling.
+2021-08-13 08:22:22.519:INFO:discord.client: Closing the event loop.
+2021-08-13 08:22:23.504:INFO:discord.client: logging in using static token
+2021-08-13 08:22:23.947:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-13 08:22:24.163:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-pzjs",{"micros":164103,"calls":["discord-sessions-blue-prd-2-1",{"micros":162505,"calls":["start_session",{"micros":116854,"calls":["api-prd-main-9t4k",{"micros":65174,"calls":["get_user",{"micros":4592},"add_authorized_ip",{"micros":3406},"get_guilds",{"micros":9213},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":16804,"calls":[]}]}]}] (Session ID: 5fb25d824844e3ba11e611aa33ed0a8c).
+2021-08-13 08:22:27.304:INFO:discord: Message Content: .lens car t20 
+2021-08-13 08:22:29.447:INFO:discord: Reacted to GTALens: 🔧
+2021-08-13 08:22:29.447:INFO:discord: embed_meta: type=vehicle/name=T20/handling_indices=/tier_indices=/tiers_displayed=/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:23:07.168:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-13 08:23:07.168:INFO:discord.client: Cleaning up tasks.
+2021-08-13 08:23:07.169:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-13 08:23:07.224:INFO:discord.client: All tasks finished cancelling.
+2021-08-13 08:23:07.225:INFO:discord.client: Closing the event loop.
+2021-08-13 08:23:08.266:INFO:discord.client: logging in using static token
+2021-08-13 08:23:08.741:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-13 08:23:08.883:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-ck2q",{"micros":83546,"calls":["discord-sessions-blue-prd-2-86",{"micros":82614,"calls":["start_session",{"micros":45931,"calls":["api-prd-main-76lp",{"micros":42642,"calls":["get_user",{"micros":5295},"add_authorized_ip",{"micros":2701},"get_guilds",{"micros":3920},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":1,"calls":[]},"presence_connect",{"micros":7939,"calls":[]}]}]}] (Session ID: 4e0a455c6393136e0ee8097e7884bc8a).
+2021-08-13 08:23:11.053:INFO:discord: Un-reacted to GTALens: 🔧
+2021-08-13 08:23:11.053:INFO:discord: embed_meta: type=vehicle/name=T20/handling_indices=3,4,5,6,7/tier_indices=/tiers_displayed=/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:23:13.006:INFO:discord: Reacted to GTALens: 🔧
+2021-08-13 08:23:13.006:INFO:discord: embed_meta: type=vehicle/name=T20/handling_indices=/tier_indices=/tiers_displayed=/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:24:19.285:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-13 08:24:19.285:INFO:discord.client: Cleaning up tasks.
+2021-08-13 08:24:19.286:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-13 08:24:19.335:INFO:discord.client: All tasks finished cancelling.
+2021-08-13 08:24:19.335:INFO:discord.client: Closing the event loop.
+2021-08-13 08:24:20.342:INFO:discord.client: logging in using static token
+2021-08-13 08:24:20.816:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-13 08:24:20.964:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-tn1q",{"micros":93910,"calls":["discord-sessions-blue-prd-2-72",{"micros":91050,"calls":["start_session",{"micros":41346,"calls":["api-prd-main-1h1c",{"micros":36463,"calls":["get_user",{"micros":3644},"add_authorized_ip",{"micros":1840},"get_guilds",{"micros":5236},"coros_wait",{"micros":0}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":4136,"calls":[]}]}]}] (Session ID: 46ad0157c8c1a1b635d8d8c69d93ecc0).
+2021-08-13 08:24:23.193:INFO:discord: Un-reacted to GTALens: 🔧
+2021-08-13 08:24:23.193:INFO:discord: embed_meta: type=vehicle/name=T20/handling_indices=3,4,5,6,7/tier_indices=/tiers_displayed=/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:24:26.313:INFO:discord: Reacted to GTALens: 🇦
+2021-08-13 08:24:26.313:INFO:discord: embed_meta: type=vehicle/name=T20/handling_indices=/tier_indices=/tiers_displayed=/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:24:27.876:INFO:discord: Reacted to GTALens: 🇧
+2021-08-13 08:24:27.876:INFO:discord: embed_meta: type=vehicle/name=T20/handling_indices=/tier_indices=3/tiers_displayed=A/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:24:29.964:INFO:discord: Reacted to GTALens: 🔧
+2021-08-13 08:24:29.965:INFO:discord: embed_meta: type=vehicle/name=T20/handling_indices=/tier_indices=3,4/tiers_displayed=A,B/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:24:32.393:INFO:discord: Un-reacted to GTALens: 🔧
+2021-08-13 08:24:32.393:INFO:discord: embed_meta: type=vehicle/name=T20/handling_indices=3,4,5,6,7/tier_indices=/tiers_displayed=A,B/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:24:34.616:INFO:discord: Un-reacted to GTALens: 🇦
+2021-08-13 08:24:34.616:INFO:discord: embed_meta: type=vehicle/name=T20/handling_indices=/tier_indices=/tiers_displayed=A,B/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:24:35.626:INFO:discord: Un-reacted to GTALens: 🇧
+2021-08-13 08:24:35.626:INFO:discord: embed_meta: type=vehicle/name=T20/handling_indices=/tier_indices=3/tiers_displayed=B/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:24:39.162:INFO:discord: Reacted to GTALens: 🇧
+2021-08-13 08:24:39.162:INFO:discord: embed_meta: type=vehicle/name=T20/handling_indices=/tier_indices=/tiers_displayed=/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:24:44.549:INFO:discord: Reacted to GTALens: 🇦
+2021-08-13 08:24:44.549:INFO:discord: embed_meta: type=vehicle/name=T20/handling_indices=/tier_indices=3/tiers_displayed=B/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:24:49.206:INFO:discord: Reacted to GTALens: 🔧
+2021-08-13 08:24:49.207:INFO:discord: embed_meta: type=vehicle/name=T20/handling_indices=/tier_indices=3,4/tiers_displayed=A,B/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:24:51.534:INFO:discord: Un-reacted to GTALens: 🔧
+2021-08-13 08:24:51.535:INFO:discord: embed_meta: type=vehicle/name=T20/handling_indices=3,4,5,6,7/tier_indices=/tiers_displayed=A,B/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:24:53.056:INFO:discord: Un-reacted to GTALens: 🇦
+2021-08-13 08:24:53.056:INFO:discord: embed_meta: type=vehicle/name=T20/handling_indices=/tier_indices=/tiers_displayed=A,B/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:24:55.270:INFO:discord: Un-reacted to GTALens: 🇧
+2021-08-13 08:24:55.270:INFO:discord: embed_meta: type=vehicle/name=T20/handling_indices=/tier_indices=3/tiers_displayed=B/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:25:10.806:INFO:discord: Reacted to GTALens: 🇧
+2021-08-13 08:25:10.806:INFO:discord: embed_meta: type=vehicle/name=T20/handling_indices=/tier_indices=/tiers_displayed=/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:25:13.864:INFO:discord: Un-reacted to GTALens: 🇧
+2021-08-13 08:25:13.865:INFO:discord: embed_meta: type=vehicle/name=T20/handling_indices=/tier_indices=3/tiers_displayed=B/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:25:16.003:INFO:discord: Reacted to GTALens: 🇦
+2021-08-13 08:25:16.003:INFO:discord: embed_meta: type=vehicle/name=T20/handling_indices=/tier_indices=/tiers_displayed=/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:25:17.910:INFO:discord: Reacted to GTALens: 🇧
+2021-08-13 08:25:17.910:INFO:discord: embed_meta: type=vehicle/name=T20/handling_indices=/tier_indices=3/tiers_displayed=A/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:25:21.348:INFO:discord: Reacted to GTALens: 🇨
+2021-08-13 08:25:21.348:INFO:discord: embed_meta: type=vehicle/name=T20/handling_indices=/tier_indices=3,4/tiers_displayed=A,B/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:25:23.014:INFO:discord: Un-reacted to GTALens: 🇧
+2021-08-13 08:25:23.014:INFO:discord: embed_meta: type=vehicle/name=T20/handling_indices=/tier_indices=3,4,5/tiers_displayed=A,B,C/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:25:24.665:INFO:discord: Reacted to GTALens: 🔧
+2021-08-13 08:25:24.665:INFO:discord: embed_meta: type=vehicle/name=T20/handling_indices=/tier_indices=3,4/tiers_displayed=A,C/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:25:31.784:INFO:discord: Un-reacted to GTALens: 🇦
+2021-08-13 08:25:31.784:INFO:discord: embed_meta: type=vehicle/name=T20/handling_indices=3,4,5,6,7/tier_indices=/tiers_displayed=A,C/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:26:31.861:INFO:discord: Members Updated: [('110301151',), ('100642906',), ('84852756',), ('94630823',), ('68288543',)]
+2021-08-13 08:26:52.350:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-13 08:26:52.350:INFO:discord.client: Cleaning up tasks.
+2021-08-13 08:26:52.351:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-13 08:26:52.408:INFO:discord.client: All tasks finished cancelling.
+2021-08-13 08:26:52.408:INFO:discord.client: Closing the event loop.
+2021-08-13 08:26:53.480:INFO:discord.client: logging in using static token
+2021-08-13 08:26:53.935:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-13 08:26:54.073:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-gljs",{"micros":76391,"calls":["discord-sessions-blue-prd-2-3",{"micros":75389,"calls":["start_session",{"micros":31435,"calls":["api-prd-main-tcjn",{"micros":27898,"calls":["get_user",{"micros":3868},"add_authorized_ip",{"micros":1577},"get_guilds",{"micros":4366},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":1,"calls":[]},"presence_connect",{"micros":28265,"calls":[]}]}]}] (Session ID: 87ae5f73a48d2562b914f0757ee741e7).
+2021-08-13 08:26:57.511:INFO:discord: Message Content: .lens car t20 
+2021-08-13 08:27:01.280:INFO:discord: Reacted to GTALens: 🇧
+2021-08-13 08:27:01.281:INFO:discord: embed_meta: type=vehicle/name=T20/handling_indices=/tier_indices=/tiers_displayed=/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:27:03.412:INFO:discord: Reacted to GTALens: 🔧
+2021-08-13 08:27:03.413:INFO:discord: embed_meta: type=vehicle/name=T20/handling_indices=/tier_indices=3/tiers_displayed=B/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:27:05.462:INFO:discord: Un-reacted to GTALens: 🇧
+2021-08-13 08:27:05.462:INFO:discord: embed_meta: type=vehicle/name=T20/handling_indices=3,4,5,6,7/tier_indices=/tiers_displayed=B/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:28:20.211:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-13 08:28:20.211:INFO:discord.client: Cleaning up tasks.
+2021-08-13 08:28:20.211:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-13 08:28:20.263:INFO:discord.client: All tasks finished cancelling.
+2021-08-13 08:28:20.263:INFO:discord.client: Closing the event loop.
+2021-08-13 08:28:21.362:INFO:discord.client: logging in using static token
+2021-08-13 08:28:21.918:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-13 08:28:22.067:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-88n6",{"micros":91780,"calls":["discord-sessions-blue-prd-2-58",{"micros":90991,"calls":["start_session",{"micros":59729,"calls":["api-prd-main-1kft",{"micros":54937,"calls":["get_user",{"micros":6236},"add_authorized_ip",{"micros":4072},"get_guilds",{"micros":7577},"coros_wait",{"micros":2}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":18560,"calls":[]}]}]}] (Session ID: c60195177de479fb51a13d484e42f3bf).
+2021-08-13 08:28:24.307:INFO:discord: Un-reacted to GTALens: 🔧
+2021-08-13 08:28:24.307:INFO:discord: embed_meta: type=vehicle/name=T20/handling_indices=/tier_indices=/tiers_displayed=/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:28:26.934:INFO:discord: Reacted to GTALens: 🇸
+2021-08-13 08:28:26.934:INFO:discord: embed_meta: type=vehicle/name=T20/handling_indices=3,4,5,6,7/tier_indices=/tiers_displayed=/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:28:29.150:INFO:discord: Reacted to GTALens: 🇦
+2021-08-13 08:28:29.150:INFO:discord: embed_meta: type=vehicle/name=T20/handling_indices=/tier_indices=3/tiers_displayed=S/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:28:30.951:INFO:discord: Un-reacted to GTALens: 🇸
+2021-08-13 08:28:30.951:INFO:discord: embed_meta: type=vehicle/name=T20/handling_indices=/tier_indices=3,4/tiers_displayed=S,A/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:28:31.990:INFO:discord: Reacted to GTALens: 🔧
+2021-08-13 08:28:31.990:INFO:discord: embed_meta: type=vehicle/name=T20/handling_indices=/tier_indices=3/tiers_displayed=A/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:28:34.867:INFO:discord: Un-reacted to GTALens: 🇦
+2021-08-13 08:28:34.867:INFO:discord: embed_meta: type=vehicle/name=T20/handling_indices=3,4,5,6,7/tier_indices=/tiers_displayed=A/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:28:45.738:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-13 08:28:45.738:INFO:discord.client: Cleaning up tasks.
+2021-08-13 08:28:45.738:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-13 08:28:45.797:INFO:discord.client: All tasks finished cancelling.
+2021-08-13 08:28:45.797:INFO:discord.client: Closing the event loop.
+2021-08-13 08:28:46.808:INFO:discord.client: logging in using static token
+2021-08-13 08:28:47.422:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-13 08:28:47.541:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-ppht",{"micros":64613,"calls":["discord-sessions-blue-prd-2-104",{"micros":63744,"calls":["start_session",{"micros":56439,"calls":["api-prd-main-jbzk",{"micros":53034,"calls":["get_user",{"micros":5651},"add_authorized_ip",{"micros":8456},"get_guilds",{"micros":7143},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":1,"calls":[]}]}]}] (Session ID: 7390b25979c6f6cc039136b72521cdcc).
+2021-08-13 08:28:52.967:INFO:discord: Message Content: .lens car turismo r 
+2021-08-13 08:28:57.355:INFO:discord: Reacted to GTALens: 🇧
+2021-08-13 08:28:57.355:INFO:discord: embed_meta: type=vehicle/name=Turismo%20R/handling_indices=/tier_indices=/tiers_displayed=/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:28:59.093:INFO:discord: Reacted to GTALens: 🔧
+2021-08-13 08:28:59.094:INFO:discord: embed_meta: type=vehicle/name=Turismo%20R/handling_indices=/tier_indices=3/tiers_displayed=B/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:29:00.264:INFO:discord: Reacted to GTALens: 🇦
+2021-08-13 08:29:00.264:INFO:discord: embed_meta: type=vehicle/name=Turismo%20R/handling_indices=3,4,5,6,7/tier_indices=/tiers_displayed=B/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:29:16.970:INFO:discord: Un-reacted to GTALens: 🔧
+2021-08-13 08:29:16.971:INFO:discord: embed_meta: type=vehicle/name=Turismo%20R/handling_indices=/tier_indices=3,4/tiers_displayed=A,B/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:29:18.684:INFO:discord: Un-reacted to GTALens: 🇦
+2021-08-13 08:29:18.684:INFO:discord: embed_meta: type=vehicle/name=Turismo%20R/handling_indices=3,4,5,6,7/tier_indices=/tiers_displayed=A,B/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:29:21.358:INFO:discord: Reacted to GTALens: 🇨
+2021-08-13 08:29:21.359:INFO:discord: embed_meta: type=vehicle/name=Turismo%20R/handling_indices=/tier_indices=3/tiers_displayed=B/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:29:23.353:INFO:discord: Reacted to GTALens: 🔧
+2021-08-13 08:29:23.354:INFO:discord: embed_meta: type=vehicle/name=Turismo%20R/handling_indices=/tier_indices=3,4/tiers_displayed=B,C/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:29:25.770:INFO:discord: Reacted to GTALens: 🇦
+2021-08-13 08:29:25.770:INFO:discord: embed_meta: type=vehicle/name=Turismo%20R/handling_indices=3,4,5,6,7/tier_indices=/tiers_displayed=B,C/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:29:45.958:INFO:discord: Un-reacted to GTALens: 🇧
+2021-08-13 08:29:45.958:INFO:discord: embed_meta: type=vehicle/name=Turismo%20R/handling_indices=/tier_indices=3,4,5/tiers_displayed=A,B,C/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:29:48.362:INFO:discord: Un-reacted to GTALens: 🔧
+2021-08-13 08:29:48.362:INFO:discord: embed_meta: type=vehicle/name=Turismo%20R/handling_indices=/tier_indices=3,4/tiers_displayed=A,C/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:29:57.621:INFO:discord: Reacted to GTALens: 🔧
+2021-08-13 08:29:57.621:INFO:discord: embed_meta: type=vehicle/name=Turismo%20R/handling_indices=3,4,5,6,7/tier_indices=/tiers_displayed=A,C/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:30:04.236:INFO:discord: Reacted to GTALens: 🇧
+2021-08-13 08:30:04.236:INFO:discord: embed_meta: type=vehicle/name=Turismo%20R/handling_indices=/tier_indices=/tiers_displayed=A,C/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:30:15.938:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-13 08:30:15.939:INFO:discord.client: Cleaning up tasks.
+2021-08-13 08:30:15.939:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-13 08:30:16.005:INFO:discord.client: All tasks finished cancelling.
+2021-08-13 08:30:16.005:INFO:discord.client: Closing the event loop.
+2021-08-13 08:30:17.127:INFO:discord.client: logging in using static token
+2021-08-13 08:30:17.707:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-13 08:30:17.820:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-1nq9",{"micros":55691,"calls":["discord-sessions-blue-prd-2-77",{"micros":51831,"calls":["start_session",{"micros":42617,"calls":["api-prd-main-0ggj",{"micros":39262,"calls":["get_user",{"micros":3029},"add_authorized_ip",{"micros":1826},"get_guilds",{"micros":7245},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":1,"calls":[]},"presence_connect",{"micros":4600,"calls":[]}]}]}] (Session ID: a720987b7376d3062f0e8fcee50886e6).
+2021-08-13 08:30:22.292:INFO:discord: Un-reacted to GTALens: 🔧
+2021-08-13 08:30:22.292:INFO:discord: embed_meta: type=vehicle/name=Turismo%20R/handling_indices=/tier_indices=3,4,5/tiers_displayed=A,B,C/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:30:25.165:INFO:discord: Reacted to GTALens: 🔧
+2021-08-13 08:30:25.165:INFO:discord: embed_meta: type=vehicle/name=Turismo%20R/handling_indices=3,4,5,6,7/tier_indices=/tiers_displayed=/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:30:26.455:INFO:discord: Un-reacted to GTALens: 🇦
+2021-08-13 08:30:26.456:INFO:discord: embed_meta: type=vehicle/name=Turismo%20R/handling_indices=/tier_indices=/tiers_displayed=/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:30:28.157:INFO:discord: Un-reacted to GTALens: 🇧
+2021-08-13 08:30:28.158:INFO:discord: embed_meta: type=vehicle/name=Turismo%20R/handling_indices=/tier_indices=3/tiers_displayed=A/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:30:29.786:INFO:discord: Un-reacted to GTALens: 🇨
+2021-08-13 08:30:29.786:INFO:discord: embed_meta: type=vehicle/name=Turismo%20R/handling_indices=/tier_indices=3,4/tiers_displayed=A,B/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:30:32.663:INFO:discord: Un-reacted to GTALens: 🔧
+2021-08-13 08:30:32.663:INFO:discord: embed_meta: type=vehicle/name=Turismo%20R/handling_indices=/tier_indices=3,4,5/tiers_displayed=A,B,C/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:30:59.723:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-13 08:30:59.723:INFO:discord.client: Cleaning up tasks.
+2021-08-13 08:30:59.723:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-13 08:30:59.813:INFO:discord.client: All tasks finished cancelling.
+2021-08-13 08:30:59.813:INFO:discord.client: Closing the event loop.
+2021-08-13 08:31:01.022:INFO:discord.client: logging in using static token
+2021-08-13 08:31:01.439:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-13 08:31:01.617:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-n8lp",{"micros":113975,"calls":["discord-sessions-blue-prd-2-69",{"micros":113141,"calls":["start_session",{"micros":67113,"calls":["api-prd-main-59hj",{"micros":63375,"calls":["get_user",{"micros":2715},"add_authorized_ip",{"micros":1507},"get_guilds",{"micros":7123},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":1,"calls":[]}]}]}] (Session ID: 67335682a275e2062ef97bef52bd0a08).
+2021-08-13 08:31:06.550:INFO:discord: Message Content: .lens car weevil 
+2021-08-13 08:31:08.962:INFO:discord: Reacted to GTALens: 🔧
+2021-08-13 08:31:08.962:INFO:discord: embed_meta: type=vehicle/name=Weevil/handling_indices=/tier_indices=/tiers_displayed=/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:32:05.474:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-13 08:32:05.474:INFO:discord.client: Cleaning up tasks.
+2021-08-13 08:32:05.474:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-13 08:32:05.522:INFO:discord.client: All tasks finished cancelling.
+2021-08-13 08:32:05.522:INFO:discord.client: Closing the event loop.
+2021-08-13 08:32:06.640:INFO:discord.client: logging in using static token
+2021-08-13 08:32:07.066:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-13 08:32:07.232:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-k1hv",{"micros":103100,"calls":["discord-sessions-blue-prd-2-168",{"micros":86578,"calls":["start_session",{"micros":47773,"calls":["api-prd-main-6fpv",{"micros":44195,"calls":["get_user",{"micros":4605},"add_authorized_ip",{"micros":1031},"get_guilds",{"micros":6182},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":8846,"calls":[]}]}]}] (Session ID: 230d5c7ed4301484657030b6fb22b681).
+2021-08-13 08:32:19.713:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-08-13 08:32:19.714:INFO:discord.client: Cleaning up tasks.
+2021-08-13 08:32:19.714:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-13 08:32:19.769:INFO:discord.client: All tasks finished cancelling.
+2021-08-13 08:32:19.769:INFO:discord.client: Closing the event loop.
+2021-08-13 08:32:20.768:INFO:discord.client: logging in using static token
+2021-08-13 08:32:21.327:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-13 08:32:21.495:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-l2bv",{"micros":107907,"calls":["discord-sessions-blue-prd-2-170",{"micros":106936,"calls":["start_session",{"micros":41169,"calls":["api-prd-main-3m5k",{"micros":38098,"calls":["get_user",{"micros":2643},"add_authorized_ip",{"micros":2634},"get_guilds",{"micros":4141},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":1,"calls":[]},"presence_connect",{"micros":5487,"calls":[]}]}]}] (Session ID: 5efb19846fc60ae9c46984e30aee142d).
+2021-08-13 08:32:23.824:INFO:discord: Un-reacted to GTALens: 🔧
+2021-08-13 08:32:23.824:INFO:discord: embed_meta: type=vehicle/name=Weevil/handling_indices=3,4,5,6,7/tier_indices=/tiers_displayed=/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:32:25.396:INFO:discord: Reacted to GTALens: 🇸
+2021-08-13 08:32:25.396:INFO:discord: embed_meta: type=vehicle/name=Weevil/handling_indices=/tier_indices=/tiers_displayed=/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:32:27.168:INFO:discord: Reacted to GTALens: 🇦
+2021-08-13 08:32:27.169:INFO:discord: embed_meta: type=vehicle/name=Weevil/handling_indices=/tier_indices=3/tiers_displayed=S/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:32:31.339:INFO:discord: Reacted to GTALens: 🔧
+2021-08-13 08:32:31.339:INFO:discord: embed_meta: type=vehicle/name=Weevil/handling_indices=/tier_indices=3,4/tiers_displayed=S,A/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:32:33.093:INFO:discord: Reacted to GTALens: 🇧
+2021-08-13 08:32:33.093:INFO:discord: embed_meta: type=vehicle/name=Weevil/handling_indices=3,4,5,6,7/tier_indices=/tiers_displayed=S,A/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:32:38.672:INFO:discord: Un-reacted to GTALens: 🔧
+2021-08-13 08:32:38.672:INFO:discord: embed_meta: type=vehicle/name=Weevil/handling_indices=/tier_indices=3,4,5/tiers_displayed=S,A,B/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:32:39.804:INFO:discord: Reacted to GTALens: 🇨
+2021-08-13 08:32:39.804:INFO:discord: embed_meta: type=vehicle/name=Weevil/handling_indices=3,4,5,6,7/tier_indices=/tiers_displayed=S,A,B/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:32:41.703:INFO:discord: Un-reacted to GTALens: 🇦
+2021-08-13 08:32:41.703:INFO:discord: embed_meta: type=vehicle/name=Weevil/handling_indices=/tier_indices=3,4,5,6/tiers_displayed=S,A,B,C/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:32:45.139:INFO:discord: Un-reacted to GTALens: 🇸
+2021-08-13 08:32:45.139:INFO:discord: embed_meta: type=vehicle/name=Weevil/handling_indices=/tier_indices=3,4,5/tiers_displayed=S,B,C/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:32:45.597:INFO:discord: Un-reacted to GTALens: 🇧
+2021-08-13 08:32:45.597:INFO:discord: embed_meta: type=vehicle/name=Weevil/handling_indices=/tier_indices=3,4/tiers_displayed=B,C/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)
+2021-08-13 08:32:49.253:INFO:discord: Un-reacted to GTALens: 🇨
+2021-08-13 08:32:49.253:INFO:discord: embed_meta: type=vehicle/name=Weevil/handling_indices=/tier_indices=3/tiers_displayed=C/tiers_avail=🇸,🇦,🇧,🇨,🇩,🇪,🇫/)

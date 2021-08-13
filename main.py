@@ -2,6 +2,7 @@
 import discord
 import logging
 import os
+from random import choice
 
 import Jobs
 import Support
@@ -40,6 +41,8 @@ logger.addHandler(console_handler)
 async def on_message(message):
     await client.wait_until_ready()
 
+    args: list[str]
+    message_content: str
     args, message_content = Support.get_args_from_content(message.content)
 
     if message.author == client.user:  # is GTALens
@@ -68,7 +71,7 @@ async def on_message(message):
 
         elif args[1].lower() == "updatejobs" and message.author.id in Support.DEVS:
             msg = await message.channel.send('updating...')
-            await Jobs.update()
+            await Tasks.update_jobs()
             await msg.delete()
 
             ''' UPDATE VEHICLES MANUALLY - MUST BE DEV'''
@@ -81,13 +84,35 @@ async def on_message(message):
 
             ''' TRACK LOOKUP '''
 
-        elif args[1].lower() in Vehicles.ALIASES:
+        elif args[1].lower() in Vehicles.SEARCH_ALIASES:
 
             vehicle_name = " ".join(args[2:-1])
             possible_vehicles = Vehicles.get_possible_vehicles(vehicle_name)
             await Vehicles.send_possible_vehicles(message, client, possible_vehicles, vehicle_name)
 
-            ''' CAR LOOKUP '''
+            ''' VEHICLE LOOKUP '''
+
+        elif args[1].lower() in Vehicles.TIER_ALIASES:
+            class_name = " ".join(args[2:-2])
+            class_names = list(Vehicles.VEHICLE_CLASS_CORRECTIONS.keys())
+            poss_class_names = Vehicles.get_close_matches(class_name, class_names)
+
+            if not poss_class_names:
+                class_name = choice(class_names)
+
+            else:
+                class_name = class_names[poss_class_names[0]]
+
+            vehicles_class: list[Vehicles] = Vehicles.get_vehicle_class(
+                vehicle_class=class_name,
+                vehicles=Vehicles.get_vehicles()
+            )
+
+            tier: str = args[-2][0].upper()
+            vehicles_tier, vehicles_tier_str = Vehicles.get_tier(tier, vehicles_class=vehicles_class)
+            await Vehicles.send_tier(message, tier, vehicles_tier, vehicles_tier_str, vehicles_class)
+
+            ''' VEHICLE TIER LOOKUP'''
 
         elif args[1].lower() in Weather.ALIASES:
 
