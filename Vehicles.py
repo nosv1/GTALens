@@ -1,7 +1,7 @@
-
 from datetime import datetime
 from difflib import get_close_matches
 import discord
+import discord.types.embed
 import google.auth.exceptions
 import json
 import logging
@@ -10,7 +10,6 @@ import requests
 import sys
 
 import Support
-
 
 logger = logging.getLogger("discord")
 
@@ -50,7 +49,6 @@ VEHICLE_CLASS_CORRECTIONS = {
     'Utility': 'utility',
     'Vans': 'van'
 }
-
 
 
 class Vehicle:
@@ -115,14 +113,14 @@ class Vehicle:
             # Evaluation
             pos_overall: dict[str, int] = None,  # {default, variants...: ...}
             pos_class: dict[str, int] = None,  # {default, variants...: ...}
-            lap_times: dict[str, float] = None,  # {default, variants...: miliseconds}
+            lap_times: dict[str, float] = None,  # {default, variants...: milliseconds}
             top_speeds_mph: dict[str, float] = None,  # {default, variants...: ...}
             # GTALens Information
 
             # GTALens
             gtalens_id: str = None,
             wiki_id: str = None,  # gta.fandom.com id
-            images: dict[str, list[dict]] = None,
+            images=None,  # dict[str, list[dict]]
             description: str = None,
             video_id: str = None,  # youtube video id
     ):
@@ -205,7 +203,6 @@ async def on_reaction_add(
         client: discord.Client,
         embed_meta: str = ""
 ) -> None:
-
     embed_type = embed_meta.split('type=')[1].split('/')[0]
 
     if embed_type == 'vehicle':
@@ -213,7 +210,14 @@ async def on_reaction_add(
         if emoji == Support.WRENCH:
             vehicle_name = embed_meta.split("name=")[1].split("/")[0].replace('%20', ' ')
             vehicle = get_vehicles()[vehicle_name]
-            msg = await toggle_handling(vehicle, msg, msg.embeds[0], embed_meta)
+            await toggle_handling(msg, msg.embeds[0], embed_meta, vehicle)
+
+        elif emoji in embed_meta:  # tier button clicked
+            vehicle_name = embed_meta.split("name=")[1].split("/")[0].replace('%20', ' ')
+            vehicle = get_vehicles()[vehicle_name]
+            tier = list(Support.LETTERS_EMOJIS.keys())[list(Support.LETTERS_EMOJIS.values()).index(emoji)].upper()
+            await toggle_tier(
+                msg, msg.embeds[0], embed_meta, vehicle, tier)
 
     elif embed_type == 'vehicle_search':
 
@@ -234,7 +238,6 @@ async def on_reaction_remove(
         client: discord.Client,
         embed_meta: str = ""
 ) -> None:
-
     embed_type = embed_meta.split('type=')[1].split('/')[0]
 
     if embed_type == 'vehicle':
@@ -243,38 +246,105 @@ async def on_reaction_remove(
             vehicle_name = embed_meta.split("name=")[1].split("/")[0].replace('%20', ' ')
             vehicle = get_vehicles()[vehicle_name]
 
-            msg = await toggle_handling(vehicle, msg, msg.embeds[0], embed_meta)
+            msg = await toggle_handling(msg, msg.embeds[0], embed_meta, vehicle)
+
+        elif emoji in embed_meta:  # tier button clicked
+            vehicle_name = embed_meta.split("name=")[1].split("/")[0].replace('%20', ' ')
+            vehicle = get_vehicles()[vehicle_name]
+            tier = list(Support.LETTERS_EMOJIS.keys())[list(Support.LETTERS_EMOJIS.values()).index(emoji)].upper()
+            await toggle_tier(
+                msg, msg.embeds[0], embed_meta, vehicle, tier)
+
+
+async def toggle_tier(
+        msg: discord.Message, embed: discord.Embed, embed_meta: str, vehicle: Vehicle, tier: str
+) -> discord.Message:
+    old_tier_indices = [int(i) for i in embed_meta.split('tier_indices=')[1].split("/")[0].split(',') if i != '']
+    old_tiers_displayed = embed_meta.split('tiers_displayed=')[1].split("/")[0]
+    tiers_displayed = [t for t in embed_meta.split('tiers_displayed=')[1].split("/")[0].split(',') if t]
+
+    if tier not in old_tiers_displayed:  # display tier
+        tiers_displayed.append(tier)
+        tiers_displayed = ','.join(tiers_displayed).replace('S', '.').split(",")
+        tiers_displayed.sort()
+        tiers_displayed = ','.join(tiers_displayed).replace('.', 'S').split(',')
+
+    else:
+        del tiers_displayed[tiers_displayed.index(tier)]
+
+    tier_fields: list[dict] = []
+    vehicles = get_vehicles()
+    for tier in tiers_displayed:
+        if tier:  # first tier may be blank cause tiers_displayed=/ and split gives ''
+            vehicles_tier, str_vehicles_tier = get_tier(tier, vehicle=vehicle, vehicles=vehicles)
+            tier_field = {
+                'name': f'__**{tier} Tier**__',
+                'value': f'{str_vehicles_tier}',
+                'inline': True
+            }
+            tier_fields.append(tier_field)
+
+    embed = embed.to_dict()
+
+    default_fields: list[discord.types.embed.EmbedField] = []
+    for i, field in enumerate(embed['fields']):
+        if i not in old_tier_indices:
+            default_fields.append(field)
+
+    embed['fields'] = default_fields + tier_fields
+    tier_indices = ','.join(str(i + len(default_fields)) for i in range(len(tier_fields)))
+
+    embed = discord.Embed.from_dict(embed)
+
+    embed_meta = embed_meta.replace(
+        f"tier_indices={','.join(str(i) for i in old_tier_indices)}",
+        f"tier_indices={tier_indices}"
+    )
+
+    embed_meta = embed_meta.replace(
+        f"tiers_displayed={old_tiers_displayed}",
+        f"tiers_displayed={','.join(tiers_displayed)}"
+    )
+
+    embed.description = embed.description.replace(
+        embed.description.split('embed_meta/')[1],
+        embed_meta
+    )
+
+    await msg.edit(embed=embed)
+
+    return msg
 
 
 async def toggle_handling(
-        vehicle: Vehicle, msg: discord.Message, embed: discord.Embed, embed_meta: str
+        msg: discord.Message, embed: discord.Embed, embed_meta: str, vehicle: Vehicle
 ) -> discord.Message:
-
-    if embed_meta.split("handling=")[1].split("/")[0] == "[]":  # display handling
+    if embed_meta.split("handling_indices=")[1].split("/")[0] == "":  # display handling
         embed = embed.to_dict()
         old_fields_len = len(embed['fields'])
         embed = discord.Embed.from_dict(embed)
 
-        handling_fields: list[str] = []  # storing the indexes where the handling fields are used
+        handling_fields: list[str] = []  # storing the indices where the handling fields are used
 
+        # TODO toggle_handling
         embed.add_field(name="test", value="yup, worked")
         handling_fields.append(str(old_fields_len + len(handling_fields)))
 
-        embed_meta = embed_meta.replace("handling=[]", f"handling=[{','.join(handling_fields)}]")
+        embed_meta = embed_meta.replace("handling_indices=", f"handling_indices={','.join(handling_fields)}")
 
     else:  # hide handling
 
-        # get the indexes for the handling fields, currently as strings
-        handling_field_indexes = embed_meta.split("handling=[")[1].split("]")[0].split(',')
+        # get the indices for the handling fields, currently as strings
+        handling_field_indices = embed_meta.split("handling_indices=")[1].split("/")[0].split(',')
 
         embed = embed.to_dict()
-        for field_index in handling_field_indexes:
+        for field_index in handling_field_indices:
             del embed['fields'][int(field_index)]
 
         embed = discord.Embed.from_dict(embed)
 
         embed_meta = embed_meta.replace(
-            f"handling={str([int(i) for i in handling_field_indexes]).replace(' ', '')}", f"handling=[]"
+            f"handling_indices={str([int(i) for i in handling_field_indices]).replace(' ', '')}", f"handling_indices="
         )
 
     embed.description = embed.description.replace(
@@ -298,6 +368,45 @@ def get_vehicle_class(vehicle_class: str, vehicles: dict[str, Vehicle]) -> list[
     vehicle_class = [vehicles[v] for v in vehicles if vehicles[v].vehicle_class == vehicle_class]
     vehicle_class.sort(key=lambda v: (v.lap_times['default'] if v.lap_times else sys.maxsize))
     return vehicle_class
+
+
+def get_tier(
+        tier: str, vehicle: Vehicle = None, vehicle_class: list[Vehicle] = None, vehicles: dict[str, Vehicle] = None
+) -> (list[Vehicle], str):
+    """
+
+    :param tier: uppercase tier
+    :param vehicle: deltas based on vehicle if provided, else top of tier
+    :param vehicle_class: required if no vehicle
+    :param vehicles:
+    :return:
+    """
+
+    if not vehicles:
+        vehicles = get_vehicles()
+
+    if not vehicle_class:
+        vehicle_class = get_vehicle_class(vehicle.vehicle_class, vehicles)
+
+    vehicles_tier: list[Vehicle] = [v for v in vehicle_class if v.race_tier == tier]
+    vehicles_tier.sort(key=lambda v: v.lap_times['default'] if 'default' in v.lap_times else sys.maxsize)
+
+    str_vehicles_tier_lines: list[str] = []
+    base_time = vehicle.lap_times['default'] if 'default' in vehicle.lap_times else vehicles_tier[0].lap_times['default']
+    for tier_vehicle in vehicles_tier:
+
+        line = ""
+        if 'default' in tier_vehicle.lap_times:
+            line += f"`{tier_vehicle.lap_times['default'] - base_time:+.3f}` {tier_vehicle.name}"
+
+        else:
+            line += f"`-{0:.3d}` {tier_vehicle.name}"
+
+        str_vehicles_tier_lines.append(line if tier_vehicle.name != vehicle.name else f"**{line}**")
+
+    str_vehicles_tier_lines.append(Support.SPACE_CHAR)
+
+    return vehicles_tier, '\n'.join(str_vehicles_tier_lines)
 
 
 async def update_vehicles():
@@ -510,7 +619,6 @@ def get_possible_vehicles(vehicle_name: str) -> list[Vehicle]:
 async def send_possible_vehicles(
         message: discord.Message, client: discord.Client, possible_vehicles: list[Vehicle], vehicle_name: str
 ) -> discord.Message:
-
     await message.channel.trigger_typing()
 
     if len(possible_vehicles) == 1:  # straight to sending the job embed
@@ -522,7 +630,6 @@ async def send_possible_vehicles(
         embed_meta = f"[{Support.ZERO_WIDTH}](embed_meta/type=vehicle_search/)"
 
         for i, vehicle in enumerate(possible_vehicles):
-
             possible_vehicles_str += f"\n{Support.LETTERS_EMOJIS[letters[i]]} " \
                                      f"[{vehicle.name}](https://gtalens.com/vehicle/{vehicle.gtalens_id}) - " \
                                      f"[{vehicle.vehicle_class}](https://gtalens.com/vehicles/?classes[0]=" \
@@ -556,8 +663,7 @@ async def send_possible_vehicles(
 
 
 async def send_vehicle(message: discord.Message, client: discord.Client, vehicle: Vehicle
-) -> discord.Message:
-
+                       ) -> discord.Message:
     # preparing complex string(s)
     manufacturer_emoji = discord.utils.find(
         lambda e: e.name == vehicle.manufacturer, client.get_guild(Support.GTALENS_GUILD_ID).emojis
@@ -571,11 +677,20 @@ async def send_vehicle(message: discord.Message, client: discord.Client, vehicle
         added_str.append(vehicle.dlc)
     added_str = " - ".join(added_str)  # handling og cars oppose to dlc cars
 
+    vehicle_class = get_vehicle_class(vehicle_class=vehicle.vehicle_class, vehicles=get_vehicles())
+    tiers = []
+    for v in vehicle_class:
+        if v.race_tier not in ["-", "?"]:
+            if v.race_tier not in tiers:
+                tiers.append(v.race_tier)
+
     embed_meta = f"[{Support.ZERO_WIDTH}](embed_meta/" \
                  f"type=vehicle/" \
                  f"name={vehicle.name.replace(' ', '%20')}/" \
-                 f"handling=[]/" \
-                 f"tiers=[]" \
+                 f"handling_indices=/" \
+                 f"tier_indices=/" \
+                 f"tiers_displayed=/" \
+                 f"tiers_avail={','.join([Support.LETTERS_EMOJIS[t.lower()] for t in tiers])}/" \
                  f")"
 
     embed = discord.Embed(
@@ -699,15 +814,9 @@ async def send_vehicle(message: discord.Message, client: discord.Client, vehicle
     reactions_to_add = [Support.WRENCH]
 
     # adding tier buttons after wrench
-    for v in get_vehicle_class(vehicle.vehicle_class, get_vehicles()):
-        if v.race_tier not in ["-", "?"]:
-            reaction = Support.LETTERS_EMOJIS[v.race_tier.lower()]
-            if reaction not in reactions_to_add:
-                reactions_to_add.append(reaction)
+    [reactions_to_add.append(Support.LETTERS_EMOJIS[t.lower()]) for t in tiers]
 
     for r in reactions_to_add:
         await msg.add_reaction(r)
 
     return msg
-
-

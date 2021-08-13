@@ -254,10 +254,15 @@ async def add_sc_member_jobs(sc_member_id: str) -> list[dict]:
                             );""")
 
                     db.cursor.execute(f"""
-                        UPDATE members SET 
-                            synced='{datetime.utcnow().timestamp()}',
-                            name='{r_json['content']['users'][sc_member_id]['nickname']}'
-                         WHERE _id = '{sc_member_id}'
+                        INSERT INTO members (
+                            _id, name, synced
+                        ) VALUES (
+                            '{sc_member_id}', 
+                            '{r_json['content']['users'][sc_member_id]['nickname']}',
+                            '{datetime.utcnow().timestamp()}'
+                        ) ON DUPLICATE KEY UPDATE 
+                            name='{r_json['content']['users'][sc_member_id]['nickname']}',
+                            synced='{datetime.utcnow().timestamp()}'
                      ;""")
 
                     crews = r_json['content']['crews']
