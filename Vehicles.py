@@ -15,6 +15,7 @@ logger = logging.getLogger("discord")
 
 SEARCH_ALIASES = ["car", "truck", "vehicle"]
 TIER_ALIASES = ["tier"]
+CLASS_ALIASES = ["class"]
 
 EMBED_TYPES = [
     'vehicle',
@@ -437,6 +438,51 @@ def get_vehicle_class(vehicle_class: str, vehicles: dict[str, Vehicle]) -> list[
     return vehicle_class
 
 
+async def send_vehicle_class(
+        message: discord.Message, vehicles_class: list[Vehicle], vehicle_class: str
+) -> discord.Message:
+    embed = discord.Embed(
+        color=discord.Color(Support.GTALENS_ORANGE),
+        title=f"**{vehicle_class} ({len(vehicles_class)})**"
+    )
+
+    tiers = []
+    for vehicle in vehicles_class:
+        if vehicle.race_tier not in tiers:
+            vehicles_tier, vehicles_tier_str = get_tier(vehicle.race_tier, vehicles_class=vehicles_class)
+            tier = vehicle.race_tier.lower()
+            if tier == "s":
+                tier = "S"
+            elif tier == "-":
+                tier = "x"
+            elif tier == "?":
+                tier = "z"
+
+            tiers.append([tier, vehicles_tier_str])
+
+    tiers.sort(key=lambda x: x[0])
+
+    for tier in tiers:
+        vehicles_tier_str = tier[1]
+        tier = tier[0].upper()
+        if tier == "X":
+            tier_str = "**__Not Raceable__**"
+
+        elif tier == "Z":
+            tier_str = "**__Unknown__**"
+
+        else:
+            tier_str = f"**__{tier} Tier__**"
+
+        embed.add_field(
+            name=tier_str,
+            value=vehicles_tier_str
+        )
+
+    msg = await message.channel.send(embed=embed)
+    return msg
+
+
 def get_tier(
         tier: str, vehicle: Vehicle = None, vehicles_class: list[Vehicle] = None, vehicles: dict[str, Vehicle] = None
 ) -> (list[Vehicle], str):
@@ -466,8 +512,11 @@ def get_tier(
     if vehicle and 'default' in vehicle.lap_times:
         base_time = vehicle.lap_times['default']
 
-    else:
+    elif 'default' in vehicles_tier[0].lap_times:  # tier may be ? sometimes, like in send_class
         base_time = vehicles_tier[0].lap_times['default']
+
+    else:
+        base_time = 0
 
     for tier_vehicle in vehicles_tier:
 
