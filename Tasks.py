@@ -54,7 +54,7 @@ async def update_status(client):
 async def update_jobs():
     db = Database.connect_database()
     limit = 5
-    db.cursor.execute(f"SELECT * FROM members WHERE synced IS NULL ORDER BY RAND() LIMIT {limit};")
+    db.cursor.execute(f"SELECT _id FROM members WHERE synced IS NULL ORDER BY RAND() LIMIT {limit};")
     member_ids = db.cursor.fetchall()
 
     for i, member_id in enumerate(member_ids):
