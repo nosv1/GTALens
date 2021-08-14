@@ -577,3 +577,32 @@
 2021-08-08 09:37:44.440:INFO:discord.client: Cleaning up after 3 tasks.
 2021-08-08 09:37:44.494:INFO:discord.client: All tasks finished cancelling.
 2021-08-08 09:37:44.494:INFO:discord.client: Closing the event loop.
+2021-08-14 08:05:42.897:INFO:discord.client: logging in using static token
+2021-08-14 08:05:42.897:INFO:discord.client: Cleaning up tasks.
+2021-08-14 08:05:42.898:INFO:discord.client: Cleaning up after 1 tasks.
+2021-08-14 08:05:42.898:INFO:discord.client: All tasks finished cancelling.
+2021-08-14 08:05:42.899:INFO:discord.client: Closing the event loop.
+2021-08-14 08:06:09.670:INFO:discord.client: logging in using static token
+2021-08-14 08:06:10.058:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-14 08:06:10.170:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-v07b",{"micros":56299,"calls":["discord-sessions-blue-prd-2-132",{"micros":53753,"calls":["start_session",{"micros":49269,"calls":["api-prd-main-ndx6",{"micros":43048,"calls":["get_user",{"micros":4353},"add_authorized_ip",{"micros":1351},"get_guilds",{"micros":4616},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":93,"calls":[]}]}]}] (Session ID: 1ccce3bca92594f7684cf360bc7d0283).
+2021-08-14 08:07:02.227:INFO:discord: Message Content: .lens close 
+2021-08-14 08:07:07.769:INFO:discord.client: Cleaning up tasks.
+2021-08-14 08:07:07.770:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-14 08:07:07.826:INFO:discord.client: All tasks finished cancelling.
+2021-08-14 08:07:07.828:INFO:discord.client: Closing the event loop.
+2021-08-14 09:32:50.405:INFO:discord.client: logging in using static token
+2021-08-14 09:32:50.782:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-14 09:32:50.932:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-6xrn",{"micros":95252,"calls":["discord-sessions-blue-prd-2-9",{"micros":94378,"calls":["start_session",{"micros":30859,"calls":["api-prd-main-lrdz",{"micros":27390,"calls":["get_user",{"micros":2983},"add_authorized_ip",{"micros":1469},"get_guilds",{"micros":4010},"coros_wait",{"micros":2}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":54988,"calls":[]}]}]}] (Session ID: a2d06032a16162aac68f0c596516b492).
+2021-08-14 09:34:45.647:INFO:discord: Message Content: .lens close 
+2021-08-14 09:34:49.473:INFO:discord.client: Cleaning up tasks.
+2021-08-14 09:34:49.474:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-14 09:34:49.529:INFO:discord.client: All tasks finished cancelling.
+2021-08-14 09:34:49.530:INFO:discord.client: Closing the event loop.
+2021-08-14 09:35:58.982:INFO:discord.client: logging in using static token
+2021-08-14 09:35:59.348:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-08-14 09:35:59.520:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-fpl0",{"micros":98869,"calls":["discord-sessions-blue-prd-2-83",{"micros":98075,"calls":["start_session",{"micros":66626,"calls":["api-prd-main-hb3g",{"micros":62556,"calls":["get_user",{"micros":9676},"add_authorized_ip",{"micros":9575},"get_guilds",{"micros":9348},"coros_wait",{"micros":0}]}]},"guilds_connect",{"micros":1,"calls":[]},"presence_connect",{"micros":4477,"calls":[]}]}]}] (Session ID: ea58906f5cb43ce71e7f1172660e9e39).
+2021-08-14 09:36:04.737:INFO:discord: Message Content: .lens close 
+2021-08-14 09:37:28.939:INFO:discord.client: Cleaning up tasks.
+2021-08-14 09:37:28.940:INFO:discord.client: Cleaning up after 3 tasks.
+2021-08-14 09:37:28.990:INFO:discord.client: All tasks finished cancelling.
+2021-08-14 09:37:28.992:INFO:discord.client: Closing the event loop.
