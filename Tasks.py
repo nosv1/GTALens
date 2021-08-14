@@ -1,11 +1,32 @@
+import asyncio
 import discord
 from discord.ext import tasks
+import logging
 from random import choice
+
+import Database
+import Jobs
+
+logger = logging.getLogger('discord')
 
 
 # randomly choose an 'activity' every 5 minutes
+@tasks.loop(seconds=30)
+async def loop(client):
 
-@tasks.loop(minutes=5)
+    seconds = loop.current_loop * 30
+
+    if seconds % (5 * 60) == 0:
+        await update_status(client)
+
+    if loop.current_loop > 0:  # skip first iteration
+        if seconds % (1.5 * 60) == 0:
+            await update_jobs()
+
+        # if seconds % 1.5 * 60 == 0:
+        #     await update_crews()
+
+
 async def update_status(client):
 
     activities: list[discord.Activity] = [
@@ -16,6 +37,11 @@ async def update_status(client):
         discord.Activity(
             type=discord.ActivityType.watching,
             name=".lens donate - support the developers"
+        ),
+
+        discord.Activity(
+            type=discord.ActivityType.watching,
+            name=".lens invite - add to your server"
         )
     ]
 
@@ -23,3 +49,31 @@ async def update_status(client):
         activity=choice(activities),
         status=discord.Status.online
     )
+
+
+async def update_jobs():
+    db = Database.connect_database()
+    limit = 5
+    db.cursor.execute(f"SELECT _id FROM members ORDER BY RAND() LIMIT {limit};")
+    member_ids = db.cursor.fetchall()
+
+    for i, member_id in enumerate(member_ids):
+        logger.debug(f"Members Update: {int(100 * (i/limit))}%")
+        await Jobs.add_sc_member_jobs(member_id[0])
+    logger.info(f"Members Updated: {member_ids}")
+
+    db.connection.close()
+
+
+async def update_crews():
+    db = Database.connect_database()
+    limit = 10
+    db.cursor.execute(f"SELECT _id FROM members ORDER BY RAND() LIMIT {limit}")
+    crew_ids = db.cursor.fetchall()
+
+    for i, crew_id in enumerate(crew_ids):
+        logger.debug(f"Crews Update: {int(100 * (i/limit))}%")
+        await Jobs.add_crew(crew_id[0])
+    logger.info(f"Crews Updated: {crew_ids}")
+
+    db.connection.close()
