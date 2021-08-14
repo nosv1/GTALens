@@ -238,7 +238,31 @@ async def add_sc_member_jobs(sc_member_id: str) -> list[dict]:
 
             if r_json['status']:  # get was successful
 
+                db.cursor.execute(f"""
+                    UPDATE members 
+                    SET synced='{datetime.utcnow().timestamp()}'
+                    WHERE _id ='{sc_member_id}'
+                ;""")
+
+                crews = r_json['content']['crews']
+                for crew_id in crews:
+                    crew = crews[crew_id]
+                    db.cursor.execute(f"""
+                        INSERT INTO crews (
+                            _id, _name
+                        ) VALUES (
+                            '{crew['id']}', '{replace_chars(crew['name'])}' 
+                        ) ON DUPLICATE KEY UPDATE
+                            _name='{replace_chars(crew['name'])}'
+                        ;""")
+
                 if r_json['content']['items']:  # jobs to add
+
+                    db.cursor.execute(f"""
+                        UPDATE members
+                        SET _name='{r_json['content']['users'][sc_member_id]['nickname']}'
+                        WHERE _id='{sc_member_id}'
+                    ;""")
 
                     for job in r_json['content']['items']:
                         db.cursor.execute(f"""
@@ -252,32 +276,6 @@ async def add_sc_member_jobs(sc_member_id: str) -> list[dict]:
                                 '{sc_member_id}',
                                 '{datetime.utcnow().timestamp()}'
                             );""")
-
-                    db.cursor.execute(f"""
-                        INSERT INTO members (
-                            _id, _name, synced
-                        ) VALUES (
-                            '{sc_member_id}', 
-                            '{r_json['content']['users'][sc_member_id]['nickname']}',
-                            '{datetime.utcnow().timestamp()}'
-                        ) ON DUPLICATE KEY UPDATE 
-                            _name='{r_json['content']['users'][sc_member_id]['nickname']}',
-                            synced='{datetime.utcnow().timestamp()}'
-                     ;""")
-
-                    crews = r_json['content']['crews']
-                    for crew_id in crews:
-                        crew = crews[crew_id]
-                        db.cursor.execute(f"""
-                            INSERT INTO crews (
-                                _id, _name
-                            ) VALUES (
-                                '{crew['id']}', '{replace_chars(crew['name'])}' 
-                            ) ON DUPLICATE KEY UPDATE
-                                _name='{replace_chars(crew['name'])}'
-                            ;""")
-
-                    db.connection.commit()
 
                     page_index += 1
 
@@ -300,6 +298,7 @@ async def add_sc_member_jobs(sc_member_id: str) -> list[dict]:
 
         await asyncio.sleep(2)
 
+    db.connection.commit()
     db.connection.close()
 
     return crews

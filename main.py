@@ -30,7 +30,7 @@ file_handler = logging.FileHandler(filename="discord.log", encoding="utf-8", mod
 file_handler.setFormatter(formatter)
 
 console_handler = logging.StreamHandler()
-console_handler.setLevel(logging.INFO)
+console_handler.setLevel(logger.level)
 console_handler.setFormatter(formatter)
 
 logger.addHandler(file_handler)
