@@ -1,4 +1,3 @@
-
 import discord
 import logging
 import os
@@ -53,7 +52,7 @@ async def on_message(message):
 
         ''' COMMANDS  '''
 
-        if args[1].lower() == "test" and message.author.id in Support.DEVS:
+        if args[1].lower() == "test" and message.author.id in Support.DEVS.values():
             # from pathlib import Path
             # for p in Path('./'):
             #
@@ -62,19 +61,19 @@ async def on_message(message):
 
             ''' TEST '''
 
-        elif args[1].lower() == "close" and message.author.id in Support.DEVS:
+        elif args[1].lower() == "close" and message.author.id in Support.DEVS.values():
             await client.close()
 
             ''' UPDATE VEHICLES MANUALLY - MUST BE DEV'''
 
-        elif args[1].lower() == "updatevehicles" and message.author.id in Support.DEVS:
+        elif args[1].lower() == "updatevehicles" and message.author.id in Support.DEVS.values():
             msg = await message.channel.send('updating...')
             await Vehicles.update_vehicles()
             await msg.delete()
 
             ''' UPDATE VEHICLES MANUALLY - MUST BE DEV'''
 
-        elif args[1].lower() == "updatejobs" and message.author.id in Support.DEVS:
+        elif args[1].lower() == "updatejobs" and message.author.id in Support.DEVS.values():
             msg = await message.channel.send('updating...')
             await Tasks.update_jobs()
             await msg.delete()
@@ -133,6 +132,8 @@ async def on_message(message):
             await Vehicles.send_vehicle_class(
                 message, Vehicles.get_vehicle_class(class_name, Vehicles.get_vehicles()), class_name
             )
+
+            ''' VEHICLE CLASS LOOKUP '''
 
         elif args[1].lower() in Weather.ALIASES:
 
@@ -299,7 +300,7 @@ async def on_raw_reaction_remove(payload):
 
 @client.event
 async def on_ready():
-    print(f"Logged in as {client.user}")
+    logger.info(f"Logged in as {client.user}")
 
 
 async def startup():
@@ -309,6 +310,7 @@ async def startup():
 
 
 def main():
+
     while True:
         client.loop.create_task(startup())
         client.run(os.getenv("TOKEN"))

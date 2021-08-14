@@ -1,8 +1,8 @@
-import asyncio
-import discord
-from discord.ext import tasks
 import logging
 from random import choice
+
+import discord
+from discord.ext import tasks
 
 import Database
 import Jobs
@@ -20,7 +20,7 @@ async def loop(client):
         await update_status(client)
 
     if loop.current_loop > 0:  # skip first iteration
-        if seconds % (1.5 * 60) == 0:
+        if seconds % (1.75 * 60) == 0:
             await update_jobs()
 
         # if seconds % 1.5 * 60 == 0:

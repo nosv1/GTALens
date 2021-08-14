@@ -441,30 +441,43 @@ def get_vehicle_class(vehicle_class: str, vehicles: dict[str, Vehicle]) -> list[
 async def send_vehicle_class(
         message: discord.Message, vehicles_class: list[Vehicle], vehicle_class: str
 ) -> discord.Message:
+    await message.channel.trigger_typing()
+
     embed = discord.Embed(
         color=discord.Color(Support.GTALENS_ORANGE),
-        title=f"**{vehicle_class} ({len(vehicles_class)})**"
+        title=f"**{vehicle_class} ({len(vehicles_class)})**",
+        description=f"[GTALens](https://gtalens.com/vehicles/?classes[0]={VEHICLE_CLASS_CORRECTIONS[vehicle_class]}) "
+                    f"**|** [Donate]({Support.DONATE_LINK})"
     )
 
+    # this is terrible, but basically, storing tier letters in tiers and then again in the dict
+    # sort the tiers, then loop through that and getting the strings from the dict
     tiers = []
+    tier_strs = {}
     for vehicle in vehicles_class:
-        if vehicle.race_tier not in tiers:
-            vehicles_tier, vehicles_tier_str = get_tier(vehicle.race_tier, vehicles_class=vehicles_class)
-            tier = vehicle.race_tier.lower()
-            if tier == "s":
-                tier = "S"
-            elif tier == "-":
-                tier = "x"
-            elif tier == "?":
-                tier = "z"
 
-            tiers.append([tier, vehicles_tier_str])
+        tier = vehicle.race_tier.lower()
+
+        if tier == "s":  # big S to sort at front
+            tier = "S"
+        elif tier == "-":  # x and z to put at the back
+            tier = "x"
+        elif tier == "?":
+            tier = "z"
+
+        if tier not in tiers:
+            vehicles_tier, vehicles_tier_str = get_tier(
+                vehicle.race_tier, vehicles_class=vehicles_class
+            )
+
+            tiers.append(tier)
+            tier_strs[tier] = vehicles_tier_str
 
     tiers.sort(key=lambda x: x[0])
 
     for tier in tiers:
-        vehicles_tier_str = tier[1]
-        tier = tier[0].upper()
+        vehicles_tier_str = tier_strs[tier]
+        tier = tier.upper()
         if tier == "X":
             tier_str = "**__Not Raceable__**"
 
@@ -509,6 +522,7 @@ def get_tier(
         return [], ''
 
     str_vehicles_tier_lines: list[str] = []
+
     if vehicle and 'default' in vehicle.lap_times:
         base_time = vehicle.lap_times['default']
 
@@ -541,6 +555,7 @@ async def send_tier(
         vehicles_tier_str: str,
         vehicles_class: list[Vehicle]
 ) -> discord.Message:
+    await message.channel.trigger_typing()
 
     embed = discord.Embed(
         colour=discord.Colour(Support.GTALENS_ORANGE),

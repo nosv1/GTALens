@@ -1,9 +1,14 @@
 import aiohttp
 import asyncio
 from datetime import datetime
+import logging
+
+import discord
 import gspread
 import json
 import re
+
+logger = logging.getLogger('discord')
 
 # COLORS
 
@@ -12,9 +17,9 @@ GTALENS_ORANGE = int(0xF03C00)
 # IDS
 GTALENS_GUILD_ID = 873054419636334633
 GTALENS_CLIENT_ID = 872899427457716234
-DEVS = [
-    405944496665133058,  # Mo#9991
-]
+DEVS = {
+    'Mo#9991': 405944496665133058
+}
 
 # CHARACTERS
 ZERO_WIDTH = chr(8203)  # or the thing in between the dashes -​-
@@ -117,6 +122,19 @@ def hours_to_HHMM(hours: float) -> str:
     return f"{hh:02d}:{mm:02d}"
 
 
+# EXCEPTION HANDLING
+
+async def send_error(client):
+    with open('discord.log', 'r') as log:
+        lines = log.readlines()
+
+    for d in DEVS.values():
+        u = client.get_user(d)
+        if not u:
+            u = await client.fetch_user(d)
+        await u.send('```', '\n'.join(lines), '```')
+
+
 # RANDOM
 
 def get_args_from_content(content: str = "") -> (list[str], str):
@@ -148,7 +166,7 @@ async def get_url(url: str, headers=None, params=None) -> json:
 
     async with aiohttp.ClientSession() as cs:
         try:
-            async with cs.get(url, headers=headers, params=params, timeout=5) as r:
+            async with cs.get(url, headers=headers, params=params, timeout=10) as r:
                 return json.loads(await r.text())
 
         except asyncio.exceptions.TimeoutError:
