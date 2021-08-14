@@ -62,6 +62,11 @@ async def on_message(message):
 
             ''' TEST '''
 
+        elif args[1].lower() == "close" and message.author.id in Support.DEVS:
+            await client.close()
+
+            ''' UPDATE VEHICLES MANUALLY - MUST BE DEV'''
+
         elif args[1].lower() == "updatevehicles" and message.author.id in Support.DEVS:
             msg = await message.channel.send('updating...')
             await Vehicles.update_vehicles()
@@ -113,6 +118,21 @@ async def on_message(message):
             await Vehicles.send_tier(message, tier, vehicles_tier, vehicles_tier_str, vehicles_class)
 
             ''' VEHICLE TIER LOOKUP'''
+
+        elif args[1].lower() in Vehicles.CLASS_ALIASES:
+            class_name = " ".join(args[2:]).strip()
+            class_names = list(Vehicles.VEHICLE_CLASS_CORRECTIONS.keys())
+            poss_class_names = Vehicles.get_close_matches(class_name, class_names)
+
+            if not poss_class_names:
+                class_name = choice(class_names)
+
+            else:
+                class_name = class_names[poss_class_names[0]]
+
+            await Vehicles.send_vehicle_class(
+                message, Vehicles.get_vehicle_class(class_name, Vehicles.get_vehicles()), class_name
+            )
 
         elif args[1].lower() in Weather.ALIASES:
 
