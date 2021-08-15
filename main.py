@@ -1,9 +1,9 @@
-import json
-
 import discord
+import json
 import logging
 import os
 from random import choice
+import traceback
 
 import Jobs
 import Support
@@ -56,11 +56,7 @@ async def on_message(message):
         ''' COMMANDS  '''
 
         if args[1].lower() == "test" and is_dev:
-            # from pathlib import Path
-            # for p in Path('./'):
-            #
-            # [p for p in Path('.').iterdir() if p.is_dir()]
-            await message.guild.create_custom_emoji()
+            args[100]
 
             ''' TEST '''
 
@@ -74,7 +70,6 @@ async def on_message(message):
         elif args[1].lower() == "close" and is_dev:
             json.dump({'action': 'close'}, open("restart.json", "w+"))
             await client.close()
-
 
         elif args[1].lower() == "updatevehicles" and is_dev:
             msg = await message.channel.send('updating...')
@@ -311,6 +306,17 @@ async def on_raw_reaction_remove(payload):
 @client.event
 async def on_ready():
     logger.info(f"Logged in as {client.user}")
+
+
+@client.event
+async def on_error(event, *args, **kwargs):
+    errors_channel = client.get_channel(Support.GTALENS_ERRORS_CHANNEL_ID)
+    errors_channel = await client.fetch_channel(
+        Support.GTALENS_ERRORS_CHANNEL_ID
+    ) if not errors_channel else errors_channel
+
+    devs_ping = ','.join(f'<@{d_id}>' for d_id in Support.DEVS.values())
+    await errors_channel.send(f"{devs_ping}```{traceback.format_exc()}```")
 
 
 async def startup():

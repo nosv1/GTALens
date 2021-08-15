@@ -45,6 +45,7 @@ async def update_status(client, restart=False, close=False):
         )
     ]
 
+    activity = None
     if not (restart or close):
         activity = choice(activities)
 
