@@ -213,12 +213,9 @@ async def add_sc_members(crew_json: json) -> None:
 async def add_sc_member_jobs(sc_member_id: str) -> list[dict]:
     db = connect_database()
 
-    db.cursor.execute(f"DELETE FROM jobs WHERE creator_id = '{sc_member_id}';")
-
-    db.connection.commit()
-
     crews = []
 
+    purged = False
     for platform in [
         "ps4",
         "xboxone",
@@ -258,13 +255,21 @@ async def add_sc_member_jobs(sc_member_id: str) -> list[dict]:
 
                 if r_json['content']['items']:  # jobs to add
 
-                    db.cursor.execute(f"""
-                        UPDATE members
-                        SET _name='{r_json['content']['users'][sc_member_id]['nickname']}'
-                        WHERE _id='{sc_member_id}'
-                    ;""")
+                    if sc_member_id in r_json['content']['users']:
+
+                        db.cursor.execute(f"""
+                            UPDATE members
+                            SET _name='{r_json['content']['users'][sc_member_id]['nickname']}'
+                            WHERE _id='{sc_member_id}'
+                        ;""")
 
                     for job in r_json['content']['items']:
+
+                        if not purged:  # purging old tracks
+                            db.cursor.execute(f"DELETE FROM jobs WHERE creator_id = '{sc_member_id}';")
+                            db.connection.commit()
+                            purged = True
+
                         db.cursor.execute(f"""
                             INSERT IGNORE INTO jobs (
                                 _id, _name, platform, updated, creator_id, synced
@@ -540,7 +545,7 @@ async def send_job(message: discord.Message, client: discord.Client, job: Job):
                   f"\n**Time:** {job.time_of_day.title()}"
                   f"\n**Weather:** {job.weather.title()}"
                   f"\n{'`.lens weather`' if job.weather == 'current' else ''}"  # must be last line cause \n
-                  f"\n{Support.SPACE_CHAR}"
+                  f"{Support.SPACE_CHAR}"
         )
 
         # TODO trending field?
