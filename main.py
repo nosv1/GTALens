@@ -1,3 +1,5 @@
+import json
+
 import discord
 import logging
 import os
@@ -49,10 +51,11 @@ async def on_message(message):
 
     if args[0] == ".lens":  # command attempted
         logger.info(f"Message Content: {message_content}")
+        is_dev = message.author.id in Support.DEVS.values()
 
         ''' COMMANDS  '''
 
-        if args[1].lower() == "test" and message.author.id in Support.DEVS.values():
+        if args[1].lower() == "test" and :
             # from pathlib import Path
             # for p in Path('./'):
             #
@@ -61,19 +64,26 @@ async def on_message(message):
 
             ''' TEST '''
 
-        elif args[1].lower() == "close" and message.author.id in Support.DEVS.values():
+        elif args[1].lower() == "restart" and is_dev:
+            json.dump({'action': 'restart'}, open("restart.json", "w+"))
+            await Tasks.update_status(client, restart=True)
             await client.close()
 
-            ''' UPDATE VEHICLES MANUALLY - MUST BE DEV'''
+            ''' RESTART BOT '''
 
-        elif args[1].lower() == "updatevehicles" and message.author.id in Support.DEVS.values():
+        elif args[1].lower() == "close" and is_dev:
+            json.dump({'action': 'close'}, open("restart.json", "w+"))
+            await client.close()
+
+
+        elif args[1].lower() == "updatevehicles" and is_dev:
             msg = await message.channel.send('updating...')
             await Vehicles.update_vehicles()
             await msg.delete()
 
             ''' UPDATE VEHICLES MANUALLY - MUST BE DEV'''
 
-        elif args[1].lower() == "updatejobs" and message.author.id in Support.DEVS.values():
+        elif args[1].lower() == "updatejobs" and is_dev:
             msg = await message.channel.send('updating...')
             await Tasks.update_jobs()
             await msg.delete()

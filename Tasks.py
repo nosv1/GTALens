@@ -27,7 +27,7 @@ async def loop(client):
         #     await update_crews()
 
 
-async def update_status(client):
+async def update_status(client, restart=False, close=False):
 
     activities: list[discord.Activity] = [
         discord.Activity(
@@ -45,8 +45,23 @@ async def update_status(client):
         )
     ]
 
+    if not (restart or close):
+        activity = choice(activities)
+
+    elif restart:
+        activity = discord.Activity(
+            type=discord.ActivityType.watching,
+            name="Restarting"
+        )
+
+    elif close:
+        activity = discord.Activity(
+            type=discord.ActivityType.watching,
+            name="Shutting Down for Maintenance"
+        )
+
     await client.change_presence(
-        activity=choice(activities),
+        activity=activity,
         status=discord.Status.online
     )
 
