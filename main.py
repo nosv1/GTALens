@@ -55,7 +55,7 @@ async def on_message(message):
 
         ''' COMMANDS  '''
 
-        if args[1].lower() == "test" and :
+        if args[1].lower() == "test" and is_dev:
             # from pathlib import Path
             # for p in Path('./'):
             #
