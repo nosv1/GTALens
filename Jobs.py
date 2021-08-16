@@ -361,7 +361,7 @@ async def get_job(job_id: str) -> Job:
             )
         )
 
-        if 'vrt' in payload['job']:
+        if 'vrtP' in payload['job']:
 
             job.variants = payload['job']['vrt']  # get the gtalens id
             if job.gtalens_id in job.variants:
