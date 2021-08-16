@@ -581,4 +581,10 @@ async def send_job(message: discord.Message, client: discord.Client, job: Job):
     else:
         await msg.edit(embed=embed)
 
+    crews = await add_sc_member_jobs(job.creator.id)
+    for crew_id in crews:
+        await add_crew(crew_id)
+
+    logger.info(f'Added {job.creator.id}\'s jobs and crews')
+
     return msg
