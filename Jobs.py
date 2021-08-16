@@ -213,8 +213,6 @@ async def add_sc_members(crew_json: json) -> None:
 async def add_sc_member_jobs(sc_member_id: str) -> list[dict]:
     db = connect_database()
 
-    crews = []
-
     purged = False
     for platform in [
         "ps4",
@@ -240,6 +238,8 @@ async def add_sc_member_jobs(sc_member_id: str) -> list[dict]:
                     SET synced='{datetime.utcnow().timestamp()}'
                     WHERE _id ='{sc_member_id}'
                 ;""")
+
+                db.connection.commit()
 
                 crews = r_json['content']['crews']
                 for crew_id in crews:
@@ -580,11 +580,5 @@ async def send_job(message: discord.Message, client: discord.Client, job: Job):
 
     else:
         await msg.edit(embed=embed)
-
-    crews = await add_sc_member_jobs(job.creator.id)
-    for crew_id in crews:
-        await add_crew(crew_id)
-
-    logger.info(f'Added {job.creator.id}\'s jobs and crews')
 
     return msg

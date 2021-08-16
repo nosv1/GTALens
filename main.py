@@ -37,6 +37,10 @@ console_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
 logger.addHandler(console_handler)
 
+#
+
+HOST = os.getenv("HOST")
+
 
 @client.event
 async def on_message(message):
@@ -310,13 +314,14 @@ async def on_ready():
 
 @client.event
 async def on_error(event, *args, **kwargs):
-    errors_channel = client.get_channel(Support.GTALENS_ERRORS_CHANNEL_ID)
-    errors_channel = await client.fetch_channel(
-        Support.GTALENS_ERRORS_CHANNEL_ID
-    ) if not errors_channel else errors_channel
+    if HOST != "PC":
+        errors_channel = client.get_channel(Support.GTALENS_ERRORS_CHANNEL_ID)
+        errors_channel = await client.fetch_channel(
+            Support.GTALENS_ERRORS_CHANNEL_ID
+        ) if not errors_channel else errors_channel
 
-    devs_ping = ','.join(f'<@{d_id}>' for d_id in Support.DEVS.values())
-    await errors_channel.send(f"{devs_ping}```{traceback.format_exc()}```")
+        devs_ping = ','.join(f'<@{d_id}>' for d_id in Support.DEVS.values())
+        await errors_channel.send(f"{devs_ping}```{traceback.format_exc()}```")
 
 
 async def startup():
