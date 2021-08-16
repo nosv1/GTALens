@@ -1,0 +1,36 @@
+{
+  "title": "GTALens Help",
+  "description": "[GTALens](https://gtalens.com) **|** [Donate](https://ko-fi.com/gtalens)\n\nThe words in ALL CAPS should be replaced with what you want.\n⠀",
+  "fields": [
+    {
+      "name": "**__Example__**",
+      "value": "**`.lens track TRACK`\n`.lens track Granite`\n**⠀",
+      "inline": false
+    },
+    {
+      "name": "**__Jobs__**",
+      "value": "**`.lens track TRACK` - lookup a race\n**⠀",
+      "inline": false
+    },
+    {
+      "name": "**__Vehicles__**",
+      "value": "**`.lens car CAR` - lookup a car\n**⠀",
+      "inline": false
+    },
+    {
+      "name": "**__Miscellaneous__**",
+      "value": "**`.lens weather` - get current GTAO weather\n**⠀",
+      "inline": false
+    },
+    {
+      "name": "**__Support__**",
+      "value": "**`.lens donate` - support the devs\n`.lens invite` - invite GTALens to your server\n`.lens server` - join GTALens's server\n**⠀",
+      "inline": false
+    },
+    {
+      "name": "**__Coming Soon!__**",
+      "value": "**`.lens creator CREATOR`\n`.lens playlist CREATOR`\nget future GTAO weather\ncomparison of vehicle handling data\n**",
+      "inline": false
+    }
+  ]
+}

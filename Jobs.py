@@ -210,7 +210,7 @@ async def add_sc_members(crew_json: json) -> None:
     db.connection.close()
 
 
-async def add_sc_member_jobs(sc_member_id: str) -> list[dict]:
+async def add_sc_member_jobs(sc_member_id: str) -> dict:
     db = connect_database()
 
     purged = False
@@ -241,7 +241,7 @@ async def add_sc_member_jobs(sc_member_id: str) -> list[dict]:
 
                 db.connection.commit()
 
-                crews = r_json['content']['crews']
+                crews: dict = r_json['content']['crews']
                 for crew_id in crews:
                     crew = crews[crew_id]
                     db.cursor.execute(f"""
@@ -262,6 +262,8 @@ async def add_sc_member_jobs(sc_member_id: str) -> list[dict]:
                             SET _name='{r_json['content']['users'][sc_member_id]['nickname']}'
                             WHERE _id='{sc_member_id}'
                         ;""")
+
+                        db.connection.commit()
 
                     for job in r_json['content']['items']:
 
@@ -581,7 +583,7 @@ async def send_job(message: discord.Message, client: discord.Client, job: Job):
     else:
         await msg.edit(embed=embed)
 
-    crews = await add_sc_member_jobs(job.creator.id)
+    crews = await asyncio.shield(add_sc_member_jobs(job.creator.id))
     for crew_id in crews:
         await add_crew(crew_id)
 

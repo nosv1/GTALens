@@ -173,9 +173,21 @@ async def on_message(message):
 
             ''' DONATE LINK '''
 
-        # TODO .lens about
-        # TODO .lens help
+        elif args[1].lower() == "server":  # send server invite
+            content = f"**Have any questions? Join, and ask them!**\n{Support.SERVER_LINK}"
+            await message.channel.send(content)
 
+            ''' SERVER LINK '''
+
+        elif args[1].lower() == "help":  # send help
+            help_json = json.load(open("Static Embeds/help.json", "r", encoding='utf8'))
+            embed = discord.Embed.from_dict(dict(help_json))
+            embed.colour = discord.Color(Support.GTALENS_ORANGE)
+            await message.channel.send(embed=embed)
+
+            ''' HELP '''
+
+        # TODO .lens about
         # else:
         #     embed = discord.Embed(
         #         color=discord.Colour(Support.GTALENS_ORANGE),

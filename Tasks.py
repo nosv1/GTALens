@@ -1,3 +1,4 @@
+import asyncio
 import logging
 from random import choice
 
@@ -75,7 +76,7 @@ async def update_jobs():
 
     for i, member_id in enumerate(member_ids):
         logger.debug(f"Members Update: {int(100 * (i/limit))}%")
-        await Jobs.add_sc_member_jobs(member_id[0])
+        await asyncio.shield(Jobs.add_sc_member_jobs(member_id[0]))
     logger.info(f"Members Updated: {member_ids}")
 
     db.connection.close()
