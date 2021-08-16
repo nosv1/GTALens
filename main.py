@@ -90,6 +90,7 @@ async def on_message(message):
             ''' UPDATE VEHICLES MANUALLY - MUST BE DEV'''
 
         elif args[1].lower() in Jobs.ALIASES:
+            await message.channel.trigger_typing()
 
             job_name = " ".join(args[2:-1])
             possible_jobs = Jobs.get_possible_jobs(job_name)
@@ -98,6 +99,7 @@ async def on_message(message):
             ''' TRACK LOOKUP '''
 
         elif args[1].lower() in Vehicles.SEARCH_ALIASES:
+            await message.channel.trigger_typing()
 
             vehicle_name = " ".join(args[2:-1])
             possible_vehicles = Vehicles.get_possible_vehicles(vehicle_name)
@@ -106,6 +108,8 @@ async def on_message(message):
             ''' VEHICLE LOOKUP '''
 
         elif args[1].lower() in Vehicles.TIER_ALIASES:
+            await message.channel.trigger_typing()
+
             class_name = " ".join(args[2:-2])
             class_names = list(Vehicles.VEHICLE_CLASS_CORRECTIONS.keys())
             poss_class_names = Vehicles.get_close_matches(class_name, class_names)
@@ -128,6 +132,8 @@ async def on_message(message):
             ''' VEHICLE TIER LOOKUP'''
 
         elif args[1].lower() in Vehicles.CLASS_ALIASES:
+            await message.channel.trigger_typing()
+
             class_name = " ".join(args[2:]).strip()
             class_names = list(Vehicles.VEHICLE_CLASS_CORRECTIONS.keys())
             poss_class_names = Vehicles.get_close_matches(class_name, class_names)
@@ -145,6 +151,7 @@ async def on_message(message):
             ''' VEHICLE CLASS LOOKUP '''
 
         elif args[1].lower() in Weather.ALIASES:
+            await message.channel.trigger_typing()
 
             await Weather.send_weather(message)
 

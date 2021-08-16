@@ -448,7 +448,6 @@ def get_possible_jobs(job_name: str) -> list[Job]:
 async def send_possible_jobs(
         message: discord.Message, client: discord.Client, possible_jobs: list[Job], job_name: str
 ) -> discord.Message:
-    await message.channel.trigger_typing()
 
     if len(possible_jobs) == 1:  # straight to sending the job embed
         msg = await send_job(message, client, await get_job(possible_jobs[0].rockstar_id))

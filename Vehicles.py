@@ -441,7 +441,6 @@ def get_vehicle_class(vehicle_class: str, vehicles: dict[str, Vehicle]) -> list[
 async def send_vehicle_class(
         message: discord.Message, vehicles_class: list[Vehicle], vehicle_class: str
 ) -> discord.Message:
-    await message.channel.trigger_typing()
 
     embed = discord.Embed(
         color=discord.Color(Support.GTALENS_ORANGE),
@@ -555,7 +554,6 @@ async def send_tier(
         vehicles_tier_str: str,
         vehicles_class: list[Vehicle]
 ) -> discord.Message:
-    await message.channel.trigger_typing()
 
     embed = discord.Embed(
         colour=discord.Colour(Support.GTALENS_ORANGE),
@@ -783,7 +781,6 @@ def get_possible_vehicles(vehicle_name: str) -> list[Vehicle]:
 async def send_possible_vehicles(
         message: discord.Message, client: discord.Client, possible_vehicles: list[Vehicle], vehicle_name: str
 ) -> discord.Message:
-    await message.channel.trigger_typing()
 
     if len(possible_vehicles) == 1:  # straight to sending the job embed
         msg = await send_vehicle(message, client, possible_vehicles[0])
