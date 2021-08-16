@@ -581,28 +581,28 @@ async def update_vehicles():
 
     while True:
         try:
-            print("s_kvi")
+            logger.debug("s_kvi")
             sheet_key_vehicle_info = broughy_spreadsheet.get_worksheet_by_id(
                 KEY_VEHICLE_INFO_SHEET_ID
             )
-            print("s_bhd")
+            logger.debug("s_bhd")
             sheet_basic_handling_data = broughy_spreadsheet.get_worksheet_by_id(
                 BASIC_HANDLING_DATA_SHEET_ID
             )
-            print("s_olt")
+            logger.debug("s_olt")
             sheet_overall_lap_time = broughy_spreadsheet.get_worksheet_by_id(
                 OVERALL_LAP_TIME_SHEET_ID
             )
 
-            print("v_kvi")
+            logger.debug("v_kvi")
             values_key_vehicle_info = sheet_key_vehicle_info.get_values(
                 f"A4:V{sheet_key_vehicle_info.row_count}"
             )
-            print("v_bhd")
+            logger.debug("v_bhd")
             values_basic_handling_data = sheet_basic_handling_data.get_values(
                 f"A4:T{sheet_basic_handling_data.row_count}"
             )
-            print("v_olt")
+            logger.debug("v_olt")
             values_overall_lap_time = sheet_overall_lap_time.get_values(
                 f"A4:F{sheet_overall_lap_time.row_count}"
             )
@@ -753,6 +753,8 @@ async def update_vehicles():
         open("vehicles.json", "w"),
         indent=4,
     )
+
+    logger.info("Vehicles Updated")
 
 
 def get_possible_vehicles(vehicle_name: str) -> list[Vehicle]:
