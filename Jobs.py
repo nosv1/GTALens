@@ -217,6 +217,7 @@ async def add_sc_member_jobs(sc_member_id: str) -> dict:
     db = connect_database()
 
     purged = False
+    crews = {}
     for platform in [
         "ps4",
         "xboxone",
@@ -224,7 +225,6 @@ async def add_sc_member_jobs(sc_member_id: str) -> dict:
     ]:
 
         page_index = 0
-
         while True:
 
             url = f"http://scapi.rockstargames.com/search/mission?" \
@@ -234,81 +234,86 @@ async def add_sc_member_jobs(sc_member_id: str) -> dict:
 
             r_json = await Support.get_url(url, headers=Support.SCAPI_HEADERS)
 
-            if r_json['status']:  # get was successful
+            if r_json:
 
-                utcnow = datetime.utcnow().timestamp()
-                db.cursor.execute(f"""
-                    INSERT INTO members (
-                        _id, synced
-                    ) VALUES (
-                        '{sc_member_id}', '{utcnow}'
-                    ) ON DUPLICATE KEY UPDATE
-                        synced='{utcnow}'
-                ;""")
+                if r_json['status']:  # get was successful
 
-                db.connection.commit()
-
-                crews: dict = r_json['content']['crews']
-                for crew_id in crews:
-                    crew = crews[crew_id]
+                    utcnow = datetime.utcnow().timestamp()
                     db.cursor.execute(f"""
-                        INSERT INTO crews (
-                            _id, _name
+                        INSERT INTO members (
+                            _id, synced
                         ) VALUES (
-                            '{crew['id']}', '{replace_chars(crew['name'])}' 
+                            '{sc_member_id}', '{utcnow}'
                         ) ON DUPLICATE KEY UPDATE
-                            _name='{replace_chars(crew['name'])}'
-                        ;""")
-
-                if r_json['content']['items']:  # jobs to add
-
-                    if sc_member_id in r_json['content']['users']:
-
-                        db.cursor.execute(f"""
-                            UPDATE members
-                            SET _name='{r_json['content']['users'][sc_member_id]['nickname']}'
-                            WHERE _id='{sc_member_id}'
-                        ;""")
-
-                    for job in r_json['content']['items']:
-
-                        if not purged:  # purging old tracks
-                            db.cursor.execute(f"DELETE FROM jobs WHERE creator_id = '{sc_member_id}';")
-                            db.connection.commit()
-                            purged = True
-
-                        db.cursor.execute(f"""
-                            INSERT IGNORE INTO jobs (
-                                _id, _name, platform, updated, creator_id, synced
-                            ) VALUES (
-                                '{job['id']}', 
-                                '{replace_chars(job['name'])}',
-                                '{platform}', 
-                                '{job['createdDate'].split('.')[0]}',
-                                '{sc_member_id}',
-                                '{datetime.utcnow().timestamp()}'
-                            );""")
+                            synced='{utcnow}'
+                    ;""")
 
                     db.connection.commit()
-                    page_index += 1
+
+                    crews: dict = r_json['content']['crews']
+                    for crew_id in crews:
+                        crew = crews[crew_id]
+                        db.cursor.execute(f"""
+                            INSERT INTO crews (
+                                _id, _name
+                            ) VALUES (
+                                '{crew['id']}', '{replace_chars(crew['name'])}' 
+                            ) ON DUPLICATE KEY UPDATE
+                                _name='{replace_chars(crew['name'])}'
+                            ;""")
+
+                    if r_json['content']['items']:  # jobs to add
+
+                        if sc_member_id in r_json['content']['users']:
+
+                            db.cursor.execute(f"""
+                                UPDATE members
+                                SET _name='{r_json['content']['users'][sc_member_id]['nickname']}'
+                                WHERE _id='{sc_member_id}'
+                            ;""")
+
+                        for job in r_json['content']['items']:
+
+                            if not purged:  # purging old tracks
+                                db.cursor.execute(f"DELETE FROM jobs WHERE creator_id = '{sc_member_id}';")
+                                db.connection.commit()
+                                purged = True
+
+                            db.cursor.execute(f"""
+                                INSERT IGNORE INTO jobs (
+                                    _id, _name, platform, updated, creator_id, synced
+                                ) VALUES (
+                                    '{job['id']}', 
+                                    '{replace_chars(job['name'])}',
+                                    '{platform}', 
+                                    '{job['createdDate'].split('.')[0]}',
+                                    '{sc_member_id}',
+                                    '{datetime.utcnow().timestamp()}'
+                                );""")
+
+                        db.connection.commit()
+                        page_index += 1
+
+                    else:
+                        db.connection.commit()
+                        break
 
                 else:
-                    db.connection.commit()
-                    break
+                    logger.warning(r_json)
+
+                    sleep = 10
+                    if 'error' in r_json:
+                        if '3.000.2' in r_json['error']['code']:
+                            sleep = 90
+
+                        elif '3.000.1' in r_json['error']['code']:
+                            sleep = 30
+
+                    logger.info(f"Jobs.add_sc_member_jobs() was not successful, {url} sleeping for {sleep} seconds...")
+                    await asyncio.sleep(sleep)
 
             else:
-                logger.warning(r_json)
-
-                sleep = 10
-                if 'error' in r_json:
-                    if '3.000.2' in r_json['error']['code']:
-                        sleep = 90
-
-                    elif '3.000.1' in r_json['error']['code']:
-                        sleep = 30
-
-                logger.info(f"Jobs.add_sc_member_jobs() was not successful, {url} sleeping for {sleep} seconds...")
-                await asyncio.sleep(sleep)
+                break
 
         await asyncio.sleep(5)  # per platform
 
@@ -409,7 +414,6 @@ async def get_job(job_id: str) -> Job:
                     r_json = await Support.get_url(url)
 
                     if r_json:
-
                         if 'mission' in r_json:
                             job.pedestrians = 'off' if r_json['mission']['rule']['apeds'] else 'on'
                             job.weather = WEATHER[r_json['mission']['rule']['weth']]
@@ -420,6 +424,9 @@ async def get_job(job_id: str) -> Job:
 
                         elif 'JSONDecodeError' in r_json['error']['code']:
                             break
+
+                    else:
+                        break
 
                 if found_mission:
                     break
