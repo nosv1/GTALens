@@ -143,7 +143,7 @@ async def on_reaction_add(
                 await msg.clear_reactions()
             except discord.Forbidden:
                 pass
-            print('sending')
+            
             await send_job(msg, client, job)
 
 
@@ -310,7 +310,7 @@ async def add_sc_member_jobs(sc_member_id: str) -> dict:
                 logger.info(f"Jobs.add_sc_member_jobs() was not successful, {url} sleeping for {sleep} seconds...")
                 await asyncio.sleep(sleep)
 
-        await asyncio.sleep(2)
+        await asyncio.sleep(5)  # per platform
 
     db.connection.close()
 
