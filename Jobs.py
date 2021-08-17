@@ -12,7 +12,8 @@ import Support
 
 logger = logging.getLogger("discord")
 
-ALIASES = ["track", "job", "race"]
+SEARCH_ALIASES = ["track", "job", "race"]
+SYNC_ALIASES = ["sync"]
 
 EMBED_TYPES = [
     'job',
@@ -54,6 +55,7 @@ JOB_TYPE_CORRECTIONS = {
     "AirRace": "air race",
     "BikeRace": "bike race",
     "LandRace": "land race",
+    "LandRaceP2P" : "land race P2P",
     "SeaRace": "sea race"
 }
 
@@ -141,6 +143,7 @@ async def on_reaction_add(
                 await msg.clear_reactions()
             except discord.Forbidden:
                 pass
+            print('sending')
             await send_job(msg, client, job)
 
 
@@ -286,6 +289,8 @@ async def add_sc_member_jobs(sc_member_id: str) -> dict:
 
                     page_index += 1
 
+                    db.connection.commit()
+
                 else:
                     break
 
@@ -304,8 +309,6 @@ async def add_sc_member_jobs(sc_member_id: str) -> dict:
                 await asyncio.sleep(sleep)
 
         await asyncio.sleep(2)
-
-    db.connection.commit()
     db.connection.close()
 
     return crews
@@ -362,13 +365,15 @@ async def get_job(job_id: str) -> Job:
         )
 
         if 'vrtP' in payload['job']:
+            print(payload['job']['vrtP'])
+            print(payload['job']['vrt'])
 
             job.variants = payload['job']['vrt']  # get the gtalens id
             if job.gtalens_id in job.variants:
                 del job.variants[job.variants.index(job.gtalens_id)]
 
             for i, p in enumerate(payload['job']['vrtP']):  # add the platform
-                job.variants[i] = [job.variants[i], p]
+                job.variants.append([job.variants[i], p])
 
     else:
         job: Job = get_jobs(_id=job_id)[0]
@@ -422,7 +427,55 @@ async def get_job(job_id: str) -> Job:
         if found_mission or id_version == 9:
             break
 
+    logger.info(f"Got Job: {job.name} by {job.creator.name}")
     return job
+
+
+async def sync_job(message: discord.Message, job_link: str) -> (discord.Message, Job):
+    job_id = job_link.split("gtav/")[-1]
+
+    job = None
+    msg = None
+    if job_id:
+        job = await get_job(job_id)
+
+        embed = discord.Embed(
+            colour=discord.Colour(Support.GTALENS_ORANGE),
+            title=f"**Syncing {job.creator.name}'s jobs and crews...**"
+        )
+        msg = await message.channel.send(embed=embed)
+
+        crews = await asyncio.shield(add_sc_member_jobs(job.creator.id))
+        for crew_id in crews:
+            await add_crew(crew_id)
+
+        logger.info(f'Updated {job.creator.id}\'s jobs and crews')
+
+        embed = discord.Embed(
+            colour=discord.Colour(Support.GTALENS_ORANGE),
+            title=f"**Synced {job.creator.name}'s Races**",
+            description=f"Thank you for syncing {job.creator.name}'s jobs. "
+                        f"Their ID is now in the database, and will be synced periodically to stay up-to-date."
+        )
+
+    else:
+
+        embed = discord.Embed(
+            colour=discord.Colour(Support.GTALENS_ORANGE),
+            title=f"**Missing Job ID**",
+            description=f"It looks like the link you provided doesn't include the job id. "
+                        f"The link should look something like this "
+                        f"`https://socialclub.rockstargames.com/job/gtav/0mS1iV2tV06Wi-AJeQISbw`, "
+                        f"\n\nSo, the command should look something like this "
+                        f"\n`.lens sync https://socialclub.rockstargames.com/job/gtav/0mS1iV2tV06Wi-AJeQISbw`"
+        )
+        embed.set_footer(text="Having issues? Ask for help in the '.lens server'")
+
+    if msg:
+        await msg.edit(embed=embed)
+    else:
+        msg = await message.channel.send(embed=embed)
+    return msg, job
 
 
 def get_possible_jobs(job_name: str) -> list[Job]:
@@ -483,6 +536,10 @@ async def send_possible_jobs(
             title=f"**Search: *{job_name}***",
             description=f"[Search GTALens](https://gtalens.com/?page=1&search={job_name.replace(' ', '%20')}) **|** "
                         f"[Donate]({Support.DONATE_LINK})"
+                        f"\n\nIf the searched track isn't in the results, "
+                        f"it's possible the creator's races aren't being synced. "
+                        f"To add the creator to the bot's database, use `.lens sync SC_LINK` "
+                        f"where SC_LINK is the link to one of the creator's races."
                         f"\n\n**Results:**"
                         f"{possible_jobs_str}"
                         f"[{Support.ZERO_WIDTH}]({embed_meta})"
@@ -503,13 +560,13 @@ async def send_job(message: discord.Message, client: discord.Client, job: Job):
     if job.variants:
         variants_str = f"**Variants ({len(job.variants)}):** "
         variants_str += ', '.join(
-            [f"[{PLATFORM_CORRECTIONS[v[1]]}](https://gtalens.com/job/{v[0]})" for v in job.variants]
+            [f"[{PLATFORM_CORRECTIONS[v[1]]}](https://gtalens.com/job/{v[0]})" for v in job.variants if type(v) == list]
         )
         variants_str += "\n"
 
     job_not_found = job.gtalens_id == '?'
 
-    if not job_not_found:
+    if not job_not_found:  # job found
 
         platform_emoji = str(discord.utils.find(
             lambda e: e.name == PLATFORM_CORRECTIONS[job.platform].lower(), client.get_guild(
@@ -586,6 +643,6 @@ async def send_job(message: discord.Message, client: discord.Client, job: Job):
     for crew_id in crews:
         await add_crew(crew_id)
 
-    logger.info(f'Added {job.creator.id}\'s jobs and crews')
+    logger.info(f'Updated {job.creator.id}\'s jobs and crews')
 
     return msg

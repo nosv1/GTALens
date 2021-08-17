@@ -124,19 +124,6 @@ def hours_to_HHMM(hours: float) -> str:
     return f"{hh:02d}:{mm:02d}"
 
 
-# EXCEPTION HANDLING
-
-async def send_error(client):
-    with open('discord.log', 'r') as log:
-        lines = log.readlines()
-
-    for d in DEVS.values():
-        u = client.get_user(d)
-        if not u:
-            u = await client.fetch_user(d)
-        await u.send('```', '\n'.join(lines), '```')
-
-
 # RANDOM
 
 def get_args_from_content(content: str = "") -> (list[str], str):

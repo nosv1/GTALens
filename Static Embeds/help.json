@@ -9,7 +9,7 @@
     },
     {
       "name": "**__Jobs__**",
-      "value": "**`.lens track TRACK` - lookup a race\n**⠀",
+      "value": "**`.lens track TRACK` - lookup a race\n`.lens sync SC_LINK` - add creator to bot's database\n**⠀",
       "inline": false
     },
     {

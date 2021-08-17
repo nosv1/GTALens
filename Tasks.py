@@ -7,6 +7,7 @@ from discord.ext import tasks
 
 import Database
 import Jobs
+import Vehicles
 
 logger = logging.getLogger('discord')
 
@@ -27,13 +28,16 @@ async def loop(client):
         # if seconds % 1.5 * 60 == 0:
         #     await update_crews()
 
+        if seconds % (12 * 60 * 60) == 0:
+            await update_vehicles()
+
 
 async def update_status(client, restart=False, close=False):
 
     activities: list[discord.Activity] = [
         discord.Activity(
             type=discord.ActivityType.watching,
-            name=".lens commands"),
+            name=".lens help"),
 
         discord.Activity(
             type=discord.ActivityType.watching,
@@ -42,8 +46,13 @@ async def update_status(client, restart=False, close=False):
 
         discord.Activity(
             type=discord.ActivityType.watching,
-            name=".lens invite - add to your server"
-        )
+            name=".lens invite - invite to your server"
+        ),
+
+        discord.Activity(
+            type=discord.ActivityType.watching,
+            name=".lens server - join GTALens's server"
+        ),
     ]
 
     activity = None
@@ -94,3 +103,8 @@ async def update_crews():
     logger.info(f"Crews Updated: {crew_ids}")
 
     db.connection.close()
+
+
+async def update_vehicles():
+    await Vehicles.update_vehicles()
+    logger.info(f"Vehicles Updated")
