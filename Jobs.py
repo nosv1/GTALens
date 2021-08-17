@@ -143,7 +143,7 @@ async def on_reaction_add(
                 await msg.clear_reactions()
             except discord.Forbidden:
                 pass
-            
+
             await send_job(msg, client, job)
 
 
@@ -299,7 +299,7 @@ async def add_sc_member_jobs(sc_member_id: str) -> dict:
             else:
                 logger.warning(r_json)
 
-                sleep = 5
+                sleep = 10
                 if 'error' in r_json:
                     if '3.000.2' in r_json['error']['code']:
                         sleep = 90
