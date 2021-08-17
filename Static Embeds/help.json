@@ -24,12 +24,12 @@
     },
     {
       "name": "**__Support__**",
-      "value": "**`.lens donate` - support the devs\n`.lens invite` - invite GTALens to your server\n`.lens server` - join GTALens's server\n**⠀",
+      "value": "**`.lens donate` - support the devs\n`.lens server` - join GTALens's server\n**⠀",
       "inline": false
     },
     {
       "name": "**__Coming Soon!__**",
-      "value": "**`.lens creator CREATOR`\n`.lens playlist CREATOR`\nget future GTAO weather\ncomparison of vehicle handling data\n**",
+      "value": "**`.lens creator CREATOR`\n`.lens playlist CREATOR`\n`.lens invite` - invite GTALens to your server\nget future GTAO weather\ncomparison of vehicle handling data\n**",
       "inline": false
     }
   ]
