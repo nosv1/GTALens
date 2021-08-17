@@ -44,7 +44,7 @@ HOST = os.getenv("HOST")
 
 
 @client.event
-async def on_message(message):
+async def on_message(message: discord.Message):
     await client.wait_until_ready()
 
     args: list[str]
@@ -53,6 +53,13 @@ async def on_message(message):
 
     if message.author == client.user:  # is GTALens
         return
+
+    if str(client.user.id) in args[0]:
+        embed = discord.Embed(
+            colour=discord.Colour(Support.GTALENS_ORANGE),
+            description=f"**{client.user.mention}'s prefix is `.lens`. Check out `.lens help` for available commands.**"
+        )
+        await message.channel.send(embed=embed)
 
     if any([args[0] == f"{p}lens" for p in [".", "?", "!"]]):  # command attempted
         logger.info(f"Message Content: {message_content}")
@@ -206,37 +213,28 @@ async def on_message(message):
             ''' HELP '''
 
         # TODO .lens about
-        # else:
-        #     embed = discord.Embed(
-        #         color=discord.Colour(Support.GTALENS_ORANGE),
-        #         title="**Coming Soon**",
-        #         description="The GTALens discord bot will replace the MoBot functionality of searching for cars and "
-        #                     "jobs, as well as, providing other useful GTA V related features. Currently, "
-        #                     "the [GTALens](https://gtalens.com/) website needs some backend updates "
-        #                     "before this bot is available for use.",
-        #     )
-        #     await message.channel.send(embed=embed)
 
 
 @client.event
-async def on_raw_message_edit(payload):
+async def on_raw_message_edit(payload: discord.RawMessageUpdateEvent):
     await client.wait_until_ready()
 
-    payload: dict = payload.data
-
-    if "channel_id" in payload:
-        channel_id = payload["channel_id"]
+    if payload.channel_id:
+        channel_id = payload.channel_id
         channel = client.get_channel(channel_id)
 
         if not channel:
             channel = await client.fetch_channel(channel_id)
 
-        if "id" in payload:
-            await on_message(await channel.fetch_message(payload["id"]))
+        if payload.message_id:
+            message = await channel.fetch_message(payload.message_id)
+            if payload.cached_message:
+                if message.content != payload.cached_message.content:
+                    await on_message(message)
 
 
 @client.event
-async def on_raw_reaction_add(payload):
+async def on_raw_reaction_add(payload: discord.RawReactionActionEvent):
     await client.wait_until_ready()
 
     m = [m for m in client.cached_messages if m.id == payload.message_id]
@@ -288,7 +286,7 @@ async def on_raw_reaction_add(payload):
 
 
 @client.event
-async def on_raw_reaction_remove(payload):
+async def on_raw_reaction_remove(payload: discord.RawReactionActionEvent):
     await client.wait_until_ready()
 
     # check the cache before fetching the message

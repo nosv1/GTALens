@@ -80,13 +80,34 @@ async def update_status(client, restart=False, close=False):
 
 async def update_jobs():
     db = Database.connect_database()
+
+    has_jobs_limit = 4
     limit = 5
-    db.cursor.execute(f"SELECT _id FROM members ORDER BY synced ASC LIMIT {limit};")
+
+    # updating creators who have jobs more often than creators that don't
+
+    db.cursor.execute(f"""
+        SELECT _id 
+        FROM members 
+        WHERE _name IS NOT NULL
+        ORDER BY synced ASC 
+        LIMIT {has_jobs_limit};
+    ;""")
     member_ids = db.cursor.fetchall()
+
+    db.cursor.execute(f"""
+        SELECT _id 
+        FROM members 
+        WHERE _name IS NULL
+        ORDER BY synced ASC 
+        LIMIT {limit - has_jobs_limit};
+    ;""")
+    member_ids += db.cursor.fetchall()
 
     for i, member_id in enumerate(member_ids):
         logger.debug(f"Members Update: {int(100 * (i/limit))}%")
         await asyncio.shield(Jobs.add_sc_member_jobs(member_id[0]))
+        await asyncio.sleep(5)
     logger.info(f"Members Updated: {member_ids}")
 
     db.connection.close()

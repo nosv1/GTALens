@@ -236,10 +236,14 @@ async def add_sc_member_jobs(sc_member_id: str) -> dict:
 
             if r_json['status']:  # get was successful
 
+                utcnow = datetime.utcnow().timestamp()
                 db.cursor.execute(f"""
-                    UPDATE members 
-                    SET synced='{datetime.utcnow().timestamp()}'
-                    WHERE _id ='{sc_member_id}'
+                    INSERT INTO members (
+                        _id, synced
+                    ) VALUES (
+                        '{sc_member_id}', '{utcnow}'
+                    ) ON DUPLICATE KEY UPDATE
+                        synced='{utcnow}'
                 ;""")
 
                 db.connection.commit()
@@ -266,8 +270,6 @@ async def add_sc_member_jobs(sc_member_id: str) -> dict:
                             WHERE _id='{sc_member_id}'
                         ;""")
 
-                        db.connection.commit()
-
                     for job in r_json['content']['items']:
 
                         if not purged:  # purging old tracks
@@ -287,11 +289,11 @@ async def add_sc_member_jobs(sc_member_id: str) -> dict:
                                 '{datetime.utcnow().timestamp()}'
                             );""")
 
+                    db.connection.commit()
                     page_index += 1
 
-                    db.connection.commit()
-
                 else:
+                    db.connection.commit()
                     break
 
             else:
@@ -309,6 +311,7 @@ async def add_sc_member_jobs(sc_member_id: str) -> dict:
                 await asyncio.sleep(sleep)
 
         await asyncio.sleep(2)
+
     db.connection.close()
 
     return crews
@@ -455,7 +458,7 @@ async def sync_job(message: discord.Message, job_link: str) -> (discord.Message,
             colour=discord.Colour(Support.GTALENS_ORANGE),
             title=f"**Synced {job.creator.name}'s Races**",
             description=f"Thank you for syncing {job.creator.name}'s jobs. "
-                        f"Their ID is now in the database, and will be synced periodically to stay up-to-date."
+                        f"Their ID is now in the database and will be synced periodically to stay up-to-date."
         )
 
     else:
