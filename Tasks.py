@@ -13,7 +13,7 @@ logger = logging.getLogger('discord')
 
 
 # randomly choose an 'activity' every 5 minutes
-@tasks.loop(seconds=30)
+@tasks.loop(seconds=15)
 async def loop(client):
 
     seconds = loop.current_loop * 30
@@ -25,6 +25,7 @@ async def loop(client):
         if seconds % (1.75 * 60) == 0:
             await update_jobs()
 
+        # TODO once you figure out a way to intelligently update tracks, add crew members
         # if seconds % 1.5 * 60 == 0:
         #     await update_crews()
 
@@ -80,7 +81,7 @@ async def update_status(client, restart=False, close=False):
 async def update_jobs():
     db = Database.connect_database()
     limit = 5
-    db.cursor.execute(f"SELECT _id FROM members ORDER BY RAND() LIMIT {limit};")
+    db.cursor.execute(f"SELECT _id FROM members ORDER BY synced ASC LIMIT {limit};")
     member_ids = db.cursor.fetchall()
 
     for i, member_id in enumerate(member_ids):

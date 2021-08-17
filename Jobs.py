@@ -482,8 +482,8 @@ def get_possible_jobs(job_name: str) -> list[Job]:
     job_name_lower = job_name.lower()
     jobs = get_jobs()
     possible_jobs = get_close_matches(
-        job_name_lower, [j.name.lower() for j in jobs], n=5, cutoff=.3
-    )  # list of job names - max 5 so the reactions don't go wider than the embed or new line
+        job_name_lower, [j.name.lower() for j in jobs], n=6, cutoff=.3
+    )  # list of job names - max 6 so the reactions don't go wider than the embed or new line
     possible_jobs = [jobs[i] for i in possible_jobs]
 
     if len(possible_jobs) > 1:
@@ -538,8 +538,8 @@ async def send_possible_jobs(
                         f"[Donate]({Support.DONATE_LINK})"
                         f"\n\nIf the searched track isn't in the results, "
                         f"it's possible the creator's races aren't being synced. "
-                        f"To add the creator to the bot's database, use `.lens sync SC_LINK` "
-                        f"where SC_LINK is the link to one of the creator's races."
+                        f"To add the creator to the bot's database, use `.lens sync SC_TRACK_LINK` "
+                        f"where SC_TRACK_LINK is the Social Club link to one of the creator's races."
                         f"\n\n**Results:**"
                         f"{possible_jobs_str}"
                         f"[{Support.ZERO_WIDTH}]({embed_meta})"
