@@ -22,7 +22,7 @@ async def loop(client):
         await update_status(client)
 
     if loop.current_loop > 0:  # skip first iteration
-        if seconds % (1.75 * 60) == 0:
+        if seconds % (2 * 60) == 0:
             await update_jobs()
 
         # TODO once you figure out a way to intelligently update tracks, add crew members
@@ -107,7 +107,7 @@ async def update_jobs():
     for i, member_id in enumerate(member_ids):
         logger.debug(f"Members Update: {int(100 * (i/limit))}%")
         await asyncio.shield(Jobs.add_sc_member_jobs(member_id[0]))
-        await asyncio.sleep(5)
+        await asyncio.sleep(5)  # per user
     logger.info(f"Members Updated: {member_ids}")
 
     db.connection.close()
