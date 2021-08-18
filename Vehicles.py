@@ -824,9 +824,7 @@ async def send_possible_vehicles(
                         f"[{Support.ZERO_WIDTH}]({embed_meta})"
         )
 
-        # TODO .lens tier
-        # TODO .lens class
-        # embed.set_footer(text=".lens tier _class_ _tier_ | .lens class _class_")
+        embed.set_footer(text=".lens tier CLASS TIER | .lens class CLASS")
 
         msg = await message.channel.send(embed=embed)
         for i, j in enumerate(possible_vehicles):
