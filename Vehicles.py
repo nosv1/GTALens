@@ -197,6 +197,16 @@ class Vehicle:
         self.description = description
         self.video_id = video_id
 
+    def get_brakes(self):  # for some reason, the attributes were none when tryna do this at init
+        brake_total = (self.brake_force * 10) * self.brake_bias
+        diff = brake_total - self.cornering_grip
+
+        if diff > 0.4:  # the stock brakes overcome the lack of cornering grip
+            return Support.BALLOT_CHECKMARK
+
+        else:
+            return ""
+
 
 async def on_reaction_add(
         msg: discord.Message,
@@ -933,6 +943,7 @@ async def send_vehicle(message: discord.Message, client: discord.Client, vehicle
               f"\n**Suspension:** {vehicle.suspension.replace(Support.HEAVY_CHECKMARK, Support.BALLOT_CHECKMARK)}"
               f"\n**Boost:** {vehicle.boost.replace(Support.HEAVY_CHECKMARK, Support.BALLOT_CHECKMARK)}"
               f"\n**Drift Tyres:** {vehicle.drift_tyres.replace(Support.HEAVY_CHECKMARK, Support.BALLOT_CHECKMARK)}"
+              f"\n**Stock Brakes:** {vehicle.get_brakes()}"
               f"\n{Support.SPACE_CHAR}"
     )
 

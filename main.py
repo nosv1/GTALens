@@ -61,7 +61,10 @@ async def on_message(message: discord.Message):
         )
         await message.channel.send(embed=embed)
 
-    if any([args[0] == f"{p}lens" for p in [".", "?", "!"]]):  # command attempted
+    if (
+            any([args[0] == f"{p}lens" for p in [".", "?", "!"]]) or
+            HOST == "PC" and args[0] == "`lens"
+    ):  # command attempted
         logger.info(f"Message Content: {message_content}")
         is_dev = message.author.id in Support.DEVS.values()
 
@@ -352,28 +355,28 @@ async def on_error(event, *args, **kwargs):
         devs_ping = ','.join(f'<@{d_id}>' for d_id in Support.DEVS.values())
         await errors_channel.send(f"{devs_ping}```{traceback.format_exc()}```")
 
+        if args:
+
+            if type(args[0]) == discord.Message:  # doesn't work for edits
+                message: discord.Message = args[0]
+
+            # elif type(args[0]) == discord.RawMessageUpdateEvent:
+            #     args[0]: discord.RawMessageUpdateEvent
+            #     channel = client.get_channel(args[0].channel_id)
+            #     message: discord.Message = await channel.fetch_message(args[0].message_id)
+
+                embed = discord.Embed(
+                    colour=discord.Colour(Support.GTALENS_ORANGE),
+                    title="Oops!",
+                    description="Looks like there was an error. The developers have been notified, "
+                                "and the error will, hopefully, be resolved within 24 hours. "
+                                "We are sorry for this inconvenience."
+                )
+
+                await message.reply(embed=embed)
+
     else:
         print(traceback.format_exc())
-
-    if args:
-
-        if type(args[0]) == discord.Message:  # doesn't work for edits
-            message: discord.Message = args[0]
-
-        # elif type(args[0]) == discord.RawMessageUpdateEvent:
-        #     args[0]: discord.RawMessageUpdateEvent
-        #     channel = client.get_channel(args[0].channel_id)
-        #     message: discord.Message = await channel.fetch_message(args[0].message_id)
-
-            embed = discord.Embed(
-                colour=discord.Colour(Support.GTALENS_ORANGE),
-                title="Oops!",
-                description="Looks like there was an error. The developers have been notified, "
-                            "and the error will, hopefully, be resolved within 24 hours. "
-                            "We are sorry for this inconvenience."
-            )
-
-            await message.reply(embed=embed)
 
 
 async def startup():
