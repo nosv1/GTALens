@@ -42,10 +42,14 @@ logger.addHandler(console_handler)
 
 HOST = os.getenv("HOST")
 
+paused = False
+
 
 @client.event
 async def on_message(message: discord.Message):
     await client.wait_until_ready()
+
+    global paused
 
     args: list[str]
     message_content: str
@@ -62,11 +66,17 @@ async def on_message(message: discord.Message):
         await message.channel.send(embed=embed)
 
     if (
-            any([args[0] == f"{p}lens" for p in [".", "?", "!"]]) or
-            HOST == "PC" and args[0] == "`lens"
+            (
+                HOST != 'PC' and any([args[0] == f"{p}lens" for p in [".", "?", "!"]])
+            ) or (
+                HOST == "PC" and args[0] == "`lens"
+            )
     ):  # command attempted
         logger.info(f"Message Content: {message_content}")
         is_dev = message.author.id in Support.DEVS.values()
+
+        if paused and not is_dev:
+            return
 
         ''' COMMANDS  '''
 
@@ -74,6 +84,20 @@ async def on_message(message: discord.Message):
             pass
 
             ''' TEST '''
+
+        elif args[1].lower() == "pause" and is_dev:
+            paused = not paused
+            if paused:
+                await client.change_presence(
+                    activity=discord.Activity(
+                        type=discord.ActivityType.watching,
+                        name="Maintenance Mode"
+                    ),
+                    status=discord.Status.do_not_disturb
+                )
+
+            else:
+                await Tasks.update_status(client)
 
         elif args[1].lower() == "restart" and is_dev:
             json.dump({'action': 'restart'}, open("restart.json", "w+"))
@@ -100,7 +124,7 @@ async def on_message(message: discord.Message):
 
             ''' UPDATE VEHICLES MANUALLY - MUST BE DEV'''
 
-        elif args[1].lower() in Jobs.SEARCH_ALIASES:
+        elif args[1].lower() in Jobs.JOB_SEARCH_ALIASES:
             await message.channel.trigger_typing()
 
             job_name = " ".join(args[2:-1])
@@ -133,13 +157,13 @@ async def on_message(message: discord.Message):
 
             class_name = " ".join(args[2:-2])
             class_names = list(Vehicles.VEHICLE_CLASS_CORRECTIONS.keys())
-            poss_class_names = Vehicles.get_close_matches(class_name, class_names)
+            possible_class_names = Vehicles.get_close_matches(class_name, class_names)
 
-            if not poss_class_names:
+            if not possible_class_names:
                 class_name = choice(class_names)
 
             else:
-                class_name = class_names[poss_class_names[0]]
+                class_name = class_names[possible_class_names[0]]
 
             vehicles_class: list[Vehicles] = Vehicles.get_vehicle_class(
                 vehicle_class=class_name,
@@ -157,19 +181,30 @@ async def on_message(message: discord.Message):
 
             class_name = " ".join(args[2:]).strip()
             class_names = list(Vehicles.VEHICLE_CLASS_CORRECTIONS.keys())
-            poss_class_names = Vehicles.get_close_matches(class_name, class_names)
+            possible_class_names = Vehicles.get_close_matches(class_name, class_names)
 
-            if not poss_class_names:
+            if not possible_class_names:
                 class_name = choice(class_names)
 
             else:
-                class_name = class_names[poss_class_names[0]]
+                class_name = class_names[possible_class_names[0]]
 
             await Vehicles.send_vehicle_class(
                 message, Vehicles.get_vehicle_class(class_name, Vehicles.get_vehicles()), class_name
             )
 
             ''' VEHICLE CLASS LOOKUP '''
+
+        elif args[1].lower in Jobs.PLAYLIST_SEARCH_ALIASES:
+            await message.channel.trigger_typing()
+
+            creator_name = " ".join(args[2:-1]).strip()
+            possible_creators = Jobs.get_possible_creators(creator_name)
+            await Jobs.send_possible_creators(
+                message, possible_creators, creator_name, "creator_search_playlist"
+            )
+
+            ''' CREATOR LOOKUP'''
 
         elif args[1].lower() in Weather.ALIASES:
             await message.channel.trigger_typing()
@@ -223,6 +258,9 @@ async def on_message(message: discord.Message):
 async def on_raw_message_edit(payload: discord.RawMessageUpdateEvent):
     await client.wait_until_ready()
 
+    if paused:
+        return
+
     if payload.channel_id:
         channel_id = payload.channel_id
         channel = client.get_channel(channel_id)
@@ -240,6 +278,9 @@ async def on_raw_message_edit(payload: discord.RawMessageUpdateEvent):
 @client.event
 async def on_raw_reaction_add(payload: discord.RawReactionActionEvent):
     await client.wait_until_ready()
+
+    if paused:
+        return
 
     m = [m for m in client.cached_messages if m.id == payload.message_id]
     message = m[0] if m else m
@@ -288,10 +329,16 @@ async def on_raw_reaction_add(payload: discord.RawReactionActionEvent):
                         elif embed_type in Weather.EMBED_TYPES:  # is weather embed
                             await Weather.on_reaction_add(message, emoji, user, client, embed_meta)
 
+                        elif embed_type in Creators.EMBED_TYPES:  # is creator embed
+                            await Creators.on_reaction_add(message, emoji, user, client, embed_meta)
+
 
 @client.event
 async def on_raw_reaction_remove(payload: discord.RawReactionActionEvent):
     await client.wait_until_ready()
+
+    if paused:
+        return
 
     # check the cache before fetching the message
     m = [m for m in client.cached_messages if m.id == payload.message_id]
