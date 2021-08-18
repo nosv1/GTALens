@@ -329,9 +329,6 @@ async def on_raw_reaction_add(payload: discord.RawReactionActionEvent):
                         elif embed_type in Weather.EMBED_TYPES:  # is weather embed
                             await Weather.on_reaction_add(message, emoji, user, client, embed_meta)
 
-                        elif embed_type in Creators.EMBED_TYPES:  # is creator embed
-                            await Creators.on_reaction_add(message, emoji, user, client, embed_meta)
-
 
 @client.event
 async def on_raw_reaction_remove(payload: discord.RawReactionActionEvent):

@@ -18,7 +18,8 @@ SYNC_ALIASES = ["sync"]
 
 EMBED_TYPES = [
     'job',
-    'job_search'
+    'job_search',
+    'creator_search_playlist'
 ]
 
 WEATHER = [  # indices relate to what prod.cloud.rockstargames.com/ugs/mission provides
@@ -199,7 +200,7 @@ async def on_reaction_add(
 
             await send_job(msg, client, job)
 
-    elif embed_type == 'creator_playlist_search':
+    elif embed_type == 'creator_search_playlist':
 
         if emoji in embed_meta:
             creator_id = embed_meta.split(f"{emoji}=")[1].split('/')[0]
@@ -458,7 +459,6 @@ def get_jobs(_id='%%'):
 def get_creators(_id: str = ""):
     db = Database.connect_database()
     db.cursor.execute(f"SELECT * FROM members WHERE _id LIKE '%{_id}%'")
-
     if _id:
         _ = db.cursor.fetchall()[0]
         return Creator(
@@ -766,7 +766,7 @@ async def get_playlists(creator: Creator) -> Creator:
     if 'payload' in r_json:
 
         creator.playlists = []
-        for collection in r_json['collections']:
+        for collection in r_json['payload']['collections']:
 
             creator.playlists.append(
                 Playlist(
@@ -775,12 +775,12 @@ async def get_playlists(creator: Creator) -> Creator:
                     platform=collection['jP'][0],
                     job_types=collection['jT'],
                     job_ids=[],
-                    created=datetime.strptime(r_json["crD"], "%Y-%m-%dT%H:%M:%S.%fZ"),
-                    updated=datetime.strptime(r_json["upD"], "%Y-%m-%dT%H:%M:%S.%fZ"),
+                    created=datetime.strptime(collection["crD"], "%Y-%m-%dT%H:%M:%S.%fZ"),
+                    updated=datetime.strptime(collection["upD"], "%Y-%m-%dT%H:%M:%S.%fZ"),
                 )
             )
 
-            for job in collection:
+            for job in collection['jobs']:
                 creator.playlists[-1].job_ids.append(job['id'])
 
         return creator
@@ -812,13 +812,13 @@ async def send_playlists(message: discord.Message, creator: Creator) -> discord.
 
 def get_possible_creators(creator_name: str) -> list[Creator]:
     creator_name_lower = creator_name.lower()
-    creators = get_creators()
+    creators = [c for c in get_creators() if c.name]
 
-    creator_names = [c.name for c in creators if c.name]
+    creator_names = [c.name for c in creators]
     possible_creators = get_close_matches(
         creator_name_lower, [c.lower() for c in creator_names], n=5, cutoff=.3
     )
-    possible_creators = [creators[creator_names[i]] for i in possible_creators]
+    possible_creators = [creators[i] for i in possible_creators]
 
     if len(possible_creators) > 1:
 
@@ -845,10 +845,10 @@ async def send_possible_creators(
         embed_meta = f"[{Support.ZERO_WIDTH}](embed_meta/type={embed_type}/)"
 
         for i, creator in enumerate(possible_creators):
-            possible_creators_str += f"\n{Support.LETTERS_EMOJIS[letters[i]]}" \
+            possible_creators_str += f"\n{Support.LETTERS_EMOJIS[letters[i]]} " \
                                      f"[{creator.name}]({creator.url})"
 
-            embed_meta += f"{Support.LETTERS_EMOJIS[letters[i]]}={creator.name}/"
+            embed_meta += f"{Support.LETTERS_EMOJIS[letters[i]]}={creator._id}/"
 
         if not possible_creators_str:
             possible_creators_str = "\n\nThere were no close matches for your search. " \

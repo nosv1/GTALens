@@ -21,9 +21,6 @@ HOST = os.getenv("HOST")
 @tasks.loop(seconds=15)
 async def loop(client):
 
-    if HOST == "PC":
-        return
-
     seconds = loop.current_loop * 30
 
     if seconds % (5 * 60) == 0:
