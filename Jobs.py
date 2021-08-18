@@ -5,14 +5,15 @@ import discord
 import json
 import logging
 
-import Creators
 import Database
 from Database import connect_database, replace_chars
 import Support
 
 logger = logging.getLogger("discord")
 
-SEARCH_ALIASES = ["track", "job", "race"]
+JOB_SEARCH_ALIASES = ["track", "job", "race"]
+PLAYLIST_SEARCH_ALIASES = ["playlists", "playlist", "collection", "collections"]
+
 SYNC_ALIASES = ["sync"]
 
 EMBED_TYPES = [
@@ -85,7 +86,7 @@ class Job:
             unique_plays: int = 0,
             rating: float = 0.0,
 
-            creator: Creators.Creator = Creators.Creator,
+            creator=None,  # Creator
 
             platform: str = "",
             variants=None,  # list of gtalens ids
@@ -125,6 +126,57 @@ class Job:
         self.weather = weather
 
 
+class Playlist:
+
+    def __init__(
+            self,
+            _id: str = None,
+            name: str = None,
+
+            platform: str = None,
+            job_types: str = None,
+
+            job_ids: list[str] = None,
+            jobs: list[Job] = None,
+
+            updated: datetime = None,
+            created: datetime = None
+    ):
+        self._id = _id
+        self.name = name
+        self.url = f"https://gtalens.com/collection/{self._id}"
+
+        self.platform = platform
+        self.job_types = job_types
+
+        self.job_ids = job_ids
+        self.jobs = jobs
+
+        self.updated = updated
+        self.created = created
+
+
+class Creator:
+    def __init__(
+            self,
+            _id: str = "",
+            name: str = "",
+
+            playlists: list[Playlist] = None,
+            playlists_url: str = None
+    ):
+        self._id = _id
+        self.name = name
+        self.url = f"https://gtalens.com/profile/{_id}"
+
+        self.playlists = playlists
+        self.playlists_url = playlists_url
+
+    @property
+    def id(self):
+        return self._id
+
+
 async def on_reaction_add(
         msg: discord.Message,
         emoji: str,
@@ -139,12 +191,27 @@ async def on_reaction_add(
         if emoji in embed_meta:
             job_id = embed_meta.split(f"{emoji}=")[1].split('/')[0]
             job = await get_job(job_id)
+
             try:
                 await msg.clear_reactions()
             except discord.Forbidden:
                 pass
 
             await send_job(msg, client, job)
+
+    elif embed_type == 'creator_playlist_search':
+
+        if emoji in embed_meta:
+            creator_id = embed_meta.split(f"{emoji}=")[1].split('/')[0]
+            creator = get_creators(_id=creator_id)
+            creator = await get_playlists(creator)
+
+            try:
+                await msg.clear_reactions()
+            except discord.Forbidden:
+                pass
+
+            await send_playlists(msg, creator)
 
 
 async def on_reaction_remove(
@@ -155,6 +222,9 @@ async def on_reaction_remove(
         embed_meta: str = ""
 ) -> None:
     pass
+
+
+''' JOB DATABASE '''
 
 
 async def add_crew(crew_id: str) -> None:
@@ -322,125 +392,6 @@ async def add_sc_member_jobs(sc_member_id: str) -> dict:
     return crews
 
 
-def get_jobs(_id='%%'):
-    db = Database.connect_database()
-    db.cursor.execute(f"SELECT * FROM jobs WHERE _id LIKE '%{_id}%'")
-    db.connection.close()
-    return [Job(
-        rockstar_id=j[0],
-        name=j[1],
-        platform=j[2],
-        updated=datetime.strptime(j[3], "%Y-%m-%dT%H:%M:%S"),
-        creator=Creators.Creator(_id=j[4]),
-    ) for j in db.cursor.fetchall()]
-
-
-async def get_job(job_id: str) -> Job:
-    # BGNZ Here Viggo Again!
-    # https://gtalens.com/job/-zBNUcfmsUCiYznpiH_ldQ
-    # https://gtalens.com/api/v1/jobs/info/-zBNUcfmsUCiYznpiH_ldQ
-
-    full_info_url = "https://gtalens.com/api/v1/jobs/info/"  # + job_id
-    basic_info_url = "https://gtalens.com/api/v1/jobs/basicinfo/"  # + job_id
-
-    url = f"{full_info_url}{job_id}"
-    r_json = await Support.get_url(url)
-
-    if 'payload' in r_json:
-        payload = r_json["payload"]
-        job_dict = payload["job"]
-
-        job: Job = Job(
-            gtalens_id=job_dict["jobId"],
-            rockstar_id=job_dict["jobCurrId"],
-            name=job_dict["name"],
-            description=job_dict["desc"],
-            added=datetime.strptime(job_dict["adD"], "%Y-%m-%dT%H:%M:%S.%fZ"),
-            updated=datetime.strptime(job_dict["upD"], "%Y-%m-%dT%H:%M:%S.%fZ"),
-            synced=datetime.strptime(job_dict["fD"], "%Y-%m-%dT%H:%M:%S.%fZ"),
-            thumbnail=job_dict["img"].split("."),
-            likes=job_dict["stats"]["lk"],
-            dislikes=job_dict["stats"]["dlk"],
-            total_plays=job_dict["stats"]["plT"],
-            unique_plays=job_dict["stats"]["plU"],
-            quits=job_dict["stats"]["qt"],
-            rating=job_dict["stats"]["r"],
-            platform=job_dict['plt'],
-            creator=Creators.Creator(
-                _id=payload["suppl"]["usersInfo"][0]["userId"],
-                name=payload["suppl"]["usersInfo"][0]["username"]
-            )
-        )
-
-        if 'vrtP' in payload['job']:
-            print(payload['job']['vrtP'])
-            print(payload['job']['vrt'])
-
-            job.variants = payload['job']['vrt']  # get the gtalens id
-            if job.gtalens_id in job.variants:
-                del job.variants[job.variants.index(job.gtalens_id)]
-
-            for i, p in enumerate(payload['job']['vrtP']):  # add the platform
-                job.variants.append([job.variants[i], p])
-
-    else:
-        job: Job = get_jobs(_id=job_id)[0]
-        job.gtalens_id = '?'
-
-    while True:
-
-        url = f"https://scapi.rockstargames.com/ugc/mission/details?title=gtav&contentId={job_id}"
-        logger.debug(f"Jobs.get_job() {url}")
-
-        r_json = await Support.get_url(url, headers=Support.SCAPI_HEADERS)
-
-        job.job_type = JOB_TYPE_CORRECTIONS[r_json['content']['type']]
-
-        found_mission = False
-
-        id_version: int = 0
-        for id_version in range(10):  # id_version is the number of saves before publish
-
-            for lang in [
-                "en", "fr", "de", "pt", "es", "es-mx", "it", "ru", "ja", "pl", "zh", "zh-cn", "ko"
-            ]:
-
-                while True:
-
-                    url = f"https://prod.cloud.rockstargames.com/ugc/gta5mission" \
-                          f"/{job_id}/0_{id_version}_{lang}.json"
-                    logger.debug(f"Jobs.get_job() {url}")
-
-                    r_json = await Support.get_url(url)
-
-                    if r_json:
-                        if 'mission' in r_json:
-                            job.pedestrians = 'off' if r_json['mission']['rule']['apeds'] else 'on'
-                            job.weather = WEATHER[r_json['mission']['rule']['weth']]
-                            job.time_of_day = TIME_OF_DAY[r_json['mission']['rule']['tod']]
-
-                            found_mission = True
-                            break
-
-                        elif 'JSONDecodeError' in r_json['error']['code']:
-                            break
-
-                    else:
-                        break
-
-                if found_mission:
-                    break
-
-            if found_mission:
-                break
-
-        if found_mission or id_version == 9:
-            break
-
-    logger.info(f"Got Job: {job.name} by {job.creator.name}")
-    return job
-
-
 async def sync_job(message: discord.Message, job_link: str) -> (discord.Message, Job):
     job_id = job_link.split("gtav/")[-1]
 
@@ -488,6 +439,152 @@ async def sync_job(message: discord.Message, job_link: str) -> (discord.Message,
     return msg, job
 
 
+def get_jobs(_id='%%'):
+    db = Database.connect_database()
+    db.cursor.execute(f"SELECT * FROM jobs WHERE _id LIKE '%{_id}%'")
+    db.connection.close()
+    return [Job(
+        rockstar_id=j[0],
+        name=j[1],
+        platform=j[2],
+        updated=datetime.strptime(j[3], "%Y-%m-%dT%H:%M:%S"),
+        creator=Creator(_id=j[4]),
+    ) for j in db.cursor.fetchall()]
+
+
+''' CREATOR DATABASE '''
+
+
+def get_creators(_id: str = ""):
+    db = Database.connect_database()
+    db.cursor.execute(f"SELECT * FROM members WHERE _id LIKE '%{_id}%'")
+
+    if _id:
+        _ = db.cursor.fetchall()[0]
+        return Creator(
+            _id=_[0],
+            name=_[1]
+        )
+
+    else:
+        creators = db.cursor.fetchall()
+        for i, creator in enumerate(creators):
+            creators[i] = Creator(
+                _id=creator[0],
+                name=creator[1]
+            )
+        return creators
+
+
+''' JOB DISCORD '''
+
+
+async def get_job(job_id: str) -> Job:
+    # BGNZ Here Viggo Again!
+    # https://gtalens.com/job/-zBNUcfmsUCiYznpiH_ldQ
+    # https://gtalens.com/api/v1/jobs/info/-zBNUcfmsUCiYznpiH_ldQ
+
+    full_info_url = "https://gtalens.com/api/v1/jobs/info/"  # + job_id
+    basic_info_url = "https://gtalens.com/api/v1/jobs/basicinfo/"  # + job_id
+
+    url = f"{full_info_url}{job_id}"
+    r_json = await Support.get_url(url)
+
+    if 'payload' in r_json:
+        payload = r_json["payload"]
+        job_dict = payload["job"]
+
+        job: Job = Job(
+            gtalens_id=job_dict["jobId"],
+            rockstar_id=job_dict["jobCurrId"],
+            name=job_dict["name"],
+            description=job_dict["desc"],
+            added=datetime.strptime(job_dict["adD"], "%Y-%m-%dT%H:%M:%S.%fZ"),
+            updated=datetime.strptime(job_dict["upD"], "%Y-%m-%dT%H:%M:%S.%fZ"),
+            synced=datetime.strptime(job_dict["fD"], "%Y-%m-%dT%H:%M:%S.%fZ"),
+            thumbnail=job_dict["img"].split("."),
+            likes=job_dict["stats"]["lk"],
+            dislikes=job_dict["stats"]["dlk"],
+            total_plays=job_dict["stats"]["plT"],
+            unique_plays=job_dict["stats"]["plU"],
+            quits=job_dict["stats"]["qt"],
+            rating=job_dict["stats"]["r"],
+            platform=job_dict['plt'],
+            creator=Creator(
+                _id=payload["suppl"]["usersInfo"][0]["userId"],
+                name=payload["suppl"]["usersInfo"][0]["username"]
+            )
+        )
+
+        if 'vrtP' in payload['job']:
+            print(payload['job']['vrtP'])
+            print(payload['job']['vrt'])
+
+            job.variants = payload['job']['vrt']  # get the gtalens id
+            if job.gtalens_id in job.variants:
+                del job.variants[job.variants.index(job.gtalens_id)]
+
+            for i, p in enumerate(payload['job']['vrtP']):  # add the platform
+                job.variants.append([job.variants[i], p])
+
+    else:
+        job: Job = get_jobs(_id=job_id)[0]
+        job.gtalens_id = '?'
+
+    while True:
+
+        url = f"https://scapi.rockstargames.com/ugc/mission/details?title=gtav&contentId={job.rockstar_id}"
+        logger.debug(f"Jobs.get_job() {url}")
+
+        r_json = await Support.get_url(url, headers=Support.SCAPI_HEADERS)
+
+        job.job_type = JOB_TYPE_CORRECTIONS[r_json['content']['type']]
+
+        found_mission = False
+
+        id_version: int = 0
+        for id_version in range(10):  # id_version is the number of saves before publish
+
+            for lang in [
+                "en", "fr", "de", "pt", "es", "es-mx", "it", "ru", "ja", "pl", "zh", "zh-cn", "ko"
+            ]:
+
+                while True:
+
+                    url = f"https://prod.cloud.rockstargames.com/ugc/gta5mission" \
+                          f"/{job.rockstar_id}/0_{id_version}_{lang}.json"
+                    logger.debug(f"Jobs.get_job() {url}")
+
+                    r_json = await Support.get_url(url)
+
+                    if r_json:
+                        if 'mission' in r_json:
+                            job.pedestrians = 'off' if r_json['mission']['rule']['apeds'] else 'on'
+                            job.weather = WEATHER[r_json['mission']['rule']['weth']]
+                            job.time_of_day = TIME_OF_DAY[r_json['mission']['rule']['tod']]
+
+                            found_mission = True
+                            break
+
+                        elif 'JSONDecodeError' in r_json['error']['code']:
+                            break
+
+                    else:
+                        break
+
+                if found_mission:
+                    break
+
+            if found_mission:
+                break
+
+        if found_mission or id_version == 9:
+            break
+
+    logger.info(f"Got Job: {job.name} by {job.creator.name}")
+    return job
+
+
 def get_possible_jobs(job_name: str) -> list[Job]:
     job_name_lower = job_name.lower()
     jobs = get_jobs()
@@ -521,7 +618,7 @@ async def send_possible_jobs(
         embed_meta = "embed_meta/type=job_search/"
 
         for i, job in enumerate(possible_jobs):
-            creator = Creators.get_creator(job.creator.id)
+            creator = get_creators(_id=job.creator.id)
 
             platform_emoji = str(discord.utils.find(
                 lambda e: e.name == PLATFORM_CORRECTIONS[job.platform].lower(), client.get_guild(
@@ -557,6 +654,7 @@ async def send_possible_jobs(
 
         # TODO .lens creator creator_name
         # embed.set_footer(text=".lens creator creator_name")
+        embed.set_footer(text=".lens playlist CREATOR")
 
         msg = await message.channel.send(embed=embed)
         for i, j in enumerate(possible_jobs):
@@ -656,3 +754,119 @@ async def send_job(message: discord.Message, client: discord.Client, job: Job):
     logger.info(f'Updated {job.creator.id}\'s jobs and crews')
 
     return msg
+
+
+''' PLAYLIST DISCORD '''
+
+
+async def get_playlists(creator: Creator) -> Creator:
+    creator.playlists_url = f"https://gtalens.com/api/v1/collections?type=1&page=1&platforms%5B0%5D=pc&platforms%5B1%5D=ps4&platforms%5B2%5D=xboxone&sort=updated&includeCount=true&userId={creator.id}"
+    r_json = await Support.get_url(creator.playlists_url)
+
+    if 'payload' in r_json:
+
+        creator.playlists = []
+        for collection in r_json['collections']:
+
+            creator.playlists.append(
+                Playlist(
+                    _id=collection['_id'],
+                    name=collection['name'],
+                    platform=collection['jP'][0],
+                    job_types=collection['jT'],
+                    job_ids=[],
+                    created=datetime.strptime(r_json["crD"], "%Y-%m-%dT%H:%M:%S.%fZ"),
+                    updated=datetime.strptime(r_json["upD"], "%Y-%m-%dT%H:%M:%S.%fZ"),
+                )
+            )
+
+            for job in collection:
+                creator.playlists[-1].job_ids.append(job['id'])
+
+        return creator
+
+
+async def send_playlists(message: discord.Message, creator: Creator) -> discord.Message:
+
+    playlists_str = ""
+    for playlist in creator.playlists:
+        playlists_str += f"[{playlist.name}]({playlist.url}) {str(datetime.utcnow() - playlist.updated)}\n"
+
+    embed = discord.Embed(
+        colour=discord.Colour(Support.GTALENS_ORANGE),
+        title=f"**{creator.name}'s Most Recently Updated Playlists**",
+        description=f"[GTALens]({creator.playlists_url}) **|** [Donate]({Support.DONATE_LINK})"
+                    f"\n\n{playlists_str}"
+    )
+
+    msg = message
+    if message.author.id != Support.GTALENS_CLIENT_ID:
+        msg = await msg.channel.send(embed=embed)
+    else:
+        await msg.edit(embed=embed)
+
+    return msg
+
+''' CREATORS DISCORD'''
+
+
+def get_possible_creators(creator_name: str) -> list[Creator]:
+    creator_name_lower = creator_name.lower()
+    creators = get_creators()
+
+    creator_names = [c.name for c in creators if c.name]
+    possible_creators = get_close_matches(
+        creator_name_lower, [c.lower() for c in creator_names], n=5, cutoff=.3
+    )
+    possible_creators = [creators[creator_names[i]] for i in possible_creators]
+
+    if len(possible_creators) > 1:
+
+        if (
+            possible_creators[0].name.lower() == creator_name_lower and
+            possible_creators[1].name.lower() != creator_name_lower and
+            creator_name_lower not in possible_creators[1].name.lower()
+        ):
+            return [possible_creators[0]]
+
+    return possible_creators
+
+
+async def send_possible_creators(
+        message: discord.Message, possible_creators: list[Creator], creator_name: str, embed_type: str
+) -> discord.Message:
+
+    if len(possible_creators) == 1:
+        msg = await send_playlists(message, possible_creators[0])
+
+    else:
+        letters = list(Support.LETTERS_EMOJIS.keys())
+        possible_creators_str = ""
+        embed_meta = f"[{Support.ZERO_WIDTH}](embed_meta/type={embed_type}/)"
+
+        for i, creator in enumerate(possible_creators):
+            possible_creators_str += f"\n{Support.LETTERS_EMOJIS[letters[i]]}" \
+                                     f"[{creator.name}]({creator.url})"
+
+            embed_meta += f"{Support.LETTERS_EMOJIS[letters[i]]}={creator.name}/"
+
+        if not possible_creators_str:
+            possible_creators_str = "\n\nThere were no close matches for your search. " \
+                                    "It may be possible the creator is not in the bot's database. " \
+                                    "To add a creator use `.lens sync SC_TRACK_LINK`"
+
+        embed = discord.Embed(
+            color=discord.Color(Support.GTALENS_ORANGE),
+            title=f"**Search: *{creator_name}***",
+            description=f"[Search GTALens](https://gtalens.com/creators?page=1&search={creator_name.replace(' ', '%20')}) **|** "
+                        f"[Donate]({Support.DONATE_LINK})"
+                        f"\n\n**Results:**"
+                        f"{possible_creators_str}"
+                        f"[{Support.ZERO_WIDTH}]({embed_meta})"
+        )
+
+        msg = await message.channel.send(embed=embed)
+        for i, j in enumerate(possible_creators):
+            await msg.add_reaction(Support.LETTERS_EMOJIS[letters[i]])
+
+        return msg

@@ -1,20 +1,28 @@
 import asyncio
-import logging
-from random import choice
-
 import discord
 from discord.ext import tasks
+from dotenv import load_dotenv
+import logging
+import os
+from random import choice
 
 import Database
 import Jobs
 import Vehicles
 
+load_dotenv()
+
 logger = logging.getLogger('discord')
+
+HOST = os.getenv("HOST")
 
 
 # randomly choose an 'activity' every 5 minutes
 @tasks.loop(seconds=15)
 async def loop(client):
+
+    if HOST == "PC":
+        return
 
     seconds = loop.current_loop * 30
 

@@ -195,7 +195,7 @@ async def on_message(message: discord.Message):
 
             ''' VEHICLE CLASS LOOKUP '''
 
-        elif args[1].lower in Jobs.PLAYLIST_SEARCH_ALIASES:
+        elif args[1].lower() in Jobs.PLAYLIST_SEARCH_ALIASES:
             await message.channel.trigger_typing()
 
             creator_name = " ".join(args[2:-1]).strip()
