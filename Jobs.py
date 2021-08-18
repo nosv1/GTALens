@@ -257,6 +257,7 @@ async def add_sc_members(crew_json: json) -> None:
     db: Database.DB = connect_database()
 
     if 'crewRanks' in crew_json:
+        print('yes')
 
         for rank in crew_json['crewRanks']:
 
@@ -321,7 +322,7 @@ async def add_sc_member_jobs(sc_member_id: str) -> dict:
 
                     db.connection.commit()
 
-                    crews: dict = r_json['content']['crews']
+                    crews.update(r_json['content']['crews'])
                     for crew_id in crews:
                         crew = crews[crew_id]
                         db.cursor.execute(f"""
@@ -390,6 +391,7 @@ async def add_sc_member_jobs(sc_member_id: str) -> dict:
 
     db.connection.close()
 
+    print(crews)
     return crews
 
 
@@ -409,6 +411,7 @@ async def sync_job(message: discord.Message, job_link: str) -> (discord.Message,
 
         crews = await asyncio.shield(add_sc_member_jobs(job.creator.id))
         for crew_id in crews:
+            print(crew_id)
             await add_crew(crew_id)
 
         logger.info(f'Updated {job.creator.id}\'s jobs and crews')
@@ -517,8 +520,6 @@ async def get_job(job_id: str) -> Job:
         )
 
         if 'vrtP' in payload['job']:
-            print(payload['job']['vrtP'])
-            print(payload['job']['vrt'])
 
             job.variants = payload['job']['vrt']  # get the gtalens id
             if job.gtalens_id in job.variants:
@@ -761,6 +762,7 @@ async def send_job(message: discord.Message, client: discord.Client, job: Job):
 
 async def get_playlists(creator: Creator) -> Creator:
     creator.playlists_url = f"https://gtalens.com/api/v1/collections?type=1&page=1&platforms%5B0%5D=pc&platforms%5B1%5D=ps4&platforms%5B2%5D=xboxone&sort=updated&includeCount=true&userId={creator.id}"
+    logger.debug(f"Jobs.get_playlists() {creator.playlists_url}")
     r_json = await Support.get_url(creator.playlists_url)
 
     if 'payload' in r_json:

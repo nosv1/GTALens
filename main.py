@@ -71,7 +71,7 @@ async def on_message(message: discord.Message):
             ) or (
                 HOST == "PC" and args[0] == "`lens"
             )
-    ):  # command attempted
+    ):  # PC HOST means testing, this avoids double responses when PC and PI4 are both running
         logger.info(f"Message Content: {message_content}")
         is_dev = message.author.id in Support.DEVS.values()
 
