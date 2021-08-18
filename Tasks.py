@@ -24,7 +24,10 @@ async def loop(client):
     seconds = loop.current_loop * 30
 
     if seconds % (5 * 60) == 0:
-        await update_status(client)
+        if HOST != "PC":
+            await update_status(client)
+        else:
+            await client.change_presence(status=discord.Status.offline)
 
     if loop.current_loop > 0:  # skip first iteration
         if seconds % (2 * 60) == 0:
@@ -91,19 +94,35 @@ async def update_jobs():
 
     # updating creators who have jobs more often than creators that don't
 
+    creators = f"""
+        SELECT distinct(m2._id), m2.synced
+        FROM (
+            SELECT * FROM members as m
+            INNER JOIN (
+                SELECT creator_id FROM jobs
+            ) as j
+            ON m._id = j.creator_id
+        ) as m2
+    """
+
     db.cursor.execute(f"""
-        SELECT _id 
-        FROM members 
-        WHERE _name IS NOT NULL
-        ORDER BY synced ASC 
+        {creators}
+        ORDER BY synced ASC
         LIMIT {has_jobs_limit};
     ;""")
     member_ids = db.cursor.fetchall()
 
+    not_creators = f"""
+        SELECT m3._id
+        FROM members as m3
+        LEFT JOIN (
+            {creators}
+        ) as m4 on m3._id = m4._id
+        WHERE m3._id IS NULL
+    """
+
     db.cursor.execute(f"""
-        SELECT _id 
-        FROM members 
-        WHERE _name IS NULL
+        {not_creators}
         ORDER BY synced ASC 
         LIMIT {limit - has_jobs_limit};
     ;""")
