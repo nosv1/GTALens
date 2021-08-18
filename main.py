@@ -86,18 +86,19 @@ async def on_message(message: discord.Message):
             ''' TEST '''
 
         elif args[1].lower() == "pause" and is_dev:
-            paused = not paused
-            if paused:
-                await client.change_presence(
-                    activity=discord.Activity(
-                        type=discord.ActivityType.watching,
-                        name="Maintenance Mode"
-                    ),
-                    status=discord.Status.do_not_disturb
-                )
+            paused = True
+            await client.change_presence(
+                activity=discord.Activity(
+                    type=discord.ActivityType.watching,
+                    name="Maintenance Mode"
+                ),
+                status=discord.Status.do_not_disturb
+            )
 
-            else:
-                await Tasks.update_status(client)
+        elif args[1].lower() == "unpause" and is_dev:
+            paused = False
+            await Tasks.update_status(client)
+
 
         elif args[1].lower() == "restart" and is_dev:
             json.dump({'action': 'restart'}, open("restart.json", "w+"))

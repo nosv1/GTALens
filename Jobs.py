@@ -1,5 +1,5 @@
 import asyncio
-from datetime import datetime
+from datetime import datetime, timedelta
 from Custom_Libraries.difflib import get_close_matches
 import discord
 import json
@@ -257,7 +257,6 @@ async def add_sc_members(crew_json: json) -> None:
     db: Database.DB = connect_database()
 
     if 'crewRanks' in crew_json:
-        print('yes')
 
         for rank in crew_json['crewRanks']:
 
@@ -391,7 +390,6 @@ async def add_sc_member_jobs(sc_member_id: str) -> dict:
 
     db.connection.close()
 
-    print(crews)
     return crews
 
 
@@ -411,7 +409,6 @@ async def sync_job(message: discord.Message, job_link: str) -> (discord.Message,
 
         crews = await asyncio.shield(add_sc_member_jobs(job.creator.id))
         for crew_id in crews:
-            print(crew_id)
             await add_crew(crew_id)
 
         logger.info(f'Updated {job.creator.id}\'s jobs and crews')
@@ -761,9 +758,12 @@ async def send_job(message: discord.Message, client: discord.Client, job: Job):
 
 
 async def get_playlists(creator: Creator) -> Creator:
-    creator.playlists_url = f"https://gtalens.com/api/v1/collections?type=1&page=1&platforms%5B0%5D=pc&platforms%5B1%5D=ps4&platforms%5B2%5D=xboxone&sort=updated&includeCount=true&userId={creator.id}"
-    logger.debug(f"Jobs.get_playlists() {creator.playlists_url}")
-    r_json = await Support.get_url(creator.playlists_url)
+    url = f"https://gtalens.com/api/v1/collections?type=1&page=1&platforms%5B0%5D=pc&platforms%5B1%5D=ps4&platforms%5B2%5D=xboxone&sort=updated&includeCount=true&userId={creator.id}"
+    logger.debug(f"Jobs.get_playlists() {url}")
+
+    r_json = await Support.get_url(url)
+
+    creator.playlists_url = f"https://gtalens.com/collections/user/{creator.id}?type=1&sort=_updated"
 
     if 'payload' in r_json:
 
@@ -790,9 +790,13 @@ async def get_playlists(creator: Creator) -> Creator:
 
 async def send_playlists(message: discord.Message, creator: Creator) -> discord.Message:
 
+    embed_meta = f"[{Support.ZERO_WIDTH}](embed_meta/type={embed_type}/)"
+
     playlists_str = ""
-    for playlist in creator.playlists:
-        playlists_str += f"[{playlist.name}]({playlist.url}) {str(datetime.utcnow() - playlist.updated)}\n"
+    for playlist in creator.playlists[:5]:
+        days_delta: int = (datetime.utcnow() - playlist.updated).days
+        days_delta_str = f"Updated {'Today' if not days_delta else f'{days_delta} days ago'}"
+        playlists_str += f"[{playlist.name}]({playlist.url}) {days_delta_str}\n"
 
     embed = discord.Embed(
         colour=discord.Colour(Support.GTALENS_ORANGE),
@@ -808,6 +812,7 @@ async def send_playlists(message: discord.Message, creator: Creator) -> discord.
         await msg.edit(embed=embed)
 
     return msg
+
 
 ''' CREATORS DISCORD'''
 
@@ -850,7 +855,7 @@ async def send_possible_creators(
             possible_creators_str += f"\n{Support.LETTERS_EMOJIS[letters[i]]} " \
                                      f"[{creator.name}]({creator.url})"
 
-            embed_meta += f"{Support.LETTERS_EMOJIS[letters[i]]}={creator._id}/"
+            embed_meta += f"{Support.LETTERS_EMOJIS[letters[i]]}={creator.id}/"
 
         if not possible_creators_str:
             possible_creators_str = "\n\nThere were no close matches for your search. " \
@@ -872,3 +877,4 @@ async def send_possible_creators(
             await msg.add_reaction(Support.LETTERS_EMOJIS[letters[i]])
 
         return msg
+
