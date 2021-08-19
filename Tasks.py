@@ -89,16 +89,21 @@ async def update_jobs():
     db: Database.DB = Database.connect_database()
 
     # deleting known not creators, at least atm
-    # delete_not_creators = f"""
-    #     DELETE FROM members
-    #     WHERE _id NOT IN (
-    #         SELECT DISTINCT(creator_id) FROM jobs
-    #     ) AND synced IS NOT NULL
-    # """
-    #
-    # db.cursor.execute(f"""{delete_not_creators};""")
-    # logger.info(f"Deleted Members: {db.cursor.rowcount}")
-    # db.connection.commit()
+    delete_not_creators = f"""
+        DELETE m FROM members m
+        LEFT JOIN (
+            SELECT creator_id FROM jobs
+            GROUP BY creator_id
+        ) as j
+        ON j.creator_id = m._id
+        WHERE 
+            synced IS NOT NULL AND
+            creator_id IS NULL
+    """
+
+    db.cursor.execute(f"""{delete_not_creators};""")
+    logger.info(f"Deleted Members: {db.cursor.rowcount}")
+    db.connection.commit()
 
     creators_limit = 3
     tbd_creators_limit = 2
@@ -146,7 +151,7 @@ async def update_jobs():
 async def update_crews():
     db = Database.connect_database()
     limit = 10
-    db.cursor.execute(f"SELECT _id FROM members ORDER BY RAND() LIMIT {limit}")
+    db.cursor.execute(f"SELECT _id FROM members ORDER BY synced ASC LIMIT {limit}")
     crew_ids = db.cursor.fetchall()
 
     for i, crew_id in enumerate(crew_ids):
