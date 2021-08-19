@@ -251,18 +251,12 @@ async def on_reaction_add(
             creator_id = embed_meta.split(f"{emoji}=")[1].split('/')[0]
             creator = get_creators(_id=creator_id)
 
-            creator_platforms = {}
-            for platform in PLATFORM_CORRECTIONS.keys():
-                creator_platforms[platform] = deepcopy(creator)
-                creator_platforms[platform].platform = platform
-                creator_platforms[platform] = await get_gtalens_creator(creator_platforms[platform])
-
             try:
                 await msg.clear_reactions()
             except discord.Forbidden:
                 pass
 
-            await send_creator(msg, client, creator_platforms)
+            await send_creator(msg, client, await get_creator_platforms(creator))
 
 
 async def on_reaction_remove(
@@ -560,6 +554,16 @@ async def get_gtalens_creator(creator: Creator) -> Creator:
 
             return creator
 
+
+async def get_creator_platforms(creator):
+
+    creator_platforms = {}
+    for platform in PLATFORM_CORRECTIONS.keys():
+        creator_platforms[platform] = deepcopy(creator)
+        creator_platforms[platform].platform = platform
+        creator_platforms[platform] = await get_gtalens_creator(creator_platforms[platform])
+
+    return creator_platforms
 
 ''' JOB DISCORD '''
 
@@ -942,7 +946,12 @@ async def send_possible_creators(
 ) -> discord.Message:
 
     if len(possible_creators) == 1:
-        msg = await send_playlists(message, possible_creators[0])
+        if embed_type == "creator_search_playlist":
+            msg = await send_playlists(message, possible_creators[0])
+        else:
+            msg = await send_creator(message, await get_creator_platforms(possible_creators[0]))
+
+        return msg
 
     else:
         letters = list(Support.LETTERS_EMOJIS.keys())
