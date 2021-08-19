@@ -17,7 +17,6 @@ logger = logging.getLogger('discord')
 HOST = os.getenv("HOST")
 
 
-# randomly choose an 'activity' every 5 minutes
 @tasks.loop(seconds=15)
 async def loop(client):
 
@@ -90,16 +89,16 @@ async def update_jobs():
     db: Database.DB = Database.connect_database()
 
     # deleting known not creators, at least atm
-    delete_not_creators = f""" 
-        DELETE FROM members
-        WHERE _id NOT IN (
-            SELECT DISTINCT(creator_id) FROM jobs
-        ) AND synced IS NOT NULL
-    """
-
-    db.cursor.execute(f"""{delete_not_creators};""")
-    logger.info(f"Deleted Members: {db.cursor.rowcount}")
-    db.connection.commit()
+    # delete_not_creators = f"""
+    #     DELETE FROM members
+    #     WHERE _id NOT IN (
+    #         SELECT DISTINCT(creator_id) FROM jobs
+    #     ) AND synced IS NOT NULL
+    # """
+    #
+    # db.cursor.execute(f"""{delete_not_creators};""")
+    # logger.info(f"Deleted Members: {db.cursor.rowcount}")
+    # db.connection.commit()
 
     creators_limit = 3
     tbd_creators_limit = 2
