@@ -1,5 +1,6 @@
 import asyncio
-from datetime import datetime, timedelta
+from datetime import datetime
+from copy import deepcopy
 from Custom_Libraries.difflib import get_close_matches
 import discord
 import json
@@ -13,13 +14,15 @@ logger = logging.getLogger("discord")
 
 JOB_SEARCH_ALIASES = ["track", "job", "race"]
 PLAYLIST_SEARCH_ALIASES = ["playlists", "playlist", "collection", "collections"]
+CREATOR_SEARCH_ALIASES = ["creator"]
 
 SYNC_ALIASES = ["sync"]
 
 EMBED_TYPES = [
     'job',
     'job_search',
-    'creator_search_playlist'
+    'creator_search_playlist',
+    'creator_search'
 ]
 
 WEATHER = [  # indices relate to what prod.cloud.rockstargames.com/ugs/mission provides
@@ -242,6 +245,25 @@ async def on_reaction_add(
 
             await send_playlists(msg, creator)
 
+    elif embed_type == "creator_search":
+
+        if emoji in embed_meta:
+            creator_id = embed_meta.split(f"{emoji}=")[1].split('/')[0]
+            creator = get_creators(_id=creator_id)
+
+            creator_platforms = {}
+            for platform in PLATFORM_CORRECTIONS.keys():
+                creator_platforms[platform] = deepcopy(creator)
+                creator_platforms[platform].platform = platform
+                creator_platforms[platform] = await get_gtalens_creator(creator_platforms[platform])
+
+            try:
+                await msg.clear_reactions()
+            except discord.Forbidden:
+                pass
+
+            await send_creator(msg, client, creator_platforms)
+
 
 async def on_reaction_remove(
         msg: discord.Message,
@@ -401,7 +423,7 @@ async def add_sc_member_jobs(sc_member_id: str) -> dict:
                 else:
                     logger.warning(r_json)
 
-                    sleep = 10
+                    sleep = 15
                     if 'error' in r_json:
                         if '3.000.2' in r_json['error']['code']:
                             sleep = 90
@@ -513,9 +535,10 @@ def get_creators(_id: str = ""):
 
 
 async def get_gtalens_creator(creator: Creator) -> Creator:
+
     url = f"https://gtalens.com/api/v1/jobs/explore?platforms%5B0%5D={creator.platform}&userId={creator.id}"
     r_json = await Support.get_url(url)
-    logger.debug(f"Jobs.get_job() {url}")
+    logger.debug(f"Jobs.get_gtalens_creator() {url}")
 
     if 'payload' in r_json:
         payload = r_json['payload']
@@ -535,7 +558,7 @@ async def get_gtalens_creator(creator: Creator) -> Creator:
                     )
                     exec(f"creator.{cat}.append(job)")
 
-    return creator
+            return creator
 
 
 ''' JOB DISCORD '''
@@ -730,7 +753,9 @@ async def send_possible_jobs(
     return msg
 
 
-async def send_job(message: discord.Message, client: discord.Client, job: Job):
+async def send_job(
+        message: discord.Message, client: discord.Client, job: Job
+) -> discord.Message:
     variants_str = ""
     if job.variants:
         variants_str = f"**Variants ({len(job.variants)}):** "
@@ -922,7 +947,7 @@ async def send_possible_creators(
     else:
         letters = list(Support.LETTERS_EMOJIS.keys())
         possible_creators_str = ""
-        embed_meta = f"[{Support.ZERO_WIDTH}](embed_meta/type={embed_type}/)"
+        embed_meta = f"[{Support.ZERO_WIDTH}](embed_meta/type={embed_type}/"
 
         for i, creator in enumerate(possible_creators):
             possible_creators_str += f"\n{Support.LETTERS_EMOJIS[letters[i]]} " \
@@ -950,4 +975,58 @@ async def send_possible_creators(
             await msg.add_reaction(Support.LETTERS_EMOJIS[letters[i]])
 
         return msg
+
+
+async def send_creator(
+        message: discord.Message, client: discord.Client, creator_platforms: dict[str, Creator]
+) -> discord.Message:
+
+    embed = discord.Embed(
+        color=discord.Color(Support.GTALENS_ORANGE),
+        title=f"**{creator_platforms['pc'].name}**",
+        description=f"[GTALens]({creator_platforms['pc'].url}) **|** [Donate]({Support.DONATE_LINK})"
+    )
+
+    def get_jobs_str(jobs: list[Job]):
+        jobs_str = ""
+        for j in jobs[:5]:
+            jobs_str += f"[{j.name}](https://gtalens.com/job/{j.gtalens_id})\n"
+
+        return jobs_str
+
+    for platform in creator_platforms:
+        creator = creator_platforms[platform]
+
+        if creator.trending:
+            platform_emoji = str(discord.utils.find(
+                lambda e: e.name == PLATFORM_CORRECTIONS[platform].lower(), client.get_guild(
+                    Support.GTALENS_GUILD_ID).emojis)
+            )
+
+            embed.add_field(
+                name=f"**__{platform_emoji} Trending__**",
+                value=f"{get_jobs_str(creator.trending)}{Support.SPACE_CHAR}",
+                inline=True
+            )
+
+            embed.add_field(
+                name=f"**__{platform_emoji} Recently Added__**",
+                value=f"{get_jobs_str(creator.recently_added)}{Support.SPACE_CHAR}",
+                inline=True
+            )
+
+            embed.add_field(
+                name=f"**__{platform_emoji} Most Played__**",
+                value=f"{get_jobs_str(creator.most_played)}{Support.SPACE_CHAR}",
+                inline=True
+            )
+
+    msg = message
+    if msg.author.id != Support.GTALENS_CLIENT_ID:
+        await message.channel.send(embed=embed)
+    else:
+        await msg.edit(embed=embed)
+
+    return msg
+
 

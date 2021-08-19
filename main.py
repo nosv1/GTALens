@@ -16,6 +16,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+HOST = os.getenv("HOST")
+
 # intents = discord.Intents.all()
 # client = discord.Client(intents=intents)
 client = discord.Client()
@@ -23,7 +25,7 @@ client = discord.Client()
 # Logging to console and file
 
 logger = logging.getLogger("discord")
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.INFO if HOST != 'PC' else logging.DEBUG)
 
 formatter = logging.Formatter("%(asctime)s:%(levelname)s:%(name)s: %(message)s")
 formatter.default_msec_format = "%s.%03d"  # the default uses %s,%03d pfft
@@ -39,8 +41,6 @@ logger.addHandler(file_handler)
 logger.addHandler(console_handler)
 
 #
-
-HOST = os.getenv("HOST")
 
 paused = False
 
@@ -202,13 +202,21 @@ async def on_message(message: discord.Message):
 
             ''' VEHICLE CLASS LOOKUP '''
 
-        elif args[1].lower() in Jobs.PLAYLIST_SEARCH_ALIASES:
+        elif args[1].lower() in Jobs.PLAYLIST_SEARCH_ALIASES + Jobs.CREATOR_SEARCH_ALIASES:
             await message.channel.trigger_typing()
 
             creator_name = " ".join(args[2:-1]).strip()
             possible_creators = Jobs.get_possible_creators(creator_name)
+
+            embed_type = ""
+            if args[1].lower() in Jobs.PLAYLIST_SEARCH_ALIASES:
+                embed_type = "creator_search_playlist"
+
+            elif args[1].lower() in Jobs.CREATOR_SEARCH_ALIASES:
+                embed_type = "creator_search"
+
             await Jobs.send_possible_creators(
-                message, possible_creators, creator_name, "creator_search_playlist"
+                message, possible_creators, creator_name, embed_type
             )
 
             ''' CREATOR LOOKUP'''
