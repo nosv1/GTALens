@@ -391,7 +391,7 @@ async def add_sc_member_jobs(sc_member_id: str) -> dict:
 
     db.cursor.execute(f"""
         UPDATE members
-        SET synced='{utcnow}'
+        SET synced = '{utcnow}'
         WHERE _id = '{sc_member_id}'
     ;""")
 
