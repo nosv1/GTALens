@@ -99,7 +99,6 @@ async def on_message(message: discord.Message):
             paused = False
             await Tasks.update_status(client)
 
-
         elif args[1].lower() == "restart" and is_dev:
             json.dump({'action': 'restart'}, open("restart.json", "w+"))
             await Tasks.update_status(client, restart=True)
@@ -123,7 +122,14 @@ async def on_message(message: discord.Message):
             await Tasks.update_jobs()
             await msg.delete()
 
-            ''' UPDATE VEHICLES MANUALLY - MUST BE DEV'''
+            ''' UPDATE JOBS MANUALLY - MUST BE DEV'''
+
+        elif args[1].lower() == "updatecrews" and is_dev:
+            msg = await message.channel.send('updating...')
+            await Tasks.update_crews()
+            await msg.delete()
+
+            ''' UPDATE CREWS MANUALLY - MUST BE DEV'''
 
         elif args[1].lower() in Jobs.JOB_SEARCH_ALIASES:
             await message.channel.trigger_typing()

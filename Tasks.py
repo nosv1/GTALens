@@ -34,8 +34,8 @@ async def loop(client):
             await update_jobs()
 
         # TODO once you figure out a way to intelligently update tracks, add crew members
-        # if seconds % 1.5 * 60 == 0:
-        #     await update_crews()
+        if seconds % (60 * 60 + 30) == 0:
+            await update_crews()
 
         if seconds % (12 * 60 * 60) == 0:
             await update_vehicles()
@@ -87,49 +87,56 @@ async def update_status(client, restart=False, close=False):
 
 
 async def update_jobs():
-    db = Database.connect_database()
+    db: Database.DB = Database.connect_database()
 
-    has_jobs_limit = 4
-    limit = 5
+    # deleting known not creators, at least atm
+    delete_not_creators = f""" 
+        DELETE FROM members
+        WHERE _id NOT IN (
+            SELECT DISTINCT(creator_id) FROM jobs
+        ) AND synced IS NOT NULL
+    """
 
-    # updating creators who have jobs more often than creators that don't
+    db.cursor.execute(f"""{delete_not_creators};""")
+    logger.info(f"Deleted Members: {db.cursor.rowcount}")
+    db.connection.commit()
 
+    creators_limit = 3
+    tbd_creators_limit = 2
+
+    # updating known creators
     creators = f"""
-        SELECT distinct(m2._id), m2.synced
-        FROM (
-            SELECT * FROM members as m
-            INNER JOIN (
-                SELECT creator_id FROM jobs
-            ) as j
-            ON m._id = j.creator_id
-        ) as m2
+        SELECT _id FROM members
+        INNER JOIN (
+            SELECT DISTINCT(creator_id) FROM jobs
+        ) as j1
+        ON _id = j1.creator_id
     """
 
     db.cursor.execute(f"""
         {creators}
         ORDER BY synced ASC
-        LIMIT {has_jobs_limit};
+        LIMIT {creators_limit}
     ;""")
     member_ids = db.cursor.fetchall()
 
-    not_creators = f"""
-        SELECT m3._id
-        FROM members as m3
-        LEFT JOIN (
-            {creators}
-        ) as m4 on m3._id = m4._id
-        WHERE m3._id IS NULL
+    # updating unknowns
+    tbd_creators = f"""
+        SELECT _id FROM members
+        WHERE _id NOT IN (
+            SELECT DISTINCT(creator_id) FROM jobs
+        ) AND synced IS NULL
     """
 
     db.cursor.execute(f"""
-        {not_creators}
+        {tbd_creators}
         ORDER BY synced ASC 
-        LIMIT {limit - has_jobs_limit};
+        LIMIT {tbd_creators_limit}
     ;""")
     member_ids += db.cursor.fetchall()
 
     for i, member_id in enumerate(member_ids):
-        logger.debug(f"Members Update: {int(100 * (i/limit))}%")
+        logger.debug(f"Members Update: {int(100 * (i/5))}%")
         await asyncio.shield(Jobs.add_sc_member_jobs(member_id[0]))
         await asyncio.sleep(5)  # per user
     logger.info(f"Members Updated: {member_ids}")
