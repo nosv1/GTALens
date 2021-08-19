@@ -386,7 +386,7 @@ async def add_sc_member_jobs(sc_member_id: str) -> dict:
             else:
                 break
 
-        await asyncio.sleep(5)  # per platform
+        await asyncio.sleep(6)  # per platform
 
     db.connection.close()
 
