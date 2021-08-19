@@ -286,6 +286,7 @@ async def add_sc_members(crew_json: json) -> None:
 
 async def add_sc_member_jobs(sc_member_id: str) -> dict:
     db = connect_database()
+    utcnow = datetime.utcnow().timestamp()
 
     purged = False
     crews = {}
@@ -308,15 +309,13 @@ async def add_sc_member_jobs(sc_member_id: str) -> dict:
             if r_json:
 
                 if r_json['status']:  # get was successful
-
-                    utcnow = datetime.utcnow().timestamp()
                     db.cursor.execute(f"""
                         INSERT INTO members (
-                            _id, synced
+                            _id
                         ) VALUES (
-                            '{sc_member_id}', '{utcnow}'
+                            '{sc_member_id}'
                         ) ON DUPLICATE KEY UPDATE
-                            synced='{utcnow}'
+                            synced=NULL
                     ;""")
 
                     db.connection.commit()
@@ -335,14 +334,6 @@ async def add_sc_member_jobs(sc_member_id: str) -> dict:
 
                     if r_json['content']['items']:  # jobs to add
 
-                        if sc_member_id in r_json['content']['users']:
-
-                            db.cursor.execute(f"""
-                                UPDATE members
-                                SET _name='{r_json['content']['users'][sc_member_id]['nickname']}'
-                                WHERE _id='{sc_member_id}'
-                            ;""")
-
                         for job in r_json['content']['items']:
 
                             if not purged:  # purging old tracks
@@ -359,10 +350,21 @@ async def add_sc_member_jobs(sc_member_id: str) -> dict:
                                     '{platform}', 
                                     '{job['createdDate'].split('.')[0]}',
                                     '{sc_member_id}',
-                                    '{datetime.utcnow().timestamp()}'
+                                    '{utcnow}'
                                 );""")
 
                         db.connection.commit()
+
+                        if sc_member_id in r_json['content']['users']:
+
+                            db.cursor.execute(f"""
+                                UPDATE members 
+                                SET 
+                                    _name='{r_json['content']['users'][sc_member_id]['nickname']}',
+                                    synced='{utcnow}'
+                                WHERE _id='{sc_member_id}'
+                            ;""")
+
                         page_index += 1
                         await asyncio.sleep(1)
 
