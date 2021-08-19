@@ -216,7 +216,7 @@ async def on_message(message: discord.Message):
                 embed_type = "creator_search"
 
             await Jobs.send_possible_creators(
-                message, possible_creators, creator_name, embed_type
+                message, client, possible_creators, creator_name, embed_type
             )
 
             ''' CREATOR LOOKUP'''

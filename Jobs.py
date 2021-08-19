@@ -942,14 +942,18 @@ def get_possible_creators(creator_name: str) -> list[Creator]:
 
 
 async def send_possible_creators(
-        message: discord.Message, possible_creators: list[Creator], creator_name: str, embed_type: str
+        message: discord.Message,
+        client: discord.Client,
+        possible_creators: list[Creator],
+        creator_name: str,
+        embed_type: str
 ) -> discord.Message:
 
     if len(possible_creators) == 1:
         if embed_type == "creator_search_playlist":
             msg = await send_playlists(message, possible_creators[0])
         else:
-            msg = await send_creator(message, await get_creator_platforms(possible_creators[0]))
+            msg = await send_creator(message, client, await get_creator_platforms(possible_creators[0]))
 
         return msg
 
@@ -994,7 +998,10 @@ async def send_creator(
         color=discord.Color(Support.GTALENS_ORANGE),
         title=f"**{creator_platforms['pc'].name}**",
         description=f"[GTALens]({creator_platforms['pc'].url}) **|** [Donate]({Support.DONATE_LINK})"
+                    f"\n{Support.SPACE_CHAR}"
     )
+
+    embed.set_thumbnail(url=f"https://a.rsg.sc//n/{creator_platforms['pc'].name.lower()}/n")
 
     def get_jobs_str(jobs: list[Job]):
         jobs_str = ""
@@ -1013,19 +1020,19 @@ async def send_creator(
             )
 
             embed.add_field(
-                name=f"**__{platform_emoji} Trending__**",
+                name=f"{platform_emoji} **__Trending__**",
                 value=f"{get_jobs_str(creator.trending)}{Support.SPACE_CHAR}",
                 inline=True
             )
 
             embed.add_field(
-                name=f"**__{platform_emoji} Recently Added__**",
+                name=f"{platform_emoji} **__Recently Added__**",
                 value=f"{get_jobs_str(creator.recently_added)}{Support.SPACE_CHAR}",
                 inline=True
             )
 
             embed.add_field(
-                name=f"**__{platform_emoji} Most Played__**",
+                name=f"{platform_emoji} **__Most Played__**",
                 value=f"{get_jobs_str(creator.most_played)}{Support.SPACE_CHAR}",
                 inline=True
             )
