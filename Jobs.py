@@ -163,12 +163,40 @@ class Creator:
             _id: str = "",
             name: str = "",
 
+            platform: str = "",
+
+            pinned: list[Job] = None,
+            promoted: list[Job] = None,
+            trending: list[Job] = None,
+            most_relevant: list[Job] = None,
+            recently_added: list[Job] = None,
+            most_replayed: list[Job] = None,
+            recently_updated: list[Job] = None,
+            most_played: list[Job] = None,
+            most_viewed: list[Job] = None,
+            recently_reviewed: list[Job] = None,
+            least_played: list[Job] = None,
+
             playlists: list[Playlist] = None,
             playlists_url: str = None
     ):
         self._id = _id
         self.name = name
         self.url = f"https://gtalens.com/profile/{_id}"
+
+        self.platform = platform
+
+        self.pinned = pinned
+        self.promoted = promoted
+        self.trending = trending
+        self.most_relevant = most_relevant
+        self.recently_added = recently_added
+        self.most_replayed = most_replayed
+        self.recently_updated = recently_updated
+        self.most_played = most_played
+        self.most_viewed = most_viewed
+        self.recently_reviewed = recently_reviewed
+        self.least_played = least_played
 
         self.playlists = playlists
         self.playlists_url = playlists_url
@@ -484,6 +512,32 @@ def get_creators(_id: str = ""):
         return creators
 
 
+async def get_gtalens_creator(creator: Creator) -> Creator:
+    url = f"https://gtalens.com/api/v1/jobs/explore?platforms%5B0%5D={creator.platform}&userId={creator.id}"
+    r_json = await Support.get_url(url)
+    logger.debug(f"Jobs.get_job() {url}")
+
+    if 'payload' in r_json:
+        payload = r_json['payload']
+
+        if 'results' in payload:
+            results = payload['results']
+
+            for category in results:
+                cat = category['cat'].replace('-', '_')
+                exec(f"creator.{cat} = []")
+
+                for job in category['result']['jobs']:
+                    job = Job(
+                        gtalens_id=job['jobId'],
+                        rockstar_id=job['jobCurrId'],
+                        name=job['name']
+                    )
+                    exec(f"creator.{cat}.append(job)")
+
+    return creator
+
+
 ''' JOB DISCORD '''
 
 
@@ -497,10 +551,19 @@ async def get_job(job_id: str) -> Job:
 
     url = f"{full_info_url}{job_id}"
     r_json = await Support.get_url(url)
+    logger.debug(f"Jobs.get_job() {url}")
 
     if 'payload' in r_json:
         payload = r_json["payload"]
         job_dict = payload["job"]
+
+        creator = Creator(
+            _id=payload["suppl"]["usersInfo"][0]["userId"],
+            name=payload["suppl"]["usersInfo"][0]["username"],
+            platform=job_dict['plt']
+        )
+
+        creator: Creator = await get_gtalens_creator(creator)
 
         job: Job = Job(
             gtalens_id=job_dict["jobId"],
@@ -517,11 +580,8 @@ async def get_job(job_id: str) -> Job:
             unique_plays=job_dict["stats"]["plU"],
             quits=job_dict["stats"]["qt"],
             rating=job_dict["stats"]["r"],
-            platform=job_dict['plt'],
-            creator=Creator(
-                _id=payload["suppl"]["usersInfo"][0]["userId"],
-                name=payload["suppl"]["usersInfo"][0]["username"]
-            )
+            platform=creator.platform,
+            creator=creator
         )
 
         if 'vrtP' in payload['job']:
@@ -658,9 +718,10 @@ async def send_possible_jobs(
                         f"[{Support.ZERO_WIDTH}]({embed_meta})"
         )
 
-        # TODO .lens creator creator_name
+        # TODO .lens creator CREATOR
         # embed.set_footer(text=".lens creator creator_name")
-        embed.set_footer(text=".lens playlist CREATOR")
+        # TODO .lens playlist CREATOR
+        # embed.set_footer(text=".lens playlist CREATOR")
 
         msg = await message.channel.send(embed=embed)
         for i, j in enumerate(possible_jobs):
@@ -720,10 +781,14 @@ async def send_job(message: discord.Message, client: discord.Client, job: Job):
                   f"{Support.SPACE_CHAR}"
         )
 
-        # TODO trending field?
+        trending_str = ""
+        trending: list[Job] = job.creator.trending
+        for j in trending[:5]:
+            trending_str += f"[{j.name}](https://gtalens.com/job/{j.gtalens_id})\n"
+
         embed.add_field(
-            name="**__Trending__**",
-            value="*Coming soon!*"
+            name=f"**__{job.creator.name}'s Trending__**",
+            value=trending_str
         )
 
         embed.set_thumbnail(url=job.thumbnail)
