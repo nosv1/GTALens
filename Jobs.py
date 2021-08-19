@@ -309,14 +309,6 @@ async def add_sc_member_jobs(sc_member_id: str) -> dict:
             if r_json:
 
                 if r_json['status']:  # get was successful
-                    db.cursor.execute(f"""
-                        INSERT INTO members (
-                            _id
-                        ) VALUES (
-                            '{sc_member_id}'
-                        ) ON DUPLICATE KEY UPDATE
-                            synced=NULL
-                    ;""")
 
                     db.connection.commit()
 
@@ -359,9 +351,7 @@ async def add_sc_member_jobs(sc_member_id: str) -> dict:
 
                             db.cursor.execute(f"""
                                 UPDATE members 
-                                SET 
-                                    _name='{r_json['content']['users'][sc_member_id]['nickname']}',
-                                    synced='{utcnow}'
+                                SET _name='{r_json['content']['users'][sc_member_id]['nickname']}'
                                 WHERE _id='{sc_member_id}'
                             ;""")
 
@@ -391,6 +381,16 @@ async def add_sc_member_jobs(sc_member_id: str) -> dict:
 
         await asyncio.sleep(5)  # per platform
 
+    db.cursor.execute(f"""
+        INSERT INTO members (
+            _id
+        ) VALUES (
+            '{sc_member_id}'
+        ) ON DUPLICATE KEY UPDATE
+            synced='{utcnow}'
+    ;""")
+
+    db.connection.commit()
     db.connection.close()
 
     return crews
