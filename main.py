@@ -1,3 +1,4 @@
+from datetime import datetime
 import discord
 import json
 import logging
@@ -85,6 +86,38 @@ async def on_message(message: discord.Message):
             pass
 
             ''' TEST '''
+
+        elif args[1].lower() == "servers" and is_dev:
+
+            guilds: list[discord.Guild] = client.guilds
+
+            embed = discord.Embed(
+                colour=discord.Colour(Support.GTALENS_ORANGE),
+                title=f"**Servers ({len(guilds)})**"
+            )
+            for i, guild in enumerate(guilds):
+                guilds[i] = [guild.name, guild.get_member(client.user.id).joined_at]
+            guilds.sort(key=lambda g: g[1])
+
+            guild_str = ""
+            for guild_name, joined_at in guilds:
+
+                guild_str += f"**{guild_name}** - " \
+                             f"{joined_at.strftime('%d %b %Y')}\n"
+
+                if len(guild_str) > 1000:
+                    embed.add_field(
+                        name=Support.SPACE_CHAR,
+                        value=f"{guild_str} {Support.SPACE_CHAR}"
+                    )
+
+            if guild_str:
+                embed.add_field(
+                    name=Support.SPACE_CHAR,
+                    value=guild_str
+                )
+
+            await message.channel.send(embed=embed)
 
         elif args[1].lower() == "pause" and is_dev:
             paused = True
