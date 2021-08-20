@@ -141,7 +141,10 @@ async def on_message(message: discord.Message):
             await message.channel.trigger_typing()
 
             job_name = " ".join(args[2:-1])
-            possible_jobs = Jobs.get_possible_jobs(job_name)
+            if job_name == ".random":
+                possible_jobs = Jobs.get_random_jobs()
+            else:
+                possible_jobs = Jobs.get_possible_jobs(job_name)
             await Jobs.send_possible_jobs(message, client, possible_jobs, job_name)
 
             ''' TRACK LOOKUP '''

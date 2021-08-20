@@ -412,11 +412,17 @@ async def send_future_weather(msg: discord.Message, user: discord.User, embed_me
             break
 
     try:
+        forecast = get_forecast(date)
+    except TypeError:
+        # TODO error message? likely wrong format or no message
+        return
+
+    try:
         await msg.clear_reactions()
     except discord.Forbidden:
         pass
 
-    await send_forecast(msg, get_forecast(date), date.astimezone(time_zone))
+    await send_forecast(msg, forecast, date.astimezone(time_zone))
 
 
 async def send_forecast(msg: discord.Message, forecast: list[list[datetime, WeatherState]], date):

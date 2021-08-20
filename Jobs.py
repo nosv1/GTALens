@@ -5,6 +5,7 @@ from Custom_Libraries.difflib import get_close_matches
 import discord
 import json
 import logging
+from random import choices
 
 import Database
 from Database import connect_database, replace_chars
@@ -678,6 +679,13 @@ async def get_job(job_id: str) -> Job:
 
     logger.info(f"Got Job: {job.name} by {job.creator.name}")
     return job
+
+
+def get_random_jobs() -> list[Job]:
+
+    jobs: list[Job] = get_jobs()
+    jobs = choices(jobs, k=6)
+    return jobs
 
 
 def get_possible_jobs(job_name: str) -> list[Job]:
