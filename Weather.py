@@ -247,11 +247,6 @@ async def on_reaction_add(
 
         if emoji == Support.BALLOT_CHECKMARK:
 
-            try:
-                await msg.clear_reactions()
-            except discord.Forbidden:
-                pass
-
             await send_future_weather(msg, user, embed_meta)
 
 
@@ -407,11 +402,19 @@ async def send_future_weather(msg: discord.Message, user: discord.User, embed_me
 
         if m.author.id == user.id:
 
-            date = datetime.strptime(m.content, "%m/%d/%Y %H:%M")  # get the date
+            try:
+                date = datetime.strptime(m.content, "%m/%d/%Y %H:%M")  # get the date
+            except TypeError:
+                return
             date = time_zone.localize(date)  # set TZ as user TZ
             date = date.astimezone(timezone("UTC"))  # then convert to UTC
             date = date.replace(tzinfo=None)  # remove tzinfo
             break
+
+    try:
+        await msg.clear_reactions()
+    except discord.Forbidden:
+        pass
 
     await send_forecast(msg, get_forecast(date), date.astimezone(time_zone))
 

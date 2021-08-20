@@ -232,18 +232,17 @@ async def on_message(message: discord.Message):
 
             await Weather.send_weather(message)
 
-        # TODO make .lens invite available
-        # elif args[1].lower() == "invite":  # send invite link
-        #
-        #     embed = discord.Embed(
-        #         colour=discord.Colour(Support.GTALENS_ORANGE),
-        #         title="**Invite GTALens to your server!**",
-        #         description=Support.INVITE_LINK,
-        #     )
-        #
-        #     await message.channel.send(embed=embed)
-        #
-        #     ''' INVITE LINK '''
+        elif args[1].lower() == "invite":  # send invite link
+
+            embed = discord.Embed(
+                colour=discord.Colour(Support.GTALENS_ORANGE),
+                title="**Invite GTALens to your server!**",
+                description=Support.INVITE_LINK,
+            )
+
+            await message.channel.send(embed=embed)
+
+            ''' INVITE LINK '''
 
         elif args[1].lower() == "donate":  # send donate link
 
