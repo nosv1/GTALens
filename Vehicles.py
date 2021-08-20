@@ -867,6 +867,9 @@ async def send_vehicle(message: discord.Message, client: discord.Client, vehicle
             f"Added {Support.smart_day_time_format('{S} %B %Y', datetime.fromtimestamp(vehicle.date_added))}"
         )
 
+    else:
+        added_str.append("Not added yet")
+
     if vehicle.dlc != "-":
         added_str.append(vehicle.dlc)
     added_str = " - ".join(added_str)  # handling og cars oppose to dlc cars
