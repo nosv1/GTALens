@@ -614,12 +614,13 @@ async def get_job(job_id: str) -> Job:
 
         if 'vrtP' in payload['job']:
 
-            job.variants = payload['job']['vrt']  # get the gtalens id
-            if job.gtalens_id in job.variants:
-                del job.variants[job.variants.index(job.gtalens_id)]
+            if 'vrt' in payload['job']:
+                job.variants = payload['job']['vrt']  # get the gtalens id
+                if job.gtalens_id in job.variants:
+                    del job.variants[job.variants.index(job.gtalens_id)]
 
-            for i, p in enumerate(payload['job']['vrtP']):  # add the platform
-                job.variants.append([job.variants[i], p])
+                for i, p in enumerate(payload['job']['vrtP']):  # add the platform
+                    job.variants.append([job.variants[i], p])
 
     else:
         job: Job = get_jobs(_id=job_id)[0]
