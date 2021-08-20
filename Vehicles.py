@@ -864,7 +864,7 @@ async def send_vehicle(message: discord.Message, client: discord.Client, vehicle
     added_str = []
     if vehicle.date_added:
         added_str.append(
-            "Added {Support.smart_day_time_format('{S} %B %Y', datetime.fromtimestamp(vehicle.date_added))}"
+            f"Added {Support.smart_day_time_format('{S} %B %Y', datetime.fromtimestamp(vehicle.date_added))}"
         )
 
     if vehicle.dlc != "-":
