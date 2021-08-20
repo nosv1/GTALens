@@ -6,6 +6,7 @@ from random import choice
 import re
 import traceback
 
+import Database
 import Jobs
 import Support
 import Tasks
@@ -105,6 +106,11 @@ async def on_message(message: discord.Message):
             await client.close()
 
             ''' RESTART BOT '''
+
+        elif args[1].lower() == "db" and is_dev:
+            await Database.send_rundown(message)
+
+            ''' DATABASE RUNDOWN '''
 
         elif args[1].lower() == "close" and is_dev:
             json.dump({'action': 'close'}, open("restart.json", "w+"))
