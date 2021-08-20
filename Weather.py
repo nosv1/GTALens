@@ -1,12 +1,17 @@
 import discord
 from datetime import datetime, timedelta
+from pytz import timezone
 
 import Support
 
 
 ALIASES = ['weather', 'forecast']
 
-EMBED_TYPES = ['current_weather_state']
+EMBED_TYPES = [
+    'current_weather_state',
+    'future_weather_time_zone',
+    'future_weather_date',
+]
 
 WEATHER_PERIOD = 384
 GAME_HOUR_LENGTH = 120
@@ -18,6 +23,35 @@ WEEKDAYS = [
 ]
 
 epoch: datetime = datetime(1970, 1, 1)  # used to get total_seconds
+
+TIME_ZONES = {
+    "North America": {
+        "Los Angeles": "US/Pacific",
+        "Denver": "US/Mountain",
+        "Chicago": "US/Central",
+        "New York": "US/Eastern",
+    },
+
+    "South America": {
+        "Buenos Aires": "America/Argentina/Buenos_Aires",
+    },
+
+    "Europe": {
+        "UTC": "UTC",
+        "London": "Europe/London",
+        "Amsterdam": "Europe/Amsterdam",
+     },
+
+    "Asia": {
+        "Vientiane": "Asia/Vientiane",
+        "Japan": "Japan",
+    },
+
+    "Australia": {
+        "Queensland": "Australia/Queensland",
+        "Sydney": "Australia/Sydney",
+    },
+}
 
 
 class Weather:
@@ -188,6 +222,38 @@ async def on_reaction_add(
         if emoji == Support.COUNTER_CLOCKWISE:
             await send_weather(msg)
 
+        elif emoji == Support.CALENDAR:
+
+            try:
+                await msg.clear_reactions()
+            except discord.Forbidden:
+                pass
+
+            await get_user_timezone(msg)
+
+    elif embed_type == "future_weather_time_zone":
+        
+        if emoji in embed_meta:
+
+            try:
+                await msg.clear_reactions()
+            except discord.Forbidden:
+                pass
+
+            time_zone_str = embed_meta.split(f"{emoji}=")[1].split("/")[0]
+            await get_user_date(msg, time_zone_str)
+
+    elif embed_type == "future_weather_date":
+
+        if emoji == Support.BALLOT_CHECKMARK:
+
+            try:
+                await msg.clear_reactions()
+            except discord.Forbidden:
+                pass
+
+            await send_future_weather(msg, user, embed_meta)
+
 
 async def on_reaction_remove(
         msg: discord.Message,
@@ -262,6 +328,108 @@ def get_weather_state(date: datetime) -> WeatherState:
     )
 
 
+def get_forecast(date: datetime, hours=4) -> list[list[datetime, WeatherState]]:
+    weather_states = []
+
+    d = date
+    previous_weather_name = None
+    while d < date + timedelta(hours=hours):
+        weather_state = get_weather_state(d)
+
+        if weather_state.weather.name != previous_weather_name:
+            weather_states.append([d, weather_state])
+            previous_weather_name = weather_state.weather.name
+
+        d += timedelta(minutes=1)
+
+    return weather_states
+
+
+async def get_user_timezone(msg: discord.Message):
+    embed = discord.Embed(
+        color=discord.Color(Support.GTALENS_ORANGE),
+        title="**Future Weather**",
+        description="Which time zone?"
+    )
+
+    reactions = []
+    letters = list(Support.LETTERS_EMOJIS.keys())
+    embed_meta = "embed_meta/type=future_weather_time_zone/"
+
+    for continent in TIME_ZONES:
+
+        value_str = ""
+        for location in TIME_ZONES[continent]:
+            time_zone = TIME_ZONES[continent][location].replace("/", "\\")
+
+            letter_emoji = Support.LETTERS_EMOJIS[letters[len(reactions)]]
+            embed_meta += f"{letter_emoji}={time_zone}/"
+            reactions.append(letter_emoji)
+
+            value_str += f"{letter_emoji} {location}\n"
+
+        embed.add_field(
+            name=f"**__{continent}__**",
+            value=f"{value_str}{Support.SPACE_CHAR}"
+        )
+
+    embed.description += f"[{Support.ZERO_WIDTH}]({embed_meta})"
+
+    await msg.edit(embed=embed)
+    [await msg.add_reaction(r) for r in reactions]
+
+
+async def get_user_date(msg: discord.Message, time_zone_str: str):
+
+    embed = discord.Embed(
+        color=discord.Color(Support.GTALENS_ORANGE),
+        title="**Future Weather**",
+        description=f"What's the date?"
+                    "\n\n**Format:** `MM/DD/YYYY HH:MM`"
+                    "\n19th August 2021 9:12pm -> `8/19/2021 21:12`"
+                    f"\n\nType it below, then click the {Support.BALLOT_CHECKMARK}"
+    )
+
+    embed.description += f"[{Support.ZERO_WIDTH}](embed_meta/type=future_weather_date/time_zone={time_zone_str}/)"
+
+    await msg.edit(embed=embed)
+    await msg.add_reaction(Support.BALLOT_CHECKMARK)
+
+
+async def send_future_weather(msg: discord.Message, user: discord.User, embed_meta: str):
+
+    time_zone = timezone(embed_meta.split("time_zone=")[1].split("/")[0].replace('\\', '/'))
+
+    history = await msg.channel.history(after=msg.created_at, oldest_first=False).flatten()
+
+    date = None
+    for m in history:
+
+        if m.author.id == user.id:
+
+            date = datetime.strptime(m.content, "%m/%d/%Y %H:%M")  # get the date
+            date = time_zone.localize(date)  # set TZ as user TZ
+            date = date.astimezone(timezone("UTC"))  # then convert to UTC
+            date = date.replace(tzinfo=None)  # remove tzinfo
+            break
+
+    await send_forecast(msg, get_forecast(date), date.astimezone(time_zone))
+
+
+async def send_forecast(msg: discord.Message, forecast: list[list[datetime, WeatherState]], date):
+
+    forecast_str = ""
+    for d, weather_state in forecast:
+        forecast_str += f"{datetime.strftime(d, '%H:%M')} - " \
+                        f"{weather_state.weather.emoji} {weather_state.weather.name}\n"
+
+    embed = msg.embeds[0]
+    embed.title = f"**Forecast: {Support.smart_day_time_format('{S} %b %Y %Z', date)}**"
+    embed.description = f"```{forecast_str}```"
+
+    await msg.edit(embed=embed)
+
+
 async def send_weather(message: discord.Message) -> discord.Message:
 
     utc_now = datetime.utcnow()
@@ -295,6 +463,6 @@ async def send_weather(message: discord.Message) -> discord.Message:
     else:
         msg = await message.channel.send(embed=embed)
         await msg.add_reaction(Support.COUNTER_CLOCKWISE)
+        await msg.add_reaction(Support.CALENDAR)
 
     return msg
-

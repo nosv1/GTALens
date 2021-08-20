@@ -32,7 +32,6 @@ async def loop(client):
         if seconds % (2 * 60) == 0:
             await update_jobs()
 
-        # TODO once you figure out a way to intelligently update tracks, add crew members
         if seconds % (60 * 60 + 30) == 0:
             await update_crews()
 
