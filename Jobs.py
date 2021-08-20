@@ -934,7 +934,7 @@ def get_possible_creators(creator_name: str) -> list[Creator]:
 
     creator_names = [c.name for c in creators]
     possible_creators = get_close_matches(
-        creator_name_lower, [c.lower() for c in creator_names], n=5, cutoff=.3
+        creator_name_lower, [c.lower() for c in creator_names], n=6, cutoff=.3
     )
     possible_creators = [creators[i] for i in possible_creators]
 
