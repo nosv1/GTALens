@@ -861,9 +861,12 @@ async def send_vehicle(message: discord.Message, client: discord.Client, vehicle
     )  # find the emoji in the GTALens Server that matches the manufacturer
     manufacturer_str = f"{f'{manufacturer_emoji} ' if manufacturer_emoji else ''}{vehicle.manufacturer}"
 
-    added_str = [
-        f"Added {Support.smart_day_time_format('{S} %B %Y', datetime.fromtimestamp(vehicle.date_added))}"
-    ]
+    added_str = []
+    if vehicle.date_added:
+        added_str.append(
+            "Added {Support.smart_day_time_format('{S} %B %Y', datetime.fromtimestamp(vehicle.date_added))}"
+        )
+
     if vehicle.dlc != "-":
         added_str.append(vehicle.dlc)
     added_str = " - ".join(added_str)  # handling og cars oppose to dlc cars

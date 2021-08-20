@@ -74,7 +74,7 @@ async def on_message(message: discord.Message):
                 HOST == "PC" and args[0] == "`lens"
             )
     ):  # PC HOST means testing, this avoids double responses when PC and PI4 are both running
-        logger.info(f"Message Content: {message_content}")
+        logger.info(f"Message: {message.guild.name} #{message.channel.name} - {message_content}")
         is_dev = message.author.id in Support.DEVS.values()
 
         if paused and not is_dev:
