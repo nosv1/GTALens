@@ -856,11 +856,12 @@ async def send_job(
     else:
         await msg.edit(embed=embed)
 
-    crews = await asyncio.shield(add_sc_member_jobs(job.creator.id))
-    for crew_id in crews:
-        await add_crew(crew_id)
-
-    logger.info(f'Updated {job.creator.id}\'s jobs and crews')
+    # FIXME hogged resources
+    # crews = await asyncio.shield(add_sc_member_jobs(job.creator.id))
+    # for crew_id in crews:
+    #     await add_crew(crew_id)
+    #
+    # logger.info(f'Updated {job.creator.id}\'s jobs and crews')
 
     return msg
 
