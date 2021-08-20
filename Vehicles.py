@@ -496,10 +496,30 @@ async def send_vehicle_class(
         else:
             tier_str = f"**__{tier} Tier__**"
 
-        embed.add_field(
-            name=tier_str,
-            value=vehicles_tier_str
-        )
+        if len(vehicles_tier_str) > 1024:  # of course this only works if it's less than < 1024 * 2
+            vehicle_tier_str_lines = vehicles_tier_str.split("\n")[:-1]  # removing space char
+            len_vehicle_tier_str_lines = len(vehicle_tier_str_lines)
+
+            vehicle_tier_strs_lines = [
+                vehicle_tier_str_lines[:len_vehicle_tier_str_lines // 2],
+                vehicle_tier_str_lines[len_vehicle_tier_str_lines // 2:]
+            ]
+
+            embed.add_field(
+                name=tier_str,
+                value=f'\n'.join(vehicle_tier_strs_lines[0]) + f"\n{Support.SPACE_CHAR}"
+            )
+
+            embed.add_field(
+                name=f"{tier_str} **__cont.__**",
+                value=f'\n'.join(vehicle_tier_strs_lines[1]) + f"\n{Support.SPACE_CHAR}"
+            )
+
+        else:
+            embed.add_field(
+                name=f"{tier_str}",
+                value=vehicles_tier_str
+            )
 
     msg = await message.channel.send(embed=embed)
     return msg

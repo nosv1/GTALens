@@ -198,6 +198,7 @@ async def on_message(message: discord.Message):
             class_name = " ".join(args[2:]).strip()
             class_names = list(Vehicles.VEHICLE_CLASS_CORRECTIONS.keys())
             possible_class_names = Vehicles.get_close_matches(class_name, class_names)
+            logger.debug(f"Possible Class Names: {possible_class_names}")
 
             if not possible_class_names:
                 class_name = choice(class_names)
