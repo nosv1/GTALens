@@ -28,3 +28,9 @@ https://ko-fi.com/gtalens
 
 ### Invite
 https://discord.com/api/oauth2/authorize?client_id=872899427457716234&permissions=36507577408&scope=bot
+
+### Join the server
+https://discord.gg/xvsTZNefm5
+
+### Visit the website
+https://gtalens.com/
