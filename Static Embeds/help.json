@@ -24,7 +24,7 @@
     },
     {
       "name": "**__Support__**",
-      "value": "**`.lens donate` - support the devs\n`.lens server` - join GTALens's server\n**⠀",
+      "value": "**`.lens invite` - invite GTALens to your server\n`.lens donate` - support the devs\n`.lens server` - join GTALens's server\n**⠀",
       "inline": false
     },
     {
