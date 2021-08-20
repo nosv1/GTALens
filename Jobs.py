@@ -747,8 +747,7 @@ async def send_possible_jobs(
                         f"[{Support.ZERO_WIDTH}]({embed_meta})"
         )
 
-        # TODO .lens creator CREATOR
-        # embed.set_footer(text=".lens creator creator_name")
+        embed.set_footer(text=".lens creator CREATOR")
         # TODO .lens playlist CREATOR
         # embed.set_footer(text=".lens playlist CREATOR")
 
@@ -980,6 +979,10 @@ async def send_possible_creators(
             title=f"**Search: *{creator_name}***",
             description=f"[Search GTALens](https://gtalens.com/creators?page=1&search={creator_name.replace(' ', '%20')}) **|** "
                         f"[Donate]({Support.DONATE_LINK})"
+                        f"If the searched creator isn't in the results, "
+                        f"it's possible the creator hasn't been synced in the bot's database yet. "
+                        f"To force a sync, use `.lens sync SC_TRACK_LINK` "
+                        f"where SC_TRACK_LINK is the Social Club link to one of the creator's races."
                         f"\n\n**Results:**"
                         f"{possible_creators_str}"
                         f"[{Support.ZERO_WIDTH}]({embed_meta})"
