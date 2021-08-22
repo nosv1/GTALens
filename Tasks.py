@@ -32,7 +32,7 @@ async def loop(client):
         if seconds % (2 * 60) == 0:
             await update_jobs()
 
-        if seconds % (60 * 60 + 30) == 0:
+        if seconds % (30 * 60 + 30) == 0:
             await update_crews()
 
         if seconds % (12 * 60 * 60) == 0:
