@@ -1,14 +1,23 @@
-import aiohttp
 import asyncio
+import aiohttp
+from aiohttp_socks import ProxyConnector
 from datetime import datetime
+from dotenv import load_dotenv
 import logging
+import os
+from stem import Signal
+from stem.control import Controller
 
-import discord
+
 import gspread
 import json
 import re
 
 logger = logging.getLogger('discord')
+
+load_dotenv()
+
+HOST = os.getenv("HOST")
 
 # COLORS
 
@@ -153,10 +162,22 @@ def num_suffix(num: int) -> str:
 
 
 async def get_url(url: str, headers=None, params=None) -> json:
+
     if headers is None:
         headers = {}
 
-    async with aiohttp.ClientSession() as cs:
+    if params is None:
+        params = {}
+
+    with Controller.from_port(port=9051) as controller:
+        # afaik, im not too mad about the password being easy, just needed to please the Controller
+        controller.authenticate(password="password")
+        controller.signal(Signal.NEWNYM)
+
+    connector_url = os.getenv(f"{HOST}_CONNECTOR")
+
+    connector = ProxyConnector.from_url(connector_url)
+    async with aiohttp.ClientSession(connector=connector) as cs:
         try:
             async with cs.get(url, headers=headers, params=params, timeout=10) as r:
                 return json.loads(await r.text())
@@ -166,6 +187,4 @@ async def get_url(url: str, headers=None, params=None) -> json:
 
         except json.decoder.JSONDecodeError:
             return {'status': False, 'error': {'code': 'JSONDecodeError'}}
-
-
 

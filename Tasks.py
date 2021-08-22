@@ -32,7 +32,7 @@ async def loop(client):
         if seconds % (2 * 60) == 0:
             await update_jobs()
 
-        if seconds % (60 * 60 + 30) == 0:
+        if seconds % (30 * 60 + 30) == 0:
             await update_crews()
 
         if seconds % (12 * 60 * 60) == 0:
@@ -141,7 +141,7 @@ async def update_jobs():
     for i, member_id in enumerate(member_ids):
         logger.debug(f"Members Update: {int(100 * (i/5))}%")
         await asyncio.shield(Jobs.add_sc_member_jobs(member_id[0]))
-        await asyncio.sleep(5)  # per user
+        # await asyncio.sleep(5)  # per user
     logger.info(f"Members Updated: {member_ids}")
 
     db.connection.close()

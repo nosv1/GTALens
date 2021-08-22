@@ -433,7 +433,7 @@ async def add_sc_member_jobs(sc_member_id: str) -> dict:
             else:
                 break
 
-        await asyncio.sleep(5)  # per platform
+        # await asyncio.sleep(5)  # per platform
 
     db.cursor.execute(f"""
         UPDATE members
@@ -856,12 +856,11 @@ async def send_job(
     else:
         await msg.edit(embed=embed)
 
-    # FIXME hogged resources
-    # crews = await asyncio.shield(add_sc_member_jobs(job.creator.id))
-    # for crew_id in crews:
-    #     await add_crew(crew_id)
-    #
-    # logger.info(f'Updated {job.creator.id}\'s jobs and crews')
+    crews = await asyncio.shield(add_sc_member_jobs(job.creator.id))
+    for crew_id in crews:
+        await add_crew(crew_id)
+
+    logger.info(f'Updated {job.creator.id}\'s jobs and crews')
 
     return msg
 

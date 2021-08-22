@@ -1,10 +1,10 @@
-from datetime import datetime
 import discord
 import json
 import logging
 import os
 from random import choice
 import re
+import subprocess
 import traceback
 
 import Database
@@ -494,6 +494,15 @@ async def startup():
 def main():
 
     while True:
+
+        # HIGHLIGHT IF GETTING URLS DOESN'T WORK START HERE
+        dir_path = os.path.dirname(os.path.realpath(__file__))
+        if HOST == "PC":
+            subprocess.call([f"{dir_path}/start_tor.bat"])
+
+        elif HOST == "PI4":
+            subprocess.Popen([f"{dir_path}/start_tor.sh"])
+
         client.loop.create_task(startup())
         client.run(os.getenv("TOKEN"))
 
