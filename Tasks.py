@@ -101,7 +101,7 @@ async def update_jobs():
     """
 
     db.cursor.execute(f"""{delete_not_creators};""")
-    logger.info(f"Deleted Members: {db.cursor.rowcount}")
+    logger.debug(f"Deleted Members: {db.cursor.rowcount}")
     db.connection.commit()
 
     creators_limit = 3
@@ -143,7 +143,7 @@ async def update_jobs():
         logger.debug(f"Members Update: {int(100 * (i/5))}%")
         await asyncio.shield(Jobs.add_sc_member_jobs(member_id[0]))
         # await asyncio.sleep(5)  # per user
-    logger.info(f"Members Updated: {member_ids}")
+    logger.debug(f"Members Updated: {member_ids}")
 
 
 async def update_crews():
@@ -156,9 +156,9 @@ async def update_crews():
     for i, crew_id in enumerate(crew_ids):
         logger.debug(f"Crews Update: {int(100 * (i/limit))}%")
         await Jobs.add_crew(crew_id[0])
-    logger.info(f"Crews Updated: {crew_ids}")
+    logger.debug(f"Crews Updated: {crew_ids}")
 
 
 async def update_vehicles():
     await Vehicles.update_vehicles()
-    logger.info(f"Vehicles Updated")
+    logger.debug(f"Vehicles Updated")
