@@ -137,6 +137,7 @@ async def update_jobs():
         LIMIT {tbd_creators_limit}
     ;""")
     member_ids += db.cursor.fetchall()
+    db.connection.close()
 
     for i, member_id in enumerate(member_ids):
         logger.debug(f"Members Update: {int(100 * (i/5))}%")
@@ -144,21 +145,18 @@ async def update_jobs():
         await asyncio.sleep(5)  # per user
     logger.info(f"Members Updated: {member_ids}")
 
-    db.connection.close()
-
 
 async def update_crews():
     db = Database.connect_database()
     limit = 10
     db.cursor.execute(f"SELECT _id FROM members ORDER BY synced ASC LIMIT {limit}")
     crew_ids = db.cursor.fetchall()
+    db.connection.close()
 
     for i, crew_id in enumerate(crew_ids):
         logger.debug(f"Crews Update: {int(100 * (i/limit))}%")
         await Jobs.add_crew(crew_id[0])
     logger.info(f"Crews Updated: {crew_ids}")
-
-    db.connection.close()
 
 
 async def update_vehicles():
