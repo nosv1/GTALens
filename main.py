@@ -500,8 +500,8 @@ def main():
         if HOST == "PC":
             subprocess.call([f"{dir_path}/start_tor.bat"])
 
-        elif HOST == "PI4":
-            subprocess.Popen([f"{dir_path}/start_tor.sh"])
+        # elif HOST == "PI4":
+        #     subprocess.Popen([f"{dir_path}/start_tor.sh"])
 
         client.loop.create_task(startup())
         client.run(os.getenv("TOKEN"))
