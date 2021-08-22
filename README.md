@@ -1,7 +1,15 @@
   
 ## Start Here  
-the bot is hosted on an rPi4 but tested on Windows  
-this is a note to self... obviously, you'd need the token to run the bot, and the 'Secrets' folder that is referenced in some files.
+the bot is hosted on an rPi4 but tested on Windows
+
+#### Files/Folders not included in GIT for security reasons...  
+```
+Secrets/ - holds gspread crediential json
+.env - env variables like HOST, TOKEN, DB INFO, etc
+start_tor.bat - restarts tor service on windows
+start_tor.sh - restarts tor service on linux
+```  
+
 ```bash
 python -m venv venv  
 .\venv\Scripts\activate.bat  
