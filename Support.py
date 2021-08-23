@@ -4,7 +4,9 @@ from aiohttp_socks import ProxyConnector
 from datetime import datetime
 from dotenv import load_dotenv
 import logging
+import numpy as np
 import os
+import sklearn.preprocessing
 from stem import Signal
 from stem.control import Controller
 
@@ -188,3 +190,106 @@ async def get_url(url: str, headers=None, params=None) -> json:
         except json.decoder.JSONDecodeError:
             return {'status': False, 'error': {'code': 'JSONDecodeError'}}
 
+
+def calculate_phrase_similarities(
+        phrase: str, search_range: list[str]
+) -> list[list[str, int, float, float, float]]:
+    """
+    :param phrase:
+    :param search_range:
+    :return: [[phrase, phrase_index, matched_parts, L Dist, avg], ...] - phrase_index is og index in search_range
+    """
+
+    def normalize(data: np.ndarray) -> np.ndarray:
+        # normalizing based on features
+        # would use sklearn, but pi4 cba to work... #BandAidFix
+        data_t = data.transpose()
+        for i, row in enumerate(data_t):
+            mx = max(row)
+            mn = min(row)
+            for j, n in enumerate(row):
+                data_t[i][j] = (n - mn) / (mx - mn)
+
+        return data_t.transpose()
+
+    search_calculations = []
+    phrase_len = len(phrase)
+
+    for i, search_phrase in enumerate(search_range):
+        sum_matched_letters = sum(c in search_phrase for c in phrase)
+
+        calculations = [
+            sum_matched_letters / phrase_len + sum_matched_letters,
+            Levenshtein.distance(search_phrase, phrase)  # keep this in index 1
+            # if more calculations are added, edit the divisor in the avg loop below
+        ]
+        search_calculations.append(calculations)
+        # the matched_parts is dece for long words, but bad for short words
+        # the Levenshtein distance is good for short words, but bad for long phrases
+
+    search_calculations = list(normalize(np.array(search_calculations)))
+
+    for i, sc in enumerate(search_calculations):
+        search_calculations[i] = list(search_calculations[i])
+        # L dist returns small value, but we want large if good
+        sc[1] = 1 - sc[1]
+
+        # this 2 matches the number of calculations in calculations[] above
+        search_calculations[i].append(sum(sc))
+
+        search_calculations[i].insert(0, search_range[i])
+        search_calculations[i].insert(1, i)
+        # [phrase, phrase_index, calculations, ..., avg]
+
+    search_calculations.sort(key=lambda x: x[-1], reverse=True)  # sort by avg in desc order
+
+    print(search_calculations[:5])
+
+    return search_calculations
+
+
+def get_possible(lowercase_thing, stuff, objects=True) -> list:
+    """
+
+    :param lowercase_thing: lowercase object name
+    :param stuff: list of objects with .name attribute
+    :param objects: if the things in stuff have .name then objects = True else if strings then False
+    :return: list of objects
+    """
+    possible_stuff: list[list[str, int, float, float, float]] = calculate_phrase_similarities(
+        lowercase_thing, [t.name.lower() if objects else t.lower() for t in stuff]
+    )
+
+    calculations = []
+    # we shooting for 3 different calculations to make sure we get all v close matches
+    for i, thing in enumerate(possible_stuff):
+
+        calculation = thing[-1]
+        if calculation not in calculations:
+            calculations.append(calculation)
+
+        possible_stuff[i] = stuff[thing[1]]
+
+        if len(calculations) == 3:
+            possible_stuff = possible_stuff[:i+1]
+            break
+
+    possible_jobs = possible_stuff[:6]  # max of 6
+
+    if len(possible_jobs) > 1:
+        if objects:
+            stuff_0 = possible_stuff[0].name.lower()
+            stuff_1 = possible_stuff[1].name.lower()
+
+        else:
+            stuff_0 = possible_stuff[0].lower()
+            stuff_1 = possible_stuff[1].lower()
+
+        if (
+                stuff_0 == lowercase_thing
+                and stuff_1 != lowercase_thing
+                and lowercase_thing not in stuff_1
+        ):  # only one exact match
+            return [possible_stuff[0]]
+
+    return possible_stuff
