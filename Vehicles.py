@@ -1,5 +1,4 @@
 from datetime import datetime
-from Custom_Libraries.difflib import get_close_matches
 import discord
 import discord.types.embed
 import google.auth.exceptions
@@ -785,29 +784,6 @@ async def update_vehicles():
     )
 
     logger.info("Vehicles Updated")
-
-
-def get_possible_vehicles(vehicle_name: str) -> list[Vehicle]:
-    vehicle_name_lower = vehicle_name.lower()
-    vehicles = get_vehicles()
-
-    vehicle_names = list(vehicles.keys())
-    possible_vehicles = get_close_matches(
-        vehicle_name_lower, [v.lower() for v in vehicle_names], n=5, cutoff=.3
-    )  # list of job names - max 5 so the reactions don't go wider than the embed or new line
-    possible_vehicles = [vehicles[vehicle_names[i]] for i in possible_vehicles]
-
-    if len(possible_vehicles) > 1:
-
-        if (
-                possible_vehicles[0].name.lower() == vehicle_name_lower and
-                possible_vehicles[1].name.lower() != vehicle_name_lower and
-                vehicle_name_lower not in possible_vehicles[1].name.lower()
-
-        ):  # only one exact match
-            return [possible_vehicles[0]]
-
-    return possible_vehicles
 
 
 async def send_possible_vehicles(
