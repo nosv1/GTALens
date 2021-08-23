@@ -6,6 +6,3 @@ mysql-connector~=2.2.9
 aiohttp~=3.7.4.post0
 pytz~=2021.1
 stem~=1.8.0
-Levenshtein~=0.13.0
-sklearn~=0.0
-scikit-learn~=0.24.2

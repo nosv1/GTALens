@@ -182,10 +182,7 @@ async def on_message(message: discord.Message):
             if job_name == ".random":
                 possible_jobs = Jobs.get_random_jobs()
             else:
-                possible_jobs = Support.get_possible(
-                    job_name.lower(),
-                    Jobs.get_jobs()
-                )
+                possible_jobs = Jobs.get_possible_jobs(job_name)
             await Jobs.send_possible_jobs(message, client, possible_jobs, job_name)
 
             ''' TRACK LOOKUP '''
@@ -204,10 +201,7 @@ async def on_message(message: discord.Message):
             await message.channel.trigger_typing()
 
             vehicle_name = " ".join(args[2:-1])
-            possible_vehicles = Support.get_possible(
-                vehicle_name.lower(),
-                list(Vehicles.get_vehicles().values())
-            )
+            possible_vehicles = Vehicles.get_possible_vehicles(vehicle_name)
             await Vehicles.send_possible_vehicles(message, client, possible_vehicles, vehicle_name)
 
             ''' VEHICLE LOOKUP '''
@@ -217,17 +211,13 @@ async def on_message(message: discord.Message):
 
             class_name = " ".join(args[2:-2])
             class_names = list(Vehicles.VEHICLE_CLASS_CORRECTIONS.keys())
-            possible_class_names = Support.get_possible(
-                class_name.lower(),
-                class_names,
-                objects=False
-            )
+            possible_class_names = Vehicles.get_close_matches(class_name, class_names)
 
             if not possible_class_names:
                 class_name = choice(class_names)
 
             else:
-                class_name = possible_class_names[0]
+                class_name = class_names[possible_class_names[0]]
 
             vehicles_class: list[Vehicles] = Vehicles.get_vehicle_class(
                 vehicle_class=class_name,
@@ -245,18 +235,14 @@ async def on_message(message: discord.Message):
 
             class_name = " ".join(args[2:]).strip()
             class_names = list(Vehicles.VEHICLE_CLASS_CORRECTIONS.keys())
-            possible_class_names = Support.get_possible(
-                class_name.lower(),
-                class_names,
-                objects=False
-            )
+            possible_class_names = Vehicles.get_close_matches(class_name, class_names)
             logger.debug(f"Possible Class Names: {possible_class_names}")
 
             if not possible_class_names:
                 class_name = choice(class_names)
 
             else:
-                class_name = possible_class_names[0]
+                class_name = class_names[possible_class_names[0]]
 
             await Vehicles.send_vehicle_class(
                 message, Vehicles.get_vehicle_class(class_name, Vehicles.get_vehicles()), class_name
@@ -268,10 +254,7 @@ async def on_message(message: discord.Message):
             await message.channel.trigger_typing()
 
             creator_name = " ".join(args[2:-1]).strip()
-            possible_creators = Support.get_possible(
-                creator_name.lower(),
-                Jobs.get_creators()
-            )
+            possible_creators = Jobs.get_possible_creators(creator_name)
 
             embed_type = ""
             if args[1].lower() in Jobs.PLAYLIST_SEARCH_ALIASES:
@@ -517,7 +500,6 @@ def main():
         if HOST == "PC":
             subprocess.call([f"{dir_path}/start_tor.bat"])
 
-        # this is getting ran in main.sh on the PI4
         # elif HOST == "PI4":
         #     subprocess.Popen([f"{dir_path}/start_tor.sh"])
 
