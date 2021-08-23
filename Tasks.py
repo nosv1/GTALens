@@ -139,11 +139,11 @@ async def update_jobs():
     member_ids += db.cursor.fetchall()
     db.connection.close()
 
-    logger.info(f"Updating Members: {member_ids}")
+    logger.info(f"Updating Members: {', '.join([m[0] for m in member_ids])}")
     for i, member_id in enumerate(member_ids):
         await asyncio.shield(Jobs.add_sc_member_jobs(member_id[0]))
         # await asyncio.sleep(5)  # per user
-    logger.info(f"Members Updated: {member_ids}")
+    logger.info(f"Members Updated: {', '.join([m[0] for m in member_ids])}")
 
 
 async def update_crews():
@@ -153,10 +153,10 @@ async def update_crews():
     crew_ids = db.cursor.fetchall()
     db.connection.close()
 
-    logger.info(f"Updating Crews: {crew_ids}")
+    logger.info(f"Updating Crews: {', '.join([c[0] for c in crew_ids])}")
     for i, crew_id in enumerate(crew_ids):
         await Jobs.add_crew(crew_id[0])
-    logger.info(f"Crews Updated: {crew_ids}")
+    logger.info(f"Crews Updated: {', '.join([c[0] for c in crew_ids])}")
 
 
 async def update_vehicles():
