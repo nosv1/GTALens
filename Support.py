@@ -6,7 +6,6 @@ from dotenv import load_dotenv
 import logging
 import numpy as np
 import os
-import sklearn.preprocessing
 from stem import Signal
 from stem.control import Controller
 
