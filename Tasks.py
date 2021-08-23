@@ -148,7 +148,7 @@ async def update_jobs():
 
 async def update_crews():
     db = Database.connect_database()
-    limit = 10
+    limit = 5
     db.cursor.execute(f"SELECT _id FROM crews ORDER BY synced ASC LIMIT {limit}")
     crew_ids = db.cursor.fetchall()
     db.connection.close()
