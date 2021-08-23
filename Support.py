@@ -3,6 +3,7 @@ import aiohttp
 from aiohttp_socks import ProxyConnector
 from datetime import datetime
 from dotenv import load_dotenv
+import Levenshtein
 import logging
 import numpy as np
 import os
