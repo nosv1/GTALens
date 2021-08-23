@@ -3,17 +3,15 @@ import aiohttp
 from aiohttp_socks import ProxyConnector
 from datetime import datetime
 from dotenv import load_dotenv
+import gspread
+import json
 import Levenshtein
 import logging
 import numpy as np
 import os
+import re
 from stem import Signal
 from stem.control import Controller
-
-
-import gspread
-import json
-import re
 
 logger = logging.getLogger('discord')
 
