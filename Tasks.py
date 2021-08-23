@@ -139,11 +139,11 @@ async def update_jobs():
     member_ids += db.cursor.fetchall()
     db.connection.close()
 
+    logger.info(f"Updating Members: {member_ids}")
     for i, member_id in enumerate(member_ids):
-        logger.debug(f"Members Update: {int(100 * (i/5))}%")
         await asyncio.shield(Jobs.add_sc_member_jobs(member_id[0]))
         # await asyncio.sleep(5)  # per user
-    logger.debug(f"Members Updated: {member_ids}")
+    logger.info(f"Members Updated: {member_ids}")
 
 
 async def update_crews():
@@ -153,12 +153,13 @@ async def update_crews():
     crew_ids = db.cursor.fetchall()
     db.connection.close()
 
+    logger.info(f"Updating Crews: {crew_ids}")
     for i, crew_id in enumerate(crew_ids):
-        logger.debug(f"Crews Update: {int(100 * (i/limit))}%")
         await Jobs.add_crew(crew_id[0])
-    logger.debug(f"Crews Updated: {crew_ids}")
+    logger.info(f"Crews Updated: {crew_ids}")
 
 
 async def update_vehicles():
+    logger.info("Updating Vehicles")
     await Vehicles.update_vehicles()
     logger.debug(f"Vehicles Updated")
