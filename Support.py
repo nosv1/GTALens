@@ -9,6 +9,7 @@ import Levenshtein
 import logging
 import numpy as np
 import os
+import python_socks._errors as proxy_errors
 import re
 from stem import Signal
 from stem.control import Controller
@@ -187,6 +188,9 @@ async def get_url(url: str, headers=None, params=None) -> json:
 
         except json.decoder.JSONDecodeError:
             return {'status': False, 'error': {'code': 'JSONDecodeError'}}
+
+        except proxy_errors.ProxyError:
+            return {'status': False, 'error': {'code': 'ProxyError'}}
 
 
 def calculate_phrase_similarities(
