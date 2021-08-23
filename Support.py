@@ -1,12 +1,13 @@
 import asyncio
 import aiohttp
-import sklearn.preprocessing
 from aiohttp_socks import ProxyConnector
 from datetime import datetime
 from dotenv import load_dotenv
 import Levenshtein
 import logging
+import numpy as np
 import os
+import sklearn.preprocessing
 from stem import Signal
 from stem.control import Controller
 
@@ -200,6 +201,18 @@ def calculate_phrase_similarities(
     :return: [[phrase, phrase_index, matched_parts, L Dist, avg], ...] - phrase_index is og index in search_range
     """
 
+    def normalize(data: np.ndarray) -> np.ndarray:
+        # normalizing based on features
+        # would use sklearn, but pi4 cba to work... #BandAidFix
+        data_t = data.transpose()
+        for i, row in enumerate(data_t):
+            mx = max(row)
+            mn = min(row)
+            for j, n in enumerate(row):
+                data_t[i][j] = (n - mn) / (mx - mn)
+
+        return data_t.transpose()
+
     search_calculations = []
     phrase_len = len(phrase)
 
@@ -215,9 +228,7 @@ def calculate_phrase_similarities(
         # the matched_parts is dece for long words, but bad for short words
         # the Levenshtein distance is good for short words, but bad for long phrases
 
-    search_calculations = list(
-        sklearn.preprocessing.normalize(search_calculations, norm="max", axis=0)
-    )
+    search_calculations = list(normalize(np.array(search_calculations)))
 
     for i, sc in enumerate(search_calculations):
         search_calculations[i] = list(search_calculations[i])
