@@ -237,7 +237,7 @@ async def on_reaction_add(
 
         if emoji in embed_meta:
             creator_id = embed_meta.split(f"{emoji}=")[1].split('/')[0]
-            creator = get_creators(_id=creator_id)
+            creator = get_creators()[creator_id]
             creator = await get_playlists(creator)
 
             try:
@@ -251,7 +251,7 @@ async def on_reaction_add(
 
         if emoji in embed_meta:
             creator_id = embed_meta.split(f"{emoji}=")[1].split('/')[0]
-            creator = get_creators(_id=creator_id)
+            creator = get_creators()[creator_id]
 
             try:
                 await msg.clear_reactions()
@@ -510,24 +510,16 @@ def get_jobs(_id='%%'):
 ''' CREATOR DATABASE '''
 
 
-def get_creators(_id: str = ""):
+def get_creators() -> dict[str, Creator]:
     db = Database.connect_database()
-    db.cursor.execute(f"SELECT * FROM members WHERE _id LIKE '%{_id}%'")
-    if _id:
-        _ = db.cursor.fetchall()[0]
-        return Creator(
-            _id=_[0],
-            name=_[1]
+    db.cursor.execute(f"SELECT * FROM members")
+    creators = {}
+    for creator in db.cursor.fetchall():
+        creators[creator[0]] = Creator(
+            _id=creator[0],
+            name=creator[1]
         )
-
-    else:
-        creators = db.cursor.fetchall()
-        for i, creator in enumerate(creators):
-            creators[i] = Creator(
-                _id=creator[0],
-                name=creator[1]
-            )
-        return creators
+    return creators
 
 
 async def get_gtalens_creator(creator: Creator) -> Creator:
@@ -720,8 +712,10 @@ async def send_possible_jobs(
         possible_jobs_str = ""
         embed_meta = "embed_meta/type=job_search/"
 
+        creators = get_creators()
+
         for i, job in enumerate(possible_jobs):
-            creator = get_creators(_id=job.creator.id)
+            creator = creators[job.creator.id]
 
             platform_emoji = str(discord.utils.find(
                 lambda e: e.name == PLATFORM_CORRECTIONS[job.platform].lower(), client.get_guild(
@@ -901,7 +895,7 @@ async def get_playlists(creator: Creator) -> Creator:
 
 async def send_playlists(message: discord.Message, creator: Creator) -> discord.Message:
 
-    embed_meta = f"[{Support.ZERO_WIDTH}](embed_meta/type={embed_type}/)"
+    # embed_meta = f"[{Support.ZERO_WIDTH}](embed_meta/type={embed_type}/)"
 
     playlists_str = ""
     for playlist in creator.playlists[:5]:
@@ -930,7 +924,7 @@ async def send_playlists(message: discord.Message, creator: Creator) -> discord.
 
 def get_possible_creators(creator_name: str) -> list[Creator]:
     creator_name_lower = creator_name.lower()
-    creators = [c for c in get_creators() if c.name]
+    creators = [c for c in get_creators().values() if c.name]
 
     creator_names = [c.name for c in creators]
     possible_creators = get_close_matches(
