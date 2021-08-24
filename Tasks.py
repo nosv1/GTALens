@@ -104,8 +104,8 @@ async def update_jobs():
     logger.debug(f"Deleted Members: {db.cursor.rowcount}")
     db.connection.commit()
 
-    creators_limit = 3
-    tbd_creators_limit = 2
+    creators_limit = 6
+    tbd_creators_limit = 4
 
     # updating known creators
     creators = f"""
