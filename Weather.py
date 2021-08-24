@@ -404,7 +404,11 @@ async def send_future_weather(msg: discord.Message, user: discord.User, embed_me
 
             try:
                 date = datetime.strptime(m.content, "%m/%d/%Y %H:%M")  # get the date
-            except TypeError:
+            except ValueError:
+                await m.reply(
+                    f"`{m.content}` does not match the format `MM/DD/YYYY` (8/18/2021). "
+                    f"Edit your message, then re-click the button."
+                )
                 return
             date = time_zone.localize(date)  # set TZ as user TZ
             date = date.astimezone(timezone("UTC"))  # then convert to UTC

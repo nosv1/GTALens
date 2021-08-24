@@ -546,7 +546,7 @@ async def get_gtalens_creator(creator: Creator) -> Creator:
                     )
                     exec(f"creator.{cat}.append(job)")
 
-            return creator
+    return creator
 
 
 async def get_creator_platforms(creator):
@@ -669,7 +669,7 @@ async def get_job(job_id: str) -> Job:
         if found_mission or id_version == 9:
             break
 
-    logger.info(f"Got Job: {job.name} by {job.creator.name}")
+    logger.info(f"Got Job: {job.name} by {job.creator.name} on {job.platform}")
     return job
 
 

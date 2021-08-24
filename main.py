@@ -452,6 +452,8 @@ async def on_ready():
 
 @client.event
 async def on_error(event, *args, **kwargs):
+    logger.warning(f"\n--- UNHANDLED EXCEPTION ---\n\n{traceback.format_exc()}\n--- END UNHANDLED EXCEPTION ---")
+
     if HOST != "PC":
         errors_channel = client.get_channel(Support.GTALENS_ERRORS_CHANNEL_ID)
         errors_channel = await client.fetch_channel(

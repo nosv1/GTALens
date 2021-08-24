@@ -197,7 +197,8 @@ class Vehicle:
         self.description = description
         self.video_id = video_id
 
-    def get_brakes(self):  # for some reason, the attributes were none when tryna do this at init
+    # for some reason, the attributes were none when tryna do this at init
+    def get_brakes(self):
         brake_total = (self.brake_force * 10) * self.brake_bias
         diff = brake_total - self.cornering_grip
 
