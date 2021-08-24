@@ -219,7 +219,7 @@ async def on_message(message: discord.Message):
             else:
                 class_name = class_names[possible_class_names[0]]
 
-            vehicles_class: list[Vehicles] = Vehicles.get_vehicle_class(
+            vehicles_class: list[Vehicles.Vehicle] = Vehicles.get_vehicle_class(
                 vehicle_class=class_name,
                 vehicles=Vehicles.get_vehicles()
             )

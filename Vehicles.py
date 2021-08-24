@@ -982,24 +982,26 @@ async def send_vehicle(message: discord.Message, client: discord.Client, vehicle
               f"\n{Support.SPACE_CHAR}"
     )
 
-    image_name_conversion = {
-        "scOld": "old-sc",
-        "scNew": "new-sc",
-        "website": "website",
-        "impExp": "imp-exp",
-    }
-    image_name = random.choice(list(vehicle.images.keys()))
-    images = (
-        vehicle.images[image_name]["plates"]
-        if image_name == "impExp"
-        else vehicle.images[image_name]
-    )
-    image_filename = random.choice(images)["file"]
-    image_name = image_name_conversion[image_name]
+    # TODO apparently some vehicles don't have images, that's due to the names not matching from broughy spreadsheet and gtalens
+    if vehicle.images:
+        image_name_conversion = {
+            "scOld": "old-sc",
+            "scNew": "new-sc",
+            "website": "website",
+            "impExp": "imp-exp",
+        }
+        image_name = random.choice(list(vehicle.images.keys()))
+        images = (
+            vehicle.images[image_name]["plates"]
+            if image_name == "impExp"
+            else vehicle.images[image_name]
+        )
+        image_filename = random.choice(images)["file"]
+        image_name = image_name_conversion[image_name]
 
-    embed.set_thumbnail(
-        url=f"https://gtalens.com/assets/images/vehicles/{image_name}/{image_filename}"
-    )
+        embed.set_thumbnail(
+            url=f"https://gtalens.com/assets/images/vehicles/{image_name}/{image_filename}"
+        )
 
     if vehicle.other_notes:
         embed.set_footer(text=f"Note: {vehicle.other_notes}")
