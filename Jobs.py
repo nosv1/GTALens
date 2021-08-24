@@ -1017,7 +1017,7 @@ async def send_creator(
 
         return jobs_str
 
-    pinned_platform = None
+    pinned_platforms = []
     for platform in creator_platforms:
         creator = creator_platforms[platform]
 
@@ -1046,21 +1046,21 @@ async def send_creator(
             )
 
         if creator.pinned:
-            pinned_platform = platform
+            pinned_platforms.append(platform)
 
-    if pinned_platform:
+    for platform in pinned_platforms:
 
         platform_emoji = str(discord.utils.find(
-            lambda e: e.name == PLATFORM_CORRECTIONS[pinned_platform].lower(), client.get_guild(
+            lambda e: e.name == PLATFORM_CORRECTIONS[platform].lower(), client.get_guild(
                 Support.GTALENS_GUILD_ID).emojis)
         )
 
-        creator = creator_platforms[pinned_platform]
+        creator = creator_platforms[platform]
 
         embed.add_field(
             name=f"{platform_emoji} **__Pinned__**",
             value=f"{get_jobs_str(creator.pinned)}{Support.SPACE_CHAR}",
-            inline=False
+            inline=True
         )
 
     msg = message
