@@ -182,7 +182,7 @@ async def on_message(message: discord.Message):
             if job_name == ".random":
                 possible_jobs = Jobs.get_random_jobs()
             else:
-                possible_jobs = Support.get_possible(job_name.lower(), Jobs.get_jobs())
+                possible_jobs = Jobs.get_possible_jobs(job_name)
             await Jobs.send_possible_jobs(message, client, possible_jobs, job_name)
 
             ''' TRACK LOOKUP '''
@@ -201,7 +201,7 @@ async def on_message(message: discord.Message):
             await message.channel.trigger_typing()
 
             vehicle_name = " ".join(args[2:-1])
-            possible_vehicles = Support.get_possible(vehicle_name.lower(), Vehicles.get_vehicles().values())
+            possible_vehicles = Vehicles.get_possible_vehicles(vehicle_name)
             await Vehicles.send_possible_vehicles(message, client, possible_vehicles, vehicle_name)
 
             ''' VEHICLE LOOKUP '''
@@ -254,7 +254,7 @@ async def on_message(message: discord.Message):
             await message.channel.trigger_typing()
 
             creator_name = " ".join(args[2:-1]).strip()
-            possible_creators = Support.get_possible(creator_name.lower(), Jobs.get_creators())
+            possible_creators = Jobs.get_possible_creators(creator_name)
 
             embed_type = ""
             if args[1].lower() in Jobs.PLAYLIST_SEARCH_ALIASES:
