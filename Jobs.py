@@ -282,7 +282,7 @@ async def add_crew(crew_id: str) -> None:
           "&onlineService=sc&searchTerm=&memberCountToRetrieve=1000"
     logger.debug(f"Jobs.add_crew() {url}")
 
-    r_json: json = await Support.get_url(url, headers=Support.SCAPI_HEADERS)
+    r_json: json = await Support.get_url(url, headers=Support.SCAPI_HEADERS, proxies=True)
 
     db: Database.DB = connect_database()
 
@@ -352,7 +352,7 @@ async def add_sc_member_jobs(sc_member_id: str) -> dict:
                   f"creatorRockstarId={sc_member_id}&pageIndex={page_index}&pageSize=30"
             logger.debug(f"Jobs.add_sc_member_jobs() {url}")
 
-            r_json = await Support.get_url(url, headers=Support.SCAPI_HEADERS)
+            r_json = await Support.get_url(url, headers=Support.SCAPI_HEADERS, proxies=True)
 
             if r_json:
 
@@ -628,7 +628,7 @@ async def get_job(job_id: str) -> Job:
         url = f"https://scapi.rockstargames.com/ugc/mission/details?title=gtav&contentId={job.rockstar_id}"
         logger.debug(f"Jobs.get_job() {url}")
 
-        r_json = await Support.get_url(url, headers=Support.SCAPI_HEADERS)
+        r_json = await Support.get_url(url, headers=Support.SCAPI_HEADERS, proxies=True)
 
         job.job_type = JOB_TYPE_CORRECTIONS[r_json['content']['type']]
 

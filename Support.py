@@ -163,7 +163,15 @@ def num_suffix(num: int) -> str:
     return f"{num}{'th' if 11 <= num <= 13 else {1: 'st', 2: 'nd', 3: 'rd'}.get(num % 10, 'th')}"
 
 
-async def get_url(url: str, headers=None, params=None) -> json:
+async def get_url(url: str, headers=None, params=None, proxies=None) -> json:
+    """
+
+    :param url:
+    :param headers:
+    :param params:
+    :param proxies: should be True if using tor
+    :return:
+    """
 
     if headers is None:
         headers = {}
@@ -178,7 +186,11 @@ async def get_url(url: str, headers=None, params=None) -> json:
 
     connector_url = os.getenv(f"{HOST}_CONNECTOR")
 
-    connector = ProxyConnector.from_url(connector_url)
+    if proxies:
+        connector = ProxyConnector.from_url(connector_url)
+    else:
+        connector = proxies
+
     async with aiohttp.ClientSession(connector=connector) as cs:
         try:
             async with cs.get(url, headers=headers, params=params, timeout=10) as r:
