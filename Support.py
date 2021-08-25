@@ -258,8 +258,6 @@ def calculate_phrase_similarities(
 
     search_calculations.sort(key=lambda x: x[-1], reverse=True)  # sort by avg in desc order
 
-    print(search_calculations[:5])
-
     return search_calculations
 
 
