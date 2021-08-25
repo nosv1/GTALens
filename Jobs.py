@@ -455,6 +455,8 @@ async def sync_job(message: discord.Message, job_link: str) -> (discord.Message,
     job = None
     msg = None
     if job_id:
+        await Support.send_inbetween_msg(message, "Job")
+
         job = await get_job(job_id)
 
         embed = discord.Embed(

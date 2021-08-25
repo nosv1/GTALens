@@ -305,6 +305,9 @@ async def send_inbetween_msg(msg: discord.Message, thing: str) -> discord.Messag
         title=f"**{thing} identified - getting additional details...**"
     )
 
-    await msg.edit(embed=embed)
+    if msg == GTALENS_CLIENT_ID:
+        await msg.edit(embed=embed)
+    else:
+        msg = await msg.channel.send(embed-embed)
 
     return msg
