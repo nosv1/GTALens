@@ -308,6 +308,6 @@ async def send_inbetween_msg(msg: discord.Message, thing: str) -> discord.Messag
     if msg == GTALENS_CLIENT_ID:
         await msg.edit(embed=embed)
     else:
-        msg = await msg.channel.send(embed-embed)
+        msg = await msg.channel.send(embed=embed)
 
     return msg
