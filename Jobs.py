@@ -224,6 +224,7 @@ async def on_reaction_add(
 
         if emoji in embed_meta:
             job_id = embed_meta.split(f"{emoji}=")[1].split('/')[0]
+            await Support.send_inbetween_msg(msg, "Job")
             job = await get_job(job_id)
 
             try:
@@ -251,6 +252,7 @@ async def on_reaction_add(
 
         if emoji in embed_meta:
             creator_id = embed_meta.split(f"{emoji}=")[1].split('/')[0]
+            await Support.send_inbetween_msg(msg, "Creator")
             creator = get_creators()[creator_id]
 
             try:

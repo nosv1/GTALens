@@ -1,5 +1,6 @@
 import asyncio
 import aiohttp
+import discord
 from aiohttp_socks import ProxyConnector
 from datetime import datetime
 from dotenv import load_dotenv
@@ -295,3 +296,15 @@ def get_possible(lowercase_thing, stuff, objects=True) -> list:
             return [possible_stuff[0]]
 
     return possible_stuff
+
+
+# TODO instead of this, just make it faster...
+async def send_inbetween_msg(msg: discord.Message, thing: str) -> discord.Message:
+    embed = discord.Embed(
+        colour=discord.Colour(GTALENS_ORANGE),
+        title=f"**{thing} identified - getting additional details...**"
+    )
+
+    await msg.edit(embed=embed)
+
+    return msg
