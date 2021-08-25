@@ -201,7 +201,10 @@ async def on_message(message: discord.Message):
             await message.channel.trigger_typing()
 
             vehicle_name = " ".join(args[2:-1])
-            possible_vehicles = Support.get_possible(vehicle_name.lower(), Vehicles.get_vehicles().values())
+            possible_vehicles = Support.get_possible(
+                vehicle_name.lower(),
+                list(Vehicles.get_vehicles().values())
+            )
             await Vehicles.send_possible_vehicles(message, client, possible_vehicles, vehicle_name)
 
             ''' VEHICLE LOOKUP '''
@@ -211,13 +214,17 @@ async def on_message(message: discord.Message):
 
             class_name = " ".join(args[2:-2])
             class_names = list(Vehicles.VEHICLE_CLASS_CORRECTIONS.keys())
-            possible_class_names = Vehicles.get_close_matches(class_name, class_names)
+            possible_class_names = Support.get_possible(
+                class_name.lower(),
+                class_names,
+                objects=False
+            )
 
             if not possible_class_names:
                 class_name = choice(class_names)
 
             else:
-                class_name = class_names[possible_class_names[0]]
+                class_name = possible_class_names[0]
 
             vehicles_class: list[Vehicles.Vehicle] = Vehicles.get_vehicle_class(
                 vehicle_class=class_name,
@@ -235,14 +242,18 @@ async def on_message(message: discord.Message):
 
             class_name = " ".join(args[2:]).strip()
             class_names = list(Vehicles.VEHICLE_CLASS_CORRECTIONS.keys())
-            possible_class_names = Vehicles.get_close_matches(class_name, class_names)
+            possible_class_names = Support.get_possible(
+                class_name.lower(),
+                class_names,
+                objects=False
+            )
             logger.debug(f"Possible Class Names: {possible_class_names}")
 
             if not possible_class_names:
                 class_name = choice(class_names)
 
             else:
-                class_name = class_names[possible_class_names[0]]
+                class_name = possible_class_names[0]
 
             await Vehicles.send_vehicle_class(
                 message, Vehicles.get_vehicle_class(class_name, Vehicles.get_vehicles()), class_name
@@ -254,7 +265,8 @@ async def on_message(message: discord.Message):
             await message.channel.trigger_typing()
 
             creator_name = " ".join(args[2:-1]).strip()
-            possible_creators = Support.get_possible(creator_name.lower(), Jobs.get_creators())
+            creators = list(Jobs.get_creators().values())
+            possible_creators = Support.get_possible(creator_name.lower(), creators)
 
             embed_type = ""
             if args[1].lower() in Jobs.PLAYLIST_SEARCH_ALIASES:
