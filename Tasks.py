@@ -141,7 +141,7 @@ async def update_jobs():
 
     shuffle(member_ids)
     logger.info(f"Updating Members: {', '.join([m[0] for m in member_ids])}")
-    for i, member_id in enumerate():  # shuffling to lessen timeout errors
+    for i, member_id in enumerate(member_ids):  # shuffling to lessen timeout errors
         await asyncio.shield(Jobs.add_sc_member_jobs(member_id[0]))
         # await asyncio.sleep(5)  # per user
     logger.info(f"Members Updated: {', '.join([m[0] for m in member_ids])}")
