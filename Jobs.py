@@ -455,7 +455,7 @@ async def sync_job(message: discord.Message, job_link: str) -> (discord.Message,
     job = None
     msg = None
     if job_id:
-        await Support.send_inbetween_msg(message, "Job")
+        msg = await Support.send_inbetween_msg(message, "Job")
 
         job = await get_job(job_id)
 
@@ -463,7 +463,7 @@ async def sync_job(message: discord.Message, job_link: str) -> (discord.Message,
             colour=discord.Colour(Support.GTALENS_ORANGE),
             title=f"**Syncing {job.creator.name}'s jobs and crews...**"
         )
-        msg = await message.channel.send(embed=embed)
+        await msg.edit(embed=embed)
 
         crews = await asyncio.shield(add_sc_member_jobs(job.creator.id))
         for crew_id in crews:
