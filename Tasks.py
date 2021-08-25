@@ -4,7 +4,7 @@ from discord.ext import tasks
 from dotenv import load_dotenv
 import logging
 import os
-from random import choice
+from random import choice, shuffle
 
 import Database
 import Jobs
@@ -140,7 +140,7 @@ async def update_jobs():
     db.connection.close()
 
     logger.info(f"Updating Members: {', '.join([m[0] for m in member_ids])}")
-    for i, member_id in enumerate(member_ids):
+    for i, member_id in enumerate(shuffle(member_ids)): # shuffling to lessen timeout errors
         await asyncio.shield(Jobs.add_sc_member_jobs(member_id[0]))
         # await asyncio.sleep(5)  # per user
     logger.info(f"Members Updated: {', '.join([m[0] for m in member_ids])}")
