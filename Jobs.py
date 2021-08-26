@@ -1,7 +1,6 @@
 import asyncio
 from datetime import datetime
 from copy import deepcopy
-from Custom_Libraries.difflib import get_close_matches
 import discord
 import json
 import logging
@@ -539,7 +538,7 @@ def get_creators() -> dict[str, Creator]:
     for creator in db.cursor.fetchall():
         creators[creator[0]] = Creator(
             _id=creator[0],
-            name=creator[1]
+            name=creator[1] if creator[1] else ""
         )
     return creators
 
@@ -705,26 +704,6 @@ def get_random_jobs() -> list[Job]:
     jobs: list[Job] = get_jobs()
     jobs = choices(jobs, k=6)
     return jobs
-
-
-def get_possible_jobs(job_name: str) -> list[Job]:
-    job_name_lower = job_name.lower()
-    jobs = get_jobs()
-    possible_jobs = get_close_matches(
-        job_name_lower, [j.name.lower() for j in jobs], n=6, cutoff=.3
-    )  # list of job names - max 6 so the reactions don't go wider than the embed or new line
-    possible_jobs = [jobs[i] for i in possible_jobs]
-
-    if len(possible_jobs) > 1:
-
-        if (
-                possible_jobs[0].name.lower() == job_name_lower and
-                possible_jobs[1].name.lower() != job_name_lower and
-                job_name_lower not in possible_jobs[1].name.lower()
-        ):  # only one exact match
-            return [possible_jobs[0]]
-
-    return possible_jobs
 
 
 async def send_possible_jobs(
@@ -947,28 +926,6 @@ async def send_playlists(message: discord.Message, creator: Creator) -> discord.
 
 
 ''' CREATORS DISCORD'''
-
-
-def get_possible_creators(creator_name: str) -> list[Creator]:
-    creator_name_lower = creator_name.lower()
-    creators = [c for c in get_creators().values() if c.name]
-
-    creator_names = [c.name for c in creators]
-    possible_creators = get_close_matches(
-        creator_name_lower, [c.lower() for c in creator_names], n=6, cutoff=.3
-    )
-    possible_creators = [creators[i] for i in possible_creators]
-
-    if len(possible_creators) > 1:
-
-        if (
-            possible_creators[0].name.lower() == creator_name_lower and
-            possible_creators[1].name.lower() != creator_name_lower and
-            creator_name_lower not in possible_creators[1].name.lower()
-        ):
-            return [possible_creators[0]]
-
-    return possible_creators
 
 
 async def send_possible_creators(
