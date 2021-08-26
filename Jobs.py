@@ -940,12 +940,12 @@ async def send_possible_creators(
 
     if len(possible_creators) == 1:
         msg = await Support.send_inbetween_msg(message, "Creator")
-        
+
         if embed_type == "creator_search_playlist":
             msg = await send_playlists(message, possible_creators[0])
 
         else:
-            msg = await send_creator(message, client, await get_creator_platforms(possible_creators[0]))
+            msg = await send_creator(msg, client, await get_creator_platforms(possible_creators[0]))
 
         return msg
 
