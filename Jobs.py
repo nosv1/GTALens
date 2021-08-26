@@ -764,7 +764,7 @@ async def send_possible_jobs(
 
         embed = discord.Embed(
             color=discord.Color(Support.GTALENS_ORANGE),
-            title=f"**Search: *{job_name}***",
+            title=f"**Search: *{job_name if job_name != '.random' else 'Random Jobs...'}***",
             description=f"[Search GTALens](https://gtalens.com/?page=1&search={job_name.replace(' ', '%20')}) **|** "
                         f"[Donate]({Support.DONATE_LINK})"
                         f"\n\nIf the searched track isn't in the results, "
