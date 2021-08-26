@@ -939,10 +939,11 @@ async def send_possible_creators(
 ) -> discord.Message:
 
     if len(possible_creators) == 1:
+        msg = await Support.send_inbetween_msg(message, "Creator")
+        
         if embed_type == "creator_search_playlist":
-            msg = await Support.send_inbetween_msg(message, "Creator")
             msg = await send_playlists(message, possible_creators[0])
-            
+
         else:
             msg = await send_creator(message, client, await get_creator_platforms(possible_creators[0]))
 
