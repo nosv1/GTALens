@@ -580,6 +580,7 @@ async def get_creator_platforms(creator):
 
     return creator_platforms
 
+
 ''' JOB DISCORD '''
 
 
@@ -711,6 +712,7 @@ async def send_possible_jobs(
 ) -> discord.Message:
 
     if len(possible_jobs) == 1:  # straight to sending the job embed
+        msg = await Support.send_inbetween_msg(message, "Job")
         msg = await send_job(message, client, await get_job(possible_jobs[0].rockstar_id))
 
     else:  # create embed for possible jobs list
@@ -938,7 +940,9 @@ async def send_possible_creators(
 
     if len(possible_creators) == 1:
         if embed_type == "creator_search_playlist":
+            msg = await Support.send_inbetween_msg(message, "Creator")
             msg = await send_playlists(message, possible_creators[0])
+            
         else:
             msg = await send_creator(message, client, await get_creator_platforms(possible_creators[0]))
 
