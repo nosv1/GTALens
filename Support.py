@@ -305,7 +305,7 @@ def get_possible(lowercase_thing, stuff, objects=True) -> list:
         ):  # only one exact match
             return [possible_stuff[0]]
 
-    return possible_stuff
+    return possible_jobs
 
 
 # TODO instead of this, just make it faster...

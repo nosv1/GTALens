@@ -225,12 +225,13 @@ async def on_reaction_add(
         if emoji in embed_meta:
             job_id = embed_meta.split(f"{emoji}=")[1].split('/')[0]
             await Support.send_inbetween_msg(msg, "Job")
-            job = await get_job(job_id)
 
             try:
                 await msg.clear_reactions()
             except discord.Forbidden:
                 pass
+
+            job = await get_job(job_id)
 
             await send_job(msg, client, job)
 
@@ -253,12 +254,13 @@ async def on_reaction_add(
         if emoji in embed_meta:
             creator_id = embed_meta.split(f"{emoji}=")[1].split('/')[0]
             await Support.send_inbetween_msg(msg, "Creator")
-            creator = get_creators()[creator_id]
 
             try:
                 await msg.clear_reactions()
             except discord.Forbidden:
                 pass
+
+            creator = get_creators()[creator_id]
 
             await send_creator(msg, client, await get_creator_platforms(creator))
 
@@ -459,11 +461,27 @@ async def sync_job(message: discord.Message, job_link: str) -> (discord.Message,
 
         job = await get_job(job_id)
 
-        embed = discord.Embed(
-            colour=discord.Colour(Support.GTALENS_ORANGE),
-            title=f"**Syncing {job.creator.name}'s jobs and crews...**"
-        )
-        await msg.edit(embed=embed)
+        if job:
+            embed = discord.Embed(
+                colour=discord.Colour(Support.GTALENS_ORANGE),
+                title=f"**Syncing {job.creator.name}'s jobs and crews...**"
+            )
+
+            await msg.edit(embed=embed)
+
+        else:
+            embed = discord.Embed(
+                colour=discord.Colour(Support.GTALENS_ORANGE),
+                title="Job was not found on GTALens.com",
+                description=f"The bot and the site use different databases, "
+                            f"but the bot depends on site to have the job to get extra details. "
+                            f"Request the job be added to the site by going to https://gtalens.com/job/{job_id} "
+                            f"Once it's available on the site, "
+                            f"then use `.lens sync` command again to sync it to the bot's database."
+            )
+
+            await msg.edit(embed=embed)
+            return
 
         crews = await asyncio.shield(add_sc_member_jobs(job.creator.id))
         for crew_id in crews:
@@ -620,8 +638,13 @@ async def get_job(job_id: str) -> Job:
                     job.variants.append([job.variants[i], p])
 
     else:
-        job: Job = get_jobs(_id=job_id)[0]
-        job.gtalens_id = '?'
+        job: list[Job] = get_jobs(_id=job_id)
+        if job:
+            job: Job = job[0]
+            job.gtalens_id = '?'
+
+        else:
+            return None
 
     while True:
 
