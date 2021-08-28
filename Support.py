@@ -307,7 +307,7 @@ def get_possible(lowercase_thing, stuff, objects=True) -> list:
         ):  # only one exact match
             return [possible_stuff[0]]
 
-    logger.info(f"Got Possible {type(stuff[0])}s: {[t.name if objects else t for t in possible_stuff]}")
+    logger.info(f"Got Possible {type(stuff[0])}: {[t.name if objects else t for t in possible_stuff]}")
     return possible_stuff
 
 
