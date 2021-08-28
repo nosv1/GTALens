@@ -202,15 +202,7 @@ async def on_message(message: discord.Message):
             await message.channel.trigger_typing()
 
             vehicle_name = " ".join(args[2:-1])
-<<<<<<< HEAD
 
-            msg = await message.channel.send(embed=discord.Embed(
-                colour=discord.Colour(Support.GTALENS_ORANGE),
-                title=f"**Searching: *{vehicle_name}***"
-            ))
-
-=======
->>>>>>> parent of 331a1bb (adjustment of keeping the user informed about search progress)
             possible_vehicles = Support.get_possible(
                 vehicle_name.lower(),
                 list(Vehicles.get_vehicles().values())
@@ -223,15 +215,7 @@ async def on_message(message: discord.Message):
             await message.channel.trigger_typing()
 
             class_name = " ".join(args[2:-2])
-<<<<<<< HEAD
 
-            msg = await message.channel.send(embed=discord.Embed(
-                colour=discord.Colour(Support.GTALENS_ORANGE),
-                title=f"**Searching: *{class_name}***"
-            ))
-
-=======
->>>>>>> parent of 331a1bb (adjustment of keeping the user informed about search progress)
             class_names = list(Vehicles.VEHICLE_CLASS_CORRECTIONS.keys())
             possible_class_names = Support.get_possible(
                 class_name.lower(),
@@ -260,15 +244,7 @@ async def on_message(message: discord.Message):
             await message.channel.trigger_typing()
 
             class_name = " ".join(args[2:]).strip()
-<<<<<<< HEAD
 
-            msg = await message.channel.send(embed=discord.Embed(
-                colour=discord.Colour(Support.GTALENS_ORANGE),
-                title=f"**Searching: *{class_name}***"
-            ))
-
-=======
->>>>>>> parent of 331a1bb (adjustment of keeping the user informed about search progress)
             class_names = list(Vehicles.VEHICLE_CLASS_CORRECTIONS.keys())
             possible_class_names = Support.get_possible(
                 class_name.lower(),
@@ -293,15 +269,7 @@ async def on_message(message: discord.Message):
             await message.channel.trigger_typing()
 
             creator_name = " ".join(args[2:-1]).strip()
-<<<<<<< HEAD
-
-            msg = await message.channel.send(embed=discord.Embed(
-                colour=discord.Colour(Support.GTALENS_ORANGE),
-                title=f"**Searching: *{creator_name}***"
-            ))
-
-=======
->>>>>>> parent of 331a1bb (adjustment of keeping the user informed about search progress)
+            
             creators = list(Jobs.get_creators().values())
             possible_creators = Support.get_possible(creator_name.lower(), creators)
 
