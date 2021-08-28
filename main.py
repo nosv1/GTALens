@@ -179,14 +179,7 @@ async def on_message(message: discord.Message):
             await message.channel.trigger_typing()
 
             job_name = " ".join(args[2:-1])
-<<<<<<< HEAD
-            msg = await message.channel.send(embed=discord.Embed(
-                colour=discord.Colour(Support.GTALENS_ORANGE),
-                title=f"**Searching: *{job_name}***"
-            ))
 
-=======
->>>>>>> parent of 331a1bb (adjustment of keeping the user informed about search progress)
             if job_name == ".random":
                 possible_jobs = Jobs.get_random_jobs()
             else:
