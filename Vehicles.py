@@ -521,7 +521,7 @@ async def send_vehicle_class(
                 value=vehicles_tier_str
             )
 
-    await msg.channel.send(embed=embed)
+    await msg.edit(embed=embed)
     return msg
 
 
@@ -597,7 +597,7 @@ async def send_tier(
         a_an = "an" if tier in ['A', 'E', 'F', 'H', 'I', 'L', 'M', 'N', 'O', 'R', 'S'] else 'a'
         embed.description = f"The {vehicles_class[0].vehicle_class} class does not have {a_an} {tier} Tier."
 
-    await msg.channel.send(embed=embed)
+    await msg.edit(embed=embed)
     return msg
 
 
