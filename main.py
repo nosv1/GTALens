@@ -180,16 +180,18 @@ async def on_message(message: discord.Message):
 
             job_name = " ".join(args[2:-1])
 
-            msg = await message.channel.send(embed=discord.Embed(
-                colour=discord.Colour(Support.GTALENS_ORANGE),
-                title=f"**Searching: *{job_name}***"
-            ))
+            if job_name:
 
-            if job_name == ".random":
-                possible_jobs = Jobs.get_random_jobs()
-            else:
-                possible_jobs = Support.get_possible(job_name.lower(), Jobs.get_jobs())
-            await Jobs.send_possible_jobs(msg, client, possible_jobs, job_name)
+                msg = await message.channel.send(embed=discord.Embed(
+                    colour=discord.Colour(Support.GTALENS_ORANGE),
+                    title=f"**Searching: *{job_name}***"
+                ))
+
+                if job_name == ".random":
+                    possible_jobs = Jobs.get_random_jobs()
+                else:
+                    possible_jobs = Support.get_possible(job_name.lower(), Jobs.get_jobs())
+                await Jobs.send_possible_jobs(msg, client, possible_jobs, job_name)
 
             ''' TRACK LOOKUP '''
 
@@ -208,24 +210,26 @@ async def on_message(message: discord.Message):
 
             creator_name = " ".join(args[2:-1]).strip()
 
-            msg = await message.channel.send(embed=discord.Embed(
-                colour=discord.Colour(Support.GTALENS_ORANGE),
-                title=f"**Searching: *{creator_name}***"
-            ))
+            if creator_name:
 
-            creators = list(Jobs.get_creators().values())
-            possible_creators = Support.get_possible(creator_name.lower(), creators)
+                msg = await message.channel.send(embed=discord.Embed(
+                    colour=discord.Colour(Support.GTALENS_ORANGE),
+                    title=f"**Searching: *{creator_name}***"
+                ))
 
-            embed_type = ""
-            if args[1].lower() in Jobs.PLAYLIST_SEARCH_ALIASES:
-                embed_type = "creator_search_playlist"
+                creators = list(Jobs.get_creators().values())
+                possible_creators = Support.get_possible(creator_name.lower(), creators)
 
-            elif args[1].lower() in Jobs.CREATOR_SEARCH_ALIASES:
-                embed_type = "creator_search"
+                embed_type = ""
+                if args[1].lower() in Jobs.PLAYLIST_SEARCH_ALIASES:
+                    embed_type = "creator_search_playlist"
 
-            await Jobs.send_possible_creators(
-                msg, client, possible_creators, creator_name, embed_type
-            )
+                elif args[1].lower() in Jobs.CREATOR_SEARCH_ALIASES:
+                    embed_type = "creator_search"
+
+                await Jobs.send_possible_creators(
+                    msg, client, possible_creators, creator_name, embed_type
+                )
 
             ''' CREATOR LOOKUP'''
 
@@ -234,16 +238,18 @@ async def on_message(message: discord.Message):
 
             vehicle_name = " ".join(args[2:-1])
 
-            msg = await message.channel.send(embed=discord.Embed(
-                colour=discord.Colour(Support.GTALENS_ORANGE),
-                title=f"**Searching: *{vehicle_name}***"
-            ))
+            if vehicle_name:
 
-            possible_vehicles = Support.get_possible(
-                vehicle_name.lower(),
-                list(Vehicles.get_vehicles().values())
-            )
-            await Vehicles.send_possible_vehicles(msg, client, possible_vehicles, vehicle_name)
+                msg = await message.channel.send(embed=discord.Embed(
+                    colour=discord.Colour(Support.GTALENS_ORANGE),
+                    title=f"**Searching: *{vehicle_name}***"
+                ))
+
+                possible_vehicles = Support.get_possible(
+                    vehicle_name.lower(),
+                    list(Vehicles.get_vehicles().values())
+                )
+                await Vehicles.send_possible_vehicles(msg, client, possible_vehicles, vehicle_name)
 
             ''' VEHICLE LOOKUP '''
 
@@ -252,32 +258,34 @@ async def on_message(message: discord.Message):
 
             class_name = " ".join(args[2:-2])
 
-            msg = await message.channel.send(embed=discord.Embed(
-                colour=discord.Colour(Support.GTALENS_ORANGE),
-                title=f"**Searching: *{class_name}***"
-            ))
+            if class_name:
 
-            class_names = list(Vehicles.VEHICLE_CLASS_CORRECTIONS.keys())
-            possible_class_names = Support.get_possible(
-                class_name.lower(),
-                class_names,
-                objects=False
-            )
+                msg = await message.channel.send(embed=discord.Embed(
+                    colour=discord.Colour(Support.GTALENS_ORANGE),
+                    title=f"**Searching: *{class_name}***"
+                ))
 
-            if not possible_class_names:
-                class_name = choice(class_names)
+                class_names = list(Vehicles.VEHICLE_CLASS_CORRECTIONS.keys())
+                possible_class_names = Support.get_possible(
+                    class_name.lower(),
+                    class_names,
+                    objects=False
+                )
 
-            else:
-                class_name = possible_class_names[0]
+                if not possible_class_names:
+                    class_name = choice(class_names)
 
-            vehicles_class: list[Vehicles.Vehicle] = Vehicles.get_vehicle_class(
-                vehicle_class=class_name,
-                vehicles=Vehicles.get_vehicles()
-            )
+                else:
+                    class_name = possible_class_names[0]
 
-            tier: str = args[-2][0].upper()
-            vehicles_tier, vehicles_tier_str = Vehicles.get_tier(tier, vehicles_class=vehicles_class)
-            await Vehicles.send_tier(msg, tier, vehicles_tier, vehicles_tier_str, vehicles_class)
+                vehicles_class: list[Vehicles.Vehicle] = Vehicles.get_vehicle_class(
+                    vehicle_class=class_name,
+                    vehicles=Vehicles.get_vehicles()
+                )
+
+                tier: str = args[-2][0].upper()
+                vehicles_tier, vehicles_tier_str = Vehicles.get_tier(tier, vehicles_class=vehicles_class)
+                await Vehicles.send_tier(msg, tier, vehicles_tier, vehicles_tier_str, vehicles_class)
 
             ''' VEHICLE TIER LOOKUP'''
 
@@ -286,28 +294,30 @@ async def on_message(message: discord.Message):
 
             class_name = " ".join(args[2:]).strip()
 
-            msg = await message.channel.send(embed=discord.Embed(
-                colour=discord.Colour(Support.GTALENS_ORANGE),
-                title=f"**Searching: *{class_name}***"
-            ))
+            if class_name:
 
-            class_names = list(Vehicles.VEHICLE_CLASS_CORRECTIONS.keys())
-            possible_class_names = Support.get_possible(
-                class_name.lower(),
-                class_names,
-                objects=False
-            )
-            logger.debug(f"Possible Class Names: {possible_class_names}")
+                msg = await message.channel.send(embed=discord.Embed(
+                    colour=discord.Colour(Support.GTALENS_ORANGE),
+                    title=f"**Searching: *{class_name}***"
+                ))
 
-            if not possible_class_names:
-                class_name = choice(class_names)
+                class_names = list(Vehicles.VEHICLE_CLASS_CORRECTIONS.keys())
+                possible_class_names = Support.get_possible(
+                    class_name.lower(),
+                    class_names,
+                    objects=False
+                )
+                logger.debug(f"Possible Class Names: {possible_class_names}")
 
-            else:
-                class_name = possible_class_names[0]
+                if not possible_class_names:
+                    class_name = choice(class_names)
 
-            await Vehicles.send_vehicle_class(
-                msg, Vehicles.get_vehicle_class(class_name, Vehicles.get_vehicles()), class_name
-            )
+                else:
+                    class_name = possible_class_names[0]
+
+                await Vehicles.send_vehicle_class(
+                    msg, Vehicles.get_vehicle_class(class_name, Vehicles.get_vehicles()), class_name
+                )
 
             ''' VEHICLE CLASS LOOKUP '''
 

@@ -237,7 +237,7 @@ def calculate_phrase_similarities(
         sum_matched_letters = sum(c in search_phrase for c in phrase)
 
         calculations = [
-            sum_matched_letters / phrase_len + sum_matched_letters if phrase else sys.maxsize,
+            sum_matched_letters / phrase_len + sum_matched_letters,
             Levenshtein.distance(search_phrase, phrase)  # keep this in index 1
             # if more calculations are added, edit the divisor in the avg loop below
         ]
