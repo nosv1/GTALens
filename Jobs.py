@@ -223,6 +223,7 @@ async def on_reaction_add(
 
         if emoji in embed_meta:
             job_id = embed_meta.split(f"{emoji}=")[1].split('/')[0]
+            await Support.send_inbetween_msg(msg, "Job")
 
             try:
                 await msg.clear_reactions()
@@ -251,6 +252,7 @@ async def on_reaction_add(
 
         if emoji in embed_meta:
             creator_id = embed_meta.split(f"{emoji}=")[1].split('/')[0]
+            await Support.send_inbetween_msg(msg, "Creator")
 
             try:
                 await msg.clear_reactions()
@@ -454,6 +456,7 @@ async def sync_job(message: discord.Message, job_link: str) -> (discord.Message,
     job = None
     msg = None
     if job_id:
+        msg = await Support.send_inbetween_msg(message, "Job")
 
         job = await get_job(job_id)
 
@@ -709,6 +712,7 @@ async def send_possible_jobs(
 ) -> discord.Message:
 
     if len(possible_jobs) == 1:  # straight to sending the job embed
+        msg = await Support.send_inbetween_msg(message, "Job")
         msg = await send_job(message, client, await get_job(possible_jobs[0].rockstar_id))
 
     else:  # create embed for possible jobs list
@@ -724,6 +728,7 @@ async def send_possible_jobs(
             platform_emoji = str(discord.utils.find(
                 lambda e: e.name == PLATFORM_CORRECTIONS[job.platform].lower(), client.get_guild(
                     Support.GTALENS_GUILD_ID).emojis))
+            logger.info(platform_emoji)
 
             possible_jobs_str += f"\n{Support.LETTERS_EMOJIS[letters[i]]} " \
                                  f"{platform_emoji} " \
@@ -927,7 +932,7 @@ async def send_playlists(message: discord.Message, creator: Creator) -> discord.
 
 
 async def send_possible_creators(
-        msg: discord.Message,
+        message: discord.Message,
         client: discord.Client,
         possible_creators: list[Creator],
         creator_name: str,
@@ -935,9 +940,10 @@ async def send_possible_creators(
 ) -> discord.Message:
 
     if len(possible_creators) == 1:
+        msg = await Support.send_inbetween_msg(message, "Creator")
 
         if embed_type == "creator_search_playlist":
-            msg = await send_playlists(msg, possible_creators[0])
+            msg = await send_playlists(message, possible_creators[0])
 
         else:
             msg = await send_creator(msg, client, await get_creator_platforms(possible_creators[0]))
@@ -974,7 +980,7 @@ async def send_possible_creators(
                         f"[{Support.ZERO_WIDTH}]({embed_meta})"
         )
 
-        msg = await msg.edit(embed=embed)
+        msg = await message.channel.send(embed=embed)
         for i, j in enumerate(possible_creators):
             await msg.add_reaction(Support.LETTERS_EMOJIS[letters[i]])
 

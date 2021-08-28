@@ -309,3 +309,18 @@ def get_possible(lowercase_thing, stuff, objects=True) -> list:
 
     logger.info(f"Got Possible {type(stuff[0])}: {[t.name if objects else t for t in possible_stuff]}")
     return possible_stuff
+
+
+# TODO instead of this, just make it faster...
+async def send_inbetween_msg(msg: discord.Message, thing: str) -> discord.Message:
+    embed = discord.Embed(
+        colour=discord.Colour(GTALENS_ORANGE),
+        title=f"**{thing} identified - getting additional details...**"
+    )
+
+    if msg.author.id == GTALENS_CLIENT_ID:
+        await msg.edit(embed=embed)
+    else:
+        msg = await msg.channel.send(embed=embed)
+
+    return msg
