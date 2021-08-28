@@ -207,11 +207,12 @@ async def get_url(url: str, headers=None, params=None, proxies=None) -> json:
 
 
 def calculate_phrase_similarities(
-        phrase: str, search_range: list[str]
+        phrase: str, search_range, objects=True
 ) -> list[list[str, int, float, float, float]]:
     """
     :param phrase:
-    :param search_range:
+    :param search_range: list of objects with .name or list of str
+    :param objects: if the things in stuff have .name then objects = True else if strings then False
     :return: [[phrase, phrase_index, matched_parts, L Dist, avg], ...] - phrase_index is og index in search_range
     """
 
@@ -231,6 +232,7 @@ def calculate_phrase_similarities(
     phrase_len = len(phrase)
 
     for i, search_phrase in enumerate(search_range):
+        search_phrase = search_phrase.name.lower() if objects else search_phrase.lower()
         sum_matched_letters = sum(c in search_phrase for c in phrase)
 
         calculations = [
@@ -265,12 +267,12 @@ def get_possible(lowercase_thing, stuff, objects=True) -> list:
     """
 
     :param lowercase_thing: lowercase object name
-    :param stuff: list of objects with .name attribute
+    :param stuff: list of objects with .name attribute or list of strings
     :param objects: if the things in stuff have .name then objects = True else if strings then False
     :return: list of objects
     """
     possible_stuff: list[list[str, int, float, float, float]] = calculate_phrase_similarities(
-        lowercase_thing, [t.name.lower() if objects else t.lower() for t in stuff]
+        lowercase_thing, stuff, objects=objects
     )
 
     calculations = []
@@ -287,9 +289,9 @@ def get_possible(lowercase_thing, stuff, objects=True) -> list:
             possible_stuff = possible_stuff[:i+1]
             break
 
-    possible_jobs = possible_stuff[:6]  # max of 6
+    possible_stuff = possible_stuff[:6]  # max of 6
 
-    if len(possible_jobs) > 1:
+    if len(possible_stuff) > 1:
         if objects:
             stuff_0 = possible_stuff[0].name.lower()
             stuff_1 = possible_stuff[1].name.lower()
@@ -305,7 +307,8 @@ def get_possible(lowercase_thing, stuff, objects=True) -> list:
         ):  # only one exact match
             return [possible_stuff[0]]
 
-    return possible_jobs
+    logger.info(f"Got Possible {type(stuff[0])}s: {[t.name if objects else t for t in possible_stuff]}")
+    return possible_stuff
 
 
 # TODO instead of this, just make it faster...
