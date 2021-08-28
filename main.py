@@ -181,7 +181,7 @@ async def on_message(message: discord.Message):
             job_name = " ".join(args[2:-1])
             msg = await message.channel.send(embed=discord.Embed(
                 colour=discord.Colour(Support.GTALENS_ORANGE),
-                title=f"**Searching: {job_name}***"
+                title=f"**Searching: *{job_name}***"
             ))
 
             if job_name == ".random":
@@ -211,7 +211,7 @@ async def on_message(message: discord.Message):
 
             msg = await message.channel.send(embed=discord.Embed(
                 colour=discord.Colour(Support.GTALENS_ORANGE),
-                title=f"**Searching: {vehicle_name}***"
+                title=f"**Searching: *{vehicle_name}***"
             ))
 
             possible_vehicles = Support.get_possible(
@@ -230,7 +230,7 @@ async def on_message(message: discord.Message):
 
             msg = await message.channel.send(embed=discord.Embed(
                 colour=discord.Colour(Support.GTALENS_ORANGE),
-                title=f"**Searching: {class_name}***"
+                title=f"**Searching: *{class_name}***"
             ))
 
             class_names = list(Vehicles.VEHICLE_CLASS_CORRECTIONS.keys())
@@ -264,7 +264,7 @@ async def on_message(message: discord.Message):
 
             msg = await message.channel.send(embed=discord.Embed(
                 colour=discord.Colour(Support.GTALENS_ORANGE),
-                title=f"**Searching: {class_name}***"
+                title=f"**Searching: *{class_name}***"
             ))
 
             class_names = list(Vehicles.VEHICLE_CLASS_CORRECTIONS.keys())
@@ -294,7 +294,7 @@ async def on_message(message: discord.Message):
 
             msg = await message.channel.send(embed=discord.Embed(
                 colour=discord.Colour(Support.GTALENS_ORANGE),
-                title=f"**Searching: {creator_name}***"
+                title=f"**Searching: *{creator_name}***"
             ))
 
             creators = list(Jobs.get_creators().values())
