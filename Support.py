@@ -1,5 +1,5 @@
-import asyncio
 import aiohttp
+import asyncio
 import discord
 from aiohttp_socks import ProxyConnector
 from datetime import datetime
@@ -14,6 +14,7 @@ import python_socks._errors as proxy_errors
 import re
 from stem import Signal
 from stem.control import Controller
+import sys
 
 logger = logging.getLogger('discord')
 
@@ -236,7 +237,7 @@ def calculate_phrase_similarities(
         sum_matched_letters = sum(c in search_phrase for c in phrase)
 
         calculations = [
-            sum_matched_letters / phrase_len + sum_matched_letters,
+            sum_matched_letters / phrase_len + sum_matched_letters if phrase else sys.maxsize,
             Levenshtein.distance(search_phrase, phrase)  # keep this in index 1
             # if more calculations are added, edit the divisor in the avg loop below
         ]
