@@ -14,7 +14,7 @@
     },
     {
       "name": "**__Vehicles__**",
-      "value": "**`.lens car CAR` - lookup a car\n**⠀",
+      "value": "**`.lens car CAR` - lookup a car\n`.lens tier CLASS TIER` - get vehicles in a class's tier\n`.lens class CLASS` - get vehicles in a class\n**⠀",
       "inline": false
     },
     {
