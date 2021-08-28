@@ -728,7 +728,7 @@ async def send_possible_jobs(
             platform_emoji = str(discord.utils.find(
                 lambda e: e.name == PLATFORM_CORRECTIONS[job.platform].lower(), client.get_guild(
                     Support.GTALENS_GUILD_ID).emojis))
-            print(platform_emoji)
+            logger.info(platform_emoji)
 
             possible_jobs_str += f"\n{Support.LETTERS_EMOJIS[letters[i]]} " \
                                  f"{platform_emoji} " \
