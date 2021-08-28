@@ -708,12 +708,12 @@ def get_random_jobs() -> list[Job]:
 
 
 async def send_possible_jobs(
-        message: discord.Message, client: discord.Client, possible_jobs: list[Job], job_name: str
+        msg: discord.Message, client: discord.Client, possible_jobs: list[Job], job_name: str
 ) -> discord.Message:
 
     if len(possible_jobs) == 1:  # straight to sending the job embed
-        msg = await Support.send_inbetween_msg(message, "Job")
-        msg = await send_job(message, client, await get_job(possible_jobs[0].rockstar_id))
+        msg = await Support.send_inbetween_msg(msg, "Job")
+        msg = await send_job(msg, client, await get_job(possible_jobs[0].rockstar_id))
 
     else:  # create embed for possible jobs list
         letters = list(Support.LETTERS_EMOJIS.keys())
@@ -762,7 +762,7 @@ async def send_possible_jobs(
         # TODO .lens playlist CREATOR
         # embed.set_footer(text=".lens playlist CREATOR")
 
-        msg = await message.channel.send(embed=embed)
+        await msg.edit(embed=embed)
         for i, j in enumerate(possible_jobs):
             await msg.add_reaction(Support.LETTERS_EMOJIS[letters[i]])
 
@@ -932,7 +932,7 @@ async def send_playlists(message: discord.Message, creator: Creator) -> discord.
 
 
 async def send_possible_creators(
-        message: discord.Message,
+        msg: discord.Message,
         client: discord.Client,
         possible_creators: list[Creator],
         creator_name: str,
@@ -940,10 +940,10 @@ async def send_possible_creators(
 ) -> discord.Message:
 
     if len(possible_creators) == 1:
-        msg = await Support.send_inbetween_msg(message, "Creator")
+        msg = await Support.send_inbetween_msg(msg, "Creator")
 
         if embed_type == "creator_search_playlist":
-            msg = await send_playlists(message, possible_creators[0])
+            msg = await send_playlists(msg, possible_creators[0])
 
         else:
             msg = await send_creator(msg, client, await get_creator_platforms(possible_creators[0]))
@@ -980,7 +980,8 @@ async def send_possible_creators(
                         f"[{Support.ZERO_WIDTH}]({embed_meta})"
         )
 
-        msg = await message.channel.send(embed=embed)
+        await msg.edit(embed=embed)
+
         for i, j in enumerate(possible_creators):
             await msg.add_reaction(Support.LETTERS_EMOJIS[letters[i]])
 

@@ -449,7 +449,7 @@ def get_vehicle_class(vehicle_class: str, vehicles: dict[str, Vehicle]) -> list[
 
 
 async def send_vehicle_class(
-        message: discord.Message, vehicles_class: list[Vehicle], vehicle_class: str
+        msg: discord.Message, vehicles_class: list[Vehicle], vehicle_class: str
 ) -> discord.Message:
 
     embed = discord.Embed(
@@ -521,7 +521,7 @@ async def send_vehicle_class(
                 value=vehicles_tier_str
             )
 
-    msg = await message.channel.send(embed=embed)
+    await msg.channel.send(embed=embed)
     return msg
 
 
@@ -578,7 +578,7 @@ def get_tier(
 
 
 async def send_tier(
-        message: discord.Message,
+        msg: discord.Message,
         tier: str,
         vehicles_tier: list[Vehicle],
         vehicles_tier_str: str,
@@ -597,7 +597,7 @@ async def send_tier(
         a_an = "an" if tier in ['A', 'E', 'F', 'H', 'I', 'L', 'M', 'N', 'O', 'R', 'S'] else 'a'
         embed.description = f"The {vehicles_class[0].vehicle_class} class does not have {a_an} {tier} Tier."
 
-    msg = await message.channel.send(embed=embed)
+    await msg.channel.send(embed=embed)
     return msg
 
 
@@ -788,11 +788,11 @@ async def update_vehicles():
 
 
 async def send_possible_vehicles(
-        message: discord.Message, client: discord.Client, possible_vehicles: list[Vehicle], vehicle_name: str
+        msg: discord.Message, client: discord.Client, possible_vehicles: list[Vehicle], vehicle_name: str
 ) -> discord.Message:
 
     if len(possible_vehicles) == 1:  # straight to sending the job embed
-        msg = await send_vehicle(message, client, possible_vehicles[0])
+        msg = await send_vehicle(msg, client, possible_vehicles[0])
 
     else:  # create embed for possible jobs list
         letters = list(Support.LETTERS_EMOJIS.keys())
@@ -823,7 +823,8 @@ async def send_possible_vehicles(
 
         embed.set_footer(text=".lens tier CLASS TIER | .lens class CLASS")
 
-        msg = await message.channel.send(embed=embed)
+        await msg.edit(embed=embed)
+
         for i, j in enumerate(possible_vehicles):
             await msg.add_reaction(Support.LETTERS_EMOJIS[letters[i]])
 
