@@ -203,6 +203,7 @@ async def on_message(message: discord.Message):
             if job:
                 await Jobs.send_job(message, client, job)
             Jobs.pickle_jobs()
+            Jobs.pickle_creators()
 
             ''' SYNC JOB '''
 
@@ -218,7 +219,7 @@ async def on_message(message: discord.Message):
                     title=f"**Searching: *{creator_name}***"
                 ))
 
-                creators = list(Jobs.get_creators().values())
+                creators = list(Jobs.get_pickled_creators().values())
                 possible_creators = Support.get_possible(creator_name.lower(), creators)
 
                 embed_type = ""

@@ -240,7 +240,7 @@ async def on_reaction_add(
 
         if emoji in embed_meta:
             creator_id = embed_meta.split(f"{emoji}=")[1].split('/')[0]
-            creator = get_creators()[creator_id]
+            creator = get_pickled_creators()[creator_id]
             creator = await get_playlists(creator)
 
             try:
@@ -261,7 +261,7 @@ async def on_reaction_add(
             except discord.Forbidden:
                 pass
 
-            creator = get_creators()[creator_id]
+            creator = get_pickled_creators()[creator_id]
 
             await send_creator(msg, client, await get_creator_platforms(creator))
 
@@ -532,7 +532,7 @@ def get_jobs() -> list[Job]:
 
 def get_pickled_jobs(_id="") -> list[Job]:
     jobs: list[Job] = pickle.load(open("database_cache/jobs.pkl", "rb"))
-    print(f"Got {len(jobs)} jobs")
+    logger.info(f"Got {len(jobs)} jobs")
     return [j for j in jobs if not _id or j.rockstar_id == _id]
 
 
@@ -546,16 +546,15 @@ def pickle_jobs():
 ''' CREATOR DATABASE '''
 
 
-def get_creators() -> dict[str, Creator]:
-    db = Database.connect_database()
-    db.cursor.execute(f"SELECT * FROM members")
-    creators = {}
-    for creator in db.cursor.fetchall():
-        creators[creator[0]] = Creator(
-            _id=creator[0],
-            name=creator[1] if creator[1] else ""
-        )
-    return creators
+async def get_creator_platforms(creator):
+
+    creator_platforms = {}
+    for platform in PLATFORM_CORRECTIONS.keys():
+        creator_platforms[platform] = deepcopy(creator)
+        creator_platforms[platform].platform = platform
+        creator_platforms[platform] = await get_gtalens_creator(creator_platforms[platform])
+
+    return creator_platforms
 
 
 async def get_gtalens_creator(creator: Creator) -> Creator:
@@ -585,15 +584,29 @@ async def get_gtalens_creator(creator: Creator) -> Creator:
     return creator
 
 
-async def get_creator_platforms(creator):
+def get_creators() -> dict[str, Creator]:
+    db = Database.connect_database()
+    db.cursor.execute(f"SELECT * FROM members")
+    creators = {}
+    for creator in db.cursor.fetchall():
+        creators[creator[0]] = Creator(
+            _id=creator[0],
+            name=creator[1] if creator[1] else ""
+        )
+    return creators
 
-    creator_platforms = {}
-    for platform in PLATFORM_CORRECTIONS.keys():
-        creator_platforms[platform] = deepcopy(creator)
-        creator_platforms[platform].platform = platform
-        creator_platforms[platform] = await get_gtalens_creator(creator_platforms[platform])
 
-    return creator_platforms
+def get_pickled_creators() -> dict[str, Creator]:
+    creators: dict[str, Creator] = pickle.load(open("database_cache/creators.pkl", "rb"))
+    logger.info(f"Got {len(creators)} creators")
+    return creators
+
+
+def pickle_creators():
+    logger.info("Updating creators.pkl")
+    creators = get_creators()
+    pickle.dump(creators, open("database_cache/creators.pkl", "wb"))
+    logger.info("Updated creators.pkl")
 
 
 ''' JOB DISCORD '''
@@ -736,7 +749,7 @@ async def send_possible_jobs(
         possible_jobs_str = ""
         embed_meta = "embed_meta/type=job_search/"
 
-        creators = get_creators()
+        creators = get_pickled_creators()
 
         for i, job in enumerate(possible_jobs):
             creator = creators[job.creator.id]

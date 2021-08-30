@@ -32,6 +32,7 @@ async def loop(client):
 
     if seconds % (60 * 60) == 0:
         Jobs.pickle_jobs()
+        Jobs.pickle_creators()
 
         ''' UPDATE JOBS PICKLE '''
 
