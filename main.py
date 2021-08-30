@@ -517,6 +517,9 @@ async def on_error(event, *args, **kwargs):
         devs_ping = ','.join(f'<@{d_id}>' for d_id in Support.DEVS.values())
         await errors_channel.send(f"{devs_ping}```{traceback.format_exc()}```")
 
+        if 'discord.errors.Forbidden' in traceback.format_exc():
+            return
+
         if args:
 
             if type(args[0]) == discord.Message:  # doesn't work for edits
