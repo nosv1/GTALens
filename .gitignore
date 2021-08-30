@@ -2,3 +2,5 @@ discord.log
 start_tor.bat
 start_tor.sh
 test.py
+database_cache/jobs.pkl
+database_cache/creators.pkl
