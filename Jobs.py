@@ -667,7 +667,6 @@ async def get_job(job_id: str) -> Job:
 
     else:
         job: list[Job] = get_pickled_jobs(_id=job_id)
-        job = pickle.load()
         if job:
             job: Job = job[0]
             job.gtalens_id = '?'
