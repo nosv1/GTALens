@@ -190,7 +190,7 @@ async def on_message(message: discord.Message):
                 if job_name == ".random":
                     possible_jobs = Jobs.get_random_jobs()
                 else:
-                    possible_jobs = Support.get_possible(job_name.lower(), Jobs.get_jobs())
+                    possible_jobs = Support.get_possible(job_name.lower(), Jobs.get_pickled_jobs())
                 await Jobs.send_possible_jobs(msg, client, possible_jobs, job_name)
 
             ''' TRACK LOOKUP '''
@@ -202,6 +202,7 @@ async def on_message(message: discord.Message):
             msg, job = await Jobs.sync_job(message, job_link)
             if job:
                 await Jobs.send_job(message, client, job)
+            Jobs.pickle_jobs()
 
             ''' SYNC JOB '''
 

@@ -4,6 +4,7 @@ from copy import deepcopy
 import discord
 import json
 import logging
+import pickle
 from random import choices
 
 import Database
@@ -516,9 +517,9 @@ async def sync_job(message: discord.Message, job_link: str) -> (discord.Message,
     return msg, job
 
 
-def get_jobs(_id='%%'):
+def get_jobs() -> list[Job]:
     db = Database.connect_database()
-    db.cursor.execute(f"SELECT * FROM jobs WHERE _id LIKE '%{_id}%'")
+    db.cursor.execute(f"SELECT * FROM jobs")
     db.connection.close()
     return [Job(
         rockstar_id=j[0],
@@ -527,6 +528,19 @@ def get_jobs(_id='%%'):
         updated=datetime.strptime(j[3], "%Y-%m-%dT%H:%M:%S"),
         creator=Creator(_id=j[4]),
     ) for j in db.cursor.fetchall()]
+
+
+def get_pickled_jobs(_id="") -> list[Job]:
+    jobs: list[Job] = pickle.load(open("database_cache/jobs.pkl", "rb"))
+    print(f"Got {len(jobs)} jobs")
+    return [j for j in jobs if not _id or j.rockstar_id == _id]
+
+
+def pickle_jobs():
+    logger.info("Updating jobs.pkl")
+    jobs = get_jobs()
+    pickle.dump(jobs, open("database_cache/jobs.pkl", "wb"))
+    logger.info("Updated jobs.pkl")
 
 
 ''' CREATOR DATABASE '''
@@ -639,7 +653,8 @@ async def get_job(job_id: str) -> Job:
                     job.variants.append([job.variants[i], p])
 
     else:
-        job: list[Job] = get_jobs(_id=job_id)
+        job: list[Job] = get_pickled_jobs(_id=job_id)
+        job = pickle.load()
         if job:
             job: Job = job[0]
             job.gtalens_id = '?'
@@ -703,7 +718,7 @@ async def get_job(job_id: str) -> Job:
 
 def get_random_jobs() -> list[Job]:
 
-    jobs: list[Job] = get_jobs()
+    jobs: list[Job] = get_pickled_jobs()
     jobs = choices(jobs, k=6)
     return jobs
 

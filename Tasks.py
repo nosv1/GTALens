@@ -28,15 +28,28 @@ async def loop(client):
         else:
             await client.change_presence(status=discord.Status.offline)
 
+        ''' UPDATE STATUS '''
+
+    if seconds % (60 * 60) == 0:
+        Jobs.pickle_jobs()
+
+        ''' UPDATE JOBS PICKLE '''
+
     if loop.current_loop > 0:  # skip first iteration
         if seconds % (2 * 60) == 0:
             await update_jobs()
 
+            ''' UPDATE JOBS '''
+
         # if seconds % (60 * 60 + 30) == 0:
         #     await update_crews()
 
+            ''' UPDATE CREWS '''
+
         if seconds % (12 * 60 * 60) == 0:
             await update_vehicles()
+
+            '''' UPDATE VEHICLES '''
 
 
 async def update_status(client, restart=False, close=False):
