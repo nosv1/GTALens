@@ -74,6 +74,11 @@ async def update_status(client, restart=False, close=False):
             type=discord.ActivityType.watching,
             name=".lens server - join GTALens's server"
         ),
+
+        discord.Activity(
+            type=discord.ActivityType.playing,
+            name=f"with {len(client.guilds)} servers - .lens invite"
+        ),
     ]
 
     activity = None
