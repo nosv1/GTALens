@@ -101,7 +101,7 @@ async def update_status(client, restart=False, close=False):
         activity=activity,
         status=discord.Status.online
     )
-    logger.info(f"Status: {activity.name}")
+    logger.info(f"Status: {activity.type.name.title()} {activity.name}")
 
 
 async def update_jobs():
