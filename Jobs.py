@@ -1089,7 +1089,7 @@ async def send_creator(
     else:
         await msg.edit(embed=embed)
 
-    logger.info(f"Sent creator: {', '.join([f'{p, c.name}' for p, c in creator_platforms])}")
+    logger.info(f"Sent creator: {', '.join([f'{p} - {creator_platforms[p]}' for p in creator_platforms])}")
 
     return msg
 
