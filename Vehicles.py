@@ -997,4 +997,6 @@ async def send_vehicle(message: discord.Message, client: discord.Client, vehicle
     for r in reactions_to_add:
         await msg.add_reaction(r)
 
+    logger.info(f"Sent vehicle: {vehicle.name}")
+
     return msg

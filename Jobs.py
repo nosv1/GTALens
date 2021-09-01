@@ -886,6 +886,8 @@ async def send_job(
     else:
         await msg.edit(embed=embed)
 
+    logger.info(f"Sent Job: {job.name} by {job.creator.name} on {job.platform}")
+
     crews = await asyncio.shield(add_sc_member_jobs(job.creator.id))
     for crew_id in crews:
         await add_crew(crew_id)
@@ -1086,6 +1088,8 @@ async def send_creator(
         await message.channel.send(embed=embed)
     else:
         await msg.edit(embed=embed)
+
+    logger.info(f"Sent creator: {', '.join([f'{p, c.name}' for p, c in creator_platforms])}")
 
     return msg
 
