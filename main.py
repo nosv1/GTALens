@@ -509,6 +509,10 @@ async def on_error(event, *args, **kwargs):
     logger.warning(f"\n--- UNHANDLED EXCEPTION ---\n\n{traceback.format_exc()}\n--- END UNHANDLED EXCEPTION ---")
 
     if HOST != "PC":
+
+        if 'discord.errors.Forbidden' in traceback.format_exc():
+            return
+
         errors_channel = client.get_channel(Support.GTALENS_ERRORS_CHANNEL_ID)
         errors_channel = await client.fetch_channel(
             Support.GTALENS_ERRORS_CHANNEL_ID
@@ -516,9 +520,6 @@ async def on_error(event, *args, **kwargs):
 
         devs_ping = ','.join(f'<@{d_id}>' for d_id in Support.DEVS.values())
         await errors_channel.send(f"{devs_ping}```{traceback.format_exc()}```")
-
-        if 'discord.errors.Forbidden' in traceback.format_exc():
-            return
 
         if args:
 
