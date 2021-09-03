@@ -453,7 +453,12 @@ async def add_sc_member_jobs(sc_member_id: str) -> dict:
 
 
 async def sync_job(message: discord.Message, job_link: str) -> (discord.Message, Job):
-    job_id = job_link.split("gtav/")[-1]
+
+    if 'gtav/' in job_link:
+        job_id = job_link.split("gtav/")[-1]
+
+    else:
+        job_id = None
 
     job = None
     msg = None
@@ -482,6 +487,8 @@ async def sync_job(message: discord.Message, job_link: str) -> (discord.Message,
             )
 
             await msg.edit(embed=embed)
+            logger.info(f'Sync Job: {job.name} not found on GTALens.com')
+
             return message, None
 
         crews = await asyncio.shield(add_sc_member_jobs(job.creator.id))
@@ -509,6 +516,7 @@ async def sync_job(message: discord.Message, job_link: str) -> (discord.Message,
                         f"\n`.lens sync https://socialclub.rockstargames.com/job/gtav/0mS1iV2tV06Wi-AJeQISbw`"
         )
         embed.set_footer(text="Having issues? Ask for help in the '.lens server'")
+        logger.info(f'Sync Job: Missing Job ID')
 
     if msg:
         await msg.edit(embed=embed)
