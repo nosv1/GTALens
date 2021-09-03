@@ -482,7 +482,7 @@ async def sync_job(message: discord.Message, job_link: str) -> (discord.Message,
             )
 
             await msg.edit(embed=embed)
-            return
+            return message, None
 
         crews = await asyncio.shield(add_sc_member_jobs(job.creator.id))
         for crew_id in crews:
