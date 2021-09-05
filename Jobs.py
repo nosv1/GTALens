@@ -578,6 +578,8 @@ async def get_gtalens_creator(creator: Creator) -> Creator:
             results = payload['results']
 
             for category in results:
+                # promoted, pinned, trending, most-relevant, recently-added, most-replayed, recently- added
+                
                 cat = category['cat'].replace('-', '_')
                 exec(f"creator.{cat} = []")
 
@@ -859,8 +861,9 @@ async def send_job(
 
         trending_str = ""
         trending: list[Job] = job.creator.trending
-        for j in trending[:5]:
-            trending_str += f"[{j.name}](https://gtalens.com/job/{j.gtalens_id})\n"
+        if trending:  # guess sometimes, it doesn't get the details from gtalens?
+            for j in trending[:5]:
+                trending_str += f"[{j.name}](https://gtalens.com/job/{j.gtalens_id})\n"
 
         embed.add_field(
             name=f"**__{job.creator.name}'s Trending__**",
