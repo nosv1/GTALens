@@ -487,7 +487,7 @@ async def sync_job(message: discord.Message, job_link: str) -> (discord.Message,
             )
 
             await msg.edit(embed=embed)
-            logger.info(f'Sync Job: {job.name} not found on GTALens.com')
+            logger.info(f'Sync Job: {job_id} not found on GTALens.com')
 
             return message, None
 
