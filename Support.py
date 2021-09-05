@@ -316,7 +316,7 @@ def get_possible(lowercase_thing, stuff, objects=True) -> list:
 async def send_inbetween_msg(msg: discord.Message, thing: str, gtalens_url: str) -> discord.Message:
     embed = discord.Embed(
         colour=discord.Colour(GTALENS_ORANGE),
-        title=f"**{thing} identified - getting additional details from [GTALens.com]{gtalens_url}...**"
+        title=f"**{thing} identified - getting additional details from [GTALens.com]({gtalens_url})...**"
     )
 
     if msg.author.id == GTALENS_CLIENT_ID:
