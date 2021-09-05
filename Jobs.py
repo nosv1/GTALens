@@ -225,7 +225,7 @@ async def on_reaction_add(
 
         if emoji in embed_meta:
             job_id = embed_meta.split(f"{emoji}=")[1].split('/')[0]
-            await Support.send_inbetween_msg(msg, "Job")
+            await Support.send_inbetween_msg(msg, "Job", f"https://gtalens.com/job/{job_id}")
 
             try:
                 await msg.clear_reactions()
@@ -254,7 +254,7 @@ async def on_reaction_add(
 
         if emoji in embed_meta:
             creator_id = embed_meta.split(f"{emoji}=")[1].split('/')[0]
-            await Support.send_inbetween_msg(msg, "Creator")
+            await Support.send_inbetween_msg(msg, "Creator", f"https://gtalens.com/profile/{creator_id}")
 
             try:
                 await msg.clear_reactions()
@@ -463,7 +463,7 @@ async def sync_job(message: discord.Message, job_link: str) -> (discord.Message,
     job = None
     msg = None
     if job_id:
-        msg = await Support.send_inbetween_msg(message, "Job")
+        msg = await Support.send_inbetween_msg(message, "Job", f"https://gtalens.com/job/{job_id}")
 
         job = await get_job(job_id)
 
@@ -750,7 +750,7 @@ async def send_possible_jobs(
 ) -> discord.Message:
 
     if len(possible_jobs) == 1:  # straight to sending the job embed
-        msg = await Support.send_inbetween_msg(msg, "Job")
+        msg = await Support.send_inbetween_msg(msg, "Job", f"https://gtalens.com/job/{possible_jobs[0].gtalens_id}")
         msg = await send_job(msg, client, await get_job(possible_jobs[0].rockstar_id))
 
     else:  # create embed for possible jobs list
@@ -980,7 +980,7 @@ async def send_possible_creators(
 ) -> discord.Message:
 
     if len(possible_creators) == 1:
-        msg = await Support.send_inbetween_msg(msg, "Creator")
+        msg = await Support.send_inbetween_msg(msg, "Creator", f"https://gtalens.com/{possible_creators[0].id}")
 
         if embed_type == "creator_search_playlist":
             msg = await send_playlists(msg, possible_creators[0])
