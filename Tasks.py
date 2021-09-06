@@ -126,7 +126,8 @@ async def update_jobs():
     # db.connection.commit()
 
     creators_limit = 6
-    tbd_creators_limit = 4
+    tbd_creators_limit = 0  # 4
+    # FIXME when u figure out he above fixme, uncomment above
 
     # updating known creators
     creators = f"""
