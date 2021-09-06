@@ -23,10 +23,7 @@ async def loop(client):
     seconds = loop.current_loop * 30
 
     if seconds % (5 * 60) == 0:
-        if HOST != "PC":
-            await update_status(client)
-        else:
-            await client.change_presence(status=discord.Status.offline)
+        await update_status(client)
 
         ''' UPDATE STATUS '''
 

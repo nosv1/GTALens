@@ -470,7 +470,7 @@ async def send_weather(message: discord.Message) -> discord.Message:
     embed.set_footer(text=f"Updated: {Support.smart_day_time_format('%H:%M UTC %A, {S} %B %Y', utc_now)}")
 
     msg = message
-    if message.author.id == Support.GTALENS_CLIENT_ID:
+    if message.author.id in Support.CLIENT_IDS.values():
         await msg.edit(embed=embed)
 
     else:
