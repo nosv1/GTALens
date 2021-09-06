@@ -28,7 +28,10 @@ GTALENS_ORANGE = int(0xF03C00)
 
 # IDS
 GTALENS_GUILD_ID = 873054419636334633
-GTALENS_CLIENT_ID = 872899427457716234
+CLIENT_IDS = {
+    'GTALENS_CLIENT_ID': 872899427457716234,
+    'PROTO_CLIENT_ID': 476974462022189056,
+}
 GTALENS_ERRORS_CHANNEL_ID = 876587516701048883
 DEVS = {
     'Mo#9991': 405944496665133058
@@ -319,7 +322,7 @@ async def send_inbetween_msg(msg: discord.Message, thing: str, gtalens_url: str)
         description=f"**{thing} identified - getting additional details from [GTALens.com]({gtalens_url})...**"
     )
 
-    if msg.author.id == GTALENS_CLIENT_ID:
+    if msg.author.id in CLIENT_IDS.values():
         await msg.edit(embed=embed)
     else:
         msg = await msg.channel.send(embed=embed)
