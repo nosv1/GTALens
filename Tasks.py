@@ -120,9 +120,10 @@ async def update_jobs():
             creator_id IS NULL
     """
 
-    db.cursor.execute(f"""{delete_not_creators};""")
-    logger.debug(f"Deleted Members: {db.cursor.rowcount}")
-    db.connection.commit()
+    # FIXME apparently this takes long time again...
+    # db.cursor.execute(f"""{delete_not_creators};""")
+    # logger.debug(f"Deleted Members: {db.cursor.rowcount}")
+    # db.connection.commit()
 
     creators_limit = 6
     tbd_creators_limit = 4
