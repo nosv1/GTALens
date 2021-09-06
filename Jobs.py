@@ -891,7 +891,7 @@ async def send_job(
         )
 
     msg = message
-    if message.author.id not in Support.CLIENT_IDS.values():
+    if message.author.id != Support.GTALENS_CLIENT_ID:
         msg = await msg.channel.send(embed=embed)
 
     else:
@@ -960,7 +960,7 @@ async def send_playlists(message: discord.Message, creator: Creator) -> discord.
     )
 
     msg = message
-    if message.author.id not in Support.CLIENT_IDS.values():
+    if message.author.id != Support.GTALENS_CLIENT_ID:
         msg = await msg.channel.send(embed=embed)
     else:
         await msg.edit(embed=embed)
@@ -1095,7 +1095,7 @@ async def send_creator(
         )
 
     msg = message
-    if msg.author.id not in Support.CLIENT_IDS.values():
+    if msg.author.id != Support.GTALENS_CLIENT_ID:
         await message.channel.send(embed=embed)
     else:
         await msg.edit(embed=embed)

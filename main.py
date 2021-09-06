@@ -1,4 +1,3 @@
-from datetime import datetime
 import discord
 import json
 import logging
@@ -99,35 +98,29 @@ async def on_message(message: discord.Message):
 
             embed = discord.Embed(
                 colour=discord.Colour(Support.GTALENS_ORANGE),
+                title=f"**Servers ({len(guilds)})**"
             )
             for i, guild in enumerate(guilds):
-                guilds[i] = [guild.name, guild.get_member(client.user.id).joined_at, guild.member_count]
+                guilds[i] = [guild.name, guild.get_member(client.user.id).joined_at]
             guilds.sort(key=lambda g: g[1])
-            guilds: list[str, datetime, int]
 
             guild_str = ""
-            total_member_count = 0
-            for guild_name, joined_at, member_count in guilds:
+            for guild_name, joined_at in guilds:
 
-                guild_str += f"**{guild_name}** ({member_count}) - " \
+                guild_str += f"**{guild_name}** - " \
                              f"{joined_at.strftime('%d %b %Y')}\n"
-                total_member_count += member_count
 
                 if len(guild_str) > 1000:
                     embed.add_field(
                         name=Support.SPACE_CHAR,
                         value=f"{guild_str} {Support.SPACE_CHAR}"
                     )
-                    guild_str = ""
 
             if guild_str:
                 embed.add_field(
                     name=Support.SPACE_CHAR,
                     value=guild_str
                 )
-
-            embed.title = f"**Servers: {len(guilds)}\n" \
-                          f"Members: {total_member_count}**"
 
             await message.channel.send(embed=embed)
 
@@ -555,7 +548,6 @@ async def on_error(event, *args, **kwargs):
 async def startup():
     await client.wait_until_ready()
 
-    logger.info("Starting Tasks.loop")
     await Tasks.loop.start(client)
 
 
@@ -568,18 +560,11 @@ def main():
         if HOST == "PC":
             subprocess.call([f"{dir_path}/start_tor.bat"])
 
-            bot_token = os.getenv("PROTO_TOKEN")  # used for testing
-            logger.info("Using PROTO_TOKEN")
-
-        else:
-            bot_token = os.getenv("GTALENS_TOKEN")
-            logger.info("Using GTALENS_TOKEN")
-
         # elif HOST == "PI4":
         #     subprocess.Popen([f"{dir_path}/start_tor.sh"])
 
         client.loop.create_task(startup())
-        client.run(bot_token)
+        client.run(os.getenv("TOKEN"))
 
 
 if __name__ == "__main__":
