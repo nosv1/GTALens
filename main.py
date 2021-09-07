@@ -84,6 +84,9 @@ async def on_message(message: discord.Message):
 
         if args[1].lower() == "test" and is_dev:
             pass
+            for task in asyncio.all_tasks():
+                if not task.done():
+                    print(str(task.get_coro()))
 
             ''' TEST '''
 
@@ -123,21 +126,29 @@ async def on_message(message: discord.Message):
 
             await message.channel.send(embed=embed)
 
-        elif args[1].lower() == "restart" and is_dev:
-            json.dump({'action': 'restart'}, open("restart.json", "w+"))
-            await Tasks.update_status(client, restart=True)
+        elif args[1].lower() in ["restart", "close"] and is_dev:
+
+            json.dump({'action': args[1].lower()}, open("restart.json", "w+"))
+            if args[1].lower() == "restart":
+                await Tasks.update_status(client, restart=True)
+
+            else:
+                await Tasks.update_status(client, close=True)
+
+            # wait for add_sc_member_jobs to finish before closing
+            while any([
+                'add_sc_member_jobs' in str(task.get_coro()) for task in asyncio.all_tasks() if not task.done()
+            ]):
+                await asyncio.sleep(1)
+
             await client.close()
 
-            ''' RESTART BOT '''
+            ''' RESTART/CLOSE BOT '''
 
         elif args[1].lower() == "db" and is_dev:
             await Database.send_rundown(message)
 
             ''' DATABASE RUNDOWN '''
-
-        elif args[1].lower() == "close" and is_dev:
-            json.dump({'action': 'close'}, open("restart.json", "w+"))
-            await client.close()
 
         elif args[1].lower() == "updatevehicles" and is_dev:
             msg = await message.channel.send('updating...')

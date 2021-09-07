@@ -85,13 +85,13 @@ async def update_status(client, restart=False, close=False):
     elif restart:
         activity = discord.Activity(
             type=discord.ActivityType.watching,
-            name="Restarting"
+            name="restart procedure"
         )
 
     elif close:
         activity = discord.Activity(
             type=discord.ActivityType.watching,
-            name="Shutting Down for Maintenance"
+            name="shutdown procedure"
         )
 
     await client.change_presence(
