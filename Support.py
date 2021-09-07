@@ -10,6 +10,7 @@ import Levenshtein
 import logging
 import numpy as np
 import os
+import pickle
 import python_socks._errors as proxy_errors
 import re
 from stem import Signal
@@ -168,6 +169,47 @@ def num_suffix(num: int) -> str:
     return f"{num}{'th' if 11 <= num <= 13 else {1: 'st', 2: 'nd', 3: 'rd'}.get(num % 10, 'th')}"
 
 
+async def get_new_ip(connector=None, uses=5):
+    """
+
+    :param connector: this should be the proxies being used
+    :param uses: number of times we're okay with using the same ip
+    :return:
+    """
+
+    support_variables = pickle.load(open('support_variables.pkl', 'rb'))
+    current_ip = support_variables['current_ip']['ip']
+    current_ip_uses = support_variables['current_ip']['uses']
+
+    controller = None
+    if current_ip_uses > uses:
+        new_ip = current_ip
+        while new_ip == current_ip:
+            with Controller.from_port(port=9051) as controller:
+                # afaik, im not too mad about the password being easy, just needed to please the Controller
+                controller.authenticate(password="password")
+                controller.signal(Signal.NEWNYM)
+
+            async with aiohttp.ClientSession(connector=connector) as cs:
+                async with cs.get('http://httpbin.org/ip') as r:
+                    new_ip = json.loads(await r.text())['origin']
+
+        support_variables['current_ip'] = {
+            'ip': new_ip,
+            'uses': 1
+        }
+
+    else:
+        support_variables['current_ip'] = {
+            'ip': current_ip,
+            'uses': current_ip_uses + 1
+        }
+
+    logger.info(f"Got new IP: {support_variables['current_ip']}")
+    pickle.dump(support_variables, open('support_variables.pkl', 'wb'))
+    return controller
+
+
 async def get_url(url: str, headers=None, params=None, proxies=None) -> json:
     """
 
@@ -184,15 +226,13 @@ async def get_url(url: str, headers=None, params=None, proxies=None) -> json:
     if params is None:
         params = {}
 
-    with Controller.from_port(port=9051) as controller:
-        # afaik, im not too mad about the password being easy, just needed to please the Controller
-        controller.authenticate(password="password")
-        controller.signal(Signal.NEWNYM)
-
     connector_url = os.getenv(f"{HOST}_CONNECTOR")
 
     if proxies:
         connector = ProxyConnector.from_url(connector_url)
+        await get_new_ip(connector)
+        connector = ProxyConnector.from_url(connector_url)
+        
     else:
         connector = proxies
 
