@@ -253,7 +253,7 @@ async def get_url(url: str, headers=None, params=None, proxies=None) -> json:
                     return {'status': False, 'error': {'code': 'ProxyError'}}
 
         except RuntimeError:  # session is closed try again using the new ip
-            pass
+            logger.warning("Support.get_url() failed: RuntimeError, trying again...")
 
 
 def calculate_phrase_similarities(
