@@ -191,8 +191,14 @@ async def get_new_ip(connector=None, uses=4):
                 controller.signal(Signal.NEWNYM)
 
             async with aiohttp.ClientSession(connector=connector) as cs:
-                async with cs.get('http://httpbin.org/ip') as r:
-                    new_ip = json.loads(await r.text())['origin']
+                while True:
+                    try:
+                        async with cs.get('http://httpbin.org/ip') as r:
+                            new_ip = json.loads(await r.text())['origin']
+                            break
+                    except proxy_errors.ProxyError:
+                        await asyncio.sleep(1)
+                        logger.warning("Support.get_new_ip() was not successful, ProxyError")
 
         support_variables['current_ip'] = {
             'ip': new_ip,
