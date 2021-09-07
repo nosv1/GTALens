@@ -106,7 +106,6 @@ async def on_message(message: discord.Message):
             guild_str = ""
             members = []
             for guild_name, joined_at, guild_members in guilds:
-                print(guild_members)
 
                 guild_str += f"**{guild_name}** ({len(guild_members)}) - " \
                              f"{joined_at.strftime('%d %b %Y')}\n"
@@ -126,7 +125,8 @@ async def on_message(message: discord.Message):
                 )
 
             embed.title = f"**Servers: {len(guilds)}\n" \
-                          f"Unique Members: {len(set(members))}**"
+                          f"Unique Members: {len(set(members))}\n" \
+                          f"Total Members: {len(members)}**"
 
             await message.channel.send(embed=embed)
 
