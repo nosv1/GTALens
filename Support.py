@@ -169,7 +169,7 @@ def num_suffix(num: int) -> str:
     return f"{num}{'th' if 11 <= num <= 13 else {1: 'st', 2: 'nd', 3: 'rd'}.get(num % 10, 'th')}"
 
 
-async def get_new_ip(connector=None, uses=5):
+async def get_new_ip(connector=None, uses=4):
     """
 
     :param connector: this should be the proxies being used
