@@ -22,9 +22,10 @@ load_dotenv()
 
 HOST = os.getenv("HOST")
 
-# intents = discord.Intents.all()
-# client = discord.Client(intents=intents)
-client = discord.Client()
+intents = discord.Intents.default()
+intents.members = True
+client = discord.Client(intents=intents)
+# client = discord.Client()
 
 # Logging to console and file
 
@@ -90,7 +91,7 @@ async def on_message(message: discord.Message):
 
             ''' TEST '''
 
-        elif args[1].lower() == "servers" and is_dev:
+        elif args[1].lower() == "servers":
 
             guilds: list[discord.Guild] = client.guilds
 
@@ -98,15 +99,18 @@ async def on_message(message: discord.Message):
                 colour=discord.Colour(Support.GTALENS_ORANGE),
             )
             for i, guild in enumerate(guilds):
-                guilds[i] = [guild.name, guild.get_member(client.user.id).joined_at, guild.member_count]
+                guilds[i] = [guild.name, guild.get_member(client.user.id).joined_at, guild.members]
             guilds.sort(key=lambda g: g[1])
-            guilds: list[str, datetime, int]
+            guilds: list[str, datetime, list[discord.Member]]
 
             guild_str = ""
-            for guild_name, joined_at, member_count in guilds:
+            members = []
+            for guild_name, joined_at, guild_members in guilds:
+                print(guild_members)
 
-                guild_str += f"**{guild_name}** ({member_count}) - " \
+                guild_str += f"**{guild_name}** ({len(guild_members)}) - " \
                              f"{joined_at.strftime('%d %b %Y')}\n"
+                members += guild_members
 
                 if len(guild_str) > 1000:
                     embed.add_field(
@@ -115,14 +119,14 @@ async def on_message(message: discord.Message):
                     )
                     guild_str = ""
 
-            if guild_str:
+            if guild_str and is_dev:
                 embed.add_field(
                     name=Support.SPACE_CHAR,
                     value=guild_str
                 )
 
             embed.title = f"**Servers: {len(guilds)}\n" \
-                          f"Members: {len(list(client.get_all_members()))}**"
+                          f"Unique Members: {len(set(members))}**"
 
             await message.channel.send(embed=embed)
 
