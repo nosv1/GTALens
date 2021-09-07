@@ -561,8 +561,9 @@ async def on_error(event, *args, **kwargs):
 async def startup():
     await client.wait_until_ready()
 
-    logger.info("Starting Tasks.loop")
-    await Tasks.loop.start(client)
+    if HOST != "PC":
+        logger.info("Starting Tasks.loop")
+        await Tasks.loop.start(client)
 
 
 def main():

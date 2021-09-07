@@ -228,7 +228,6 @@ async def get_url(url: str, headers=None, params=None, proxies=None) -> json:
 
     connector_url = os.getenv(f"{HOST}_CONNECTOR")
 
-
     with Controller.from_port(port=9051) as controller:
         # afaik, im not too mad about the password being easy, just needed to please the Controller
         controller.authenticate(password="password")
