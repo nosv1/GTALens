@@ -198,6 +198,7 @@ async def get_new_ip(connector=None, uses=5):
             'ip': new_ip,
             'uses': 1
         }
+        logger.info(f"Got new IP: {support_variables['current_ip']}")
 
     else:
         support_variables['current_ip'] = {
@@ -205,7 +206,6 @@ async def get_new_ip(connector=None, uses=5):
             'uses': current_ip_uses + 1
         }
 
-    logger.info(f"Got new IP: {support_variables['current_ip']}")
     pickle.dump(support_variables, open('support_variables.pkl', 'wb'))
     return controller
 
@@ -228,11 +228,17 @@ async def get_url(url: str, headers=None, params=None, proxies=None) -> json:
 
     connector_url = os.getenv(f"{HOST}_CONNECTOR")
 
+
+    with Controller.from_port(port=9051) as controller:
+        # afaik, im not too mad about the password being easy, just needed to please the Controller
+        controller.authenticate(password="password")
+        controller.signal(Signal.NEWNYM)
+
     if proxies:
         connector = ProxyConnector.from_url(connector_url)
-        await get_new_ip(connector)
-        connector = ProxyConnector.from_url(connector_url)
-        
+        # await get_new_ip(connector)
+        # connector = ProxyConnector.from_url(connector_url)
+
     else:
         connector = proxies
 

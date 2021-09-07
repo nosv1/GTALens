@@ -84,13 +84,13 @@ async def update_status(client, restart=False, close=False):
 
     elif restart:
         activity = discord.Activity(
-            type=discord.ActivityType.watching,
+            type=discord.ActivityType.playing,
             name="restart procedure"
         )
 
     elif close:
         activity = discord.Activity(
-            type=discord.ActivityType.watching,
+            type=discord.ActivityType.playing,
             name="shutdown procedure"
         )
 
