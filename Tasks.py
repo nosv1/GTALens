@@ -1,4 +1,5 @@
 import asyncio
+from datetime import datetime
 import discord
 from discord.ext import tasks
 from dotenv import load_dotenv
@@ -102,6 +103,8 @@ async def update_status(client, restart=False, close=False):
 
 
 async def update_jobs():
+    start = datetime.utcnow()
+
     db: Database.DB = Database.connect_database()
 
     # deleting known not creators, at least atm
@@ -164,7 +167,11 @@ async def update_jobs():
     for i, member_id in enumerate(member_ids):
         await asyncio.shield(Jobs.add_sc_member_jobs(member_id[0]))
         # await asyncio.sleep(5)  # per user
+        
+    end = datetime.utcnow()
+
     logger.info(f"Members Updated: {', '.join([m[0] for m in member_ids])}")
+    logger.info(f"Elapsed Time: {(end-start).total_seconds()} seconds")
 
 
 async def update_crews():
