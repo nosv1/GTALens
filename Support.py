@@ -240,7 +240,7 @@ async def get_url(url: str, headers=None, params=None, proxies=None) -> json:
 
             async with aiohttp.ClientSession(connector=connector) as cs:
                 try:
-                    async with cs.get(url, headers=headers, params=params, timeout=5) as r:
+                    async with cs.get(url, headers=headers, params=params, timeout=10) as r:
                         return json.loads(await r.text())
 
                 except asyncio.exceptions.TimeoutError:
