@@ -1,3 +1,4 @@
+import asyncio
 from datetime import datetime
 import discord
 import json
@@ -45,14 +46,10 @@ logger.addHandler(console_handler)
 
 #
 
-paused = False
-
 
 @client.event
 async def on_message(message: discord.Message):
     await client.wait_until_ready()
-
-    global paused
 
     args: list[str]
     message_content: str
@@ -83,9 +80,6 @@ async def on_message(message: discord.Message):
         )
         is_dev = message.author.id in Support.DEVS.values()
 
-        if paused and not is_dev:
-            return
-
         ''' COMMANDS  '''
 
         if args[1].lower() == "test" and is_dev:
@@ -106,12 +100,10 @@ async def on_message(message: discord.Message):
             guilds: list[str, datetime, int]
 
             guild_str = ""
-            total_member_count = 0
             for guild_name, joined_at, member_count in guilds:
 
                 guild_str += f"**{guild_name}** ({member_count}) - " \
                              f"{joined_at.strftime('%d %b %Y')}\n"
-                total_member_count += member_count
 
                 if len(guild_str) > 1000:
                     embed.add_field(
@@ -127,23 +119,9 @@ async def on_message(message: discord.Message):
                 )
 
             embed.title = f"**Servers: {len(guilds)}\n" \
-                          f"Members: {total_member_count}**"
+                          f"Members: {len(list(client.get_all_members()))}**"
 
             await message.channel.send(embed=embed)
-
-        elif args[1].lower() == "pause" and is_dev:
-            paused = True
-            await client.change_presence(
-                activity=discord.Activity(
-                    type=discord.ActivityType.watching,
-                    name="Maintenance Mode"
-                ),
-                status=discord.Status.do_not_disturb
-            )
-
-        elif args[1].lower() == "unpause" and is_dev:
-            paused = False
-            await Tasks.update_status(client)
 
         elif args[1].lower() == "restart" and is_dev:
             json.dump({'action': 'restart'}, open("restart.json", "w+"))
@@ -381,9 +359,6 @@ async def on_message(message: discord.Message):
 async def on_raw_message_edit(payload: discord.RawMessageUpdateEvent):
     await client.wait_until_ready()
 
-    if paused:
-        return
-
     if payload.channel_id:
         channel_id = payload.channel_id
         channel = client.get_channel(channel_id)
@@ -393,17 +368,17 @@ async def on_raw_message_edit(payload: discord.RawMessageUpdateEvent):
 
         if payload.message_id:
             message = await channel.fetch_message(payload.message_id)
+
             if payload.cached_message:
+
                 if message.content != payload.cached_message.content:
+
                     await on_message(message)
 
 
 @client.event
 async def on_raw_reaction_add(payload: discord.RawReactionActionEvent):
     await client.wait_until_ready()
-
-    if paused:
-        return
 
     m = [m for m in client.cached_messages if m.id == payload.message_id]
     message = m[0] if m else m
@@ -456,9 +431,6 @@ async def on_raw_reaction_add(payload: discord.RawReactionActionEvent):
 @client.event
 async def on_raw_reaction_remove(payload: discord.RawReactionActionEvent):
     await client.wait_until_ready()
-
-    if paused:
-        return
 
     # check the cache before fetching the message
     m = [m for m in client.cached_messages if m.id == payload.message_id]
@@ -515,41 +487,64 @@ async def on_ready():
 async def on_error(event, *args, **kwargs):
     logger.warning(f"\n--- UNHANDLED EXCEPTION ---\n\n{traceback.format_exc()}\n--- END UNHANDLED EXCEPTION ---")
 
+    if 'discord.errors.Forbidden' in traceback.format_exc():
+        return
+
+    message_content = ""
+    if args:
+
+        if event in [
+            'on_raw_message_edit',
+            'on_message'
+        ]:
+
+            if event == 'on_raw_message_edit':
+                message: discord.Message = [m for m in client.cached_messages if m.id == args[0].message_id][0]
+
+            else:
+                message: discord.Message = args[0]
+
+            embed = discord.Embed(
+                colour=discord.Colour(Support.GTALENS_ORANGE),
+                title="Oops!",
+                description="Looks like there was an error. The developers have been notified, "
+                            "and the error will, hopefully, be resolved within 24 hours. "
+                            "We are sorry for this inconvenience."
+            )
+
+            await message.reply(embed=embed)
+
+            message_content = message.content
+
+        elif event in [
+            'on_raw_reaction_remove',
+            'on_raw_reaction_add'
+        ]:
+            messages = [m for m in client.cached_messages if m.id == args[0].message_id]
+            if messages:
+                message = messages[0]
+
+            else:
+                channel = client.get_channel(args[0].channel_id)
+
+                if not channel:
+                    channel = await client.fetch_channel(args[0].channel_id)
+
+                message = await channel.fetch_message(args[0].message_id)
+
+            await message.add_reaction(Support.X)
+            await asyncio.sleep(5)
+            await message.remove_reaction(Support.X, client.user)
+
     if HOST != "PC":
-
-        if 'discord.errors.Forbidden' in traceback.format_exc():
-            return
-
         errors_channel = client.get_channel(Support.GTALENS_ERRORS_CHANNEL_ID)
         errors_channel = await client.fetch_channel(
             Support.GTALENS_ERRORS_CHANNEL_ID
         ) if not errors_channel else errors_channel
-
         devs_ping = ','.join(f'<@{d_id}>' for d_id in Support.DEVS.values())
-        await errors_channel.send(f"{devs_ping}```{traceback.format_exc()}```")
-
-        if args:
-
-            if type(args[0]) == discord.Message:  # doesn't work for edits
-                message: discord.Message = args[0]
-
-            # elif type(args[0]) == discord.RawMessageUpdateEvent:
-            #     args[0]: discord.RawMessageUpdateEvent
-            #     channel = client.get_channel(args[0].channel_id)
-            #     message: discord.Message = await channel.fetch_message(args[0].message_id)
-
-                embed = discord.Embed(
-                    colour=discord.Colour(Support.GTALENS_ORANGE),
-                    title="Oops!",
-                    description="Looks like there was an error. The developers have been notified, "
-                                "and the error will, hopefully, be resolved within 24 hours. "
-                                "We are sorry for this inconvenience."
-                )
-
-                await message.reply(embed=embed)
-
-    else:
-        print(traceback.format_exc())
+        await errors_channel.send(
+            f"{devs_ping}\n> **{message_content}** ```{traceback.format_exc()}```"
+        )
 
 
 async def startup():
