@@ -7,6 +7,8 @@ import logging
 import pickle
 from random import choices
 
+import mysql.connector.errors
+
 import Database
 from Database import connect_database, replace_chars
 import Support
@@ -392,17 +394,25 @@ async def add_sc_member_jobs(sc_member_id: str) -> dict:
                                 db.connection.commit()
                                 purged = True
 
-                            db.cursor.execute(f"""
-                                INSERT IGNORE INTO jobs (
-                                    _id, _name, platform, updated, creator_id, synced
-                                ) VALUES (
-                                    '{job['id']}', 
-                                    '{replace_chars(job['name'])}',
-                                    '{platform}', 
-                                    '{job['createdDate'].split('.')[0]}',
-                                    '{sc_member_id}',
-                                    '{utcnow}'
-                                );""")
+                        while True:
+                            try:
+                                db.cursor.execute(f"""
+                                    INSERT IGNORE INTO jobs (
+                                        _id, _name, platform, updated, creator_id, synced
+                                    ) VALUES (
+                                        '{job['id']}', 
+                                        '{replace_chars(job['name'])}',
+                                        '{platform}', 
+                                        '{job['createdDate'].split('.')[0]}',
+                                        '{sc_member_id}',
+                                        '{utcnow}'
+                                    );""")
+                                break
+
+                            except mysql.connector.errors.InternalError:
+                                # deadlock found when trying to get lock; try restarting transaction :shrug:
+                                logger.warning("mysql.connector.errors.InternalError, trying again in 1 second")
+                                await asyncio.sleep(1)
 
                         db.connection.commit()
 
