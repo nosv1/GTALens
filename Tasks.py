@@ -167,7 +167,7 @@ async def update_jobs():
     for i, member_id in enumerate(member_ids):
         await asyncio.shield(Jobs.add_sc_member_jobs(member_id[0]))
         # await asyncio.sleep(5)  # per user
-        
+
     end = datetime.utcnow()
 
     logger.info(f"Members Updated: {', '.join([m[0] for m in member_ids])}")
