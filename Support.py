@@ -198,7 +198,7 @@ async def get_new_ip(connector=None, uses=4):
             'ip': new_ip,
             'uses': 1
         }
-        logger.debug(f"Got new IP: {support_variables['current_ip']['ip']}")
+        logger.info(f"Got new IP: {support_variables['current_ip']['ip']}")
 
     else:
         support_variables['current_ip'] = {
