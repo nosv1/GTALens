@@ -228,32 +228,32 @@ async def get_url(url: str, headers=None, params=None, proxies=None) -> json:
 
     connector_url = os.getenv(f"{HOST}_CONNECTOR")
 
-    with Controller.from_port(port=9051) as controller:
-        # afaik, im not too mad about the password being easy, just needed to please the Controller
-        controller.authenticate(password="password")
-        controller.signal(Signal.NEWNYM)
-
-    if proxies:
-        connector = ProxyConnector.from_url(connector_url)
-        # await get_new_ip(connector)
-        # connector = ProxyConnector.from_url(connector_url)
-
-    else:
-        connector = proxies
-
-    async with aiohttp.ClientSession(connector=connector) as cs:
+    while True:
         try:
-            async with cs.get(url, headers=headers, params=params, timeout=10) as r:
-                return json.loads(await r.text())
+            if proxies:
+                connector = ProxyConnector.from_url(connector_url)
+                await get_new_ip(connector)
+                connector = ProxyConnector.from_url(connector_url)
 
-        except asyncio.exceptions.TimeoutError:
-            return {'status': False, 'error': {'code': 'TimeoutError'}}
+            else:
+                connector = proxies
 
-        except json.decoder.JSONDecodeError:
-            return {'status': False, 'error': {'code': 'JSONDecodeError'}}
+            async with aiohttp.ClientSession(connector=connector) as cs:
+                try:
+                    async with cs.get(url, headers=headers, params=params, timeout=10) as r:
+                        return json.loads(await r.text())
 
-        except proxy_errors.ProxyError:
-            return {'status': False, 'error': {'code': 'ProxyError'}}
+                except asyncio.exceptions.TimeoutError:
+                    return {'status': False, 'error': {'code': 'TimeoutError'}}
+
+                except json.decoder.JSONDecodeError:
+                    return {'status': False, 'error': {'code': 'JSONDecodeError'}}
+
+                except proxy_errors.ProxyError:
+                    return {'status': False, 'error': {'code': 'ProxyError'}}
+
+        except RuntimeError:  # session is closed try again using the new ip
+            pass
 
 
 def calculate_phrase_similarities(
