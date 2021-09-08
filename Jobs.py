@@ -909,11 +909,16 @@ async def send_job(
 
     logger.info(f"Sent Job: {job.name} by {job.creator.name} on {job.platform}")
 
+    logger.info(f"Updating {job.creator.id}'s jobs and crews...")
+    start = datetime.utcnow()
+
     crews = await asyncio.shield(add_sc_member_jobs(job.creator.id))
     for crew_id in crews:
         await add_crew(crew_id)
 
+    end = datetime.utcnow()
     logger.info(f'Updated {job.creator.id}\'s jobs and crews')
+    logger.info(f"Elapsed Time: {(end - start).total_seconds()} seconds")
 
     return msg
 
