@@ -196,6 +196,11 @@ async def get_new_ip(connector=None, uses=4):
                         async with cs.get('http://httpbin.org/ip') as r:
                             new_ip = json.loads(await r.text())['origin']
                             break
+
+                    except json.decoder.JSONDecodeError:
+                        await asyncio.sleep(1)
+                        logger.warning("Support.get_new_ip() was not successful, JSONDecodeError")
+
                     except proxy_errors.ProxyError:
                         await asyncio.sleep(1)
                         logger.warning("Support.get_new_ip() was not successful, ProxyError")
