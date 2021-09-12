@@ -314,30 +314,24 @@ async def add_sc_members(crew_json: json) -> None:
         for rank in crew_json['crewRanks']:
 
             for member in rank['rankMembers']:
-                while True:
-                    try:
-                        db.cursor.execute(f"""
-                            INSERT INTO members (
-                                _id, _name
-                            ) VALUES (
-                                '{member['rockstarId']}', '{member['nickname']}'
-                            ) ON DUPLICATE KEY UPDATE
-                                _name='{member['nickname']}' 
-                            ;""")
+                db.cursor.execute(f"""
+                    INSERT INTO members (
+                        _id, _name
+                    ) VALUES (
+                        '{member['rockstarId']}', '{member['nickname']}'
+                    ) ON DUPLICATE KEY UPDATE
+                        _name='{member['nickname']}' 
+                    ;""")
 
-                        primary_crew = member['primaryClan']
-                        db.cursor.execute(f"""
-                            INSERT INTO crews (
-                                _id, _name
-                            ) VALUES (
-                                '{primary_crew['id']}', '{replace_chars(primary_crew['name'])}' 
-                            ) ON DUPLICATE KEY UPDATE
-                                _name='{replace_chars(primary_crew['name'])}'
-                            ;""")
-                    except mysql.connector.errors.DatabaseError:
-                        # deadlock found when trying to get lock; try restarting transaction :shrug:
-                        logger.warning("mysql.connector.errors.DatabaseError, trying again in 1 second")
-                        await asyncio.sleep(1)
+                primary_crew = member['primaryClan']
+                db.cursor.execute(f"""
+                    INSERT INTO crews (
+                        _id, _name
+                    ) VALUES (
+                        '{primary_crew['id']}', '{replace_chars(primary_crew['name'])}' 
+                    ) ON DUPLICATE KEY UPDATE
+                        _name='{replace_chars(primary_crew['name'])}'
+                    ;""")
 
     db.connection.commit()
     db.connection.close()
