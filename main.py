@@ -111,7 +111,7 @@ async def on_message(message: discord.Message):
                              f"{joined_at.strftime('%d %b %Y')}\n"
                 members += guild_members
 
-                if len(guild_str) > 1000 and is_dev:
+                if len(guild_str) > 900 and is_dev:
                     embed.add_field(
                         name=Support.SPACE_CHAR,
                         value=f"{guild_str} {Support.SPACE_CHAR}"
