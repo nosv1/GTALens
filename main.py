@@ -387,8 +387,10 @@ async def on_raw_message_edit(payload: discord.RawMessageUpdateEvent):
             if payload.cached_message:
 
                 if message.content != payload.cached_message.content:
-
                     await on_message(message)
+
+            else:
+                await on_message(message)
 
 
 @client.event
