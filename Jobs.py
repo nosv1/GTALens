@@ -779,7 +779,7 @@ async def send_possible_jobs(
 
             possible_jobs_str += f"\n{Support.LETTERS_EMOJIS[letters[i]]} " \
                                  f"{platform_emoji} " \
-                                 f"[{job.name}](https://gtalens.com/job/{job.rockstar_id}) - " \
+                                 f"[{job.name.replce(']', '\\]')}](https://gtalens.com/job/{job.rockstar_id}) - " \
                                  f"[{creator.name}](https://gtalens.com/profile/{job.creator.id})"
 
             embed_meta += f"{Support.LETTERS_EMOJIS[letters[i]]}={job.rockstar_id}/"
