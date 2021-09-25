@@ -778,11 +778,9 @@ async def send_possible_jobs(
                 lambda e: e.name == PLATFORM_CORRECTIONS[job.platform].lower(), client.get_guild(
                     Support.GTALENS_GUILD_ID).emojis))
 
-
-            temp_job_name = job.name.replace("[", "\[").replace("]", "\]")
             possible_jobs_str += f"\n{Support.LETTERS_EMOJIS[letters[i]]} " \
                                  f"{platform_emoji} " \
-                                 f"[{temp_job_name}](https://gtalens.com/job/{job.rockstar_id}) - " \
+                                 f"[{job.name}](https://gtalens.com/job/{job.rockstar_id}) - " \
                                  f"[{creator.name}](https://gtalens.com/profile/{job.creator.id})"
 
             embed_meta += f"{Support.LETTERS_EMOJIS[letters[i]]}={job.rockstar_id}/"
