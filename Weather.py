@@ -442,7 +442,7 @@ async def send_forecast(msg: discord.Message, forecast: list[list[datetime, Weat
 
     embed = msg.embeds[0]
     embed.title = f"**Forecast: \n" \
-                  f"{Support.smart_day_time_format('%H:%M {S} %b %Y %Z', date)}**"
+                  f"{Support.smart_day_time_format('{S} %b %Y @ %H:%M %Z', date)}**"
     embed.description = f"```{forecast_str}```"
 
     await msg.edit(embed=embed)
