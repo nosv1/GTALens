@@ -429,18 +429,20 @@ async def send_future_weather(msg: discord.Message, user: discord.User, embed_me
     except discord.Forbidden:
         pass
 
-    await send_forecast(msg, forecast, date.astimezone(time_zone))
+    await send_forecast(msg, forecast, timezone('UTC').localize(date).astimezone(time_zone))
 
 
 async def send_forecast(msg: discord.Message, forecast: list[list[datetime, WeatherState]], date):
 
     forecast_str = ""
     for d, weather_state in forecast:
+        d = timezone("UTC").localize(d).astimezone(date.tzinfo)
         forecast_str += f"{datetime.strftime(d, '%H:%M')} - " \
                         f"{weather_state.weather.emoji} {weather_state.weather.name}\n"
 
     embed = msg.embeds[0]
-    embed.title = f"**Forecast: {Support.smart_day_time_format('{S} %b %Y %Z', date)}**"
+    embed.title = f"**Forecast: \n" \
+                  f"{Support.smart_day_time_format('%H:%M {S} %b %Y %Z', date)}**"
     embed.description = f"```{forecast_str}```"
 
     await msg.edit(embed=embed)
