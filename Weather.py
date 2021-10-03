@@ -438,7 +438,8 @@ async def send_forecast(msg: discord.Message, forecast: list[list[datetime, Weat
     for d, weather_state in forecast:
         d = timezone("UTC").localize(d).astimezone(date.tzinfo)
         forecast_str += f"{datetime.strftime(d, '%H:%M')} - " \
-                        f"{weather_state.weather.emoji} {weather_state.weather.name}\n"
+                        f"{weather_state.weather.emoji} {weather_state.weather.name} " \
+                        f"{Support.ZERO_WIDTH if weather_state.gta_time.is_day_time else Support.MOON}\n"
 
     embed = msg.embeds[0]
     embed.title = f"**Forecast: \n" \
