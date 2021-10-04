@@ -180,7 +180,7 @@ async def on_message(message: discord.Message):
             job_name = " ".join(args[2:-1])
 
             if job_name:
-                await message.channel.trigger_typing()
+                # await message.channel.trigger_typing()
 
                 msg = await message.channel.send(embed=discord.Embed(
                     colour=discord.Colour(Support.GTALENS_ORANGE),
@@ -196,7 +196,7 @@ async def on_message(message: discord.Message):
             ''' TRACK LOOKUP '''
 
         elif args[1].lower() in Jobs.SYNC_ALIASES:
-            await message.channel.trigger_typing()
+            # await message.channel.trigger_typing()
 
             job_link = re.sub(r"[<>]", "", args[2])
             msg, job = await Jobs.sync_job(message, job_link)
@@ -212,7 +212,7 @@ async def on_message(message: discord.Message):
             creator_name = " ".join(args[2:-1]).strip()
 
             if creator_name:
-                await message.channel.trigger_typing()
+                # await message.channel.trigger_typing()
 
                 msg = await message.channel.send(embed=discord.Embed(
                     colour=discord.Colour(Support.GTALENS_ORANGE),
@@ -240,7 +240,7 @@ async def on_message(message: discord.Message):
             vehicle_name = " ".join(args[2:-1])
 
             if vehicle_name:
-                await message.channel.trigger_typing()
+                # await message.channel.trigger_typing()
 
                 msg = await message.channel.send(embed=discord.Embed(
                     colour=discord.Colour(Support.GTALENS_ORANGE),
@@ -260,7 +260,7 @@ async def on_message(message: discord.Message):
             class_name = " ".join(args[2:-2])
 
             if class_name:
-                await message.channel.trigger_typing()
+                # await message.channel.trigger_typing()
 
                 msg = await message.channel.send(embed=discord.Embed(
                     colour=discord.Colour(Support.GTALENS_ORANGE),
@@ -296,7 +296,7 @@ async def on_message(message: discord.Message):
             class_name = " ".join(args[2:]).strip()
 
             if class_name:
-                await message.channel.trigger_typing()
+                # await message.channel.trigger_typing()
 
                 msg = await message.channel.send(embed=discord.Embed(
                     colour=discord.Colour(Support.GTALENS_ORANGE),
@@ -324,7 +324,7 @@ async def on_message(message: discord.Message):
             ''' VEHICLE CLASS LOOKUP '''
 
         elif args[1].lower() in Weather.ALIASES:
-            await message.channel.trigger_typing()
+            # await message.channel.trigger_typing()
 
             await Weather.send_weather(message)
 

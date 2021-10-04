@@ -37,7 +37,7 @@ def replace_chars(bad_string: str) -> str:
 
 
 async def send_rundown(message: discord.Message):
-    await message.channel.trigger_typing()
+    # await message.channel.trigger_typing()
 
     embed = discord.Embed(
         colour=discord.Colour(Support.GTALENS_ORANGE),
