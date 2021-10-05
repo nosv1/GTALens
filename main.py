@@ -560,7 +560,8 @@ async def on_error(event, *args, **kwargs):
         ) if not errors_channel else errors_channel
         devs_ping = ','.join(f'<@{d_id}>' for d_id in Support.DEVS.values())
         await errors_channel.send(
-            f"{devs_ping}\n> **{message_content}** ```{traceback.format_exc()}```"
+            f"{devs_ping}\n> **{message_content}**\n"
+            f"```{traceback.format_exc()}```"
         )
 
 
