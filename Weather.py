@@ -379,7 +379,9 @@ async def get_user_date(msg: discord.Message, time_zone_str: str):
     embed = discord.Embed(
         color=discord.Color(Support.GTALENS_ORANGE),
         title="**Future Weather**",
-        description=f"What's the date?"
+        description=f"What's the date?\n"
+                    f"Type `Now` for the current 4-hour forecast."
+                    
                     "\n\n**Format:** `MM/DD/YYYY HH:MM`"
                     "\n19th August 2021 9:12pm -> `8/19/2021 21:12`"
                     f"\n\nType it below, then click the {Support.BALLOT_CHECKMARK}"
@@ -404,17 +406,20 @@ async def send_future_weather(msg: discord.Message, user: discord.User, embed_me
             message = m
 
             try:
-                date = datetime.strptime(m.content, "%m/%d/%Y %H:%M")  # get the date
+                if message.content.lower() == "now":
+                    date = timezone("UTC").localize(datetime.utcnow())
+
+                else:
+                    date = datetime.strptime(message.content, "%m/%d/%Y %H:%M")  # get the date
+                    date = time_zone.localize(date)  # set TZ as user TZ
+                    date = date.astimezone(timezone("UTC"))  # then convert to UTC
 
             except ValueError:
-                await m.reply(
-                    f"`{m.content}` does not match the format `MM/DD/YYYY` (8/18/2021). "
+                await message.reply(
+                    f"`{message.content}` does not match the format `MM/DD/YYYY` (8/18/2021). "
                     f"Edit your message, then re-click the button."
                 )
                 return
-
-            date = time_zone.localize(date)  # set TZ as user TZ
-            date = date.astimezone(timezone("UTC"))  # then convert to UTC
             date = date.replace(tzinfo=None)  # remove tzinfo
             break
 
