@@ -996,7 +996,7 @@ async def send_possible_creators(
 ) -> discord.Message:
 
     if len(possible_creators) == 1:
-        msg = await Support.send_inbetween_msg(msg, "Creator", f"https://gtalens.com/{possible_creators[0].id}")
+        msg = await Support.send_inbetween_msg(msg, "Creator", f"https://gtalens.com/profile/{possible_creators[0].id}")
 
         if embed_type == "creator_search_playlist":
             msg = await send_playlists(msg, possible_creators[0])
