@@ -1,8 +1,11 @@
 import discord
 from datetime import datetime, timedelta
+import logging
 from pytz import timezone
 
 import Support
+
+logger = logging.getLogger('discord')
 
 
 ALIASES = ['weather', 'forecast']
@@ -453,6 +456,8 @@ async def send_forecast(msg: discord.Message, forecast: list[list[datetime, Weat
 
     await msg.edit(embed=embed)
 
+    logger.info(f"Sent Forecast: {date}")
+
 
 async def send_weather(message: discord.Message) -> discord.Message:
 
@@ -488,5 +493,7 @@ async def send_weather(message: discord.Message) -> discord.Message:
         msg = await message.channel.send(embed=embed)
         await msg.add_reaction(Support.COUNTER_CLOCKWISE)
         await msg.add_reaction(Support.CALENDAR)
+
+    logger.info("Sent Weather")
 
     return msg
