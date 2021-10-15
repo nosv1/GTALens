@@ -1025,7 +1025,7 @@ async def send_possible_creators(
         embed = discord.Embed(
             color=discord.Color(Support.GTALENS_ORANGE),
             title=f"**Search: *{creator_name}***",
-            description=f"[Search GTALens](https://gtalens.com/creators?page=1&search={creator_name.replace(' ', '%20')}) **|** "
+            description=f"[Search GTALens](https://gtalens.com/creators?page=1&q={creator_name.replace(' ', '%20')}) **|** "
                         f"[Donate]({Support.DONATE_LINK})"
                         f"\n\nIf the searched creator isn't in the results, "
                         f"it's possible the creator hasn't been synced in the bot's database yet. "
