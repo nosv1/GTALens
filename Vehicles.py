@@ -198,8 +198,12 @@ class Vehicle:
 
     # for some reason, the attributes were none when tryna do this at init
     def get_brakes(self):
-        brake_total = (self.brake_force * 10) * self.brake_bias
-        diff = brake_total - self.cornering_grip
+        if self.brake_force != None:
+            brake_total = (self.brake_force * 10) * self.brake_bias
+            diff = brake_total - self.cornering_grip
+
+        else:
+            return ""
 
         if diff > 0.4:  # the stock brakes overcome the lack of cornering grip
             return Support.BALLOT_CHECKMARK
