@@ -86,7 +86,7 @@ mph_to_kph = 1.61
 kph_to_mph = 0.62
 
 # GTALENS
-SERVER_LINK = "https://discord.gg/xvsTZNefm5"
+SERVER_LINK = "https://discord.gg/RC7n4D9c7g"
 DONATE_LINK = "https://ko-fi.com/gtalens"
 GTALENS_LOGO = "https://gtalens.com/assets/images/logo-new.5336b3.png"
 INVITE_LINK = "https://discord.com/api/oauth2/authorize?client_id=872899427457716234&permissions=36507577408&scope=bot"
