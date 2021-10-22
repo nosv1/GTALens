@@ -166,6 +166,18 @@ class Playlist:
         self.created = created
 
 
+class Collection:
+
+    def __init__(
+            self,
+            _id: str = None,
+            name: str = None,
+    ) -> None:
+        self._id = _id
+        self.name = name
+        self.url = f"https://gtalens.com/collection/{self._id}"
+
+
 class Creator:
     def __init__(
             self,
@@ -186,6 +198,7 @@ class Creator:
             recently_reviewed: list[Job] = None,
             least_played: list[Job] = None,
 
+            collections: list[Collection] = None,
             playlists: list[Playlist] = None,
             playlists_url: str = None
     ):
@@ -207,12 +220,18 @@ class Creator:
         self.recently_reviewed = recently_reviewed
         self.least_played = least_played
 
+        self.collections = collections
         self.playlists = playlists
         self.playlists_url = playlists_url
 
     @property
     def id(self):
         return self._id
+
+    def __setstate__(self, state):
+        new_state = Creator().__dict__
+        new_state.update(state)
+        self.__dict__.update(new_state)
 
 
 async def on_reaction_add(
@@ -578,7 +597,9 @@ async def get_creator_platforms(creator):
 
 async def get_gtalens_creator(creator: Creator) -> Creator:
 
+    # get jobs
     url = f"https://gtalens.com/api/v1/jobs/explore?platforms%5B0%5D={creator.platform}&userId={creator.id}"
+
     r_json = await Support.get_url(url)
     logger.debug(f"Jobs.get_gtalens_creator() {url}")
 
@@ -602,6 +623,30 @@ async def get_gtalens_creator(creator: Creator) -> Creator:
                     )
                     exec(f"creator.{cat}.append(job)")
 
+    # get collections
+    url = f"https://gtalens.com/api/v1/collections?type=0&page=1&platforms[]=pc&platforms[]=ps4&platforms[]=xboxone&sorting=date_updated&userId={creator.id}"
+
+    r_json = await Support.get_url(url)
+    logger.debug(f"Jobs.get_gtalens_creator() {url}")
+
+    if 'payload' in r_json:
+        payload = r_json['payload']
+
+        if 'collections' in payload:
+            collections = payload['collections']
+
+            if collections:
+                creator.collections = []
+
+            for collection in collections:
+
+                collection = Collection(
+                    _id=collection['_id'],
+                    name=collection['name'],
+                )
+
+                creator.collections.append(collection)
+
     return creator
 
 
@@ -619,6 +664,7 @@ def get_creators() -> dict[str, Creator]:
 
 def get_pickled_creators() -> dict[str, Creator]:
     creators: dict[str, Creator] = pickle.load(open("database_cache/creators.pkl", "rb"))
+    # check if creator attributes match Creator class
     logger.info(f"Got {len(creators)} creators")
     return creators
 
@@ -1056,6 +1102,17 @@ async def send_creator(
     )
 
     embed.set_thumbnail(url=f"https://a.rsg.sc//n/{creator_platforms['pc'].name.lower()}/n")
+
+    collections = []
+    if creator_platforms['pc'].collections:
+        for collection in creator_platforms['pc'].collections:
+            collections.append(f"[{collection.name}]({collection.url})")
+
+    embed.add_field(
+        name=f"{Support.BOOKS} **__Collections__**",
+        value=f"{' **|** '.join(collections)}\n{Support.SPACE_CHAR}",
+        inline=False
+    )
 
     def get_jobs_str(jobs: list[Job]):
         jobs_str = ""
