@@ -1108,11 +1108,11 @@ async def send_creator(
         for collection in creator_platforms['pc'].collections:
             collections.append(f"[{collection.name}]({collection.url})")
 
-    embed.add_field(
-        name=f"{Support.BOOKS} **__Collections__**",
-        value=f"{' **|** '.join(collections)}\n{Support.SPACE_CHAR}",
-        inline=False
-    )
+        embed.add_field(
+            name=f"{Support.BOOKS} **__Collections__**",
+            value=f"{' **|** '.join(collections)}\n{Support.SPACE_CHAR}",
+            inline=False
+        )
 
     def get_jobs_str(jobs: list[Job]):
         jobs_str = ""
