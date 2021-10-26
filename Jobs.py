@@ -67,7 +67,8 @@ JOB_TYPE_CORRECTIONS = {
     "LandRaceP2P": "land race P2P",
     "SeaRace": "sea race",
     "SpecialRace": "special race",
-    "StuntRaceP2P": "stunt race P2P"
+    "StuntRaceP2P": "stunt race P2P",
+    "BikeRaceP2P": "bike race P2P"
 }
 
 PLATFORM_CORRECTIONS = {
