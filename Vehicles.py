@@ -224,12 +224,12 @@ async def on_reaction_add(
     if embed_type == 'vehicle':
 
         if emoji == Support.WRENCH:
-            vehicle_name = embed_meta.split("name=")[1].split("/")[0].replace('%20', ' ')
+            vehicle_name = embed_meta.split("name=")[1].split("/")[0].replace('%20', ' ').replace('%21', '/')
             vehicle = get_vehicles()[vehicle_name]
             await toggle_handling(msg, msg.embeds[0], embed_meta, vehicle)
 
         elif emoji in embed_meta:  # tier button clicked
-            vehicle_name = embed_meta.split("name=")[1].split("/")[0].replace('%20', ' ')
+            vehicle_name = embed_meta.split("name=")[1].split("/")[0].replace('%20', ' ').replace('%21', '/')
             vehicle = get_vehicles()[vehicle_name]
             tier = list(Support.LETTERS_EMOJIS.keys())[list(Support.LETTERS_EMOJIS.values()).index(emoji)].upper()
             await toggle_tier(
@@ -238,7 +238,7 @@ async def on_reaction_add(
     elif embed_type == 'vehicle_search':
 
         if emoji in embed_meta:
-            vehicle_name = embed_meta.split(f"{emoji}=")[1].split('/')[0].replace('%20', ' ')
+            vehicle_name = embed_meta.split(f"{emoji}=")[1].split('/')[0].replace('%20', ' ').replace('%21', '/')
             vehicle = get_vehicles()[vehicle_name]
             try:
                 await msg.clear_reactions()
@@ -809,7 +809,7 @@ async def send_possible_vehicles(
                                      f"[{vehicle.vehicle_class}](https://gtalens.com/vehicles/?classes[0]=" \
                                      f"{VEHICLE_CLASS_CORRECTIONS[vehicle.vehicle_class]})"
 
-            embed_meta += f"{Support.LETTERS_EMOJIS[letters[i]]}={vehicle.name.replace(' ', '%20')}/"
+            embed_meta += f"{Support.LETTERS_EMOJIS[letters[i]]}={vehicle.name.replace(' ', '%20').replace('/','%21')}/"
 
         if not possible_vehicles_str:
             possible_vehicles_str = "\n\nThere were no close matches for your search. " \
