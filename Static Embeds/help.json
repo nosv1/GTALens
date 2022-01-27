@@ -19,7 +19,7 @@
     },
     {
       "name": "**__Miscellaneous__**",
-      "value": "**`.lens weather` - get current and future GTAO weather\n**⠀",
+      "value": "**`.lens weather` - get current and future GTAO weather\n`.lens stockbrakes` - brakes upgrade explanation\n**⠀",
       "inline": false
     },
     {

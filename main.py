@@ -367,6 +367,28 @@ async def on_message(message: discord.Message):
 
             ''' HELP '''
 
+        elif args[1].lower() in ['stockbrakes', 'brakes']:  # send brakes upgrade explanation
+            content = f"**Stock brakes?**\n\n"
+            
+            content += f"Some cars' stock brakes are sufficient enough compared to the cornering grip; so if you can decide on a threshold, you can then use some math to determine if you actually need to upgrade the brakes.\n\n"
+            
+            content += f"The bot uses the following method:\n"
+            content += f"Get braking in terms of 'grip'\n"
+            content += f"{Support.SPACE_CHAR * 2}`braking_grip = (brake_foce * 10) * brake_bias`\n\n"
+
+            content += f"Get the difference to compare to a threshold\n"
+            content += f"{Support.SPACE_CHAR * 2}`difference = braking_grip - cornering grip`\n\n"
+
+            content += "The bot uses a threshold of 0.4 to compare to, so if the difference is greater than 0.4, the idea is stock brakes are sufficent; for many cars, this is the case. Brakes are still heavily based on preference, but for me, this is my starting point.\n"
+            content += f"{Support.SPACE_CHAR * 2} - Mo (bot creator)\n\n"
+
+            content += ">>> Disclaimer: this logic is based on experience, as well as CHILLI's *Car Upgrades & Dynamics* document [1] and Spear's *Upgrades Document* [2]. You can find the brake_force, brake_bias, and cornering_grip values on Broughy's *GTAV/Online Vehicle Info, Lap Times, and Top Speeds* spreadsheet [3]\n"
+            content += "[1] <https://docs.google.com/document/d/1HAzIIJMTc8aPIXXfn-fjYa27bspS27zcnsUOqAbbzAI/edit>\n"
+            content += "[2] <https://drive.google.com/file/d/18wmgSQPmHatQzXgmqT-y7yU5D4aGP3xC/view>\n"
+            content += "[3] <https://docs.google.com/spreadsheets/d/1nQND3ikiLzS3Ij9kuV-rVkRtoYetb79c52JWyafb4m4/edit#gid=753713977>"
+
+            await message.reply(content)
+
         # TODO .lens about
 
 

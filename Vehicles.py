@@ -950,6 +950,7 @@ async def send_vehicle(message: discord.Message, client: discord.Client, vehicle
               f"\n**Boost:** {vehicle.boost.replace(Support.HEAVY_CHECKMARK, Support.BALLOT_CHECKMARK)}"
               f"\n**Drift Tyres:** {vehicle.drift_tyres.replace(Support.HEAVY_CHECKMARK, Support.BALLOT_CHECKMARK)}"
               f"\n**Stock Brakes:** {vehicle.get_brakes()}"
+              f"\n{'`.lens stockbrakes`' if vehicle.get_brakes() else ''}"  # must be last line cause \n
               f"\n{Support.SPACE_CHAR}"
     )
 
