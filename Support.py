@@ -107,7 +107,9 @@ INVITE_LINK = "https://discord.com/api/oauth2/authorize?client_id=87289942745771
 # GSPREAD
 
 def get_g_client() -> gspread.Client:
-    gc = gspread.service_account(filename="Secrets/phyner-a9859c6daae5.json")
+    gc = gspread.service_account(
+        filename="Secrets/phyner-secret_service_account.json"
+    )
     return gc
 
 
