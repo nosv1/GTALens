@@ -18,6 +18,11 @@
       "inline": false
     },
     {
+      "name": "**__Wheels__**",
+      "value": "**`.lens wheel WHEEL` - lookup a specific wheel\n`.lens wheel help - for more wheel commands\n**⠀",
+      "inline": false
+    },
+    {
       "name": "**__Miscellaneous__**",
       "value": "**`.lens weather` - get current and future GTAO weather\n`.lens stockbrakes` - brakes upgrade explanation\n**⠀",
       "inline": false
