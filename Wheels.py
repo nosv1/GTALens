@@ -96,13 +96,16 @@ class Wheel:
         
         if 'traction' in effects:  # traction bias
 
-            if 'rear' in effects:
+            # possibilities, rear, front, foward, neutral
+            m = re.findall(r'(rear|front|forward|neutral)', effects)
+
+            if m and 'rear' == m[0]:
                 bias = 'rear'
 
-            elif any(b in effects for b in ['front', 'forward']):
+            elif m and any(b == m[0] for b in ['front', 'forward']):
                 bias = 'front'
 
-            else:
+            elif m and 'neutral' == m[0]:
                 bias = 'neutral'
 
         if 'roll' in effects:  # anti roll

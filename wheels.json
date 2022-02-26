@@ -867,7 +867,7 @@
         "wheel_type": "Offroad",
         "name": "Concave 5",
         "wheel_effects": {
-            "bias": "rear",
+            "bias": "front",
             "slip_angle": "",
             "anti_roll": "",
             "note": "twitchy rear"
@@ -2931,7 +2931,7 @@
         "wheel_type": "Track",
         "name": "Forged 5",
         "wheel_effects": {
-            "bias": "rear",
+            "bias": "front",
             "slip_angle": "",
             "anti_roll": "",
             "note": ""
@@ -2955,7 +2955,7 @@
         "wheel_type": "Track",
         "name": "Speed Boy",
         "wheel_effects": {
-            "bias": "rear",
+            "bias": "front",
             "slip_angle": "",
             "anti_roll": "",
             "note": ""
