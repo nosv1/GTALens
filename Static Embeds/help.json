@@ -19,7 +19,7 @@
     },
     {
       "name": "**__Wheels__**",
-      "value": "**`.lens wheel WHEEL` - lookup a specific wheel\n`.lens wheel help - for more wheel commands\n**⠀",
+      "value": "**`.lens wheel WHEEL` - lookup a specific wheel\n`.lens wheel help` - for more wheel commands\n**⠀",
       "inline": false
     },
     {
