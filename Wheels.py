@@ -350,7 +350,7 @@ async def send_wheel(
     # effects
     embed.description += f"**Traction Bias:** "
     if wheel.wheel_effects.bias:
-        embed.description += f"{wheel.wheel_effects.bias}%\n"
+        embed.description += f"{wheel.wheel_effects.bias}\n"
 
     else:
         embed.description += "- \n"
