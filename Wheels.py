@@ -298,7 +298,7 @@ async def send_possible_wheels(
 
         embed = discord.Embed(
             color=discord.Color(Support.GTALENS_ORANGE),
-            title=f"Search: *{wheel_name}***",
+            title=f"Search: **{wheel_name}***",
             description=f"[Spear's Tyre Doc]({SPEARS_TYRE_DOC_LINK}) **|** "
                         f"[Donate]({Support.DONATE_LINK})"
                         f"\n\n**Results:**"
