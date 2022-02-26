@@ -466,8 +466,6 @@ async def send_wheel_effects(
     effects = sorted(effects, key=lambda e: e[1])
     effects = dict(effects)
 
-    await msg.channel.send(effects)
-
     effect_keys = list(effects.keys())
     for i, effect in enumerate(effect_keys):
         start = effects[effect] + 1
