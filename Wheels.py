@@ -579,7 +579,8 @@ async def send_help(message: discord.Message) -> None:
         title="**Wheels Help**",
         description=f"[GTALens](https://gtalens.com/) **|** " \
                     f"[Spear's Tyre Doc]({SPEARS_TYRE_DOC_LINK}) **|** " \
-                    f"[Donate]({Support.DONATE_LINK})"
+                    f"[Donate]({Support.DONATE_LINK})\n\n" \
+                    "All information regarding wheels and their effects is retrieved from Spear's Tyre Document linked above.\n\n"
     )
 
     # .lens wheel NAME
