@@ -15,6 +15,7 @@ import Support
 import Tasks
 import Vehicles
 import Weather
+import Wheels
 
 from dotenv import load_dotenv
 
@@ -45,7 +46,7 @@ console_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
 logger.addHandler(console_handler)
 
-#
+HELP_ALIASES = ["help", "commands"]
 
 
 @client.event
@@ -160,6 +161,13 @@ async def on_message(message: discord.Message):
             await msg.delete()
 
             ''' UPDATE VEHICLES MANUALLY - MUST BE DEV'''
+
+        elif args[1].lower() == "updatewheels" and is_dev:
+            msg = await message.channel.send('updating...')
+            await Wheels.update_wheels()
+            await msg.delete()
+
+            ''' UPDATE WHEELS MANUALLY - MUST BE DEV'''
 
         elif args[1].lower() == "updatejobs" and is_dev:
             msg = await message.channel.send('updating...')
@@ -323,10 +331,92 @@ async def on_message(message: discord.Message):
 
             ''' VEHICLE CLASS LOOKUP '''
 
+        elif args[1].lower() in Wheels.SEARCH_ALIASES:
+
+            if args[2].lower() in HELP_ALIASES:
+                await Wheels.send_help(message)
+
+                ''' WHEEL HELP '''
+
+            else:
+                wheel_name = " ".join(args[2:]).strip()
+
+                send_effects = False
+                msg = None
+                if any(e in args for e in Wheels.WHEEL_EFFECTS_CORRECTIONS.values()):
+                    send_effects = True
+                    msg = await message.channel.send(embed=discord.Embed(
+                        colour=discord.Colour(Support.GTALENS_ORANGE),
+                        title=f"**Searching: *{wheel_name}***"
+                    ))
+
+                if 'type' in args[2].lower(): # try to search wheel types first
+                    await message.channel.trigger_typing()
+
+                    wheel_type_name = " ".join(args[3:]).strip()
+
+                    if not msg:
+                        msg = await message.channel.send(embed=discord.Embed(
+                            colour=discord.Colour(Support.GTALENS_ORANGE),
+                            title=f"**Searching: *{wheel_type_name}***"
+                        ))
+                    
+                    wheel_type_names = list(Wheels.WHEEL_TYPE_CORRECTIONS.values())
+                    possible_wheel_type_names = Support.get_possible(
+                        wheel_type_name,
+                        wheel_type_names,
+                        objects=False
+                    )
+
+                    if possible_wheel_type_names: # if there are any possible wheel types
+                        wheel_name = ""
+                        wheel_type_name = possible_wheel_type_names[0]
+                        wheels: dict[str: Wheels.Wheel] = Wheels.get_wheels()
+                        # get wheels that match the specified wheel type
+                        wheels = [
+                            wheel for _, wheel in wheels.items()
+                            if Wheels.WHEEL_TYPE_CORRECTIONS[wheel.wheel_type] == wheel_type_name
+                        ]
+
+                        if send_effects:  # send effects of specified wheel type
+                            await Wheels.send_wheel_effects(
+                                msg, wheels, args
+                            )
+                            
+                        else:  # send specified wheel type
+                            await Wheels.send_wheel_type(msg, wheels)
+
+                elif send_effects:  # sends effects of any wheel type
+                    await message.channel.trigger_typing()
+                    await Wheels.send_wheel_effects(
+                        msg, list(Wheels.get_wheels().values()), args
+                    )
+
+                elif wheel_name:  # send specific wheel
+                    await message.channel.trigger_typing()
+
+                    msg = await message.channel.send(embed=discord.Embed(
+                        colour=discord.Colour(Support.GTALENS_ORANGE),
+                        title=f"**Searching: *{wheel_name}***"
+                    ))
+
+                    possible_wheels = Support.get_possible(
+                        wheel_name.lower(),
+                        list(Wheels.get_wheels().values()),
+                        objects=True
+                    )
+                    await Wheels.send_possible_wheels(
+                        msg, client, possible_wheels, wheel_name
+                    )
+
+            ''' WHEEL LOOKUP '''
+
         elif args[1].lower() in Weather.ALIASES:
             await message.channel.trigger_typing()
 
             await Weather.send_weather(message)
+
+            ''' GET WEATHER '''
 
         elif args[1].lower() == "invite":  # send invite link
 
@@ -347,7 +437,7 @@ async def on_message(message: discord.Message):
                 title="**Support the Developers!**",
                 description=f"[GTALens](https://gtalens.com) **|** [Donate]({Support.DONATE_LINK})"
                             f"\n\nGTALens is a free resource, but it is not without its costs. "
-                            f"If you have a spare dollar, feel free to show your support <3."
+                            f"If you have a spare dollar, feel free to show your support {Support.ORANGE_HEART}."
             )
             await message.channel.send(embed=embed)
 
@@ -359,7 +449,7 @@ async def on_message(message: discord.Message):
 
             ''' SERVER LINK '''
 
-        elif args[1].lower() in ["help", "commands"]:  # send help
+        elif args[1].lower() in HELP_ALIASES:  # send help
             help_json = json.load(open("Static Embeds/help.json", "r", encoding='utf8'))
             embed = discord.Embed.from_dict(dict(help_json))
             embed.colour = discord.Color(Support.GTALENS_ORANGE)
@@ -465,6 +555,9 @@ async def on_raw_reaction_add(payload: discord.RawReactionActionEvent):
 
                         elif embed_type in Weather.EMBED_TYPES:  # is weather embed
                             await Weather.on_reaction_add(message, emoji, user, client, embed_meta)
+
+                        elif embed_type in Wheels.EMBED_TYPES:  # is wheel embed
+                            await Wheels.on_reaction_add(message, emoji, user, client, embed_meta)
 
 
 @client.event

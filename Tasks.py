@@ -9,6 +9,7 @@ from random import choice, shuffle
 
 import Database
 import Jobs
+import Wheels
 import Vehicles
 
 load_dotenv()
@@ -47,6 +48,7 @@ async def loop(client):
 
         if seconds % (12 * 60 * 60) == 0:
             await update_vehicles()
+            await update_wheels()
 
             '''' UPDATE VEHICLES '''
 
@@ -191,3 +193,9 @@ async def update_vehicles():
     logger.info("Updating Vehicles")
     await Vehicles.update_vehicles()
     logger.debug(f"Vehicles Updated")
+
+
+async def update_wheels():
+    logger.info("Updating Wheels")
+    await Wheels.update_wheels()
+    logger.debug(f"Wheels Updated")

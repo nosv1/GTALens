@@ -1,0 +1,3218 @@
+{
+    "Shadow (High End)": {
+        "wheel_type": "High End",
+        "name": "Shadow",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$8,780"
+    },
+    "Hyper (High End)": {
+        "wheel_type": "High End",
+        "name": "Hyper",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$9,990"
+    },
+    "Blade (High End)": {
+        "wheel_type": "High End",
+        "name": "Blade",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$14,890"
+    },
+    "Diamond (High End)": {
+        "wheel_type": "High End",
+        "name": "Diamond",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$19,600"
+    },
+    "Supa Gee (High End)": {
+        "wheel_type": "High End",
+        "name": "Supa Gee",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$10,870"
+    },
+    "Chromatic Z (High End)": {
+        "wheel_type": "High End",
+        "name": "Chromatic Z",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$9,620"
+    },
+    "Mercie CH. Lip (High End)": {
+        "wheel_type": "High End",
+        "name": "Mercie CH. Lip",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$9,790"
+    },
+    "Obey RS (High End)": {
+        "wheel_type": "High End",
+        "name": "Obey RS",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$10,260"
+    },
+    "GT Chrome (High End)": {
+        "wheel_type": "High End",
+        "name": "GT Chrome",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$13,390"
+    },
+    "Cheetah RR (High End)": {
+        "wheel_type": "High End",
+        "name": "Cheetah RR",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$10,660"
+    },
+    "Solar (High End)": {
+        "wheel_type": "High End",
+        "name": "Solar",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$10,990"
+    },
+    "Split Ten (High End)": {
+        "wheel_type": "High End",
+        "name": "Split Ten",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$15,000"
+    },
+    "Dash VIP (High End)": {
+        "wheel_type": "High End",
+        "name": "Dash VIP",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$12,250"
+    },
+    "Lozspeed Ten (High End)": {
+        "wheel_type": "High End",
+        "name": "Lozspeed Ten",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$13,690"
+    },
+    "Carbon Inferno (High End)": {
+        "wheel_type": "High End",
+        "name": "Carbon Inferno",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "+",
+            "note": "anti roll number is increase by 1"
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$20,130"
+    },
+    "Carbon Shadow (High End)": {
+        "wheel_type": "High End",
+        "name": "Carbon Shadow",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "+",
+            "note": "anti roll number is increase by 1"
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$19,240"
+    },
+    "Carbonic Z (High End)": {
+        "wheel_type": "High End",
+        "name": "Carbonic Z",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "+",
+            "note": "anti roll number is increase by 1"
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$21,380"
+    },
+    "Carbon Solar (High End)": {
+        "wheel_type": "High End",
+        "name": "Carbon Solar",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "+",
+            "note": "anti roll number is increase by 1"
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$22,100"
+    },
+    "Carbon Cheetah R (High End)": {
+        "wheel_type": "High End",
+        "name": "Carbon Cheetah R",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "+",
+            "note": "anti roll number is increase by 1"
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$23,680"
+    },
+    "Carbon S Racer (High End)": {
+        "wheel_type": "High End",
+        "name": "Carbon S Racer",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "+",
+            "note": "anti roll number is increase by 1"
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$25,000"
+    },
+    "Flare (Lowrider)": {
+        "wheel_type": "Lowrider",
+        "name": "Flare",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$6,400"
+    },
+    "Wired (Lowrider)": {
+        "wheel_type": "Lowrider",
+        "name": "Wired",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$4,300"
+    },
+    "Triple Golds (Lowrider)": {
+        "wheel_type": "Lowrider",
+        "name": "Triple Golds",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$4,750"
+    },
+    "Big Worm (Lowrider)": {
+        "wheel_type": "Lowrider",
+        "name": "Big Worm",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$4.480"
+    },
+    "Seven Fives (Lowrider)": {
+        "wheel_type": "Lowrider",
+        "name": "Seven Fives",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$6,690"
+    },
+    "Split Six (Lowrider)": {
+        "wheel_type": "Lowrider",
+        "name": "Split Six",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "+",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$7,250"
+    },
+    "Fresh Mesh (Lowrider)": {
+        "wheel_type": "Lowrider",
+        "name": "Fresh Mesh",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$6,230"
+    },
+    "Lead Sled (Lowrider)": {
+        "wheel_type": "Lowrider",
+        "name": "Lead Sled",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$15,800"
+    },
+    "Turbine (Lowrider)": {
+        "wheel_type": "Lowrider",
+        "name": "Turbine",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "moderate"
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$14,210"
+    },
+    "Super Fin (Lowrider)": {
+        "wheel_type": "Lowrider",
+        "name": "Super Fin",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$13,500"
+    },
+    "Classic Rod (Lowrider)": {
+        "wheel_type": "Lowrider",
+        "name": "Classic Rod",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "+",
+            "note": "less than revolver"
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$16,580"
+    },
+    "Dollar (Lowrider)": {
+        "wheel_type": "Lowrider",
+        "name": "Dollar",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$17,000"
+    },
+    "Dukes (Lowrider)": {
+        "wheel_type": "Lowrider",
+        "name": "Dukes",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$8,000"
+    },
+    "Low Five (Lowrider)": {
+        "wheel_type": "Lowrider",
+        "name": "Low Five",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$12,780"
+    },
+    "Gooch (Lowrider)": {
+        "wheel_type": "Lowrider",
+        "name": "Gooch",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$7,650"
+    },
+    "Classic Five (Muscle)": {
+        "wheel_type": "Muscle",
+        "name": "Classic Five",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "+",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$3,500"
+    },
+    "Dukes (Muscle)": {
+        "wheel_type": "Muscle",
+        "name": "Dukes",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$8,000"
+    },
+    "Muscle Freak (Muscle)": {
+        "wheel_type": "Muscle",
+        "name": "Muscle Freak",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$6,000"
+    },
+    "Kracka (Muscle)": {
+        "wheel_type": "Muscle",
+        "name": "Kracka",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$3,740"
+    },
+    "Azreal (Muscle)": {
+        "wheel_type": "Muscle",
+        "name": "Azreal",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "+",
+            "note": "weak/moderate"
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$7,100"
+    },
+    "Mecha (Muscle)": {
+        "wheel_type": "Muscle",
+        "name": "Mecha",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$7,900"
+    },
+    "Black Top (Muscle)": {
+        "wheel_type": "Muscle",
+        "name": "Black Top",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "-",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$15,680"
+    },
+    "Drag SPL (Muscle)": {
+        "wheel_type": "Muscle",
+        "name": "Drag SPL",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "-",
+            "note": "moderate"
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$4,800"
+    },
+    "Revolver (Muscle)": {
+        "wheel_type": "Muscle",
+        "name": "Revolver",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "+",
+            "note": "may decrease more"
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$6,850"
+    },
+    "Classic Rod (Muscle)": {
+        "wheel_type": "Muscle",
+        "name": "Classic Rod",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "+",
+            "note": "less than revolver"
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$16,580"
+    },
+    "Fairlie (Muscle)": {
+        "wheel_type": "Muscle",
+        "name": "Fairlie",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "+",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$3,990"
+    },
+    "Spooner (Muscle)": {
+        "wheel_type": "Muscle",
+        "name": "Spooner",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$4,510"
+    },
+    "Five Star (Muscle)": {
+        "wheel_type": "Muscle",
+        "name": "Five Star",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "+",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$7,450"
+    },
+    "Old School (Muscle)": {
+        "wheel_type": "Muscle",
+        "name": "Old School",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "-",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$7,650"
+    },
+    "El Jefe (Muscle)": {
+        "wheel_type": "Muscle",
+        "name": "El Jefe",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$14,320"
+    },
+    "Dodman (Muscle)": {
+        "wheel_type": "Muscle",
+        "name": "Dodman",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$4,350"
+    },
+    "Six Gun (Muscle)": {
+        "wheel_type": "Muscle",
+        "name": "Six Gun",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$6,210"
+    },
+    "Mercenary (Muscle)": {
+        "wheel_type": "Muscle",
+        "name": "Mercenary",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$12,580"
+    },
+    "Raider (Offroad)": {
+        "wheel_type": "Offroad",
+        "name": "Raider",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$5,000"
+    },
+    "Mudslinger (Offroad)": {
+        "wheel_type": "Offroad",
+        "name": "Mudslinger",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "+",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$5,000"
+    },
+    "Nevis (Offroad)": {
+        "wheel_type": "Offroad",
+        "name": "Nevis",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$6,000"
+    },
+    "Cairngorm (Offroad)": {
+        "wheel_type": "Offroad",
+        "name": "Cairngorm",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$7,240"
+    },
+    "Amazon (Offroad)": {
+        "wheel_type": "Offroad",
+        "name": "Amazon",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "-",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$4,690"
+    },
+    "Challenger (Offroad)": {
+        "wheel_type": "Offroad",
+        "name": "Challenger",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "+",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$15,000"
+    },
+    "Dune Basher (Offroad)": {
+        "wheel_type": "Offroad",
+        "name": "Dune Basher",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$11,200"
+    },
+    "Five Star (Offroad)": {
+        "wheel_type": "Offroad",
+        "name": "Five Star",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "-",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$7,930"
+    },
+    "Rock Crawler (Offroad)": {
+        "wheel_type": "Offroad",
+        "name": "Rock Crawler",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "+",
+            "note": "weaker mil spec steele"
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$4,810"
+    },
+    "Mil Spec Steelie (Offroad)": {
+        "wheel_type": "Offroad",
+        "name": "Mil Spec Steelie",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "+",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$6,810"
+    },
+    "Retro Steelie (Offroad)": {
+        "wheel_type": "Offroad",
+        "name": "Retro Steelie",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$16,800"
+    },
+    "Heavy Duty Steelie (Offroad)": {
+        "wheel_type": "Offroad",
+        "name": "Heavy Duty Steelie",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "high"
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$19,100"
+    },
+    "Concave Steelie (Offroad)": {
+        "wheel_type": "Offroad",
+        "name": "Concave Steelie",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$16,100"
+    },
+    "Police Issue Steelie (Offroad)": {
+        "wheel_type": "Offroad",
+        "name": "Police Issue Steelie",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "moderate"
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$18,400"
+    },
+    "Lightweight Steelie (Offroad)": {
+        "wheel_type": "Offroad",
+        "name": "Lightweight Steelie",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "low"
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$18,900"
+    },
+    "Dukes (Offroad)": {
+        "wheel_type": "Offroad",
+        "name": "Dukes",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$24,000"
+    },
+    "Avalanche (Offroad)": {
+        "wheel_type": "Offroad",
+        "name": "Avalanche",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$15,600"
+    },
+    "Mountain Man (Offroad)": {
+        "wheel_type": "Offroad",
+        "name": "Mountain Man",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$23,800"
+    },
+    "Ridge Climber (Offroad)": {
+        "wheel_type": "Offroad",
+        "name": "Ridge Climber",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$25,000"
+    },
+    "Concave 5 (Offroad)": {
+        "wheel_type": "Offroad",
+        "name": "Concave 5",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "twitchy rear"
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$26,100"
+    },
+    "Flat Six (Offroad)": {
+        "wheel_type": "Offroad",
+        "name": "Flat Six",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$17,400"
+    },
+    "All Terrain Monster (Offroad)": {
+        "wheel_type": "Offroad",
+        "name": "All Terrain Monster",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "+",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$27,300"
+    },
+    "Drag SPL (Offroad)": {
+        "wheel_type": "Offroad",
+        "name": "Drag SPL",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$21,100"
+    },
+    "Concave Rally Monster (Offroad)": {
+        "wheel_type": "Offroad",
+        "name": "Concave Rally Monster",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$20,100"
+    },
+    "Rugged Snowflake (Offroad)": {
+        "wheel_type": "Offroad",
+        "name": "Rugged Snowflake",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$19,400"
+    },
+    "Inferno (Sport)": {
+        "wheel_type": "Sport",
+        "name": "Inferno",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$5,530"
+    },
+    "Deep Five (Sport)": {
+        "wheel_type": "Sport",
+        "name": "Deep Five",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$8,120"
+    },
+    "Lozspeed MK V (Sport)": {
+        "wheel_type": "Sport",
+        "name": "Lozspeed MK V",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "good for bouncy ahf"
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$8,620"
+    },
+    "Diamond Cut (Sport)": {
+        "wheel_type": "Sport",
+        "name": "Diamond Cut",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$8,430"
+    },
+    "Chrono (Sport)": {
+        "wheel_type": "Sport",
+        "name": "Chrono",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$5,980"
+    },
+    "Feroci RR (Sport)": {
+        "wheel_type": "Sport",
+        "name": "Feroci RR",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "-",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$6,000"
+    },
+    "Fiftynine (Sport)": {
+        "wheel_type": "Sport",
+        "name": "Fiftynine",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$5,240"
+    },
+    "Mercie (Sport)": {
+        "wheel_type": "Sport",
+        "name": "Mercie",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "+",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$5,750"
+    },
+    "Synthetic Z (Sport)": {
+        "wheel_type": "Sport",
+        "name": "Synthetic Z",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "-",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$9,380"
+    },
+    "Organic Type 0 (Sport)": {
+        "wheel_type": "Sport",
+        "name": "Organic Type 0",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$8,990"
+    },
+    "Endo V.1 (Sport)": {
+        "wheel_type": "Sport",
+        "name": "Endo V.1",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$5,840"
+    },
+    "GT One (Sport)": {
+        "wheel_type": "Sport",
+        "name": "GT One",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "incredible turn in"
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$18,440"
+    },
+    "Duper 7 (Sport)": {
+        "wheel_type": "Sport",
+        "name": "Duper 7",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$9,430"
+    },
+    "Uzer (Sport)": {
+        "wheel_type": "Sport",
+        "name": "Uzer",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$9,210"
+    },
+    "Groundride (Sport)": {
+        "wheel_type": "Sport",
+        "name": "Groundride",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "+",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$9,570"
+    },
+    "S Racer (Sport)": {
+        "wheel_type": "Sport",
+        "name": "S Racer",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "+",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$16,850"
+    },
+    "Venum (Sport)": {
+        "wheel_type": "Sport",
+        "name": "Venum",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "+",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$8,000"
+    },
+    "Cosmo (Sport)": {
+        "wheel_type": "Sport",
+        "name": "Cosmo",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "+",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$8,850"
+    },
+    "Dash VIP (Sport)": {
+        "wheel_type": "Sport",
+        "name": "Dash VIP",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$9,860"
+    },
+    "Ice Kid (Sport)": {
+        "wheel_type": "Sport",
+        "name": "Ice Kid",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$20,000"
+    },
+    "Ruff Weld (Sport)": {
+        "wheel_type": "Sport",
+        "name": "Ruff Weld",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$10,000"
+    },
+    "Wangan Master (Sport)": {
+        "wheel_type": "Sport",
+        "name": "Wangan Master",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$19,210"
+    },
+    "Super Five (Sport)": {
+        "wheel_type": "Sport",
+        "name": "Super Five",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$17,600"
+    },
+    "Endo V.2 (Sport)": {
+        "wheel_type": "Sport",
+        "name": "Endo V.2",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "+",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$19,850"
+    },
+    "Split Six (Sport)": {
+        "wheel_type": "Sport",
+        "name": "Split Six",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "+",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$17,560"
+    },
+    "VIP (SUV\u2019s)": {
+        "wheel_type": "SUV\u2019s",
+        "name": "VIP",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$18,100"
+    },
+    "Benefactor (SUV\u2019s)": {
+        "wheel_type": "SUV\u2019s",
+        "name": "Benefactor",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$5,360"
+    },
+    "Cosmo (SUV\u2019s)": {
+        "wheel_type": "SUV\u2019s",
+        "name": "Cosmo",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$8,000"
+    },
+    "Bippu (SUV\u2019s)": {
+        "wheel_type": "SUV\u2019s",
+        "name": "Bippu",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "+",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$9,150"
+    },
+    "Royal Six (SUV\u2019s)": {
+        "wheel_type": "SUV\u2019s",
+        "name": "Royal Six",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "+",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$5,890"
+    },
+    "Fagorme (SUV\u2019s)": {
+        "wheel_type": "SUV\u2019s",
+        "name": "Fagorme",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "mid/strong"
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$15,400"
+    },
+    "Deluxe (SUV\u2019s)": {
+        "wheel_type": "SUV\u2019s",
+        "name": "Deluxe",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$8,000"
+    },
+    "Iced Out (SUV\u2019s)": {
+        "wheel_type": "SUV\u2019s",
+        "name": "Iced Out",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$19,600"
+    },
+    "Cognoscenti (SUV\u2019s)": {
+        "wheel_type": "SUV\u2019s",
+        "name": "Cognoscenti",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$9,130"
+    },
+    "LozSpeed Ten (SUV\u2019s)": {
+        "wheel_type": "SUV\u2019s",
+        "name": "LozSpeed Ten",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$9,980"
+    },
+    "Supernova (SUV\u2019s)": {
+        "wheel_type": "SUV\u2019s",
+        "name": "Supernova",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$15,230"
+    },
+    "Obey RS (SUV\u2019s)": {
+        "wheel_type": "SUV\u2019s",
+        "name": "Obey RS",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$6,000"
+    },
+    "LozSpeed Baller (SUV\u2019s)": {
+        "wheel_type": "SUV\u2019s",
+        "name": "LozSpeed Baller",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "+",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$15,990"
+    },
+    "Extravaganzo (SUV\u2019s)": {
+        "wheel_type": "SUV\u2019s",
+        "name": "Extravaganzo",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$20,000"
+    },
+    "Split Six (SUV\u2019s)": {
+        "wheel_type": "SUV\u2019s",
+        "name": "Split Six",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "+",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$17,560"
+    },
+    "Empowered (SUV\u2019s)": {
+        "wheel_type": "SUV\u2019s",
+        "name": "Empowered",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "+",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$18,750"
+    },
+    "Sunrise (SUV\u2019s)": {
+        "wheel_type": "SUV\u2019s",
+        "name": "Sunrise",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$19,820"
+    },
+    "Dash VIP (SUV\u2019s)": {
+        "wheel_type": "SUV\u2019s",
+        "name": "Dash VIP",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$9,890"
+    },
+    "Cutter (SUV\u2019s)": {
+        "wheel_type": "SUV\u2019s",
+        "name": "Cutter",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$8,100"
+    },
+    "Cosmo (Tuners)": {
+        "wheel_type": "Tuners",
+        "name": "Cosmo",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$8,000"
+    },
+    "Super Mesh (Tuners)": {
+        "wheel_type": "Tuners",
+        "name": "Super Mesh",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$6,000"
+    },
+    "Outsider (Tuners)": {
+        "wheel_type": "Tuners",
+        "name": "Outsider",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$4,990"
+    },
+    "Rollas (Tuners)": {
+        "wheel_type": "Tuners",
+        "name": "Rollas",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$6,300"
+    },
+    "Driftmeister (Tuners)": {
+        "wheel_type": "Tuners",
+        "name": "Driftmeister",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$4,930"
+    },
+    "Slicer (Tuners)": {
+        "wheel_type": "Tuners",
+        "name": "Slicer",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "-",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$7,850"
+    },
+    "El Quatro (Tuners)": {
+        "wheel_type": "Tuners",
+        "name": "El Quatro",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$13,440"
+    },
+    "Dubbed (Tuners)": {
+        "wheel_type": "Tuners",
+        "name": "Dubbed",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "+",
+            "note": "possible anti roll+"
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$17,000"
+    },
+    "Five Star (Tuners)": {
+        "wheel_type": "Tuners",
+        "name": "Five Star",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "-",
+            "note": "try on bf club"
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$6,790"
+    },
+    "Slideways (Tuners)": {
+        "wheel_type": "Tuners",
+        "name": "Slideways",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$16,480"
+    },
+    "Apex (Tuners)": {
+        "wheel_type": "Tuners",
+        "name": "Apex",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$8,000"
+    },
+    "Stanced EG (Tuners)": {
+        "wheel_type": "Tuners",
+        "name": "Stanced EG",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$5,000"
+    },
+    "Countersteer (Tuners)": {
+        "wheel_type": "Tuners",
+        "name": "Countersteer",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "-",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$6,100"
+    },
+    "Endo V.1 (Tuners)": {
+        "wheel_type": "Tuners",
+        "name": "Endo V.1",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$6,230"
+    },
+    "Endo V.2 Dish (Tuners)": {
+        "wheel_type": "Tuners",
+        "name": "Endo V.2 Dish",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$4,850"
+    },
+    "Gruppe Z (Tuners)": {
+        "wheel_type": "Tuners",
+        "name": "Gruppe Z",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "+",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$6,350"
+    },
+    "Choku-Dori (Tuners)": {
+        "wheel_type": "Tuners",
+        "name": "Choku-Dori",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$7,930"
+    },
+    "Chicane (Tuners)": {
+        "wheel_type": "Tuners",
+        "name": "Chicane",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$4,920"
+    },
+    "Saisoku (Tuners)": {
+        "wheel_type": "Tuners",
+        "name": "Saisoku",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "-",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$5,000"
+    },
+    "Dished Eight (Tuners)": {
+        "wheel_type": "Tuners",
+        "name": "Dished Eight",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$4,980"
+    },
+    "Fujiwara (Tuners)": {
+        "wheel_type": "Tuners",
+        "name": "Fujiwara",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$4,250"
+    },
+    "Zokusha (Tuners)": {
+        "wheel_type": "Tuners",
+        "name": "Zokusha",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "-",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$6,330"
+    },
+    "Battle VIII (Tuners)": {
+        "wheel_type": "Tuners",
+        "name": "Battle VIII",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "-",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$14,100"
+    },
+    "Rally Master (Tuners)": {
+        "wheel_type": "Tuners",
+        "name": "Rally Master",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "+",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$16,890"
+    },
+    "Retro Steelie (Street)": {
+        "wheel_type": "Street",
+        "name": "Retro Steelie",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$26,200"
+    },
+    "Poverty Spec Steelie (Street)": {
+        "wheel_type": "Street",
+        "name": "Poverty Spec Steelie",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$25,500"
+    },
+    "Concave Steelie (Street)": {
+        "wheel_type": "Street",
+        "name": "Concave Steelie",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$25,800"
+    },
+    "Nebula (Street)": {
+        "wheel_type": "Street",
+        "name": "Nebula",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$38,000"
+    },
+    "Hotring Steelie (Street)": {
+        "wheel_type": "Street",
+        "name": "Hotring Steelie",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$32,600"
+    },
+    "Cup Champion (Street)": {
+        "wheel_type": "Street",
+        "name": "Cup Champion",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$35,000"
+    },
+    "Stanced EG Custom (Street)": {
+        "wheel_type": "Street",
+        "name": "Stanced EG Custom",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$26,500"
+    },
+    "Kracka Custom (Street)": {
+        "wheel_type": "Street",
+        "name": "Kracka Custom",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$32,400"
+    },
+    "Dukes Custom (Street)": {
+        "wheel_type": "Street",
+        "name": "Dukes Custom",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$28,200"
+    },
+    "Endo V.3 Custom (Street)": {
+        "wheel_type": "Street",
+        "name": "Endo V.3 Custom",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$26,900"
+    },
+    "V8 Killer (Street)": {
+        "wheel_type": "Street",
+        "name": "V8 Killer",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "-",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$34,300"
+    },
+    "Fujiwara Custom (Street)": {
+        "wheel_type": "Street",
+        "name": "Fujiwara Custom",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "slippy rear"
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$28,600"
+    },
+    "Cosmo MK2 (Street)": {
+        "wheel_type": "Street",
+        "name": "Cosmo MK2",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "chrome lip"
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$32,100"
+    },
+    "Aero Star (Street)": {
+        "wheel_type": "Street",
+        "name": "Aero Star",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "-",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$38,700"
+    },
+    "Hype Five (Street)": {
+        "wheel_type": "Street",
+        "name": "Hype Five",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "-",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$27,300"
+    },
+    "Ruff Weld Mega Deep (Street)": {
+        "wheel_type": "Street",
+        "name": "Ruff Weld Mega Deep",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$29,100"
+    },
+    "Mercie Concave (Street)": {
+        "wheel_type": "Street",
+        "name": "Mercie Concave",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "-",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$33,000"
+    },
+    "Sugoi Concave (Street)": {
+        "wheel_type": "Street",
+        "name": "Sugoi Concave",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$29,600"
+    },
+    "Synthetic Z Concave (Street)": {
+        "wheel_type": "Street",
+        "name": "Synthetic Z Concave",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "-",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$35,700"
+    },
+    "Endo V.4 Dished (Street)": {
+        "wheel_type": "Street",
+        "name": "Endo V.4 Dished",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$27,700"
+    },
+    "Hyperfresh (Street)": {
+        "wheel_type": "Street",
+        "name": "Hyperfresh",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$30,700"
+    },
+    "Truffade Concave (Street)": {
+        "wheel_type": "Street",
+        "name": "Truffade Concave",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$36,400"
+    },
+    "Organic Type 2 (Street)": {
+        "wheel_type": "Street",
+        "name": "Organic Type 2",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$30,100"
+    },
+    "Big Mamba (Street)": {
+        "wheel_type": "Street",
+        "name": "Big Mamba",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$37,200"
+    },
+    "Deep Flake (Street)": {
+        "wheel_type": "Street",
+        "name": "Deep Flake",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$35,800"
+    },
+    "Cosmo MK3 (Street)": {
+        "wheel_type": "Street",
+        "name": "Cosmo MK3",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "full chrome outside"
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$31,200"
+    },
+    "Concave Racer (Street)": {
+        "wheel_type": "Street",
+        "name": "Concave Racer",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$31,200"
+    },
+    "Deep Flake Reverse (Street)": {
+        "wheel_type": "Street",
+        "name": "Deep Flake Reverse",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$31,800"
+    },
+    "Wild Wagon (Street)": {
+        "wheel_type": "Street",
+        "name": "Wild Wagon",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$37,900"
+    },
+    "Concave Mega Mesh (Street)": {
+        "wheel_type": "Street",
+        "name": "Concave Mega Mesh",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$39,500"
+    },
+    "Chrome OG Hunnets (Benny\u2019s Bespoke)": {
+        "wheel_type": "Benny\u2019s Bespoke",
+        "name": "Chrome OG Hunnets",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$42,075"
+    },
+    "Gold OG Hunnets (Benny\u2019s Bespoke)": {
+        "wheel_type": "Benny\u2019s Bespoke",
+        "name": "Gold OG Hunnets",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "adds more weight"
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$47,815"
+    },
+    "Chrome Wires (Benny\u2019s Bespoke)": {
+        "wheel_type": "Benny\u2019s Bespoke",
+        "name": "Chrome Wires",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$44,970"
+    },
+    "Gold Wires (Benny\u2019s Bespoke)": {
+        "wheel_type": "Benny\u2019s Bespoke",
+        "name": "Gold Wires",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "adds more weight"
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$51,100"
+    },
+    "Chrome Spoked out (Benny\u2019s Bespoke)": {
+        "wheel_type": "Benny\u2019s Bespoke",
+        "name": "Chrome Spoked out",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$42,735"
+    },
+    "Gold Spoked out (Benny\u2019s Bespoke)": {
+        "wheel_type": "Benny\u2019s Bespoke",
+        "name": "Gold Spoked out",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "adds more weight"
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$48,565"
+    },
+    "Chrome Knock Offs (Benny\u2019s Bespoke)": {
+        "wheel_type": "Benny\u2019s Bespoke",
+        "name": "Chrome Knock Offs",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$42,405"
+    },
+    "Gold Knock Offs (Benny\u2019s Bespoke)": {
+        "wheel_type": "Benny\u2019s Bespoke",
+        "name": "Gold Knock Offs",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "adds more weight"
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$48,190"
+    },
+    "Chrome Bigger Worm (Benny\u2019s Bespoke)": {
+        "wheel_type": "Benny\u2019s Bespoke",
+        "name": "Chrome Bigger Worm",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$55,000"
+    },
+    "Gold Bigger Worm (Benny\u2019s Bespoke)": {
+        "wheel_type": "Benny\u2019s Bespoke",
+        "name": "Gold Bigger Worm",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "adds more weight"
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$62,500"
+    },
+    "Chrome Vintage wire (Benny\u2019s Bespoke)": {
+        "wheel_type": "Benny\u2019s Bespoke",
+        "name": "Chrome Vintage wire",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$43,065"
+    },
+    "Gold Vintage Wire (Benny\u2019s Bespoke)": {
+        "wheel_type": "Benny\u2019s Bespoke",
+        "name": "Gold Vintage Wire",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "adds more weight"
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$48,940"
+    },
+    "Chrome Classic Wire (Benny\u2019s Bespoke)": {
+        "wheel_type": "Benny\u2019s Bespoke",
+        "name": "Chrome Classic Wire",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$47,665"
+    },
+    "Gold Classic Wire (Benny\u2019s Bespoke)": {
+        "wheel_type": "Benny\u2019s Bespoke",
+        "name": "Gold Classic Wire",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "adds more weight"
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$54,165"
+    },
+    "Chrome Smoothie (Benny\u2019s Bespoke)": {
+        "wheel_type": "Benny\u2019s Bespoke",
+        "name": "Chrome Smoothie",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$32,175"
+    },
+    "Gold Smoothie (Benny\u2019s Bespoke)": {
+        "wheel_type": "Benny\u2019s Bespoke",
+        "name": "Gold Smoothie",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "adds more weight"
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$36,565"
+    },
+    "Chrome Classic Rod (Benny\u2019s Bespoke)": {
+        "wheel_type": "Benny\u2019s Bespoke",
+        "name": "Chrome Classic Rod",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$40,920"
+    },
+    "Gold Classic Rod (Benny\u2019s Bespoke)": {
+        "wheel_type": "Benny\u2019s Bespoke",
+        "name": "Gold Classic Rod",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "adds more weight"
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$46,500"
+    },
+    "Chrome Dollar (Benny\u2019s Bespoke)": {
+        "wheel_type": "Benny\u2019s Bespoke",
+        "name": "Chrome Dollar",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$51,975"
+    },
+    "Gold Dollar (Benny\u2019s Bespoke)": {
+        "wheel_type": "Benny\u2019s Bespoke",
+        "name": "Gold Dollar",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "adds more weight"
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$59,065"
+    },
+    "Chrome Mighty Star (Benny\u2019s Bespoke)": {
+        "wheel_type": "Benny\u2019s Bespoke",
+        "name": "Chrome Mighty Star",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$57,375"
+    },
+    "Gold Mighty Star (Benny\u2019s Bespoke)": {
+        "wheel_type": "Benny\u2019s Bespoke",
+        "name": "Gold Mighty Star",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "adds more weight"
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$68,725"
+    },
+    "Chrome Decadent Dish (Benny\u2019s Bespoke)": {
+        "wheel_type": "Benny\u2019s Bespoke",
+        "name": "Chrome Decadent Dish",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$57,750"
+    },
+    "Gold Decadent Dish (Benny\u2019s Bespoke)": {
+        "wheel_type": "Benny\u2019s Bespoke",
+        "name": "Gold Decadent Dish",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "adds more weight"
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$69,100"
+    },
+    "Chrome Razor Style (Benny\u2019s Bespoke)": {
+        "wheel_type": "Benny\u2019s Bespoke",
+        "name": "Chrome Razor Style",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$59,775"
+    },
+    "Gold Razor Style (Benny\u2019s Bespoke)": {
+        "wheel_type": "Benny\u2019s Bespoke",
+        "name": "Gold Razor Style",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "adds more weight"
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$71,125"
+    },
+    "Chrome Celtic Knot (Benny\u2019s Bespoke)": {
+        "wheel_type": "Benny\u2019s Bespoke",
+        "name": "Chrome Celtic Knot",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$61,250"
+    },
+    "Gold Celtic Knot (Benny\u2019s Bespoke)": {
+        "wheel_type": "Benny\u2019s Bespoke",
+        "name": "Gold Celtic Knot",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "adds more weight"
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$72,600"
+    },
+    "Chrome Warrior Dish (Benny\u2019s Bespoke)": {
+        "wheel_type": "Benny\u2019s Bespoke",
+        "name": "Chrome Warrior Dish",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$62,645"
+    },
+    "Gold Warrior Dish (Benny\u2019s Bespoke)": {
+        "wheel_type": "Benny\u2019s Bespoke",
+        "name": "Gold Warrior Dish",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "adds more weight"
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$73,995"
+    },
+    "Gold Big Dog Spokes (Benny\u2019s Bespoke)": {
+        "wheel_type": "Benny\u2019s Bespoke",
+        "name": "Gold Big Dog Spokes",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "adds more weight"
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$75,000"
+    },
+    "OG Hunnets (Benny\u2019s Originals)": {
+        "wheel_type": "Benny\u2019s Originals",
+        "name": "OG Hunnets",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$38,250"
+    },
+    "OG Hunnets (Chrome Lip) (Benny\u2019s Originals)": {
+        "wheel_type": "Benny\u2019s Originals",
+        "name": "OG Hunnets (Chrome Lip)",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "more understeer"
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$27,750"
+    },
+    "Knock Offs (Benny\u2019s Originals)": {
+        "wheel_type": "Benny\u2019s Originals",
+        "name": "Knock Offs",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$38,550"
+    },
+    "Knock Offs (Chrome Lip) (Benny\u2019s Originals)": {
+        "wheel_type": "Benny\u2019s Originals",
+        "name": "Knock Offs (Chrome Lip)",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "more understeer"
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$28,050"
+    },
+    "Spoked Out (Benny\u2019s Originals)": {
+        "wheel_type": "Benny\u2019s Originals",
+        "name": "Spoked Out",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$38,850"
+    },
+    "Spoked Out (Chrome Lip) (Benny\u2019s Originals)": {
+        "wheel_type": "Benny\u2019s Originals",
+        "name": "Spoked Out (Chrome Lip)",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "more understeer"
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$28,350"
+    },
+    "Vintage Wire (Benny\u2019s Originals)": {
+        "wheel_type": "Benny\u2019s Originals",
+        "name": "Vintage Wire",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$39,150"
+    },
+    "Vintage Wire (Chrome Lip) (Benny\u2019s Originals)": {
+        "wheel_type": "Benny\u2019s Originals",
+        "name": "Vintage Wire (Chrome Lip)",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "more understeer"
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$28,650"
+    },
+    "Smoothie (Benny\u2019s Originals)": {
+        "wheel_type": "Benny\u2019s Originals",
+        "name": "Smoothie",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$39,750"
+    },
+    "Smoothie (Chrome Lip) (Benny\u2019s Originals)": {
+        "wheel_type": "Benny\u2019s Originals",
+        "name": "Smoothie (Chrome Lip)",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "more understeer"
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$34,200"
+    },
+    "Smoothie (Solid Colour) (Benny\u2019s Originals)": {
+        "wheel_type": "Benny\u2019s Originals",
+        "name": "Smoothie (Solid Colour)",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "little understeer"
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$29,250"
+    },
+    "Rod Me Up (Benny\u2019s Originals)": {
+        "wheel_type": "Benny\u2019s Originals",
+        "name": "Rod Me Up",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$37,200"
+    },
+    "Rod Me Up (Chrome lip) (Benny\u2019s Originals)": {
+        "wheel_type": "Benny\u2019s Originals",
+        "name": "Rod Me Up (Chrome lip)",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "more understeer"
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$34,650"
+    },
+    "Rod Me Up (Solid Colour) (Benny\u2019s Originals)": {
+        "wheel_type": "Benny\u2019s Originals",
+        "name": "Rod Me Up (Solid Colour)",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": "little understeer"
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$29,700"
+    },
+    "Clean (Benny\u2019s Originals)": {
+        "wheel_type": "Benny\u2019s Originals",
+        "name": "Clean",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$45,000"
+    },
+    "Lotta Chrome (Benny\u2019s Originals)": {
+        "wheel_type": "Benny\u2019s Originals",
+        "name": "Lotta Chrome",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$45,600"
+    },
+    "Spindles (Benny\u2019s Originals)": {
+        "wheel_type": "Benny\u2019s Originals",
+        "name": "Spindles",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$46,100"
+    },
+    "Viking (Benny\u2019s Originals)": {
+        "wheel_type": "Benny\u2019s Originals",
+        "name": "Viking",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$45,850"
+    },
+    "Triple Spoke (Benny\u2019s Originals)": {
+        "wheel_type": "Benny\u2019s Originals",
+        "name": "Triple Spoke",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$45,350"
+    },
+    "Pharohe (Benny\u2019s Originals)": {
+        "wheel_type": "Benny\u2019s Originals",
+        "name": "Pharohe",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$46,350"
+    },
+    "Tiger Style (Benny\u2019s Originals)": {
+        "wheel_type": "Benny\u2019s Originals",
+        "name": "Tiger Style",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$47,100"
+    },
+    "Three Wheelin (Benny\u2019s Originals)": {
+        "wheel_type": "Benny\u2019s Originals",
+        "name": "Three Wheelin",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$46,850"
+    },
+    "Big Bar (Benny\u2019s Originals)": {
+        "wheel_type": "Benny\u2019s Originals",
+        "name": "Big Bar",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$46,600"
+    },
+    "Biohazard (Benny\u2019s Originals)": {
+        "wheel_type": "Benny\u2019s Originals",
+        "name": "Biohazard",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$47,350"
+    },
+    "Waves (Benny\u2019s Originals)": {
+        "wheel_type": "Benny\u2019s Originals",
+        "name": "Waves",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$48,100"
+    },
+    "Lick Lick (Benny\u2019s Originals)": {
+        "wheel_type": "Benny\u2019s Originals",
+        "name": "Lick Lick",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$47,850"
+    },
+    "Spiralizer (Benny\u2019s Originals)": {
+        "wheel_type": "Benny\u2019s Originals",
+        "name": "Spiralizer",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$47,600"
+    },
+    "Hypnotics (Benny\u2019s Originals)": {
+        "wheel_type": "Benny\u2019s Originals",
+        "name": "Hypnotics",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$48,850"
+    },
+    "Psycho - Delic (Benny\u2019s Originals)": {
+        "wheel_type": "Benny\u2019s Originals",
+        "name": "Psycho - Delic",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$48,600"
+    },
+    "Half Cut (Benny\u2019s Originals)": {
+        "wheel_type": "Benny\u2019s Originals",
+        "name": "Half Cut",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$48,350"
+    },
+    "Super Electric (Benny\u2019s Originals)": {
+        "wheel_type": "Benny\u2019s Originals",
+        "name": "Super Electric",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$50,000"
+    },
+    "Rally throwback (Track)": {
+        "wheel_type": "Track",
+        "name": "Rally throwback",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$35,000"
+    },
+    "Gravel Trap (Track)": {
+        "wheel_type": "Track",
+        "name": "Gravel Trap",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$35,700"
+    },
+    "Stove Top (Track)": {
+        "wheel_type": "Track",
+        "name": "Stove Top",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$35,900"
+    },
+    "Stove Top Mesh (Track)": {
+        "wheel_type": "Track",
+        "name": "Stove Top Mesh",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$39,000"
+    },
+    "Retro 3 Piece (Track)": {
+        "wheel_type": "Track",
+        "name": "Retro 3 Piece",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$36,100"
+    },
+    "Rally Monoblock (Track)": {
+        "wheel_type": "Track",
+        "name": "Rally Monoblock",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$33,000"
+    },
+    "Forged 5 (Track)": {
+        "wheel_type": "Track",
+        "name": "Forged 5",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$32,900"
+    },
+    "Split Star (Track)": {
+        "wheel_type": "Track",
+        "name": "Split Star",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$33,600"
+    },
+    "Speed Boy (Track)": {
+        "wheel_type": "Track",
+        "name": "Speed Boy",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$33,200"
+    },
+    "90s Running (Track)": {
+        "wheel_type": "Track",
+        "name": "90s Running",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "+",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$33,300"
+    },
+    "Tropos (Track)": {
+        "wheel_type": "Track",
+        "name": "Tropos",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$34,700"
+    },
+    "Exos (Track)": {
+        "wheel_type": "Track",
+        "name": "Exos",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$37,400"
+    },
+    "High Five (Track)": {
+        "wheel_type": "Track",
+        "name": "High Five",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$33,800"
+    },
+    "Super Luxe (Track)": {
+        "wheel_type": "Track",
+        "name": "Super Luxe",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$33,400"
+    },
+    "Pure Business (Track)": {
+        "wheel_type": "Track",
+        "name": "Pure Business",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$33,100"
+    },
+    "Pepper Pot (Track)": {
+        "wheel_type": "Track",
+        "name": "Pepper Pot",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$39,400"
+    },
+    "Blacktop Blender (Track)": {
+        "wheel_type": "Track",
+        "name": "Blacktop Blender",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$37,000"
+    },
+    "Throwback (Track)": {
+        "wheel_type": "Track",
+        "name": "Throwback",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$36,800"
+    },
+    "Expressway (Track)": {
+        "wheel_type": "Track",
+        "name": "Expressway",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$34,100"
+    },
+    "Hidden Six (Track)": {
+        "wheel_type": "Track",
+        "name": "Hidden Six",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$37,700"
+    },
+    "Dinka SPL (Rep 7) (Track)": {
+        "wheel_type": "Track",
+        "name": "Dinka SPL (Rep 7)",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$33,500"
+    },
+    "Retro Turbo Fan (Rep 22) (Track)": {
+        "wheel_type": "Track",
+        "name": "Retro Turbo Fan (Rep 22)",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$35,500"
+    },
+    "Conical Turbofan (Rep 37) (Track)": {
+        "wheel_type": "Track",
+        "name": "Conical Turbofan (Rep 37)",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83e\udd37",
+        "price": "$38,000"
+    },
+    "Ice Storm (Rep 52) (Track)": {
+        "wheel_type": "Track",
+        "name": "Ice Storm (Rep 52)",
+        "wheel_effects": {
+            "bias": "",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$34,300"
+    },
+    "Super Turbine (Rep 67) (Track)": {
+        "wheel_type": "Track",
+        "name": "Super Turbine (Rep 67)",
+        "wheel_effects": {
+            "bias": "rear",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4e",
+        "price": "$38,400"
+    },
+    "Modern Mesh (Rep 80) (Track)": {
+        "wheel_type": "Track",
+        "name": "Modern Mesh (Rep 80)",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$36,300"
+    },
+    "Forged Star (Rep 85) (Track)": {
+        "wheel_type": "Track",
+        "name": "Forged Star (Rep 85)",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$34,500"
+    },
+    "Snowflake (Rep 90) (Track)": {
+        "wheel_type": "Track",
+        "name": "Snowflake (Rep 90)",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$35,200"
+    },
+    "Giga Mesh (Rep 95) (Track)": {
+        "wheel_type": "Track",
+        "name": "Giga Mesh (Rep 95)",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$36,600"
+    },
+    "Mesh Meister (Rep 100) (Track)": {
+        "wheel_type": "Track",
+        "name": "Mesh Meister (Rep 100)",
+        "wheel_effects": {
+            "bias": "front",
+            "slip_angle": "",
+            "anti_roll": "",
+            "note": ""
+        },
+        "suggested_state": "\ud83d\udc4d",
+        "price": "$38,700"
+    }
+}

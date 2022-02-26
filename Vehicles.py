@@ -835,8 +835,9 @@ async def send_possible_vehicles(
     return msg
 
 
-async def send_vehicle(message: discord.Message, client: discord.Client, vehicle: Vehicle
-                       ) -> discord.Message:
+async def send_vehicle(
+    message: discord.Message, client: discord.Client, vehicle: Vehicle
+) -> discord.Message:
     # preparing complex string(s)
     manufacturer_emoji = discord.utils.find(
         lambda e: e.name == vehicle.manufacturer, client.get_guild(Support.GTALENS_GUILD_ID).emojis
