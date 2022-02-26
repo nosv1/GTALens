@@ -488,13 +488,13 @@ async def send_wheel_effects(
     embed = discord.Embed(
         colour=discord.Colour(Support.GTALENS_ORANGE),
         title=f"**{title}**",
-        description=f"\n[GTALens](https://gtalens.com/) **|** "
+        description=f"[GTALens](https://gtalens.com/) **|** "
                     f"[Spear's Tyre Doc]({SPEARS_TYRE_DOC_LINK}) **|** "
                     f"[Donate]({Support.DONATE_LINK})\n"
     ) # initial embed
 
     # check for invalid args
-    description = ""
+    description = embed.description
     for effect in effect_keys:
         if effect == "Type":
             wheel_type_names = list(WHEEL_TYPE_CORRECTIONS.keys())
