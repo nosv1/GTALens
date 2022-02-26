@@ -570,6 +570,8 @@ async def send_wheel_effects(
 
     embed.description = description
 
+    embed.set_footer(text="All information regarding wheels and their effects is retrieved from Spear's Tyre Document linked above.")
+
     await msg.edit(embed=embed)
 
 
