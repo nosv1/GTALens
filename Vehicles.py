@@ -525,6 +525,7 @@ async def send_vehicle_class(
     tier_strs = {}
     for vehicle in vehicles_class:
 
+        tier = None
         if vehicle.race_tier:
             tier = vehicle.race_tier.lower()
 
