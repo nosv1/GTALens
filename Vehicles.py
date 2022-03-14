@@ -605,7 +605,7 @@ def get_tier(
         vehicles_class = get_vehicle_class(vehicle.vehicle_class, vehicles)
 
     vehicles_tier: list[Vehicle] = [v for v in vehicles_class if v.race_tier == tier]
-    vehicles_tier.sort(key=lambda v: v.lap_time if v.lap_time in v.lap_time else sys.maxsize)
+    vehicles_tier.sort(key=lambda v: v.lap_time if v.lap_time else sys.maxsize)
 
     if not vehicles_tier:  # likely invalid tier given, possible with .lens tier
         return [], ''
@@ -1085,14 +1085,14 @@ async def send_vehicle(
 
     flags_bouncy_str = (
         f"\n\n**{Support.FLAG_ON_POST} Bouncy:** "
-        f"{vehicle.flags_bouncy.replace(Support.HEAVY_CHECKMARK, Support.BALLOT_CHECKMARK)} "
+        f"{Support.BALLOT_CHECKMARK} "
         if vehicle.flags_bouncy
         else ""
     )
 
     flags_engine_str = (
         f"\n**{Support.FLAG_ON_POST} Engine:** "
-        f"{vehicle.flags_engine.replace(Support.HEAVY_CHECKMARK, Support.BALLOT_CHECKMARK)}"
+        f"{Support.BALLOT_CHECKMARK}"
         if vehicle.flags_engine
         else ""
     )
