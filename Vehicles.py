@@ -525,13 +525,14 @@ async def send_vehicle_class(
     tier_strs = {}
     for vehicle in vehicles_class:
 
-        tier = vehicle.race_tier.lower()
+        if vehicle.race_tier:
+            tier = vehicle.race_tier.lower()
 
         if tier == "s":  # big S to sort at front
             tier = "S"
         elif tier == "-":  # x and z to put at the back
             tier = "x"
-        elif tier == "?":
+        elif not tier:
             tier = "z"
 
         if tier not in tiers:
