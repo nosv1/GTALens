@@ -427,7 +427,7 @@ async def toggle_handling(
                 'value': f"**Engine (Stock)**: {vehicle.engine_stock}"
                          f"\n**Lvl 4 Upgrade**: {vehicle.level_4_upgrade}"
                          f"\n**Drag**: {vehicle.drag}"
-                         f"\n**Max Speed**: {vehicle.max_speed}"
+                        #  f"\n**Max Speed**: {vehicle.max_speed}"
                          f"\n{Support.SPACE_CHAR}",
                 'inline': True
             },
