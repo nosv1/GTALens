@@ -1058,7 +1058,7 @@ async def send_vehicle(
     embed = discord.Embed(
         colour=discord.Colour(Support.GTALENS_ORANGE),
         title=f"**{manufacturer_str} {vehicle.name} ({vehicle.vehicle_class})**",
-        description=f"\n[GTACars](https://gtacars.net/vehicle/{vehicle.gtalens_id}) **|** "
+        description=f"\n[GTACars](https://gtacars.net/gta5/{vehicle.gtalens_id}) **|** "
                     f"[Wiki](https://gta.fandom.com/{vehicle.wiki_id}) **|** "
                     f"[Donate]({Support.DONATE_LINK})"
                     f"\n{added_str}"
