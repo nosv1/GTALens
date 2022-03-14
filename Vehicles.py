@@ -41,6 +41,7 @@ VEHICLE_CLASS_CORRECTIONS = {
     'Off-Road': 'off_road',
     'Open Wheel': 'open_wheel',
     'Planes': 'plane',
+    'Rail': 'rail',
     'Sedans': 'sedan',
     'Service': 'service',
     'Sports': 'sport',
@@ -49,6 +50,47 @@ VEHICLE_CLASS_CORRECTIONS = {
     'SUVs': 'suv',
     'Utility': 'utility',
     'Vans': 'van'
+}
+DLC_CORRECTIONS = {
+    'Initial Release': 'TitleUpdate',
+    'Beach Bum Update': 'mpbeach',
+    'Valentine\'s Day Massacre': 'mpvalentines',
+    'Business': 'mpbusiness',
+    'High Life': 'mpbusiness2',
+    'I\'m Not A Hipster': 'mphipster',
+    'Independence Day': 'mpindependence',
+    'SA Flight School': 'mppilot',
+    'Last Team Standing': 'mplts',
+    'Enhanced Edition': 'spupgrade',
+    'Festive Surprise 2014': 'mpchristmas2',
+    'Heists': 'mpheist',
+    'Ill-Gotten Gains Part 1': 'mpluxe',
+    'Ill-Gotten Gains Part 2': 'mpluxe2',
+    'Freemode Events Update': 'mpreplay',
+    'Lowriders': 'mplowrider',
+    'Halloween Surprise': 'mphalloween',
+    'Executives and Other Criminals': 'mpapartment',
+    'Festive Surprise 2015': 'mpxmas_604490',
+    'January 2016': 'mpjanuary2016',
+    'Be My Valentine': 'mpvalentines2',
+    'Lowriders: Custom Classics': 'mplowrider2',
+    'Finance and Felony': 'mpexecutive',
+    'Cunning Stunts': 'mpstunt',
+    'Bikers': 'mpbiker',
+    'Import/Export': 'mpimportexport',
+    'Cunning Stunts: SV Circuit': 'mpspecialraces',
+    'Gunrunning': 'mpgunrunning',
+    'Smuggler\'s Run': 'mpsmuggler',
+    'Doomsday Heist': 'mpchristmas2017',
+    'SSA Super Sport Series': 'mpassault',
+    'After Hours': 'mpbattle',
+    'Arena War': 'mpchristmas2018',
+    'Diamond Casino & Resort': 'mpvinewood',
+    'Diamond Casino Heist': 'mpheist3',
+    'Los Santos Summer Special': 'mpsum',
+    'Cayo Perico Heist': 'mpheist4',
+    'Los Santos Tuners': 'mptuner',
+    'Contract': 'mpsecurity'
 }
 
 
@@ -110,12 +152,19 @@ class Vehicle:
             # AH Flag Issues
             flags_bouncy: str = None,
             flags_engine: str = None,
+            flags_stanced: str = None,
+            flags_traction_control: str = None,
+            flags_wheelie: str = None,
+            flags_stock_wheels_clip: str = None,
+            flags_downforce_kerbfix: str = None,
+            flags_improved_grip_with_suspension_mods: str = None,
+            flags_special_performance_mods: str = None,
 
             # Evaluation
             pos_overall: dict[str, int] = None,  # {default, variants...: ...}
             pos_class: dict[str, int] = None,  # {default, variants...: ...}
-            lap_times: dict[str, float] = None,  # {default, variants...: milliseconds}
-            top_speeds_mph: dict[str, float] = None,  # {default, variants...: ...}
+            lap_time: float = None,  # milliseconds
+            top_speed_mph: float = None,
             # GTALens Information
 
             # GTALens
@@ -182,12 +231,19 @@ class Vehicle:
         # AH Flag Issues
         self.flags_bouncy = flags_bouncy
         self.flags_engine = flags_engine
+        self.flags_stanced = flags_stanced
+        self.flags_traction_control = flags_traction_control
+        self.flags_wheelie = flags_wheelie
+        self.flags_stock_wheels_clip = flags_stock_wheels_clip
+        self.flags_downforce_kerbfix = flags_downforce_kerbfix
+        self.flags_improved_grip_with_suspension_mods = flags_improved_grip_with_suspension_mods
+        self.flags_special_performance_mods = flags_special_performance_mods
 
         # Evaluation
         self.pos_overall = pos_overall
         self.pos_class = pos_class
-        self.lap_times = lap_times
-        self.top_speeds_mph = top_speeds_mph
+        self.lap_time = lap_time
+        self.top_speed_mph = top_speed_mph
 
         # GTALens Information
         self.gtalens_id = gtalens_id
@@ -448,7 +504,7 @@ def get_vehicles() -> dict[str, Vehicle]:
 
 def get_vehicle_class(vehicle_class: str, vehicles: dict[str, Vehicle]) -> list[Vehicle]:
     vehicle_class = [vehicles[v] for v in vehicles if vehicles[v].vehicle_class == vehicle_class]
-    vehicle_class.sort(key=lambda v: (v.lap_times['default'] if v.lap_times else sys.maxsize))
+    vehicle_class.sort(key=lambda v: (v.lap_time if v.lap_time else sys.maxsize))
     return vehicle_class
 
 
@@ -459,7 +515,7 @@ async def send_vehicle_class(
     embed = discord.Embed(
         color=discord.Color(Support.GTALENS_ORANGE),
         title=f"**{vehicle_class} ({len(vehicles_class)})**",
-        description=f"[GTALens](https://gtalens.com/vehicles/?classes[0]={VEHICLE_CLASS_CORRECTIONS[vehicle_class]}) "
+        description=f"[GTACars](https://gtacars.net?filter_class={VEHICLE_CLASS_CORRECTIONS[vehicle_class]}) "
                     f"**|** [Donate]({Support.DONATE_LINK})"
     )
 
@@ -549,18 +605,18 @@ def get_tier(
         vehicles_class = get_vehicle_class(vehicle.vehicle_class, vehicles)
 
     vehicles_tier: list[Vehicle] = [v for v in vehicles_class if v.race_tier == tier]
-    vehicles_tier.sort(key=lambda v: v.lap_times['default'] if 'default' in v.lap_times else sys.maxsize)
+    vehicles_tier.sort(key=lambda v: v.lap_time if v.lap_time in v.lap_time else sys.maxsize)
 
     if not vehicles_tier:  # likely invalid tier given, possible with .lens tier
         return [], ''
 
     str_vehicles_tier_lines: list[str] = []
 
-    if vehicle and 'default' in vehicle.lap_times:
-        base_time = vehicle.lap_times['default']
+    if vehicle and vehicle.lap_time:
+        base_time = vehicle.lap_time
 
-    elif 'default' in vehicles_tier[0].lap_times:  # tier may be ? sometimes, like in send_class
-        base_time = vehicles_tier[0].lap_times['default']
+    elif vehicles_tier[0].lap_time:  # tier may be ? sometimes, like in send_class
+        base_time = vehicles_tier[0].lap_time
 
     else:
         base_time = 0
@@ -568,8 +624,8 @@ def get_tier(
     for tier_vehicle in vehicles_tier:
 
         line = ""
-        if 'default' in tier_vehicle.lap_times:
-            line += f"`{tier_vehicle.lap_times['default'] - base_time:+.3f}` {tier_vehicle.name}"
+        if tier_vehicle.lap_time:
+            line += f"`{tier_vehicle.lap_time - base_time:+.3f}` {tier_vehicle.name}"
 
         else:
             line += f"`-{0:.3f}` {tier_vehicle.name}"
@@ -605,7 +661,7 @@ async def send_tier(
     return msg
 
 
-async def update_vehicles():
+async def update_vehicles_old():
     """
     :return: None, Saves to vehicles.json
     """
@@ -681,7 +737,7 @@ async def update_vehicles():
             dlc=row[20],
             pos_overall={},
             pos_class={},
-            lap_times={},
+            lap_time={},
             top_speeds_mph={},
         )
 
@@ -743,7 +799,7 @@ async def update_vehicles():
     page = 1
     while True:
         # https://gtalens.com/api/v1/vehicles?page=1&sorting=alphabet
-        url = f"https://gtalens.com/api/v1/vehicles?page={page}&sorting=alphabet"
+        url = f"https://gtacars.net/api/v1/vehicles?page={page}&sort=alphabet"
         logger.debug(f"Vehicles.update_vehicles() {url}")
 
         r_json = await Support.get_url(url)
@@ -791,6 +847,130 @@ async def update_vehicles():
     logger.info("Vehicles Updated")
 
 
+async def update_vehicles():
+    
+    vehicles: dict[str, Vehicle] = {}  # {name: Vehicle}
+
+    page = 1
+    while True:
+
+        url = f"https://gtacars.net/api/?game=gta5&page={page}&perPage=60&sort=alphabet&sortReverse=false&q="
+        r_json = await Support.get_url(url)
+
+        if r_json["status"]:
+
+            if r_json["payload"]["vehicles"]:
+
+                for vehicle in r_json["payload"]["vehicles"]:
+
+                    if "_name" in vehicle:
+                        name = vehicle["_name"]
+                        vehicles[name] = Vehicle(name=name)
+                        vehicles[name].gtalens_id = vehicle["id"]
+
+                        try:
+                            vehicles[name].seats = vehicle["_seats"]
+                        except KeyError:
+                            pass
+
+                        vehicles[name].wiki_id = vehicle["gtaWiki"]
+                        vehicles[name].date_added = vehicle["_dateAdded"] / 1000
+                        try:
+                            vehicles[name].dlc = list(DLC_CORRECTIONS.keys())[
+                                list(DLC_CORRECTIONS.values()).index(vehicle["_dlc"])
+                            ]
+                        except ValueError:
+                            vehicles[name].dlc = "Unknown"
+
+                        try:
+                            vehicles[name].images = [i["image"]["_key"] for i in vehicle["scPhotos"]]
+                        except KeyError:
+                            pass
+
+                        # ownership
+                        try:
+                            vehicles[name].cost = f"{vehicle['_priceMp'] * 1000:,}"
+                            vehicles[name].source = vehicle["_acq"][0].title()
+                            vehicles[name].storage = vehicle["_storage"][0].title()
+                        except KeyError:
+                            pass
+                        
+
+                        try:
+                            vehicles[name].upgrade = vehicle["_upgrade"][0].title()
+                        except KeyError:
+                            pass
+
+                        try:
+                            vehicles[name].lap_time = vehicle["_lapTime"] / 1000
+                            vehicles[name].top_speed_mph = vehicle["_topSpeed"]
+                        except KeyError:
+                            pass
+
+                        try:
+                            vehicles[name].race_tier = vehicle["_tiers"][0]
+                        except KeyError:
+                            pass
+
+                        vehicles[name].vehicle_class = list(VEHICLE_CLASS_CORRECTIONS.keys())[
+                            list(VEHICLE_CLASS_CORRECTIONS.values()).index(vehicle["_class"])
+                        ]
+                        vehicles[name].manufacturer = vehicle["_manuf"]
+                        vehicles[name].manufacturer = vehicles[name].manufacturer.title() if len(vehicles[name].manufacturer) > 3 else vehicles[name].manufacturer.upper()
+
+                        # speed
+                        vehicles[name].engine_stock = vehicle["_handling"]["fInitialDriveForce"]
+
+                        try:
+                            vehicles[name].level_4_upgrade = vehicle["_engine"]
+                            vehicles[name].engine_max = vehicles[name].engine_stock + (
+                                vehicles[name].engine_stock * vehicles[name].level_4_upgrade * 0.002
+                            )
+                        except KeyError:
+                            pass
+
+                        vehicles[name].drag = vehicle["_handling"]["fInitialDragCoeff"]
+
+                        # acceleration
+                        try:
+                            vehicles[name].drivetrain = vehicle["_dt"].upper()
+                        except KeyError:
+                            pass
+
+                        vehicles[name].power_to_front = vehicle["_handling"]["fDriveBiasFront"]
+                        vehicles[name].gears = vehicle["_handling"]["nInitialDriveGears"]
+                        vehicles[name].upshift_rate = vehicle["_handling"]["fClutchChangeRateScaleUpShift"]
+                        vehicles[name].downshift_rate = vehicle["_handling"]["fClutchChangeRateScaleDownShift"]
+
+                        # braking
+                        vehicles[name].brake_force = vehicle["_handling"]["fBrakeForce"]
+                        vehicles[name].brake_bias = vehicle["_handling"]["fBrakeBiasFront"]
+
+                        # traction
+                        vehicles[name].cornering_grip = vehicle["_handling"]["fTractionCurveMax"]
+                        vehicles[name].straight_line_grip = vehicle["_handling"]["fTractionCurveMin"]
+                        vehicles[name].off_road_grip_loss = vehicle["_handling"]["fTractionLossMult"]
+                        
+                        # collisions
+                        vehicles[name].weight_kg = vehicle["_mass"]
+                        
+                        # tags / flags
+                        vehicles[name] = Support.decode_tags(vehicles[name], vehicle["tags"])
+
+            else:
+                break
+
+        page += 1
+
+    json.dump(
+        {v: vehicles[v].__dict__ for v in vehicles},
+        open("vehicles.json", "w"),
+        indent=4,
+    )
+
+    logger.info("Vehicles Updated")
+
+
 async def send_possible_vehicles(
         msg: discord.Message, client: discord.Client, possible_vehicles: list[Vehicle], vehicle_name: str
 ) -> discord.Message:
@@ -805,8 +985,8 @@ async def send_possible_vehicles(
 
         for i, vehicle in enumerate(possible_vehicles):
             possible_vehicles_str += f"\n{Support.LETTERS_EMOJIS[letters[i]]} " \
-                                     f"[{vehicle.name}](https://gtalens.com/vehicle/{vehicle.gtalens_id}) - " \
-                                     f"[{vehicle.vehicle_class}](https://gtalens.com/vehicles/?classes[0]=" \
+                                     f"[{vehicle.name}](https://gtacars.net/gta5/{vehicle.gtalens_id}) - " \
+                                     f"[{vehicle.vehicle_class}](https://gtacars.net/gta5?page=1&filter_class=" \
                                      f"{VEHICLE_CLASS_CORRECTIONS[vehicle.vehicle_class]})"
 
             embed_meta += f"{Support.LETTERS_EMOJIS[letters[i]]}={vehicle.name.replace(' ', '%20').replace('/','%21')}/"
@@ -870,13 +1050,13 @@ async def send_vehicle(
                  f"handling_indices=/" \
                  f"tier_indices=/" \
                  f"tiers_displayed=/" \
-                 f"tiers_avail={','.join([Support.LETTERS_EMOJIS[t.lower()] for t in tiers])}/" \
+                 f"tiers_avail={','.join([Support.LETTERS_EMOJIS[t.lower()] for t in tiers if t])}/" \
                  f")"
 
     embed = discord.Embed(
         colour=discord.Colour(Support.GTALENS_ORANGE),
         title=f"**{manufacturer_str} {vehicle.name} ({vehicle.vehicle_class})**",
-        description=f"\n[GTALens](https://gtalens.com/vehicle/{vehicle.gtalens_id}) **|** "
+        description=f"\n[GTACars](https://gtacars.net/vehicle/{vehicle.gtalens_id}) **|** "
                     f"[Wiki](https://gta.fandom.com/{vehicle.wiki_id}) **|** "
                     f"[Donate]({Support.DONATE_LINK})"
                     f"\n{added_str}"
@@ -886,34 +1066,22 @@ async def send_vehicle(
     # preparing complex string(s)
     race_tier_str = (
         Support.LETTERS_EMOJIS[vehicle.race_tier.lower()]
-        if vehicle.race_tier != "-"
-        else vehicle.race_tier
+        if vehicle.race_tier
+        else '-'
     )
 
     lap_time_str = ""  # m:ss.000(*)
-    if len(vehicle.lap_times) > 1:  # has variants
-        lap_times = list(vehicle.lap_times.values())[1:]
-        avg_lap_time = sum(lap_times) / len(lap_times)
-        avg_lap_time = Support.seconds_to_minutes_seconds(avg_lap_time)
-        lap_time_str = f"{avg_lap_time}\\*"
-
+    if vehicle.lap_time:
+        lap_time_str = Support.seconds_to_minutes_seconds(vehicle.lap_time)
     else:
-        if vehicle.lap_times:
-            lap_time_str = Support.seconds_to_minutes_seconds(vehicle.lap_times['default'])
-        else:
-            lap_time_str = "-"
+        lap_time_str = "-"
 
     top_speed_str = ""  # 123mph
-    if len(vehicle.top_speeds_mph) > 1:  # has variants
-        top_speeds = list(vehicle.top_speeds_mph.values())[1:]
-        avg_top_speed = sum(top_speeds) / len(top_speeds)
-        top_speed_str = f"{round(avg_top_speed, 2)}\\*"
 
+    if vehicle.top_speed_mph:
+        top_speed_str = f"{vehicle.top_speed_mph}"
     else:
-        if vehicle.top_speeds_mph:
-            top_speed_str = f"{round(vehicle.top_speeds_mph['default'], 2)}"
-        else:
-            top_speed_str = "-"
+        top_speed_str = "-"
 
     flags_bouncy_str = (
         f"\n\n**{Support.FLAG_ON_POST} Bouncy:** "
@@ -945,11 +1113,11 @@ async def send_vehicle(
     # Performance Improvements
     embed.add_field(
         name="**__Improvements__**",
-        value=f"\n**Spoiler:** {vehicle.spoiler.replace(Support.HEAVY_CHECKMARK, Support.BALLOT_CHECKMARK)}"
-              f"\n**Off-Roads:** {vehicle.off_roads.replace(Support.HEAVY_CHECKMARK, Support.BALLOT_CHECKMARK)}"
-              f"\n**Suspension:** {vehicle.suspension.replace(Support.HEAVY_CHECKMARK, Support.BALLOT_CHECKMARK)}"
-              f"\n**Boost:** {vehicle.boost.replace(Support.HEAVY_CHECKMARK, Support.BALLOT_CHECKMARK)}"
-              f"\n**Drift Tyres:** {vehicle.drift_tyres.replace(Support.HEAVY_CHECKMARK, Support.BALLOT_CHECKMARK)}"
+        value=f"\n**Spoiler:** {Support.BALLOT_CHECKMARK if vehicle.spoiler else ''}"
+              f"\n**Off-Roads:** {Support.BALLOT_CHECKMARK if vehicle.off_roads else ''}"
+              f"\n**Suspension:** {Support.BALLOT_CHECKMARK if vehicle.suspension else ''}"
+              f"\n**Boost:** {Support.BALLOT_CHECKMARK if vehicle.boost else ''}"
+              f"\n**Drift Tyres:** {Support.BALLOT_CHECKMARK if vehicle.drift_tyres else ''}"
               f"\n**Stock Brakes:** {vehicle.get_brakes()}"
               f"\n{'`.lens stockbrakes`' if vehicle.get_brakes() else ''}"  # must be last line cause \n
               f"\n{Support.SPACE_CHAR}"
@@ -965,25 +1133,10 @@ async def send_vehicle(
               f"\n{Support.SPACE_CHAR}"
     )
 
-    # TODO apparently some vehicles don't have images, that's due to the names not matching from broughy spreadsheet and gtalens
     if vehicle.images:
-        image_name_conversion = {
-            "scOld": "old-sc",
-            "scNew": "new-sc",
-            "website": "website",
-            "impExp": "imp-exp",
-        }
-        image_name = random.choice(list(vehicle.images.keys()))
-        images = (
-            vehicle.images[image_name]["plates"]
-            if image_name == "impExp"
-            else vehicle.images[image_name]
-        )
-        image_filename = random.choice(images)["file"]
-        image_name = image_name_conversion[image_name]
-
+        image_url = random.choice(list(vehicle.images))  # images/image_id
         embed.set_thumbnail(
-            url=f"https://gtalens.com/assets/images/vehicles/{image_name}/{image_filename}"
+            url=f"https://gtacars.net/{image_url}"
         )
 
     if vehicle.other_notes:
@@ -998,7 +1151,7 @@ async def send_vehicle(
     reactions_to_add = [Support.WRENCH]
 
     # adding tier buttons after wrench
-    [reactions_to_add.append(Support.LETTERS_EMOJIS[t.lower()]) for t in tiers]
+    [reactions_to_add.append(Support.LETTERS_EMOJIS[t.lower()]) for t in tiers if t]
 
     for r in reactions_to_add:
         await msg.add_reaction(r)

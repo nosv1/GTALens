@@ -17,6 +17,8 @@ from stem import Signal
 from stem.control import Controller
 import sys
 
+from Vehicles import Vehicle
+
 logger = logging.getLogger('discord')
 
 load_dotenv()
@@ -112,7 +114,7 @@ INVITE_LINK = "https://discord.com/api/oauth2/authorize?client_id=87289942745771
 
 def get_g_client() -> gspread.Client:
     gc = gspread.service_account(
-        filename="Secrets/phyner-secret_service_account.json"
+        filename="Secrets/phyner_secret_service_account.json"
     )
     return gc
 
@@ -153,6 +155,31 @@ def hours_to_HHMM(hours: float) -> str:
 
 
 # RANDOM
+
+def decode_tags(vehicle: Vehicle, tags: str) -> Vehicle:
+
+    if "_t:increase_camber_with_suspension_mod" in tags:
+        vehicle.flags_improved_grip_with_suspension_mods = True
+
+    if "_a:can_be_stanced" in tags:
+        vehicle.flags_stanced = True
+
+    if "_spoiler" in tags:
+        vehicle.spoiler = True
+
+    if "_has-boost" in tags:
+        vehicle.boost = True
+
+    if "_off-roads" in tags:
+        vehicle.off_roads = True
+
+    if "_a:bouncier_suspension" in tags:
+        vehicle.flags_bouncy = True
+
+    if "_a:extend_engine_rev_to_all_gears" in tags:
+        vehicle.flags_engine = True
+        
+    return vehicle
 
 def get_args_from_content(content: str = "") -> (list[str], str):
     content = re.sub(r"[“”]", '"', content)
