@@ -274,7 +274,7 @@ async def get_url(url: str, headers=None, params=None, proxies=None) -> json:
 
     connector_url = os.getenv(f"{HOST}_CONNECTOR")
 
-    tries = 5
+    tries = 2
     while tries:
         tries -= 1
         try:

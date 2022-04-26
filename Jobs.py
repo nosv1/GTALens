@@ -74,7 +74,8 @@ JOB_TYPE_CORRECTIONS = {
 PLATFORM_CORRECTIONS = {
     'xboxone': 'XB',
     'pc': 'PC',
-    'ps4': 'PS'
+    'ps4': 'PS',
+    'xboxsx': 'XB',
 }
 
 
@@ -742,12 +743,17 @@ async def get_job(job_id: str) -> Job:
         else:
             return None
 
-    while True:
+    tries = 2
+    while tries:
 
         url = f"https://scapi.rockstargames.com/ugc/mission/details?title=gtav&contentId={job.rockstar_id}"
         logger.debug(f"Jobs.get_job() {url}")
 
-        r_json = await Support.get_url(url, headers=Support.SCAPI_HEADERS, proxies=True)
+        try:
+            r_json = await Support.get_url(url, headers=Support.SCAPI_HEADERS, proxies=True)
+        except KeyError:
+            tries -= 1
+            continue
 
         job.job_type = JOB_TYPE_CORRECTIONS[r_json['content']['type']]
 
