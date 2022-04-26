@@ -369,6 +369,7 @@ async def add_sc_member_jobs(sc_member_id: str) -> dict:
         "ps4",
         "xboxone",
         "pc",
+        "xboxsx"
     ]:
 
         page_index = 0
