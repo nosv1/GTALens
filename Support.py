@@ -274,7 +274,9 @@ async def get_url(url: str, headers=None, params=None, proxies=None) -> json:
 
     connector_url = os.getenv(f"{HOST}_CONNECTOR")
 
-    while True:
+    tries = 5
+    while tries:
+        tries -= 1
         try:
             if proxies:
                 connector = ProxyConnector.from_url(connector_url)
