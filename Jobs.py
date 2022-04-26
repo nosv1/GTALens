@@ -374,7 +374,7 @@ async def add_sc_member_jobs(sc_member_id: str) -> dict:
 
         page_index = 0
         tries = 2
-        while True:
+        while tries:
             tries -= 1
 
             url = f"http://scapi.rockstargames.com/search/mission?" \
@@ -467,8 +467,9 @@ async def add_sc_member_jobs(sc_member_id: str) -> dict:
                         elif '3.000.1' in r_json['error']['code']:
                             sleep = 30
 
-                    logger.info(f"Jobs.add_sc_member_jobs() was not successful, {url} sleeping for {sleep} seconds... tries left: {tries}")
-                    await asyncio.sleep(sleep)
+                    if tries:
+                        logger.info(f"Jobs.add_sc_member_jobs() was not successful, {url} sleeping for {sleep} seconds... tries left: {tries}")
+                        await asyncio.sleep(sleep)
 
             else:
                 break
