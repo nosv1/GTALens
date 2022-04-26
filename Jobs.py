@@ -373,7 +373,7 @@ async def add_sc_member_jobs(sc_member_id: str) -> dict:
     ]:
 
         page_index = 0
-        tries = 2
+        tries = 1
         while tries:
             tries -= 1
 
@@ -747,7 +747,7 @@ async def get_job(job_id: str) -> Job:
         else:
             return None
 
-    tries = 2
+    tries = 1
     while tries:
 
         url = f"https://scapi.rockstargames.com/ugc/mission/details?title=gtav&contentId={job.rockstar_id}"
@@ -756,7 +756,7 @@ async def get_job(job_id: str) -> Job:
         try:
             r_json = await Support.get_url(url, headers=Support.SCAPI_HEADERS, proxies=True)
             job.job_type = JOB_TYPE_CORRECTIONS[r_json['content']['type']]
-            
+
         except KeyError:
             tries -= 1
             continue
