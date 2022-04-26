@@ -303,6 +303,8 @@ async def get_url(url: str, headers=None, params=None, proxies=None) -> json:
         except RuntimeError:  # session is closed try again using the new ip
             logger.warning("Support.get_url() failed: RuntimeError, trying again...")
 
+    return {'status': False, 'error': {'code': 'MaxTries'}}
+
 
 def calculate_phrase_similarities(
         phrase: str, search_range, objects=True
