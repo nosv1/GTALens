@@ -89,7 +89,7 @@ class Job:
             updated: datetime = datetime.fromtimestamp(0),
             synced: datetime = datetime.fromtimestamp(0),
 
-            thumbnail: list[str] = None,  # [part1, part2]
+            thumbnail: list[str] = None,  # [part 1, part 2]  some will have xxxx.x_0 some will just have x_0
             likes: int = 0,
             dislikes: int = 0,
             quits: int = 0,
@@ -113,7 +113,7 @@ class Job:
         self.description = description
         self.thumbnail = (
             f"https://prod.cloud.rockstargames.com/ugc/gta5mission/"
-            f"{thumbnail[0]}/{self.rockstar_id}/{thumbnail[1]}.jpg"
+            f"{self.rockstar_id}/{thumbnail[-1]}.jpg"
         ) if thumbnail else Support.GTALENS_LOGO
         self.added = added
         self.updated = updated
