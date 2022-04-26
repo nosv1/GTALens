@@ -755,11 +755,11 @@ async def get_job(job_id: str) -> Job:
 
         try:
             r_json = await Support.get_url(url, headers=Support.SCAPI_HEADERS, proxies=True)
+            job.job_type = JOB_TYPE_CORRECTIONS[r_json['content']['type']]
+            
         except KeyError:
             tries -= 1
             continue
-
-        job.job_type = JOB_TYPE_CORRECTIONS[r_json['content']['type']]
 
         found_mission = False
 
